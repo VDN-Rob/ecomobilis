@@ -1,0 +1,195 @@
+.website {
+    .container {
+        padding-top: 0px;
+    }
+    .container.no-top-margin {
+        margin: 0;
+    }
+    .box.box-with-border {
+        border: 1px solid $line-color-box;
+    }
+    .box.box-with-border.success {
+        border: 1px solid $green;
+        background-color: rgba($green, 0.2);
+    }
+}
+
+/*--------------------
+       TYPO
+---------------------*/
+.green {
+    color: $green;
+}
+.bg-green {
+    color: #fff;
+    background: $green;
+}
+.bg-grey, .light-grey-bg {
+    background: $light-grey;
+}
+.blue {
+    color: $blue;
+}
+.dark-blue {
+    color: $dark-blue;
+}
+.black {
+    color: #000;
+}
+.grey-border {
+    border:1px solid $grey;
+}
+.white-border {
+    border:2px solid #fff;
+}
+.html-anchor {
+    display:block;
+    padding-top:100px;
+    margin-top:-100px;
+}
+/*--------------------
+       IMAGES
+---------------------*/
+.size-90 {
+    width: 90%;
+}
+.size-70 {
+    width: 70%;
+}
+.size-30 {
+    width: 30%;
+}
+
+.extra-box-shadow {
+    box-shadow: 0 15px 25px rgba(248, 201, 195, 0.3019607843);
+}
+
+// 1 AUTOCOMPLETE
+// -----------------------------------------
+.autoComplete_wrapper {
+    width: 100%;
+}
+.autoComplete_wrapper > input {
+    width: 100%;
+    height: 44px;
+    font-size: 1rem;
+    color: #000;
+    border-radius: 12px;
+    outline: 0;
+    padding: 10px;
+    background: rgb(251.75, 251.75, 251.75);
+    border: 2px solid $line-color-form;
+    background-image: url(/images/icons/search.svg);
+    background-size: 1.4rem;
+    background-position: left 1.05rem top 0.8rem;
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    background-color: #fff;
+}
+.auto-col-arr {
+    position: relative;
+}
+.autocomplete-swap-dep-arr {
+    position: absolute;
+    left: -35px;
+    height: 25px;
+    width: 25px;
+    font-size: 25px;
+    font-weight: bold;
+    opacity: 0.6;
+    &:hover {
+        opacity: 1;
+    }
+}
+
+// FAQ
+// -----------------------------------------
+
+details {
+    padding: 10px;
+    border-radius: 3px;
+}
+details summary::marker {
+    display:none;
+}
+details > summary {
+    list-style-type: '+ ️';
+}
+details[open]  > summary {
+    list-style-type: '-️ ';
+}
+.faq-title {
+    padding-left: 10px;
+    font-size: 22px;
+    font-weight: 800;
+}
+.faq-content {
+    background-color: $light-grey;
+    padding: 15px;
+    margin: 10px 0;
+}
+
+// Carpool searchbox
+// -----------------------------------------
+.carpool-search-block {
+    padding-top: 35px;
+    box-shadow: 0 15px 25px #f8c9c34d;
+    border:0;
+    h4{
+        margin:0 0 10px 0;
+    }
+    h3 {
+        margin: 0 0 35px 0;
+    }
+    .col-desk-search-dep-arr {
+        width: 29.15% !important;
+    }
+}
+
+// block with ride
+// -----------------------------------------
+
+.box-ride {
+    position: relative;
+    padding-bottom: 0;
+    &.box-ride-header {
+        padding-bottom: 20px;
+    }
+    .grid {
+        margin-bottom:0;
+    }
+    .last-col {
+        padding-right: 0;
+    }
+    .col-ride-edit-btns {
+        padding-right: 0;
+        padding-bottom: 0;
+    }
+    .container-ride-edit-btns {
+        position: relative;
+        display: inline-block;
+        border-top-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        background-color: $light-grey;
+        bottom: 0;
+        right: -20px;
+        padding: 15px 20px 15px 20px;
+        .button {
+            margin-left: 10px;
+        }
+    }
+    .passenger-list {
+        padding: 0px 5px 5px 5px;
+        border-radius: 5px;
+        margin-top: 0px;
+        margin-left:  8.3333333333%; // because of the col-1
+        .col-desk-3, .col-desk-2 {
+            padding-top: 5px;
+            border-top: 1px solid $light-grey;
+        }
+    }
+}
+.box-ride-confirm-reject {
+    position: relative;
+    padding-bottom: 0;
+}

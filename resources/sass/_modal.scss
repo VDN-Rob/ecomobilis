@@ -1,0 +1,59 @@
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed; 
+  z-index: 1100;
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba($body-text-color,0.3); 
+  /* Modal Content/Box */
+  .modal-header-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 0px;
+    width: 80%; 
+    max-height: 100%;
+    background: linear-gradient(136.61deg, rgb(255, 255, 255) 13.72%, rgb(255, 255, 255) 74.3%);
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 16px 70px;
+    max-width: 700px;
+    border-radius: 8px;
+
+  }
+  .modal-header {
+    border-bottom: 1px solid $line-color;
+    padding: 20px;
+    h4 {
+      margin-bottom: 0;
+    }
+  }
+  .modal-content {
+    padding: 30px 20px 50px 20px;
+  }
+  
+  
+  /* The Close Button */
+  .close {
+    color: $body-text-color;
+    float: right;
+    padding: 20px;
+    width:20px;
+    cursor: pointer;
+  }
+  .close:after {
+    content: '×';
+    height: 30px;
+    color: $body-text-color;
+    float: right;
+    font-size: 28px;
+    font-weight: 200;
+    width:20px;
+  }
+  .close:hover:after {
+    color: $prominent-text-color;
+  }
+}

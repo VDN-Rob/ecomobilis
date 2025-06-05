@@ -1,0 +1,51 @@
+.website.home .container {
+    padding-top: 0;
+}
+.headerpic-container {
+    height: 650px;
+    margin-bottom: 100px;
+    .block {
+        margin-top: 0;
+    }
+}
+
+.headerpic {
+    clear: both;
+    background: $header-bg-color no-repeat;
+    background-position: right 100px top 60px;
+    background-size: 750px;
+    height: 650px; // same as container
+    text-align: center;
+    position: relative;
+    color: #FFF;
+    .headerpic-text-block {
+      text-align: center;
+      font-size: 25px;
+      line-height: 31px;
+      padding: 120px 0 0 0;
+      vertical-align: bottom;
+      h1 {
+          text-align: left;
+          font-size: 50px;
+          line-height: 55px;
+          color: #fff;
+          padding: 0px;
+          text-shadow: 1px 2px 0px rgba(0, 0, 0, 0.0);
+          -webkit-font-smoothing: antialiased;
+          width: 100%;
+      }
+      h4, .extra-info {
+          color: #FFF;
+          padding: 10px 0;
+          margin: 0;
+      }
+      .extra-info {
+          padding-top: 5px;
+          font-size: 12px;
+          text-shadow: 1px 2px 0px rgba(0, 0, 0, 0.5);
+      }
+
+  }
+}
+
+

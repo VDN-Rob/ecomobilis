@@ -1,0 +1,147 @@
+
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: $font-family-default;
+  font-size:  $body-size;
+  line-height: $body-line-height;
+  font-weight: normal;
+}
+h1 {
+  font-family: $font-family-secondary;
+  font-size: $h1-size;
+  line-height: $h1-line-height;
+  color: $blue;
+}
+h2 {
+  font-family: $font-family-secondary;
+  font-size: $h2-size;
+  line-height: $h2-line-height;
+  color: $blue;
+}
+h3 {
+  font-family: $font-family-secondary;
+  font-size: $h3-size;
+  line-height: $h3-line-height;
+  margin: 10px 0;
+  color: $blue;
+}
+h4 {
+
+}
+h4 {
+    font-family: $font-family-secondary;
+    font-weight: 400;
+    margin-top: 10px;
+    font-size: $h4-size;
+    line-height:  $h4-line-height;
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    align-items: center;
+    gap: 0.5rem;
+    color: $light-blue;
+}
+
+h4:before,
+h4:after {
+    content: '';
+    height: 2px;
+    background-color: $light-blue;
+}
+
+.small {
+  font-size: $small-size;
+}
+.tiny {
+  font-size: $tiny-size;
+}
+.grey {
+  color: $grey;
+}
+.caps {
+  text-transform: uppercase;
+}
+
+/* text */
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+
+/* tags */
+.label {
+    position: relative;
+    top: -2px;
+  font-size: 12px;
+  display: inline-block;
+  align-items: center;
+  padding: 0px 20px 0px 20px;
+  height: 28px;
+  border-radius: 30px;
+  border: 1px solid $line-color-light;
+    background-color: rgba($line-color-light,0.2);
+}
+
+.number {
+  font-size: 12px;
+  font-family: $font-family-secondary;
+  display: inline-block;
+  align-items: center;
+  padding: 0px 20px 0px 20px;
+  height: 25px;
+  border-radius: 0;
+  border: 1px solid $line-color-light;
+}
+
+a.grey {
+    color: $grey;
+}
+.green  {
+  color: $green;
+}
+.red  {
+ color: $red;
+}
+.orange  {
+  color: $orange;
+}
+.bg-white {
+    background-color: #FFF !important;
+}
+.nothing-found {
+    font-size: 22px;
+    padding: 200px 0;
+    color: $grey;
+
+}
+@media only screen and (max-width: $grid-mobile-breakpoint) {
+
+  h1 {
+    font-size: $h1-size - 22;
+    line-height: $h1-line-height - 17;
+  }
+  h2 {
+    font-size: $h2-size - 5;
+    line-height: $h2-line-height - 5;
+  }
+  h3 {
+    font-size: $h3-size - 5;
+    line-height: $h3-line-height - 5;
+  }
+
+  .label {
+    font-size: $small-size;
+    padding: 0px 10px 0px 10px;
+  }
+  .tiny-circle {
+    margin-right: 4px;
+  }
+
+}

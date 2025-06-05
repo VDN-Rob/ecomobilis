@@ -1,0 +1,98 @@
+@media only screen and (max-width: $grid-mobile-breakpoint) {
+
+    // website
+    // -----------------------------------------
+    .website {
+        .container {
+            padding-top: 40px;
+        }
+        .main-nav ul li.separator-left {
+            a {
+                padding-left: 0;
+            }
+            a::before {
+                border:0;
+            }
+        }
+    }
+    .box {
+        padding: 15px;
+    }
+    .col-desk-12 {
+        padding-right:0;
+    }
+
+    // ride box & search
+    // -----------------------------------------
+
+    // search
+    .block.carpool-search-block.box {
+        padding-left: 10px;
+        padding-right: 10px;
+        width: 100%;
+        border-radius: 0;
+    }
+    .carpool-search-block .col-desk-search-dep-arr {
+        width: 50% !important;
+        margin-bottom: 10px;
+    }
+    .col-search-date {
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+    //
+    .box-ride-overview-listing {
+        .details {
+            text-align: left;
+        }
+        .col-mob-dep-design,
+        .col-mob-arr-design {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: $light-grey;
+        }
+        .col-mob-dep-design {
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+        }
+        .col-mob-arr-design {
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+        .container-ride-edit-btns {
+            background-color: transparent;
+            padding: 0;
+            right: 0;
+            .button {
+                margin: 15px 0;
+                font-size: 12px;
+                display: inline-block;
+            }
+        }
+    }
+    .box-ride .passenger-list {
+        margin-left: 0;
+        .col-desk-2, .col-desk-3 {
+            padding-top: 0;
+            border-top:0;
+        }
+        .passenger-list-name, .passenger-list-places {
+            padding-top: 5px;
+            border-top: 1px solid $light-grey;
+        }
+
+    }
+
+    // miscellaneous
+    // -----------------------------------------
+    .list-of-chats {
+        height: auto;
+        max-height: 350px;
+    }
+
+
+    .autocomplete-swap-dep-arr {
+        display: none;
+    }
+
+}

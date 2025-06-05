@@ -1,0 +1,140 @@
+body, html {
+	height: 100%;
+}
+
+/* BASIC STRUCTURE */
+#container {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%; // solves safari bug
+	margin: 0 auto;
+}
+main.main {
+	flex: 1 0 auto;
+}
+main.main-with-sidebar {
+	padding-left: $sidebar-width;
+	.content {
+		flex: 1 0 auto;
+		max-width: none;
+		margin-top: 25px;
+		padding-top: $header-height;
+		margin-bottom: 50px;
+	}
+}
+.main-nav {
+	width: $sidebar-width; // excl padding
+}
+
+/* COMMON */
+code {
+	color: blue;
+}
+.extra-margin-top,
+.block.extra-margin-top {
+	margin-top: 70px;
+}
+.extra-margin-bottom
+.block.extra-margin-bottom {
+	margin-bottom: 70px;
+}
+.extra-padding-top,
+.block.extra-padding-top {
+	padding-top: 70px;
+}
+.no-bottom-margin {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.extra-padding-bottom,
+.block.extra-padding-bottom{
+	padding-bottom: 70px;
+}
+hr {
+	display: block;
+	height: 1px;
+	border: 0; border-top: 1px solid $line-color;
+	margin: 20px 0;
+	padding: 0;
+}
+
+// BOX & BLOCk
+.box {
+	background-color: $box-bg-color;
+	border-radius: $border-radius;
+	padding: 15px $default-padding $default-padding $default-padding;
+	border: 1px solid $line-color-box;
+	.header {
+		display: flex;
+		justify-content: space-between;
+		border-bottom: 1px solid $line-color-box;
+		padding-left: $default-padding;
+		padding-right: $default-padding;
+		margin-left: -$default-padding;
+		margin-right: -$default-padding;
+		margin-bottom: $default-padding;
+		.buttons-header {
+			margin-top: 5px;
+			float: right;
+		}
+
+		h3, .small-subtitle {
+			padding-top: 0;
+
+		}
+		h3 {
+			margin-top: $default-padding/2;
+		}
+		.small-subtitle {
+			padding-bottom: $default-padding/2;
+		}
+	}
+}
+.box, .grid {
+	margin-bottom: $default-margin;
+}
+.block {
+	margin-top: $default-margin;
+	margin-bottom: $default-margin;
+	padding-bottom:  $default-margin;
+}
+.block .grid,
+.box .grid {
+	padding: 0;
+	width: 100%;
+}
+.box.note {
+	background: $note-background;
+	border:1px solid darken($note-background, 5%);
+}
+.grid.grid-with-padding [class^="col-"] {
+	padding-top: $default-margin;
+}
+.box.border-inbetween {
+	padding-top:0;
+	padding-bottom: 0;
+	.grid {
+		margin-bottom: 0;
+	}
+	.grid [class^="col-"]  {
+		padding-top: $default-padding;
+		padding-bottom: $default-padding;
+	}
+}
+
+img.rounded {
+    border-radius: 20px;
+}
+
+
+// RESPONSIVE
+
+@media only screen and (max-width: $grid-mobile-breakpoint) {
+	.main-nav {
+		width: 100%;
+	}
+	main.main-with-sidebar {
+		padding-left:0;
+	}
+
+}

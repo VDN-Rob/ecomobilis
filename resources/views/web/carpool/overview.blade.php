@@ -1,0 +1,45 @@
+@extends('_layout.app')
+@section('content')
+
+    <!-- top block with first paragraph -->
+    <div class="block">
+        <div class="grid">
+            <div class="col-desk-12 ">
+                <h1>{{ __('carpool.title') }}</h1>
+            </div>
+            <div class="col-desk-12 ">
+                @guest
+                    <a href="#" class="button disabled" > {{ __('carpool.add-a-ride') }}</a>
+                @else
+                    @if(empty(Auth::user()->birth_date) || empty(Auth::user()->car))
+                        <a href="#" class="button disabled" > {{ __('carpool.add-a-ride') }}</a>
+                        &nbsp;&nbsp;
+                        <a href="{{ url('/') }}/admin/user/profile/{{ Auth::user()->id }}/edit/" class="grey tiny">Complete your profile first</a>
+                    @else
+                        <a href="/carpool/add" class="button">{{ __('carpool.add-a-ride') }}</a>
+                    @endif
+                @endguest
+
+            </div>
+        </div> <!--  grid -->
+    </div>
+
+
+    <!--  block with search -->
+    @include('_includes.carpool-search')
+
+
+    <div class="block">
+        @if(count($rides) > 0)
+            @foreach($rides as $ride)
+                @include('_includes.carpool-ride-block', ['layout' => 'overview-listing', 'showReservations' => 0, 'showConversations' => 0])
+            @endforeach
+        @else
+            <div class="grid">
+                <div class="col-desk-12 text-center">
+                    <div class="nothing-found">{{ __('carpool.no-rides-found') }}</div>
+                </div>
+            </div>
+        @endif
+    </div>
+@endsection

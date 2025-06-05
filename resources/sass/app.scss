@@ -1,0 +1,87 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Basics + Variables
+@import 'normalize';
+@import 'boilerplate';
+@import './variables.scss';
+
+// fresesia framework
+@import 'typo';
+@import 'layout';
+@import 'nav';
+@import 'grid';
+@import 'page_header_nav';
+@import 'form';
+@import 'buttons';
+@import 'messages';
+@import 'misc';
+@import 'datepicker';
+@import 'heroicons';
+@import 'modal';
+
+// custom design
+@import 'design_header_image';
+
+// everything extra for the website
+@import 'design_website__general';
+@import 'design_website__menu';
+@import 'design_website__footer';
+@import 'design_traffic';
+
+// just the admin
+@import 'design_admin';
+
+// mobile exceptions
+@import 'design_responsive';
+
+/* SOME VERY BASICS */
+body {
+    background-color: $bgcolor;
+    color: $body-text-color;
+}
+.grid a {
+    color: $body-text-color;
+    text-decoration: none;
+    border-bottom:2px solid $light-blue;
+}
+
+ul,
+li {
+    margin:0;
+    padding:0;
+}
+
+nav li {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+.active, a:hover{
+    color: $hover-text-color;
+}
+
+/* SHOW / HIDE */
+.show-on-mobile-only {
+    display: none !important;
+}
+.show-for-desktop-only {
+    display: block;
+}
+
+@media only screen and (max-width: $grid-mobile-breakpoint) {
+    .show-on-mobile-only {
+        display: block !important;
+    }
+    .hide-on-mobile-only {
+        display: none !important;
+    }
+    .show-for-desktop-only,
+    .show-on-desktop-only {
+        display: none !important;
+    }
+}

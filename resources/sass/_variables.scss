@@ -1,0 +1,156 @@
+$max-width: 1400px;
+
+
+// ============================== COLORS =====================
+
+// main colors
+$main-color: #000000;
+$second-color: #263d5e;
+$blue: #263d5e;  // the main dark blue
+$light-blue: #c0c9d5;
+$light-grey: #eceeee;
+$orange: #ee6347;
+$red: #ee6347;
+
+$sidebar-color: #263d5e; // header color
+
+$grey-dark: #393939;
+$grey: #6c6c6c;
+$green: #1B8C63;
+
+//  other
+$yellow: #E08AA9;
+$dark-blue: #005993;
+$light-green: #a7cc2d;
+$dark-green: #12554c;
+$orange: #F2845C;
+$light-orange: #ED7F59;
+$pink: #E08AA9;
+$dark-yellow:#CBB24A;
+$yellow: #F2DE79;
+$light-yellow: #F1ECD6;
+$dark-grey: $grey-dark;
+$mid-grey: #7a7a7a;
+
+
+
+
+// MAIN COLORS
+// https://coolors.co/1b8c63-a0d5d8-f0f8f9-3c3849-3e9cba-005993-393939-000000
+$body-text-color: $dark-grey;    // body text
+$prominent-text-color: darken($body-text-color, 15%);
+$hover-text-color: $prominent-text-color;	 // focused color
+$body-text-color-disabled: #57515a; // disabled color
+$bgcolor: #faf6f2; //  page color
+
+// ADMIn: the dave way
+$prominent-color-bg: #edeef3; // note highlighted,
+
+// ADMIN: the broos way
+// $sidebar-color: #3C3849;
+$prominent-color-bg: lighten($light-blue, 20%); // note highlighted,
+
+
+
+$form-bg-color: #fff;
+$line-color-form: $blue;
+
+$line-color: #e2e2e2;  // used in the content page
+$line-color-light: lighten($line-color, 3%);
+
+// SIDEBAR
+$sidebar-bgcolor: $sidebar-color;
+$sidebar-border-color: lighten($sidebar-bgcolor, 8%);
+$sidebar-line-color:  $sidebar-border-color;
+$sidebar-hover-color: $sidebar-border-color;
+$sidebar-active-color: $green;
+
+$sidebar-font-color:  #FFF;
+$sidebar-width:240px;
+$sidebar-narrow-width:50px;
+
+// HEADER
+$header-bg-color: $blue;
+$header-height: 65px;
+$header-picture-height: 650px;
+
+// BOX, NOTES, etc
+$bg-prominent: $prominent-color-bg;
+$page-bg-button: transparent;  // button, steps, background, ....
+$note-background: $prominent-color-bg;
+
+$page-bg-button-hover: #FFF; // dropdown,...
+
+$box-bg-color: 		 #FFF;   // box color
+$box-bg-color-hover: lighten($box-bg-color, 2%);
+$line-color-box:	$line-color-light;
+$line-color-box-light: $prominent-color-bg;
+
+// margins
+$border-radius: 15px;
+$border-radius-button: 25px;
+$border-radius-form: 25px;
+$default-margin: 20px;
+$extra-margin: 60px;
+$default-padding: 20px;
+
+
+
+// ============================== TYPO =====================
+// ----- typo sizes -> typo.scss // broos
+$h1-size: 52px;  // big numbers
+$h1-line-height: 55px;
+
+$medium-header-size: 40px;  // medium numbers
+$medium-line-height: 43px;
+
+$h2-size: 30px; // 26 -> 32px
+$h2-line-height: 35px;
+
+$h3-size: 25px;
+$h3-line-height: 28px;
+
+$h4-size: 18px;
+$h4-line-height: 20px;
+
+$body-size: 18px;   // broos 16px -> 18px
+$body-line-height: 26px;  // broos
+
+$intro-size: 22px;   // broos
+$intro-line-height: 30px;  // broos
+
+$small-size: 14px;
+$small-line-height: 18px;
+
+$tiny-size: 12px;
+$tiny-line-height: 16px;
+
+$very-tiny-size: 10px; // info label for form
+
+// FONTS
+$font-family-default:'DM Sans', sans-serif;
+$font-family-secondary:  "Barlow Condensed", sans-serif;
+$font-family-third: "DM Mono", monospace;
+
+
+// ============================== GRID =====================
+
+// GRID
+// desktop grid
+$grid-desktop-columns: 12;
+$grid-desktop-sideMargin: 80px;
+$grid-desktop-gutter: 80px;  // normal 40
+$grid-desktop-breakpoint: $max-width;
+
+// tablet grid
+$grid-tablet-columns: 12;
+$grid-tablet-sideMargin: 60px;
+$grid-tablet-gutter: 30px;
+$grid-tablet-breakpoint: 1050px;
+
+// mobile grid
+$grid-mobile-columns: 4;
+$grid-mobile-sideMargin: 10px;
+$grid-mobile-gutter: 25px;
+$grid-mobile-breakpoint: 840px;
+

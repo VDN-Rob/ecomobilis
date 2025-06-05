@@ -1,0 +1,61 @@
+.site-footer {
+   background-color: $light-blue;
+   padding: 0;
+   color: #FFF;
+   font-size: $small-size;
+    margin-top: 100px;
+   .grid {
+       max-width: none;
+       width: auto;
+   }
+   a {
+       color: #FFF;
+       border: 0;
+   }
+   ul li {
+       list-style: none;
+   }
+   a.social {
+       text-decoration: none;
+   }
+   .screen-reader-text {
+       clip: rect(1px, 1px, 1px, 1px);
+       position: absolute !important;
+       height: 1px;
+       width: 1px;
+       overflow: hidden;
+       word-wrap: normal !important;
+   }
+   h2 {
+       color: #FFF;
+   }
+   .email-form {
+        .col {
+            padding-left: 0;
+        }
+        .col:last-child {
+            padding-right: 0;
+        }
+   }
+   .button {
+       color: #FFF;
+   }
+   .general-info-footer-block {
+       padding: 40px;
+       color: $blue;
+   }
+   .more-info-footer-block {
+       position: relative;
+       margin-top: -25px;
+       padding: 40px;
+       border-top-left-radius: 40px;
+       background-color: $blue;
+       a {
+           color: #FFF;
+           border: 0;
+       }
+   }
+    .button {
+        border-color: #FFF;
+    }
+}

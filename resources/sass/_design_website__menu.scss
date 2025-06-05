@@ -1,0 +1,374 @@
+.website {
+
+    /* NAVIGATION */
+    header {
+        height: auto;
+        width: 100%;
+        top: 0;
+    }
+
+    .nav__container {
+        display: flex;
+    }
+
+    // TOPBAR #1
+    .small-top-nav {
+        height: auto;
+        width: 100%;
+        // background: darken($second-color, 10%);
+        color: #FFF;
+        padding: 0px 5px;
+        .nav__container {
+            align-content: space-between;
+            justify-content: flex-end;
+        }
+        ul {
+            li {
+                display: inline-block;
+                color: #000;
+                margin-left: 5px;
+                font-size: 14px;
+                a {
+                    cursor: pointer;
+                    padding-left: 5px;
+                    padding-top: 3px;
+                    padding-bottom: 3px;
+                    padding-right: 5px;
+                    color: #fff;
+                    transition: none;
+                    text-decoration: none;
+                }
+                a:hover, &.button-container:hover {
+                    color: $light-blue;
+                }
+                .dropdown {
+                    top: 0;
+                    .dropdown-content {
+                        left: -10px;
+                        min-width: 80px;
+                    }
+                }
+            }
+            li.active {
+                background: none;
+                border-bottom: 2px solid $light-grey;
+            }
+        }
+
+
+    }
+
+    // TOPBAR #2 biggie
+    .main-nav {
+        height: auto;
+        width: 100%;
+        border:0;
+        background: transparent;
+        font-weight: 400;
+
+        .side-head {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        // for the special effect of the active inverted transparent doodle :)
+        .brand-logo-svg-container {
+            flex-grow:1;
+        }
+        .brand-logo-svg {
+            width: 152px !important;
+            box-shadow: none;
+            border: 0;
+            height: 43px;
+            margin: 0;
+            margin-top: 3px;
+            padding:0;
+            text-align: left;
+            a {
+                background-image: url(/images/common/logo.svg);
+                padding-top: 48px;
+                background-size: 130px 200px;
+            }
+        }
+
+        ul {
+            display: block;
+            padding: 0;
+            li {
+                display: inline-block;
+                float: left;
+                color: #000;
+                border-bottom: 0;
+                border: 0;
+                padding: 0;
+                margin:0;
+                font-size: 16px;
+                a {
+                    font-weight: 400;
+                }
+                > a {
+                    padding: 15px 15px 14px;
+                    padding-bottom: 5px;
+                }
+                a.button {
+                    margin-top: 9px;
+                    padding-top: 4px;
+                    padding-bottom: 3px;
+                    height: auto;
+                    font-size: 16px;
+                }
+                .dropdown {
+                    margin-top: 3px;
+                    padding-top: 4px;
+                    padding-bottom: 0px;
+                    height: auto;
+                    font-size: 16px;
+                }
+                .dropdown-content {
+                    left: 0;
+                }
+                &.button-container {
+                    padding-bottom: 1px;
+                }
+                button.button-web-nav-link:after {
+                    top: 6px;
+                }
+
+            }
+            // special one if it contains a button
+            li:last-child {
+                padding-right: 15px;
+            }
+            li.separator-left a {
+                padding-left: 30px;
+            }
+            li.separator-left a::before {
+                content: ' ';
+                display: block;
+                border-left:1px solid #ccc;
+                width: 20px;
+                height: 22px;
+                position: absolute;
+                left: 8px;
+                top: 36px;
+                z-index: 999;
+            }
+
+            li.separator-right a {
+                padding-right: 30px;
+            }
+            li.separator-right a::after {
+                content: ' ';
+                display: block;
+                border-right:1px solid #ccc;
+                width: 20px;
+                height: 22px;
+                position: absolute;
+                right: 5px;
+                top: 18px;
+                z-index: 999;
+            }
+
+        }
+    }
+    // The fancy transparent doodle
+    .main-nav {
+        .brand-logo-svg-container, ul li {
+            position: relative;
+            padding-top: 20px;
+        }
+        ul li a {
+            color: #FFF;
+            font-weight: 800;
+            font-size: 18px;
+        }
+        ul li.active a {
+            font-weight: 600;
+        }
+        ul li:hover {
+            background: transparent;
+
+        }
+        // exceptions with the border line
+        ul li.separator-left.active:after {
+            padding-left: 15px;
+        }
+        ul li.separator-right.active:after {
+
+        }
+
+        .dropdown {
+
+            button {
+                position: relative;
+                top: 5px;
+                font-size: 15px;
+                color: #FFF;
+                padding: 5px;
+            }
+            button:hover {
+                background-color: lighten($dark-grey, 20%);
+            }
+            .dropdown-content {
+                z-index: 9999;
+                min-width: 200px;
+                left: -150px;
+                top: 40px;
+            }
+
+            .dropdown-content a {
+                color: $dark-grey;
+                font-size: 15px;
+                font-weight: 400;
+            }
+            .button-web-nav-link {
+                color: #FFF;
+                height: auto;
+                line-height: normal;
+            }
+
+        }
+    }
+
+
+
+    .m-menu {
+        left: auto;
+        right: 0;
+
+        .mm {
+            margin-left: auto;
+            margin-right: 10px;
+            box-shadow: none;
+        }
+    }
+
+
+}
+
+// homepage exception
+.website.homepage {
+    .small-top-nav .nav__container {
+        justify-content: space-between;
+    }
+}
+
+
+@media only screen and (max-width: $grid-mobile-breakpoint) {
+
+    .header-mobile {
+        display: block;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        background: $blue;
+        height: 45px;
+        z-index:999;
+        border-bottom: 1px solid rgba(255,255,255,0.3);
+        .brand-logo-svg-container {
+            text-align: left;
+            .brand-logo-svg {
+                margin-top: 8px;
+                margin-left: 5px;
+                height: 45px;
+                text-align: left;
+                box-shadow: none;
+                border: 0;
+                background: transparent;
+                a {
+                    float: left;
+                    padding-top: 30px;
+                    background-size: 120px 240px;
+                    background-image: url(/images/common/logo.svg);
+                    background-position-x: left
+                }
+
+            }
+        }
+    }
+
+    .main-nav {
+        background: $light-grey;
+        padding-top: 50px;
+        padding-bottom: 15px;
+        // make it scrollable as it's too much
+        height: 100%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        .side-head {
+            display: block !important;
+
+            .brand-logo-svg-container {
+                text-align: left;
+                display: block;
+
+                .brand-logo-svg {
+                    width: auto;
+                    text-align: center
+                }
+            }
+
+            ul {
+                margin: 0;
+                display: block;
+                padding-top: 30px;
+                li {
+                    display: block;
+                    width: 100%;
+                    a {
+                        font-size: 20px;
+                        padding: 8px 3px;
+                        text-align: center;
+                    }
+                }
+                li.button-container {
+                    text-align: center;
+                }
+            }
+            button.button-web-nav-link {
+                padding-top: 7px;
+                padding-bottom: 7px;
+                font-size: 22px;
+                height: auto;
+            }
+
+            .dropdown-content {
+                left: 0;
+                bottom: 35px;
+                z-index: 9999;
+                a {
+                    font-size: 18px;
+                    padding: 5px 5px;
+                }
+                button:after {
+                    top: 4px;
+                }
+            }
+            // on mobile languages as list in the center
+            .smaller-main-nav .languages.dropdown {
+                display: block;
+                text-align: center;
+                button.button-web-nav-link {
+                    display: none;
+                }
+                .dropdown-content {
+                    display: block;
+                    position: relative;
+                    box-shadow: none;
+                    border:0;
+                    background: transparent;
+                    left: 0;
+                    bottom: 0;
+                    a {
+                        padding-left: 5px;
+                        padding-right: 5px;
+                        font-size: 14px;
+                        display: inline-block;
+                        background: transparent;
+                        border:0;
+                    }
+                }
+            }
+        }
+    }
+}
