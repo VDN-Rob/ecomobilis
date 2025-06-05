@@ -1,44 +1,3 @@
-## Front end (old)
-We use Laravel mix, as defined in package.json we have
-- npm run dev  --> this has to run to browse to the website
-- npm run build
-
-- uses the files resources/js/main.js and resources/sass/...
-- config with laravel vite (/vite.config.js)
-
-
-## Frontend (new 5 jun 2025)
-- Where to edit:  uses the files resources/js/main.js and resources/sass/...
-- Paths and files for css and js etc defined in webpack.mix.js + config with package.json
-- Compile it with: npm run watch / npm run production
-
-
-## Jobs
-To start it locally:
--  `php artisan queue:listen database --tries=1`
-
-## Commands
-php artisan CarpoolSendUserUpcomingRides:daily
-
-### Google api key etc
-https://console.cloud.google.com/apis/dashboard
-https://console.cloud.google.com/apis/library/browse
-https://github.com/nikolasdogan/How-to-Create-Google-Autocomplete-Address-in-Laravel-9
---> unclear pricing
-
-### Alternative
-https://opencagedata.com/geosearch --> not on street level ? benefit fixed pricing
-https://www.maptiler.com/cloud/geocoding/ --> good one, 5000 request limit per month
-https://locationiq.com/demo#autocomplete --> good one, uses open street maps --> used 
-
-## JS packages
-- Autocomplete used for street lookup https://github.com/TarekRaafat/autoComplete.js
-
-## Laravel packages
-https://github.com/msurguy/Honeypot/tree/master
-
-Laravel ER Diagram Generator
-
 
 ## TO DO
 https://saasykit.com/blog/how-to-generate-documentation-for-your-laravel-project
@@ -49,8 +8,34 @@ DM Sans as main font (https://fonts.google.com/specimen/DM+Sans)
 Barlow Condensed for narrow headers (https://fonts.google.com/specimen/Barlow+Condensed)
 
 -----------------------
-# 1. Tech requirements
-Laravel 10 requirements  https://laravel.com/docs/10.x/deployment#server-requirements
+# 1. Tech 
+
+## Framework
+Laravel 10  https://laravel.com/docs/10.x/deployment#server-requirements
+
+## Frontend (Laravel mix)
+- Where to edit:  uses the files resources/js/main.js and resources/sass/...
+- Paths and files for css and js etc defined in webpack.mix.js + config with package.json
+- Compile it with: npm run watch / npm run production
+
+## Jobs
+To start it locally:
+-  `php artisan queue:listen database --tries=1`
+
+## Commands
+- `php artisan CarpoolSendUserUpcomingRides:daily`
+
+## How to get streets?
+- https://locationiq.com/demo#autocomplete -->  uses open street maps
+
+## JS packages
+- Autocomplete used for street lookup https://github.com/TarekRaafat/autoComplete.js
+
+## Laravel packages
+- https://github.com/msurguy/Honeypot/tree/master
+- Laravel ER Diagram Generator
+
+
 
 # 2. Database
 MySQL v5.7
