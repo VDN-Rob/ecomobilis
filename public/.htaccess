@@ -3,6 +3,12 @@
         Options -MultiViews -Indexes
     </IfModule>
 
+    #Protect Directory
+    AuthName "Dialog prompt"
+    AuthType Basic
+    AuthUserFile /data/sites/web/ecomobilisbe/laravelproject/public/.htpasswd
+    Require valid-user
+
     RewriteEngine On
 
     # Handle Authorization Header
