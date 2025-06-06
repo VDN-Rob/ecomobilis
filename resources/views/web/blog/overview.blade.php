@@ -21,7 +21,7 @@
                         <a class="blog-post" href="{{ url('/') }}/blog/{{ $blog->slug }}">
                             <div class="blog-image">
                                 @if (isset($blog->cover_image))
-                                    <img src="https://ecomobilis-admin.test/storage/{{ $blog->cover_image }}" style="margin:0 auto;">
+                                    <img src="https://admin.ecomobilis.be/storage/{{ $blog->cover_image }}" style="margin:0 auto;">
                                 @endif
                             </div>
                             <div class="title">

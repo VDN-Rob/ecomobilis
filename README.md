@@ -1,15 +1,15 @@
-
+# 0. Internal notes
 ## TO DO
 https://saasykit.com/blog/how-to-generate-documentation-for-your-laravel-project
 
 ## CHECK THE WEBSITE, FOR NOW:
 admin / ecoadmin
+git update-index --assume-unchanged public/.htaccess
+git update-index --no-assume-unchanged public/.htaccess
 
------------------------
-## Fonts 
-DM Sans as main font (https://fonts.google.com/specimen/DM+Sans)
-Barlow Condensed for narrow headers (https://fonts.google.com/specimen/Barlow+Condensed)
-
+# Questions
+- External marketing mailing tool? Mailchimp?
+- 
 -----------------------
 # 1. Tech 
 
@@ -45,7 +45,7 @@ MySQL v5.7
 ![alt text](graph.png "database ER diagnram")
 (Generated with https://github.com/beyondcode/laravel-er-diagram-generator)
 
-# 2. Carpool
+# 3. Carpool
 
 ## Locations
 To get locations we use the external Locationiq api. This service uses Open Street Maps and can possible options for streets, city based on a search query.
@@ -71,3 +71,10 @@ There is a special type of message, the 'auto-message' which is basically a mess
 
 ## Carpool matching
 Matching is done based on the stored gps coordinates and looks within 20km radius for both departure and arrival and for your the date / hour given or later
+
+
+# 10. Design 
+
+## Fonts
+DM Sans as main font (https://fonts.google.com/specimen/DM+Sans)
+Barlow Condensed for narrow headers (https://fonts.google.com/specimen/Barlow+Condensed)

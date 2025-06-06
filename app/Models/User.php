@@ -47,4 +47,9 @@ class User extends Authenticatable
         return $this->belongsTo(CarpoolCar::class, 'car_id');
     }
 
+    public function totalUnreadMessages() {
+        return $this->hasMany(CarpoolMessage::class, 'conversation_partner_user_id')->where('is_read', 0);
+    }
+
+
 }

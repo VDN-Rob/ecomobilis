@@ -33,7 +33,11 @@
 
     <li class="button-container hide-on-mobile-only">
         <div class="dropdown web-dropdown-logged-in" style="margin-left: 10px;">
-            <button class="button-web-nav-link">{{ Illuminate\Support\Str::limit(Auth::user()->firstname, 15) }}</button>
+            <button class="button-web-nav-link">{{ Illuminate\Support\Str::limit(Auth::user()->firstname, 15) }}
+                @if(Auth::user()->totalUnreadMessages->count() > 0)
+                    <span class="label">{{ Auth::user()->totalUnreadMessages->count() }}
+                    </span>
+                @endif</button>
             <div class="dropdown-content">
                 <a href="{{ route('admin.carpoolOverview', []) }}">
                     {{ __('carpool.my-rides') }}
@@ -49,6 +53,9 @@
                                 'conversationPartnerId' => 0
                             ]) }}">
                     {{ __('carpool.my-messages') }}
+                    @if(Auth::user()->totalUnreadMessages->count() > 0)
+                        <span class="label unread-messages-count" style="top: 2px;">{{ Auth::user()->totalUnreadMessages->count() }}</span>
+                    @endif
                 </a>
                 <a href="{{ url('/admin/user/profile/') }}/{{ Auth::user()->id }}/edit">Mon profil</a>
                 <a class="" href="{{ route('logout', App::getLocale()) }}"

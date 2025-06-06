@@ -16,8 +16,8 @@ return [
     'register'          => 'S\'inscrire',
     'zip'               => 'Code postal',
     'city'              => 'Ville',
-    'privacy-checkbox'     => 'Je suis d\'accord avec la <a href="../fr/privacy-policy" target="_blank">politique de confidentialité </a>',
-    'terms-checkbox'     => 'Je suis d\'accord avec les <a href="../fr/terms-of-use" target="_blank">termes d\'utilisation</a>',
+    'privacy-checkbox'     => 'Je suis d\'accord avec la <a href="../page/privacy-policy" target="_blank">politique de confidentialité </a>',
+    'terms-checkbox'     => 'Je suis d\'accord avec les <a href="../page/terms-of-use" target="_blank">termes d\'utilisation</a>',
 
     'sent'              => 'Le lien vers le mot de passe est envoyé'
 ];

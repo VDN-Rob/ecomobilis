@@ -26,6 +26,9 @@
                     ]) }}">
                     <span class="show-on-desktop-only">{{ __('carpool.my-messages') }}</span>
                     <span class="show-on-mobile-only">{{ __('carpool.mobile-my-messages') }}</span>
+                    @if(Auth::user()->totalUnreadMessages->count() > 0)
+                        <span class="label unread-messages-count">{{ Auth::user()->totalUnreadMessages->count() }}</span>
+                    @endif
                 </a>
             </li>
         </ul>

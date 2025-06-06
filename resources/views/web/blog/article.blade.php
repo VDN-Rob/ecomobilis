@@ -41,7 +41,7 @@
             <div class="col-desk-10 center-the-column text-center">
                 <div class="blog-image text-center" >
                     @if (isset($blog->cover_image))
-                        <img src="https://ecomobilis-admin.test/storage/{{ $blog->cover_image }}" style="margin:0 auto;">
+                        <img src="https://admin.ecomobilis.be/storage/{{ $blog->cover_image }}" style="margin:0 auto;">
                     @endif
                 </div>
             </div>
