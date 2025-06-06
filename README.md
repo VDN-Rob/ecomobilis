@@ -2,6 +2,9 @@
 ## TO DO
 https://saasykit.com/blog/how-to-generate-documentation-for-your-laravel-project
 
+## CHECK THE WEBSITE, FOR NOW:
+admin / ecoadmin
+
 -----------------------
 ## Fonts 
 DM Sans as main font (https://fonts.google.com/specimen/DM+Sans)
