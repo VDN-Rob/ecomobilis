@@ -25,7 +25,7 @@ class StreetController extends Controller
     public function autocomplete($searchString)
     {
         $token = env('LOCATIONIQ_TOKEN');
-        $endpointUrl = 'https://us1.locationiq.com/v1/autocomplete?key='.$token.'&q='.$searchString;
+        $endpointUrl = 'https://us1.locationiq.com/v1/autocomplete?key='.$token.'&q='.$searchString.'&accept-language=fr';
         Log::debug('Autocomplete - '.$endpointUrl);
 
         try {

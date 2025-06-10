@@ -16,7 +16,7 @@
         </div>
     </div>
 @else
-    @isset($ride))
+    @isset($ride)
         <div class="box box-with-border box-ride-confirm-reject">
             <div class="grid">
                 <div class="col-desk-12 text-center">

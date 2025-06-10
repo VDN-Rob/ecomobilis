@@ -431,17 +431,18 @@ CREATE TABLE `users` (
                          UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+INSERT INTO `carpool_car_types` (`id`, `type`, `created_at`, `updated_at`)
+VALUES
+    (1, 'Voiture normale (standard)', NULL, NULL),
+    (2, 'Minivan', NULL, NULL),
+    (3, 'Van', NULL, NULL),
+    (4, 'SUV', NULL, NULL);
 
-CREATE TABLE `carpool_car_types` (
-                                     `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-                                     `type` varchar(255) DEFAULT NULL,
-                                     `created_at` timestamp NULL DEFAULT NULL,
-                                     `updated_at` timestamp NULL DEFAULT NULL,
-                                     PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
-CREATE TABLE `carpool_luggages` (
-                                    `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-                                    `name` varchar(255) DEFAULT NULL,
-                                    PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+INSERT INTO `carpool_luggages` (`id`, `name`)
+VALUES
+    (1, 'none'),
+    (2, 'handbag / small backpack'),
+    (3, 'suitcases');
+

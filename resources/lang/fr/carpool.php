@@ -24,6 +24,7 @@ return [
     'search-title' => 'Où voulez-vous aller?',
 
     // overview (carpool-block)
+    'driver' => 'Chauffeur',
     'places-available' => 'places disponibles',
     'places-necessary' => 'places nécessaires',
     'is-accepted' => 'est accepté',
@@ -33,7 +34,7 @@ return [
     'get-in-touch-with-owner' =>  'Contacter le chauffeur',
     'get-in-touch-with-passenger' =>  'Contacter le passager',
 
-    'make-reservation-btn' => 'Accompagner',
+    'make-reservation-btn' => 'Covoiturer',
     'send-message-btn'  => 'Envoyer un message',
     'no-seat-available' => 'Pas de siège disponible',
     'no-rides-found'    => 'Aucun manège trouvé',

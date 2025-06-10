@@ -40,7 +40,11 @@ class CarpoolMessagesController extends Controller
             // when carRideId and conversationPartner are not given, reset to last conversation
             $data['currentConversation'] = (new CarpoolMessage())->getLastConversation(Auth::user()->id); // current = last one automatically
             if(isset($data['currentConversation']->car_ride_id) && isset($data['currentConversation']->conversation_partner_user_id)) {
-                $url = url('/').'/admin/carpool-messages/ride/'.$data['currentConversation']->car_ride_id .'/sender/'.$data['currentConversation']->conversation_partner_user_id;
+                $senderId = $data['currentConversation']->conversation_partner_user_id;
+                if($data['currentConversation']->conversation_partner_user_id == Auth::user()->id) {
+                    $senderId =  $data['currentConversation']->user_id;
+                }
+                $url = url('/').'/admin/carpool-messages/ride/'.$data['currentConversation']->car_ride_id .'/sender/'.$senderId;
                 return Redirect::to($url);
             } else {
                 $data['currentCarRideId']       = $carRideId;
