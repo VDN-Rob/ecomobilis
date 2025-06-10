@@ -4,9 +4,9 @@
         <input id="autoCompleteDep" type="search" name="departure"  dir="ltr" spellcheck=false autocorrect="off" autocomplete="off" autocapitalize="off"
                @isset($departureIsFromGroup) @if($departureIsFromGroup == 1) disabled @endif @endisset
             @if(isset($ride->departure))
-               value=" {{ $ride->departure->street }}, {{ $ride->departure->city }}"
+               value="{{ $ride->departure->street }}, {{ $ride->departure->city }}"
             @elseif(isset($searchDepValue))
-               value="@if($departureIsFromGroup == 1) {{ $group->title }} - @endif {{ $searchDepValue }}"
+               value="@isset($departureIsFromGroup) @if($departureIsFromGroup == 1) {{ $group->title }} - @endif @endisset{{ $searchDepValue }}"
             @else
                value=""
             @endif
@@ -33,9 +33,9 @@
         <input id="autoCompleteArr" type="search" name="arrival"  dir="ltr" spellcheck=false autocorrect="off" autocomplete="off" autocapitalize="off"
                @isset($arrivalIsFromGroup) @if($arrivalIsFromGroup == 1) disabled @endif @endisset
                @if(isset($ride->arrival))
-               value="{{ $ride->arrival->street }}, {{ $ride->arrival->city }}"
+                    value="{{ $ride->arrival->street }}, {{ $ride->arrival->city }}"
                @elseif(isset($searchArrValue))
-                    value="@if($arrivalIsFromGroup == 1) {{ $group->title }} - @endif {{ $searchArrValue }}"
+                    value="@isset($arrivalIsFromGroup) @if($arrivalIsFromGroup == 1) {{ $group->title }} - @endif @endisset{{ $searchArrValue }}"
                @else
                    value=""
                @endif
