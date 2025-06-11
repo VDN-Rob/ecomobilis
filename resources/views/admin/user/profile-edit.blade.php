@@ -92,7 +92,7 @@
                             <div class="col-desk-6 ">
                                 <div class="field special-placeholder">
                                     <label>{{ __('carpool.brand') }}</label>
-                                    <input id="brand" type="text" class="{{ $errors->has('brand') ? ' is-invalid' : '' }}" name="brand"  placeholder="Renault" value="{{ $user?->car?->brand }}">
+                                    <input id="brand" type="text" class="{{ $errors->has('brand') ? ' is-invalid' : '' }}" name="brand" placeholder="" value="{{ $user?->car?->brand }}">
                                 </div>
                             </div>
 
@@ -110,7 +110,7 @@
                             <div class="col-desk-6">
                                 <label>{{ __('carpool.price_per_km') }}</label>
                                 <div class="field special-placeholder">
-                                    <input type="text" id="price_per_km_per_seat" name="price_per_km_per_seat" placeholder="0.10" value="{{ $user?->car?->price_per_km_per_seat }}" required />
+                                    <input type="number" id="price_per_km_per_seat" name="price_per_km_per_seat" placeholder="0.10" value="{{ $user?->car?->price_per_km_per_seat }}" />
                                 </div>
                             </div>
 
