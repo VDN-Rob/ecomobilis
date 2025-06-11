@@ -11,7 +11,7 @@
 <script>
     const map           = L.map('map').setView([{{ $group->location->lat }}, {{ $group->location->lng }}], 11);
     const markersLoc    = {!! json_encode($markers, 1) !!};
-
+console.log(markersLoc);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
@@ -19,11 +19,11 @@
     const LeafIcon = L.Icon.extend({
         options: {
             shadowUrl: '/images/icons/car.svg',
-            iconSize:     [22, 22],
+            iconSize:     [30, 30],
             shadowSize:   [],
             iconAnchor:   [22, 22],
-            shadowAnchor: [4, 62],
-            popupAnchor:  [-3, -76]
+            shadowAnchor: [4, 4],
+            popupAnchor:  [0, 0]
         }
     });
 
@@ -43,7 +43,6 @@
 
     function drawMarkers(item) {
         console.log(item.lat + ' / '+ item.lng);
-        // const mGreen = L.marker([item.lat, item.lng], {icon: carIcon}).bindPopup(item.type).addTo(map);
         const mGreen = L.marker([item.lat, item.lng], {icon: carIcon}).addTo(map);
     }
 

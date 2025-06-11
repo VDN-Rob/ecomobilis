@@ -13,9 +13,10 @@
             <div class="col-desk-6 text-right">
                 <div class="extra-margin-top">
                     <div class="col-desk-12 ">
-                        @if(empty(Auth::user()->birth_date) || empty(Auth::user()->car))
+                        @if(!isset(Auth::user()->id))
                             <a href="#" class="button disabled" > {{ __('carpool.add-a-ride') }}</a>
-                            &nbsp;&nbsp;
+                        @elseif(empty(Auth::user()->birth_date) || empty(Auth::user()->car))
+                            <a href="#" class="button disabled" > {{ __('carpool.add-a-ride') }}</a>
                             <a href="{{ url('/') }}/admin/user/profile/{{ Auth::user()->id }}/edit/" class="grey tiny">Complete your profile first</a>
                         @else
                             <a href="/carpool/add?groupid={{ $group->id }}" class="button">{{ __('carpool.add-a-ride') }}</a>

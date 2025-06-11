@@ -37,7 +37,7 @@ return [
     'make-reservation-btn' => 'Covoiturer',
     'send-message-btn'  => 'Envoyer un message',
     'no-seat-available' => 'Pas de siège disponible',
-    'no-rides-found'    => 'Aucun manège trouvé',
+    'no-rides-found'    => 'Aucun trajet trouvé',
     'reserved'          => 'réservé',
 
     // form
