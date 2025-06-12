@@ -27,7 +27,7 @@
                     <div class="tiny">{{ $group->location->street }}</div>
                 </div>
                 <div class="col-desk-3">
-                    <a href="{{ url('/') }}/group/{{ $group->token }}" target="_blank">{{ __('carpool.public_url') }}</a>
+                    <a href="{{ url('/') }}/group/{{ $group->token }}" target="_blank"><span class="heroicon heroicon-external-link"></span> {{ __('carpool.public_url') }}</a>
                 </div>
                 <div class="col-desk-3">
                     <a href="{{ url('/') }}/admin/carpool-groups/{{ $group->id }}/edit" class="button tiny">{{ __('general.edit') }}</a>

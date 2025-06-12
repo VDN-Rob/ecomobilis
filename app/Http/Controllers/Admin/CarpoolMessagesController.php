@@ -19,12 +19,31 @@ use Illuminate\Support\Facades\Redirect;
 class CarpoolMessagesController extends Controller
 {
 
-    public function overview($carRideId, $conversationPartnerId)
+    /* this function is called in the navigation and jumps to the last conversation or shows a "no messages yet" notification */
+    public function lastMessage()
     {
+        $data['currentConversation'] = (new CarpoolMessage())->getLastConversation(Auth::user()->id); // current = last one automatically
+        if(isset($data['currentConversation']->car_ride_id) && isset($data['currentConversation']->conversation_partner_user_id)) {
+            $senderId = $data['currentConversation']->conversation_partner_user_id;
+            if($data['currentConversation']->conversation_partner_user_id == Auth::user()->id) {
+                $senderId =  $data['currentConversation']->user_id;
+            }
+            $url = url('/').'/admin/carpool-messages/ride/'.$data['currentConversation']->car_ride_id .'/sender/'.$senderId;
+            return Redirect::to($url);
+        } else {
+            // no conversations yet
+            $data['currentConversation']    = false;
+            $data['currentCarRideId']       = false;
+            $data['currentPartnerUserId']   = false;
+            return view('admin.carpool-messages', $data);
+        }
 
-        // core  for subnav etc
+    }
+
+    /* the messages from one thread (unique ride / conversation partner) */
+    public function thread($carRideId, $conversationPartnerId)
+    {
         if($carRideId && $conversationPartnerId) {
-
             $currentConversation = (new CarpoolMessage())->getConversation($conversationPartnerId, $carRideId);
             if(isset($currentConversation[0])) {
                 $data['currentConversation']    = $currentConversation[0];
@@ -36,28 +55,9 @@ class CarpoolMessagesController extends Controller
                 $data['currentCarRideId']       = $carRideId;
                 $data['currentPartnerUserId']   = $conversationPartnerId;
             }
-        } else {
-            // when carRideId and conversationPartner are not given, reset to last conversation
-            $data['currentConversation'] = (new CarpoolMessage())->getLastConversation(Auth::user()->id); // current = last one automatically
-            if(isset($data['currentConversation']->car_ride_id) && isset($data['currentConversation']->conversation_partner_user_id)) {
-                $senderId = $data['currentConversation']->conversation_partner_user_id;
-                if($data['currentConversation']->conversation_partner_user_id == Auth::user()->id) {
-                    $senderId =  $data['currentConversation']->user_id;
-                }
-                $url = url('/').'/admin/carpool-messages/ride/'.$data['currentConversation']->car_ride_id .'/sender/'.$senderId;
-                return Redirect::to($url);
-            } else {
-                $data['currentCarRideId']       = $carRideId;
-                $data['currentPartnerUserId']   = $conversationPartnerId;
-                $data['ride'] = CarpoolRide::find($carRideId);
-            }
         }
-
-        $data['lastMessages'] = CarpoolMessage::all();
-
         return view('admin.carpool-messages', $data);
     }
-
 
 
 

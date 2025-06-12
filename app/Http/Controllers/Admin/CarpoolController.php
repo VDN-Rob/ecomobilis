@@ -22,20 +22,6 @@ class CarpoolController extends Controller
 
     public function overview()
     {
-        // core  for subnav etc
-        $data['currentConversation'] = (new CarpoolMessage())->getLastConversation(Auth::user()->id); // current = last one automatically
-        if($data['currentConversation']) {
-            $data['currentCarRideId']       = $data['currentConversation']->car_ride_id;
-            if($data['currentConversation']->conversation_partner_user_id == Auth::user()->id) {
-                $data['currentPartnerUserId']   = $data['currentConversation']->user_id;
-            } else {
-                $data['currentPartnerUserId']   = $data['currentConversation']->conversation_partner_user_id;
-            }
-        } else {
-            $data['currentCarRideId']       = 0;
-            $data['currentPartnerUserId']   = 0;
-        }
-
         $yesterday = Carbon::yesterday();
         $data['rides'] = CarpoolRide::where('travel_start_datetime', '>', $yesterday)
                                 ->where('user_id', Auth::user()->id)
@@ -46,16 +32,6 @@ class CarpoolController extends Controller
 
     public function carpoolOverviewAsPassenger()
     {
-        // core  for subnav etc
-        $data['currentConversation'] = (new CarpoolMessage())->getLastConversation(Auth::user()->id); // current = last one automatically
-        if($data['currentConversation']) {
-            $data['currentCarRideId']       = $data['currentConversation']->car_ride_id;
-            $data['currentPartnerUserId']   = $data['currentConversation']->conversation_partner_user_id;
-        } else {
-            $data['currentCarRideId']       = 0;
-            $data['currentPartnerUserId']   = 0;
-        }
-
         $yesterday = Carbon::yesterday();
         $userId = Auth::user()->id;
         $data['rides'] = CarpoolRide::where('travel_start_datetime', '>', $yesterday)
@@ -70,34 +46,12 @@ class CarpoolController extends Controller
     /* ----------------------- RESERVATION etc ------------------------- */
     public function carpoolReservation($rideId, $userId)
     {
-        // core  for subnav etc
-        $data['currentConversation'] = (new CarpoolMessage())->getLastConversation(Auth::user()->id); // current = last one automatically
-        if($data['currentConversation']) {
-            $data['currentCarRideId']       = $data['currentConversation']->car_ride_id;
-            $data['currentPartnerUserId']   = $data['currentConversation']->conversation_partner_user_id;
-        } else {
-            $data['currentCarRideId']       = 0;
-            $data['currentPartnerUserId']   = 0;
-        }
-
         $data['ride'] = CarpoolRide::find($rideId);
-
         return view('admin.carpool-reservation', $data);
-
     }
 
     public function carpoolReservationStore($rideId, $userId, Request $request)
     {
-        // core  for subnav etc
-        $data['currentConversation'] = (new CarpoolMessage())->getLastConversation(Auth::user()->id); // current = last one automatically
-        if($data['currentConversation']) {
-            $data['currentCarRideId']       = $data['currentConversation']->car_ride_id;
-            $data['currentPartnerUserId']   = $data['currentConversation']->conversation_partner_user_id;
-        } else {
-            $data['currentCarRideId']       = 0;
-            $data['currentPartnerUserId']   = 0;
-        }
-
         event(new CarpoolRequested($rideId, $userId, $request->amount));
         return \Redirect::route('web.carpoolOverview')->with('message', 'Votre demande est en cours de traitement.');
 

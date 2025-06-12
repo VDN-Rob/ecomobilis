@@ -76,7 +76,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'middleware' => ['aut
     Route::get('/admin/carpool-reservation/ride/{rideId}/user/{userId}/', 'CarpoolController@carpoolReservation')->name('carpoolReservation');
     Route::post('/admin/carpool-reservation/ride/{rideId}/user/{userId}/store', 'CarpoolController@carpoolReservationStore')->name('carpoolReservationStore');
 
-    Route::get('/admin/carpool-messages/ride/{rideId}/sender/{conversationPartnerId}/', 'CarpoolMessagesController@overview')->name('carpoolMessagesSender');
+    Route::get('/admin/carpool-messages/last-message', 'CarpoolMessagesController@lastMessage')->name('carpoolMessageslastMessage');
+    Route::get('/admin/carpool-messages/ride/{rideId}/sender/{conversationPartnerId}/', 'CarpoolMessagesController@thread')->name('carpoolMessagesThread');
 
     Route::post('/admin/carpool-reservation/reservation/{rideReservationId}/confirm-reject-store', 'CarpoolController@carpoolReservationConfirmRejectStore')->name('carpoolReservationConfirmRejectStore');
 

@@ -7,9 +7,6 @@ admin / ecoadmin
 git update-index --assume-unchanged public/.htaccess
 git update-index --no-assume-unchanged public/.htaccess
 
-# Questions
-- External marketing mailing tool? Mailchimp?
-- 
 -----------------------
 # 1. Tech 
 
@@ -72,6 +69,8 @@ There is a special type of message, the 'auto-message' which is basically a mess
 ## Carpool matching
 Matching is done based on the stored gps coordinates and looks within 20km radius for both departure and arrival and for your the date / hour given or later
 
+# 9. Hosting
+The hosting of http://ecomobilis.be/ is now at Combell (combell.com). (S)FTP access can be provided, just email dave@telraam.net
 
 # 10. Design 
 

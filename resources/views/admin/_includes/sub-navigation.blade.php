@@ -20,10 +20,7 @@
                 </a>
             </li>
             <li @class(['active' => request()->is('admin/carpool-messages/*')])>
-                <a href="{{ route('admin.carpoolMessagesSender', [
-                        'rideId'                => $currentCarRideId,
-                        'conversationPartnerId' => $currentPartnerUserId
-                    ]) }}">
+                <a href="{{ route('admin.carpoolMessageslastMessage') }}">
                     <span class="show-on-desktop-only">{{ __('carpool.my-messages') }}</span>
                     <span class="show-on-mobile-only">{{ __('carpool.mobile-my-messages') }}</span>
                     @if(Auth::user()->totalUnreadMessages->count() > 0)

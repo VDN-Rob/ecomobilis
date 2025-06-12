@@ -48,11 +48,8 @@
                 <a href="{{ route('admin.carpoolGroupsOverview', []) }}">
                     {{ __('carpool.my-groups') }}
                 </a>
-                <a href="{{ route('admin.carpoolMessagesSender', [
-                                'rideId'                => 0,
-                                'conversationPartnerId' => 0
-                            ]) }}">
-                    {{ __('carpool.my-messages') }}
+                <a href="{{ route('admin.carpoolMessageslastMessage') }}">
+                     {{ __('carpool.my-messages') }}
                     @if(Auth::user()->totalUnreadMessages->count() > 0)
                         <span class="label unread-messages-count" style="top: 2px;">{{ Auth::user()->totalUnreadMessages->count() }}</span>
                     @endif
