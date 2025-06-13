@@ -110,7 +110,8 @@
                             <div class="col-desk-6">
                                 <label>{{ __('carpool.price_per_km') }}</label>
                                 <div class="field special-placeholder">
-                                    <input type="number" id="price_per_km_per_seat" name="price_per_km_per_seat" placeholder="0.10" value="{{ $user?->car?->price_per_km_per_seat }}" />
+                                    <input type="number" id="price_per_km_per_seat" name="price_per_km_per_seat" step="0.05"
+                                           value="@isset($user->car){{ $user?->car?->price_per_km_per_seat }} @else 0.10 @endisset" style="width:90%"/> <span class="grey">€</span>
                                 </div>
                             </div>
 

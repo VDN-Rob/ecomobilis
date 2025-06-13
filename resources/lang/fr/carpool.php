@@ -70,7 +70,7 @@ return [
     'seats_available' => 'Sièges disponibles',
     'is_smoking_allowed' => 'Est fumeur autorisé',
     'is_isofix_present' => 'Isofix présent',
-    'price_per_km'  => 'Prix par km (€)',
+    'price_per_km'  => 'Prix par km. Le prix standard est 0,10€ par kilomètre.',
     'price'         => 'Prix',
 
     // groups

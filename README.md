@@ -24,6 +24,7 @@ To start it locally:
 
 ## Commands
 - `php artisan CarpoolSendUserUpcomingRides:daily`
+This runs through a cron job on the server (* * * * * php /data/sites/web/ecomobilisbe/laravelproject/artisan schedule:run)
 
 ## How to get streets?
 - https://locationiq.com/demo#autocomplete -->  uses open street maps

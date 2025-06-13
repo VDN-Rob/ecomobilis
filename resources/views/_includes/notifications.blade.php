@@ -11,7 +11,12 @@
         <div class="medium-12 column">
             <div data-closable class="callout error {{ Session::get('alert-class', 'alert-info') }}">
                 @foreach($errors->all() as $error)
-                    {{ $error }}<br>
+                    @if($error == 'validation.required')
+                        {{ __('validation.required') }}
+                    @else
+                    {{ $error }} <br>
+                    @endif
+
                 @endforeach
             </div>
         </div>

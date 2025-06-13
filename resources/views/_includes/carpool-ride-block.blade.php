@@ -2,16 +2,20 @@
 <div class="box box-with-border box-ride box-ride-{{ $layout }}">
     <div class="grid">
         @if($layout !== 'email-listing')
-            <div class="col-desk-1 col-mob-1 text-center col-mob-header-design">
+            <div class="col-desk-1 col-mob-1 text-center col-mob-header-design text-center">
                 <div class="driver-info">
                     <a href="{{ url('/') }}/user/profile/{{ $ride->user->id }}">
                         <div class="msg-img">{{ strtoupper(substr($ride->user->firstname, 0, 1)) }}{{ strtoupper(substr($ride->user->lastname, 0, 1)) }}</div>
+                        <div class="name tiny grey">{{ __('carpool.driver') }} {{ $ride->user->firstname }} </div>
                     </a>
                 </div>
                 @if($ride->is_private == 1)
                     <div class="ride-private">
                         <img src="{{ url('/') }}/images/icons/lock.svg" width="18px">
                     </div>
+                @endif
+                @if($ride->group)
+                     <a href="{{ url('/') }}/group/{{ $ride->group->token }}" class="ride-group tiny grey">{{ $ride->group->title }}</a>
                 @endif
             </div>
         @endif

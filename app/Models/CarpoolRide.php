@@ -37,7 +37,10 @@ class CarpoolRide extends Model
     {
         return $this->belongsTo(CarpoolLuggage::class, 'luggage_id');
     }
-
+    public function group()
+    {
+        return $this->belongsTo(CarpoolGroup::class, 'group_id');
+    }
     public function reservations()
     {
         return $this->hasMany(CarpoolRideReservation::class, 'ride_id');

@@ -15,6 +15,7 @@ class CarpoolGroup extends Model
         'title',
         'location_street_coordinates_id',
         'does_need_authentication',
+        'rides_are_private',
         'token',
         'user_id',
     ];
