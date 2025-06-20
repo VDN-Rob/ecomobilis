@@ -64,13 +64,13 @@ class CarpoolController extends Controller
         if ($request->submit == 'Refuser') {
             event(new CarpoolReservationRejected($rideReservationId));
         } else if ($request->submit == 'Confirmer') {
-             event(new CarpoolReservationAccepted($rideReservationId));
+            event(new CarpoolReservationAccepted($rideReservationId));
         } else {
             dd('carpoolReservationConfirmRejectStore - action: '.$request->submit. ' went wrong');
         }
 
         $rideReservation = (new CarpoolRideReservation())::find($rideReservationId);
-        return \Redirect::route('admin.carpoolMessagesSender', [$rideReservation->ride_id, $rideReservation->passenger_user_id])->with('message', 'Votre réponse sera envoyée!');
+        return \Redirect::route('admin.carpoolMessagesThread', [$rideReservation->ride_id, $rideReservation->passenger_user_id])->with('message', 'Votre réponse sera envoyée!');
 
     }
 

@@ -44,8 +44,9 @@
 
                             @if($conversation->conversation_partner_user_id == Auth::user()->id)
                                 <div class="msg left-msg" @if($loop->last) id="msg-last" @endif>
-                                    <div class="msg-img">{{ strtoupper(substr($conversation->user->firstname, 0, 1)) }}{{ strtoupper(substr($conversation->user->lastname, 0, 1)) }}</div>
-
+                                    <a href="{{ url('/') }}/user/profile/{{ $conversation->user->id }}" class="msg-img-link">
+                                        <div class="msg-img">{{ strtoupper(substr($conversation->user->firstname, 0, 1)) }}{{ strtoupper(substr($conversation->user->lastname, 0, 1)) }}</div>
+                                    </a>
                                     <div class="msg-bubble @if($conversation->message == 'auto-message') msg-bubble-auto-message @endif">
                                         <div class="msg-info">
                                             <div class="msg-info-name">{{ $conversation->user->firstname }} {{ $conversation->user->lastname }}</div>
@@ -63,7 +64,9 @@
                                 </div>
                             @else
                                 <div class="msg right-msg" @if($loop->last) id="msg-last" @endif>
-                                    <div class="msg-img">{{ strtoupper(substr(Auth::user()->firstname, 0, 1)) }}{{ strtoupper(substr(Auth::user()->lastname, 0, 1)) }}</div>
+                                    <a href="{{ url('/') }}/user/profile/{{ Auth::user()->id }}" class="msg-img-link">
+                                        <div class="msg-img">{{ strtoupper(substr(Auth::user()->firstname, 0, 1)) }}{{ strtoupper(substr(Auth::user()->lastname, 0, 1)) }}</div>
+                                    </a>
 
                                     <div class="msg-bubble @if($conversation->message == 'auto-message') msg-bubble-auto-message  @endif">
                                         <div class="msg-info">

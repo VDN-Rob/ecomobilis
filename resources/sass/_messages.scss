@@ -45,14 +45,7 @@
 .msg:last-of-type {
     margin: 0;
 }
-.driver-info {
-    a {
-        text-decoration: none;
-    }
-    &:hover .msg-img {
-        background: #aaa;
-    }
-}
+
 .ride-private {
     width:50px;
     text-align: center;
@@ -78,7 +71,14 @@
     color: #FFF;
     text-decoration: none;
 }
+
 .driver-info  {
+    a {
+        text-decoration: none;
+    }
+    &:hover .msg-img {
+        background: #aaa;
+    }
     .name {
         display: block;
         margin-top: 6px;
@@ -102,6 +102,17 @@ a.ride-group {
     border-radius: 3px;
     &:hover {
         background-color: $light-grey;
+    }
+}
+a.ride-group.ride-group-header {
+    position: relative;
+    margin: 5px 0 10px 0;
+}
+a.msg-img-link {
+    border:0 !important;
+    text-decoration: none;
+    &:hover .msg-img {
+        background: #aaa;
     }
 }
 .msg-bubble {
@@ -130,11 +141,26 @@ a.ride-group {
 .msg-info-time {
     font-size: 0.85em;
 }
-
+// left
+.msg-img {
+    margin: 0px;
+    font-size: 15px;
+    text-align: center;
+    font-weight: 800;
+    padding-top: 11px;
+    color: #FFF;
+}
+.left-msg {
+    flex-direction: row;
+}
+.left-msg .msg-img {
+    margin: 0 10px 0 10px;
+}
 .left-msg .msg-bubble {
     border-bottom-left-radius: 0;
 }
 
+// right
 .right-msg {
     flex-direction: row-reverse;
 }
@@ -145,11 +171,6 @@ a.ride-group {
 }
 .right-msg .msg-img {
     margin: 0 0 0 10px;
-    font-size: 15px;
-    text-align: center;
-    font-weight: 800;
-    padding-top: 11px;
-    color: #FFF;
 }
 
 .msger-inputarea {

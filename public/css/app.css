@@ -2091,13 +2091,6 @@ button.big,
   margin: 0;
 }
 
-.driver-info a {
-  text-decoration: none;
-}
-.driver-info:hover .msg-img {
-  background: #aaa;
-}
-
 .ride-private {
   width: 50px;
   text-align: center;
@@ -2125,6 +2118,12 @@ button.big,
   text-decoration: none;
 }
 
+.driver-info a {
+  text-decoration: none;
+}
+.driver-info:hover .msg-img {
+  background: #aaa;
+}
 .driver-info .name {
   display: block;
   margin-top: 6px;
@@ -2149,6 +2148,19 @@ a.ride-group {
 }
 a.ride-group:hover {
   background-color: #eceeee;
+}
+
+a.ride-group.ride-group-header {
+  position: relative;
+  margin: 5px 0 10px 0;
+}
+
+a.msg-img-link {
+  border: 0 !important;
+  text-decoration: none;
+}
+a.msg-img-link:hover .msg-img {
+  background: #aaa;
 }
 
 .msg-bubble {
@@ -2179,6 +2191,23 @@ a.ride-group:hover {
   font-size: 0.85em;
 }
 
+.msg-img {
+  margin: 0px;
+  font-size: 15px;
+  text-align: center;
+  font-weight: 800;
+  padding-top: 11px;
+  color: #FFF;
+}
+
+.left-msg {
+  flex-direction: row;
+}
+
+.left-msg .msg-img {
+  margin: 0 10px 0 10px;
+}
+
 .left-msg .msg-bubble {
   border-bottom-left-radius: 0;
 }
@@ -2195,11 +2224,6 @@ a.ride-group:hover {
 
 .right-msg .msg-img {
   margin: 0 0 0 10px;
-  font-size: 15px;
-  text-align: center;
-  font-weight: 800;
-  padding-top: 11px;
-  color: #FFF;
 }
 
 .msger-inputarea {

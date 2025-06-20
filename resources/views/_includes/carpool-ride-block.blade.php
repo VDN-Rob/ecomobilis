@@ -14,8 +14,10 @@
                         <img src="{{ url('/') }}/images/icons/lock.svg" width="18px">
                     </div>
                 @endif
-                @if($ride->group)
-                     <a href="{{ url('/') }}/group/{{ $ride->group->token }}" class="ride-group tiny grey">{{ $ride->group->title }}</a>
+                @if($layout == 'overview-listing')
+                    @if($ride->group)
+                         <a href="{{ url('/') }}/group/{{ $ride->group->token }}" class="ride-group tiny grey">{{ $ride->group->title }}</a>
+                    @endif
                 @endif
             </div>
         @endif
@@ -57,6 +59,12 @@
             <div class="tiny grey">{{ $ride->luggage->name }}</div>
             @if(!empty($ride->remark))
                 <div class="tiny">{{ $ride->remark }}</div>
+            @endif
+
+            @if($layout == 'header')
+                @if($ride->group)
+                    <a href="{{ url('/') }}/group/{{ $ride->group->token }}" class="ride-group ride-group-header tiny grey">{{ $ride->group->title }}</a>
+                @endif
             @endif
 
         </div>
