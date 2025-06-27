@@ -1,3 +1,9 @@
+#
+php artisan make:resource CarpoolStreetCoordinateResource
+php artisan make:resource CarpoolStreetReservationResource
+php artisan make:resource CarpoolCarResource
+
+
 # Just for info/reference
 
 php artisan make:event CarpoolRequested

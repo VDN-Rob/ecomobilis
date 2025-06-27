@@ -30,7 +30,7 @@ This runs through a cron job on the server (* * * * * php /data/sites/web/ecomob
 - https://locationiq.com/demo#autocomplete -->  uses open street maps
 
 ## JS packages
-- Autocomplete used for street lookup https://github.com/TarekRaafat/autoComplete.js
+- Autocomplete js package used for street lookup https://github.com/TarekRaafat/autoComplete.js
 
 ## Laravel packages
 - https://github.com/msurguy/Honeypot/tree/master

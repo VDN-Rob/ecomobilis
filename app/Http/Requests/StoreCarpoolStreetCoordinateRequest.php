@@ -7,8 +7,9 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class UpdateCarpoolRideRequest extends FormRequest
+class StoreCarpoolStreetCoordinateRequest extends FormRequest
 {
+
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -25,16 +26,21 @@ class UpdateCarpoolRideRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'travel_start_datetime'      => ['required'],
-            'from_street_coordinates_id' => ['required', 'integer'],
-            'to_street_coordinates_id'   => ['required', 'integer'],
-            'luggage_id'                 => ['required', 'integer'],
-            'seats_available'            => ['required'],
-            'remark'                     => ['required'],
-            'price_per_seat'             => ['required'],
-            'user_id'                    => ['required', 'integer'],
+            'street'                => ['required'],
+            'zip_code'              => ['required'],
+            'city'                  => ['required'],
+            'country'               => ['required'],
+            'external_api_id'       => ['required'],
+            'external_api_source'   => ['required'],
+            'osm_id'                => ['required'],
+            'osm_way'               => ['required'],
+            'lat'                   => ['required'],
+            'lng'                   => ['required'],
+            'user_id'               => ['required'],
         ];
     }
+
+
 
     protected function failedValidation(Validator $validator)
     {
@@ -43,6 +49,4 @@ class UpdateCarpoolRideRequest extends FormRequest
             'errors' => $validator->errors(),
         ], 422));
     }
-
-
 }

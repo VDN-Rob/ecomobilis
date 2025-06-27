@@ -4,8 +4,12 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
+
 class StoreCarpoolRideRequest extends FormRequest
 {
+
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -27,9 +31,18 @@ class StoreCarpoolRideRequest extends FormRequest
             'to_street_coordinates_id'   => ['required', 'integer'],
             'luggage_id'                 => ['required', 'integer'],
             'seats_available'            => ['required'],
-            'remark'                     => ['required'],
             'price_per_seat'             => ['required'],
             'user_id'                    => ['required', 'integer'],
         ];
+    }
+
+
+
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json([
+            'message' => 'Validation failed',
+            'errors' => $validator->errors(),
+        ], 422));
     }
 }

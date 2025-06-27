@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateCarpoolRideRequest;
 use App\Http\Resources\CarpoolRideResource;
 use App\Models\CarpoolRide;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\Validation\Validator;
 
 class CarpoolRideController extends Controller
 {
@@ -24,6 +25,7 @@ class CarpoolRideController extends Controller
      */
     public function store(StoreCarpoolRideRequest $request)
     {
+
         $carpoolRide = CarpoolRide::create([
             'travel_start_datetime'      => $request->travel_start_datetime,
             'from_street_coordinates_id' => $request->from_street_coordinates_id,

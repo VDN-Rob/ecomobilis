@@ -1,25 +1,11 @@
-# ************************************************************
-# Sequel Pro SQL dump
-# Version 4541
-#
-# http://www.sequelpro.com/
-# https://github.com/sequelpro/sequelpro
-#
-# Host: localhost (MySQL 5.7.44)
-# Database: ecomobilis
-# Generation Time: 2025-06-05 13:43:57 +0000
-# ************************************************************
+# ------------------------------------------------------------
+# -- 27 jun - API
 
+ALTER TABLE `api_keys` ADD `level` VARCHAR(20)  NULL  DEFAULT NULL  AFTER `user_id`;
+ALTER TABLE `carpool_street_coordinates` ADD `user_id` INT  NULL  DEFAULT NULL  AFTER `lng`;
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
-
+# ------------------------------------------------------------
+# -- 14 jun - Kickoff
 # Dump of table api_keys
 # ------------------------------------------------------------
 

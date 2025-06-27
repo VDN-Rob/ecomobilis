@@ -4,7 +4,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'App\Http\Controllers\ApiOpen', 'as' => 'open-api.', ], function () {
+
     Route::apiResource('carpool-rides', CarpoolRideController::class);
+
+    Route::apiResource('carpool-street-coordinates', CarpoolStreetCoordinateController::class);
+
 });
 
 
