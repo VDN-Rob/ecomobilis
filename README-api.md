@@ -2,7 +2,34 @@
 ## TO DO
 https://saasykit.com/blog/how-to-generate-documentation-for-your-laravel-project
 
-## 1. Carpool rides
+## 1. Users
+
+### GET open-api/users
+
+### POST open-api/users
+````
+{    
+    "firstname": "Lionel",
+    "lastname": "Messi",
+    "gender": "M",
+    "email": "lionel@test.com",
+    "car_id": 123,
+}
+````
+### GET open-api/users/{id}
+
+### PUT open-api/users/{id}}
+````
+{    
+    "firstname": "Matteo",
+    "lastname": "Messi",
+    "gender": "M",
+    "email": "lionel@test.com",
+    "car_id": 123,
+}
+````
+
+## 2. Carpool rides
 
 ### GET open-api/carpool-rides
 
@@ -43,7 +70,7 @@ https://saasykit.com/blog/how-to-generate-documentation-for-your-laravel-project
 ### DELETE open-api/carpool-rides/{id}
 Admin level needed
 
-## 2. Carpool street coordinates
+## 3. Carpool street coordinates
 Please use your own implementation of locationiq (https://locationiq.com/) to populate this with put or post
 
 ### GET open-api/carpool-street-coordinates
@@ -86,10 +113,10 @@ Please use your own implementation of locationiq (https://locationiq.com/) to po
 ### DELETE open-api/carpool-street-coordinates/{id}
 Admin level needed
 
-## 3. Carpool ride reservation
-### GET open-api/carpool-street-reservation
+## 4. Carpool ride reservation
+### GET open-api/carpool-street-reservations
 
-### POST open-api/carpool-street-reservation/
+### POST open-api/carpool-street-reservations/
 ````
 {
     "ride_id": 101,
@@ -100,9 +127,9 @@ Admin level needed
 }
   ````     
 
-### GET open-api/carpool-street-reservation/{id}
+### GET open-api/carpool-street-reservations/{id}
 
-### PUT open-api/carpool-street-reservation/{id}
+### PUT open-api/carpool-street-reservations/{id}
 ````
 {
     "ride_id": 101,
@@ -113,15 +140,15 @@ Admin level needed
 }
   ````     
 
-### DELETE open-api/carpool-street-reservation/{id}
+### DELETE open-api/carpool-street-reservations/{id}
 Admin level needed
 
-## 4. Carpool car
+## 5. Carpool car
 A car is linked to a user through the car_id in the user table
 
-### GET open-api/carpool-car
+### GET open-api/carpool-cars
 
-### POST open-api/carpool-car
+### POST open-api/carpool-cars
 You can add it without having the user being attached it. Don't forget to link it afterwards.
 ````
 {
@@ -134,9 +161,9 @@ You can add it without having the user being attached it. Don't forget to link i
     "price_per_km_per_seat": "1.10"
 }
 ````
-### GET open-api/carpool-car/{id}
+### GET open-api/carpool-cars/{id}
 
-### PUT open-api/carpool-car/{id}
+### PUT open-api/carpool-cars/{id}
 Check on the id if it's owned by your current user
 ```` 
 {
@@ -150,5 +177,5 @@ Check on the id if it's owned by your current user
 }
   ```` 
 
-### DELETE open-api/carpool-car/{id}
+### DELETE open-api/carpool-cars/{id}
 Admin level needed

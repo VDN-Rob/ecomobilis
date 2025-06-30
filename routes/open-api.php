@@ -5,13 +5,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'App\Http\Controllers\ApiOpen', 'as' => 'open-api.', ], function () {
 
+    Route::apiResource('users', UserController::class);
+
+    // carpool
     Route::apiResource('carpool-rides', CarpoolRideController::class);
 
     Route::apiResource('carpool-street-coordinates', CarpoolStreetCoordinateController::class);
 
-    Route::apiResource('carpool-street-reservation', CarpoolRideReservationController::class);
+    Route::apiResource('carpool-street-reservations', CarpoolRideReservationController::class);
 
-    Route::apiResource('carpool-car', CarpoolCarController::class);
+    Route::apiResource('carpool-cars', CarpoolCarController::class);
 
 });
 

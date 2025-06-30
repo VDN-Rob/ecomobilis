@@ -22,7 +22,9 @@ class CarpoolCarResource extends JsonResource
             'default_luggage_id'  => $this->default_luggage_id,
             'is_smoking_allowed'  => $this->is_smoking_allowed,
             'is_isofix_present'   => $this->is_isofix_present,
-            'price_per_km_per_seat' => $this->price_per_km_per_seat
+            'price_per_km_per_seat' => $this->price_per_km_per_seat,
+            'created_at'                => $this->created_at,
+            'updated_at'                => $this->updated_at,
          ];
     }
 }

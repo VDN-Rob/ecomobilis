@@ -20,7 +20,9 @@ class CarpoolRideReservationResource extends JsonResource
             'passenger_user_id' => $this->passenger_user_id,
             'amount'            => $this->amount,
             'is_accepted'       => $this->is_accepted,
-            'is_rejected'       => $this->is_rejected
+            'is_rejected'       => $this->is_rejected,
+            'created_at'                => $this->created_at,
+            'updated_at'                => $this->updated_at,
         ];
     }
 }
