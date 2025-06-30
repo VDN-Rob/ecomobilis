@@ -2,7 +2,7 @@
 php artisan make:resource CarpoolStreetCoordinateResource
 php artisan make:resource CarpoolStreetReservationResource
 php artisan make:resource CarpoolCarResource
-
+php artisan make:resource UserResource
 
 # Just for info/reference
 

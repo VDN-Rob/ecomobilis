@@ -19,7 +19,7 @@ class CarpoolCar extends Model
         'default_seats_available' ,
         'is_smoking_allowed',
         'is_isofix_present',
-        'price_per_km_per_seat'];
+        'price_per_km_per_seat', 'user'];
     public $timestamps = true;
 
 

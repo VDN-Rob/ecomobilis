@@ -9,6 +9,10 @@ Route::group(['namespace' => 'App\Http\Controllers\ApiOpen', 'as' => 'open-api.'
 
     Route::apiResource('carpool-street-coordinates', CarpoolStreetCoordinateController::class);
 
+    Route::apiResource('carpool-street-reservation', CarpoolRideReservationController::class);
+
+    Route::apiResource('carpool-car', CarpoolCarController::class);
+
 });
 
 

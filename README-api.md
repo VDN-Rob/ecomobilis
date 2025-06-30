@@ -22,8 +22,9 @@ https://saasykit.com/blog/how-to-generate-documentation-for-your-laravel-project
     "is_cancelled": 0
 }
 ````
+### GET open-api/carpool-rides/{id}
 
-### PUT open-api/carpool-rides//{id}
+### PUT open-api/carpool-rides/{id}
 ````
 {
     "travel_start_datetime": "2026-07-12 12:00:00",
@@ -39,7 +40,8 @@ https://saasykit.com/blog/how-to-generate-documentation-for-your-laravel-project
     "is_cancelled": 0
 }
 ````
-
+### DELETE open-api/carpool-rides/{id}
+Admin level needed
 
 ## 2. Carpool street coordinates
 Please use your own implementation of locationiq (https://locationiq.com/) to populate this with put or post
@@ -63,6 +65,7 @@ Please use your own implementation of locationiq (https://locationiq.com/) to po
 }
 ````
 
+### GET open-api/carpool-street-coordinates/{id}
 
 ### PUT open-api/carpool-street-coordinates/{id}
 ````
@@ -80,3 +83,72 @@ Please use your own implementation of locationiq (https://locationiq.com/) to po
     "user_id": 1
 }
 ````
+### DELETE open-api/carpool-street-coordinates/{id}
+Admin level needed
+
+## 3. Carpool ride reservation
+### GET open-api/carpool-street-reservation
+
+### POST open-api/carpool-street-reservation/
+````
+{
+    "ride_id": 101,
+    "passenger_user_id": 1,
+    "amount": 1,
+    "is_accepted": 1,
+    "is_rejected": 0
+}
+  ````     
+
+### GET open-api/carpool-street-reservation/{id}
+
+### PUT open-api/carpool-street-reservation/{id}
+````
+{
+    "ride_id": 101,
+    "passenger_user_id": 1,
+    "amount": 1,
+    "is_accepted": 1,
+    "is_rejected": 0
+}
+  ````     
+
+### DELETE open-api/carpool-street-reservation/{id}
+Admin level needed
+
+## 4. Carpool car
+A car is linked to a user through the car_id in the user table
+
+### GET open-api/carpool-car
+
+### POST open-api/carpool-car
+You can add it without having the user being attached it. Don't forget to link it afterwards.
+````
+{
+    "car_type_id": 1,
+    "brand": "Renault Kangoo",
+    "description": null,
+    "default_luggage_id": 2,
+    "is_smoking_allowed": 0,
+    "is_isofix_present": 0,
+    "price_per_km_per_seat": "1.10"
+}
+````
+### GET open-api/carpool-car/{id}
+
+### PUT open-api/carpool-car/{id}
+Check on the id if it's owned by your current user
+```` 
+{
+    "car_type_id": 1,
+    "brand": "Renault Kangoo Updated",
+    "description": "I have the new version, in red!",
+    "default_luggage_id": 2,
+    "is_smoking_allowed": 0,
+    "is_isofix_present": 0,
+    "price_per_km_per_seat": "1.10"
+}
+  ```` 
+
+### DELETE open-api/carpool-car/{id}
+Admin level needed
