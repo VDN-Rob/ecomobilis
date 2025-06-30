@@ -179,3 +179,54 @@ Check on the id if it's owned by your current user
 
 ### DELETE open-api/carpool-cars/{id}
 Admin level needed
+
+
+## 6. Bike & car sharing
+
+
+### GET open-api/sharing-org
+
+### POST open-api/sharing-org
+user_id should be the one from your key
+```` 
+ {
+    "id": 1,
+    "name": "A-bikes!",
+    "short_description": "Sed ut perspiciatis unde omnis iste natus error sit",
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "prop_vehicle_car": 0,
+    "prop_vehicle_ecar": 0,
+    "prop_vehicle_bike": 1,
+    "prop_vehicle_ebike": 1,
+    "prop_vehicle_cargobike": 0,
+    "prop_vehicle_ecargobike": 0,
+    "prop_vehicle_step": 0,
+    "website": "https://a-bikes.com",
+    "email":  "mail@a-bikes.com",
+    "payment_subscription_info": "You can subscribe for 30eur/month",
+    "user_id": 1
+}
+  ```` 
+
+### GET open-api/sharing-org/{id}
+
+### PUT open-api/sharing-org/{id}
+```` 
+ {
+    "id": 1,
+    "name": "B-bikes!",
+    "short_description": "Sed ut perspiciatis unde omnis iste natus error sit",
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "prop_vehicle_car": 0,
+    "prop_vehicle_ecar": 0,
+    "prop_vehicle_bike": 1,
+    "prop_vehicle_ebike": 1,
+    "prop_vehicle_cargobike": 0,
+    "prop_vehicle_ecargobike": 0,
+    "prop_vehicle_step": 0,
+    "website": "https://a-bikes.com",
+    "email":  "mail@a-bikes.com",
+    "payment_subscription_info": "You can subscribe for 30eur/month",
+    "user_id": 1
+}
+  ```` 

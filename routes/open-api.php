@@ -16,6 +16,10 @@ Route::group(['namespace' => 'App\Http\Controllers\ApiOpen', 'as' => 'open-api.'
 
     Route::apiResource('carpool-cars', CarpoolCarController::class);
 
+    // sharing
+    Route::apiResource('sharing-org', SharingOrgController::class);
+
+
 });
 
 

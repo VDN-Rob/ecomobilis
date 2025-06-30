@@ -1,4 +1,28 @@
 # ------------------------------------------------------------
+# -- 30 jun - Sharing table
+
+CREATE TABLE `sharing_organisations` (
+     `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+     `name` varchar(255) DEFAULT NULL,
+     `short_description` text,
+     `body` text,
+     `prop_vehicle_car` tinyint(1) DEFAULT '0',
+     `prop_vehicle_ecar` tinyint(1) DEFAULT '0',
+     `prop_vehicle_bike` tinyint(1) DEFAULT '0',
+     `prop_vehicle_ebike` tinyint(1) DEFAULT '0',
+     `prop_vehicle_cargobike` tinyint(1) DEFAULT '0',
+     `prop_vehicle_ecargobike` tinyint(1) DEFAULT '0',
+     `prop_vehicle_step` tinyint(1) DEFAULT '0',
+     `website` varchar(255) DEFAULT NULL,
+     `email` varchar(255) DEFAULT NULL,
+     `payment_subscription_info` text,
+     `user_id` int(11) DEFAULT NULL,
+     `created_at` timestamp NULL DEFAULT NULL,
+     `updated_at` timestamp NULL DEFAULT NULL,
+     PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+# ------------------------------------------------------------
 # -- 27 jun - API
 
 ALTER TABLE `api_keys` ADD `level` VARCHAR(20)  NULL  DEFAULT NULL  AFTER `user_id`;

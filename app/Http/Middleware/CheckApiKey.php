@@ -24,6 +24,7 @@ class CheckApiKey
 
         // for post and put, only for your own user
         if($request->getMethod() == 'POST' || $request->getMethod() == 'PUT') {
+
             if($keyDb->user_id !== $request->user_id && $keyDb->user_id !== $request->passenger_user_id) {
 
 
@@ -60,7 +61,7 @@ class CheckApiKey
                 if($shortPathUserWithoutId == '/open-api/users/' && $request->getMethod() == 'PUT' ) {
                     $id = str_replace('/open-api/users/', '', $request->getPathInfo());
 
-                    if($id == (string) $keyDb->user_id) {
+                    if((string) $id == (string) $keyDb->user_id) {
                         return $next($request);
                     } else {
                         return response()->json(['message' => 'Unauthorized. You can only do a POST, PUT, DELETE for your own user id.  With your X-API-KEY you can only do operations for '.$keyDb->user_id.'. #3'], 401);
