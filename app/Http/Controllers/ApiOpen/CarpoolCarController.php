@@ -25,7 +25,6 @@ class CarpoolCarController extends Controller
      */
     public function store(StoreCarpoolCarRequest $request)
     {
-
         $carpoolCar = CarpoolCar::create($request->validated());
 
         return new CarpoolCarResource($carpoolCar);

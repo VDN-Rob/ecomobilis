@@ -5,8 +5,11 @@ namespace App\Http\Controllers\ApiOpen;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCarpoolRideRequest;
 use App\Http\Requests\UpdateCarpoolRideRequest;
+use App\Http\Resources\CarpoolCarResource;
 use App\Http\Resources\CarpoolRideResource;
+use App\Models\CarpoolCar;
 use App\Models\CarpoolRide;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Validation\Validator;
 
@@ -17,8 +20,19 @@ class CarpoolRideController extends Controller
      */
     public function index()
     {
-        return CarpoolRideResource::collection(CarpoolRide::paginate(10));
+        return CarpoolRideResource::collection(CarpoolRide::paginate(50));
     }
+
+    /**
+     * Display a listing of only the future resources.
+     */
+    public function future()
+    {
+        $now = Carbon::now();
+        return CarpoolRideResource::collection(CarpoolRide::paginate(50))
+            ->where('travel_start_datetime', '>', $now);
+    }
+
 
     /**
      * Store a newly created resource in storage.

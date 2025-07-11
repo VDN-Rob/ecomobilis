@@ -33,6 +33,9 @@ https://saasykit.com/blog/how-to-generate-documentation-for-your-laravel-project
 
 ### GET open-api/carpool-rides
 
+### GET open-api/carpool-rides/future
+(special one, only the upcoming rides)
+
 ### POST open-api/carpool-rides
 ````
 {

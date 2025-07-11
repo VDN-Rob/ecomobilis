@@ -71,7 +71,7 @@ There is a special type of message, the 'auto-message' which is basically a mess
 Matching is done based on the stored gps coordinates and looks within 20km radius for both departure and arrival and for your the date / hour given or later
 
 # 9. Hosting
-The hosting of http://ecomobilis.be/ is now at Combell (combell.com). (S)FTP access can be provided, just email dave@telraam.net
+The hosting of http://ecomobilis.be/ is at Combell (combell.com). (S)FTP access can be provided, just email dave@telraam.net
 
 # 10. Design 
 

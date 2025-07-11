@@ -29,6 +29,8 @@ class CarpoolRideResource extends JsonResource
             'is_cancelled'              => $this->is_cancelled,
             'created_at'                => $this->created_at,
             'updated_at'                => $this->updated_at,
+            'departure_name'            => ['street' => $this->departure->street, 'city' => $this->departure->city],
+            'arrival_name'              => ['street' => $this->arrival->street,   'city' => $this->arrival->city]
         ];
     }
 }
