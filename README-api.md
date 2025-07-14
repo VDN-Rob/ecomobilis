@@ -1,6 +1,7 @@
 # 0. Internal notes
 ## TO DO
-https://saasykit.com/blog/how-to-generate-documentation-for-your-laravel-project
+- docu paging
+- docu token use
 
 ## 1. Users
 
