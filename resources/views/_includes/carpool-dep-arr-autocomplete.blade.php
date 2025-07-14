@@ -58,7 +58,12 @@
 <script>
 
     var baseUrl = '{{ url('/') }}';
-    var pricePerKm = {{ Auth::user()->car->price_per_km_per_seat }};
+    @guest
+        var pricePerKm = false;
+    @else
+        var pricePerKm = {{ Auth::user()->car->price_per_km_per_seat }};
+    @endguest
+
     var DepValues = false;
     var ArrValues = false;
 
