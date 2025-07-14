@@ -12,7 +12,7 @@ class CarpoolGroup extends Model
 {
     public $table = 'carpool_groups';
     protected $fillable = [
-        'title',
+        'title', 'description',
         'location_street_coordinates_id',
         'does_need_authentication',
         'rides_are_private',

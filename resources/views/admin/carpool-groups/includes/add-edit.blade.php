@@ -12,6 +12,13 @@
 </div>
 
 <div class="col-desk-12">
+    <div class="field special-placeholder">
+        <label>{{ __('carpool.group-description') }}</label>
+        <textarea id="description" name="description" rows="4">@if(isset($group)){{ $group->description }}@endif</textarea>
+    </div>
+</div>
+
+<div class="col-desk-12">
     <div class="tiny light-grey" style="position: absolute; margin-top: -20px;">{{ __('carpool.location') }} </div>
     <div class="field special-placeholder">
         <input id="autoCompleteLocation" type="search" name="location"  dir="ltr" spellcheck=false autocorrect="off" autocomplete="off" autocapitalize="off"
@@ -38,12 +45,14 @@
     </div>
 </div>
 
+<!--
 <div class="col-desk-6">
     <label class="normal">
         {{ Form::checkbox('authentication', null, (isset($group?->does_need_authentication)) ? $group?->does_need_authentication : 0, ['id'=>'authentication']) }}
         {!! __('carpool.user-must-be-logged-in') !!}
     </label>
 </div>
+-->
 
 <div class="col-desk-6">
     <label class="normal">

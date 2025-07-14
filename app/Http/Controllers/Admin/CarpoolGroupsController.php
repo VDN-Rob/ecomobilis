@@ -52,8 +52,10 @@ class CarpoolGroupsController extends Controller
         // the group
         $data = [
             'title'                          => $request->get('title'),
+            'description'                    => $request->get('description'),
             'location_street_coordinates_id' => $streetLocationObj->id,
-            'does_need_authentication'       => ($request->get('authentication') == 'on') ? 1 : 0,
+           // 'does_need_authentication'       => ($request->get('authentication') == 'on') ? 1 : 0,
+            'does_need_authentication'       => 1,
             'rides_are_private'              => ($request->get('private') == 'on') ? 1 : 0,
             'token'                          => substr(md5(microtime()),rand(0,26),25),
             'user_id'                        => \Illuminate\Support\Facades\Auth::user()->id
@@ -81,8 +83,10 @@ class CarpoolGroupsController extends Controller
         $streetLocationObj = (new CarpoolStreetCoordinate())->getStreet($request->LocationJson);
         $data = [
             'title'                          => $request->get('title'),
+            'description'                          => $request->get('description'),
             'location_street_coordinates_id' => $streetLocationObj->id,
-            'does_need_authentication'       => ($request->get('authentication') == 'on') ? 1 : 0,
+           // 'does_need_authentication'       => ($request->get('authentication') == 'on') ? 1 : 0,
+            'does_need_authentication'       => 1,
             'rides_are_private'              => ($request->get('private') == 'on') ? 1 : 0,
         ];
         CarpoolGroup::find($groupId)->update($data);

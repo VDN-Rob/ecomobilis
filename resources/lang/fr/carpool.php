@@ -82,6 +82,7 @@ return [
     'group-add-title'           => 'Ajouter un groupe',
     'group-edit-title'          => 'Modifier un groupe',
     'group-title'               => 'Titre du groupe',
+    'group-description'         => 'Brief description',
     'location'                  => 'Place',
     'user-must-be-logged-in'    => 'L\'utilisateur doit être connecté pour voir la page du groupe',
     'public_url'                => 'url publique',

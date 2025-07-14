@@ -1,4 +1,9 @@
 # ------------------------------------------------------------
+# -- 14 JUL - Groups
+
+ALTER TABLE `carpool_groups` ADD `description` TEXT  NULL  AFTER `title`;
+
+# ------------------------------------------------------------
 # -- 30 jun - Sharing table
 
 CREATE TABLE `sharing_organisations` (
