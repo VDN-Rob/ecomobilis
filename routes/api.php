@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['namespace' => 'App\Http\Controllers\Api', 'as' => 'api.', ], function () {
-    Route::get('street/autocomplete/{search}',    'StreetController@autocomplete');
+    Route::get('street/autocomplete/{search}',                   'StreetController@autocomplete');
+    Route::get('calculate-route/{lat1}/{lng1}/{lat2}/{lng2}',    'StreetController@calculateRoute');
 });
 

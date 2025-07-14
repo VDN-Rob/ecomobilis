@@ -47,15 +47,15 @@
 
                 <div class="col-desk-6 ">
                     <div class="field special-placeholder">
-                        <label>{{ __('user.email') }} <span class="grey tiny">{{ __('user.only-internal-use') }}</span></label>
+                        <label>{{ __('user.email') }}</label>
                         <input id="email" type="email" class="{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"  placeholder="email" value="{{ $user->email }}" required>
                     </div>
                 </div>
 
                 <div class="col-desk-6 ">
                     <div class="field special-placeholder">
-                        <label>{{ __('user.birth-date') }}</label>
-                        <input id="birth_date" type="date" class="{{ $errors->has('birth_date') ? ' is-invalid' : '' }}" name="birth_date"  placeholder="" value="{{ $user->birth_date }}" required>
+                        <label>{{ __('user.birth-date') }} <span class="grey tiny">{{ __('user.birth-date-min') }}</span></label>
+                        <input id="birth_date" type="date" class="{{ $errors->has('birth_date') ? ' is-invalid' : '' }}" name="birth_date" max="{{ $minDate }}" placeholder="" value="{{ $user->birth_date }}" required>
                     </div>
                 </div>
 
@@ -108,10 +108,10 @@
                             </div>
 
                             <div class="col-desk-6">
-                                <label>{{ __('carpool.price_per_km') }}</label>
+                                <label>{{ __('carpool.price_per_km') }}. <span class="tiny grey">{{ __('carpool.price_per_km_note') }}</span></label>
                                 <div class="field special-placeholder">
-                                    <input type="number" id="price_per_km_per_seat" name="price_per_km_per_seat" step="0.05"
-                                           value="@isset($user->car){{ $user?->car?->price_per_km_per_seat }} @else 0.10 @endisset" style="width:90%"/> <span class="grey">€</span>
+                                    <input type="number" id="price_per_km_per_seat" name="price_per_km_per_seat" step="0.01"
+                                           value="{{ $user?->car?->price_per_km_per_seat }}" lang="nl" style="width:90%"/> <span class="grey">€</span>
                                 </div>
                             </div>
 

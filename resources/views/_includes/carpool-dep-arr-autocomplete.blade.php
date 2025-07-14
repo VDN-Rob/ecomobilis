@@ -58,6 +58,9 @@
 <script>
 
     var baseUrl = '{{ url('/') }}';
+    var pricePerKm = {{ Auth::user()->car->price_per_km_per_seat }};
+    var DepValues = false;
+    var ArrValues = false;
 
     $('.js-swap-dep-arr').click(function() {
 
@@ -79,7 +82,46 @@
         $('#DepJson').val(ArrJson);
         $('#ArrJson').val(DepJson);
 
+
     });
+
+
+    function computeDistance()
+    {
+        console.log(DepValues);
+        console.log(ArrValues);
+        lat1 = DepValues.lat;
+        lon1 = DepValues.lon;
+        lat2 = ArrValues.lat;
+        lon2 = ArrValues.lon;
+
+        if(lat1 && lat2) {
+            const R = 6371; // Earth's radius in kilometers
+console.log(lat1);
+            const toRadians = (degrees) => degrees * (Math.PI / 180);
+
+            const dLat = toRadians(lat2 - lat1);
+            const dLon = toRadians(lon2 - lon1);
+
+            const a =
+                Math.sin(dLat / 2) ** 2 +
+                Math.cos(toRadians(lat1)) * Math.cos(toRadians(lat2)) *
+                Math.sin(dLon / 2) ** 2;
+
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+            distance = R * c; // Distance in kilometers
+
+            $('.js-distance-container').show();
+            $('.js-distance').html(distance.toFixed(2) +' km');
+            console.log(distance);
+            console.log(pricePerKm)
+            priceSuggested  = pricePerKm + (pricePerKm.distance*0,25);
+           // priceSuggested      = priceSuggestedFull.toFixed(1);
+            $('#price_per_seat').val(priceSuggested);
+        }
+
+    }
 
 
     // baseurl/api/street/autocomplete/search
@@ -157,8 +199,10 @@
                     }
                     const selection = place + ', ' + city;
                     // another hidden field to store the full json
+                    DepValues = event.detail.selection.value;
                     document.getElementById('DepJson').value = JSON.stringify(event.detail.selection.value);
                     autoCompleteJSDep.input.value = selection;
+                    computeDistance();
                 }
             }
         }
@@ -235,8 +279,10 @@
                     }
                     const selection = place + ', ' + city;
                     // another hidden field to store the full json
+                    ArrValues = event.detail.selection.value;
                     document.getElementById('ArrJson').value = JSON.stringify(event.detail.selection.value);
                     autoCompleteJSArr.input.value = selection;
+                    computeDistance();
                 }
             }
         }

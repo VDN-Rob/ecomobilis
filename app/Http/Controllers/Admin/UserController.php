@@ -21,6 +21,7 @@ class UserController extends Controller
         $data['user']           = User::find($userId);
         $data['carTypes']       = CarpoolCarType::all();
         $data['carLuggages']    = CarpoolLuggage::all();
+        $data['minDate'] = Carbon::today()->subYears(18)->toDateString();
 
         return view('admin.user.profile-edit', $data);
     }
@@ -31,8 +32,8 @@ class UserController extends Controller
 
         // the data
         $dataCar = [
-            'car_type_id'               => $request->car_type_id,
-            'brand'                     => $request->brand,
+            'car_type_id'              => $request->car_type_id,
+            'brand'                    => $request->brand,
             'description'              => $request->description,
             'default_luggage_id'       => $request->default_luggage_id,
             'default_seats_available'  => $request->default_seats_available,

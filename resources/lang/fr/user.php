@@ -14,6 +14,7 @@ return [
     'zip'               => 'Code postal',
     'city'              => 'Ville',
     'birth-date'        => 'Date de naissance',
+    'birth-date-min'     => 'Vous devez avoir au moins 18 ans',
     'age'               => 'Âge',
     'gender'            => 'Sexe',
     'bio'               => 'Quelque chose que vous voulez encore partager',

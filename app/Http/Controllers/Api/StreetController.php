@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\CarpoolStreetCoordinate;
 use GuzzleHttp\Client as GuzzleHttpClient;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Facades\Log;
@@ -55,6 +56,25 @@ class StreetController extends Controller
 
 
     }
+
+
+    public function calculateRoute($lat1, $lng1, $lat2, $lng2)
+    {
+
+        if(!empty($lat1) && !empty($lat2)) {
+            $distance = (new CarpoolStreetCoordinate())->computeDistance($lat1, $lng1, $lat2, $lng2);
+            $content = ['distance' => $distance];
+            return response()->json($content);
+        }
+
+        $error = ['error' => 'Coordinates are not complete'];
+        return response()->json($error, 400);
+
+    }
+
+
+
+
 
 
 }

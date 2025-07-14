@@ -11,7 +11,7 @@
                 <h1> {{ __('carpool.my-rides') }}</h1>
             </div>
             <div class="col-desk-12 ">
-                @if(empty(Auth::user()->birth_date) || empty(Auth::user()->car))
+                @if(empty(Auth::user()->car))
                     <a href="#" class="button disabled" > {{ __('carpool.add-a-ride') }}</a>
                     &nbsp;&nbsp;
                     <a href="{{ url('/') }}/admin/user/profile/{{ Auth::user()->id }}/edit/" class="grey tiny">Complete your profile first</a>

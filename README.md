@@ -55,6 +55,10 @@ When a location is submitted we store the coordinates in the db table carpool_st
 The UI for the location selection uses the open source vanilla javascript  library https://github.com/TarekRaafat/autoComplete.js.
 We store the json in a hidden field below the input field. It's the hidden field we use in the database.
 
+## Price calculate
+When a price is calculated we use the "la distance en bref" + 20%. 
+We multiply it with the provided price per km from the user.
+
 ## Messages
 A message thread is always linked towards a specific ride. The thread forms itself by combining the sender (user_id), receiver (conversation_partner_user_id) and the ride (car_ride_id)
 
