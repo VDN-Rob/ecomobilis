@@ -1,6 +1,11 @@
 @extends('emails.layouts.app-branded')
 @section('content')
 
+    <style>
+        .show-on-mobile-only {
+            display: none;
+        }
+    </style>
 
 <tr>
     <td align="left" valign="top">

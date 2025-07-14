@@ -102,30 +102,50 @@
     @if($showReservations == 1)
         @if(count($ride->reservations) > 0)
             <div class="passenger-list">
-                <div class="grid">
-                    @foreach($ride->reservations as $reservation)
-                        <div class="col-desk-3 col-mob-2 passenger-list-name">
-                            {{ $reservation->passenger->firstname }} {{ $reservation->passenger->lastname }}
-                        </div>
-                        <div class="col-desk-3 col-mob-2 tiny passenger-list-places">
-                            {{ $reservation->amount }} {{ __('carpool.places-necessary') }}
-                        </div>
-                        <div class="col-desk-2 col-mob-2 tiny">
-                            @if($reservation->is_accepted == 1) <span class="green"><span class="heroicon heroicon-check-circle"></span> {{ __('carpool.is-accepted') }} </span> @endif
-                            @if($reservation->is_rejected == 1) <span class="red"><span class="heroicon heroicon-x-circle"></span> {{ __('carpool.is-rejected') }} </span> @endif
-                            @if($reservation->is_accepted == 0 && $reservation->is_rejected == 0) <span class="heroicon heroicon-archive"></span> {{ __('carpool.is-waiting') }} @endif
-                        </div>
-                        <div class="col-desk-3 col-mob-2  tiny">
-                            @if($showConversations == 1)
-                                @if($reservation->ride->user_id == Auth::user()->id)
-                                    <a href="{{ url('/') }}/admin/carpool-messages/ride/{{ $reservation->ride_id }}/sender/{{ $reservation->passenger_user_id }}/" class=" tiny">
-                                        {{ __('carpool.get-in-touch-with-passenger') }}
-                                    </a>
+                @if($layout == 'email-listing')
+                    <table border="0" cellpadding="1" width="80%" style=" margin-left: auto; margin-right: auto;">
+                        @foreach($ride->reservations as $reservation)
+                            <tr>
+                                {{ $reservation->passenger->firstname }} {{ $reservation->passenger->lastname }}
+                            </tr>
+                            <tr>
+                                {{ $reservation->amount }} {{ __('carpool.places-necessary') }}
+                            </tr>
+                            <tr>
+                                @if($reservation->is_accepted == 1) <span class="green"><span class="heroicon heroicon-check-circle"></span> {{ __('carpool.is-accepted') }} </span> @endif
+                                @if($reservation->is_rejected == 1) <span class="red"><span class="heroicon heroicon-x-circle"></span> {{ __('carpool.is-rejected') }} </span> @endif
+                                @if($reservation->is_accepted == 0 && $reservation->is_rejected == 0) <span class="heroicon heroicon-archive"></span> {{ __('carpool.is-waiting') }} @endif
+                            </tr>
+                        @endforeach
+                    </table>
+
+                @else
+                    <div class="grid">
+                        @foreach($ride->reservations as $reservation)
+                            <div class=" col-desk-3 col-mob-2 @endif tiny passenger-list-name">
+                                {{ $reservation->passenger->firstname }} {{ $reservation->passenger->lastname }}
+                            </div>
+                            <div class="col-desk-3 col-mob-2 @endif tiny passenger-list-places">
+                                {{ $reservation->amount }} {{ __('carpool.places-necessary') }}
+                            </div>
+                            <div class="col-desk-2 col-mob-2 @endif tiny">
+                                @if($reservation->is_accepted == 1) <span class="green"><span class="heroicon heroicon-check-circle"></span> {{ __('carpool.is-accepted') }} </span> @endif
+                                @if($reservation->is_rejected == 1) <span class="red"><span class="heroicon heroicon-x-circle"></span> {{ __('carpool.is-rejected') }} </span> @endif
+                                @if($reservation->is_accepted == 0 && $reservation->is_rejected == 0) <span class="heroicon heroicon-archive"></span> {{ __('carpool.is-waiting') }} @endif
+                            </div>
+                            <div class="col-desk-3 col-mob-2  tiny">
+                                @if($showConversations == 1)
+                                    @if($reservation->ride->user_id == Auth::user()->id)
+                                        <a href="{{ url('/') }}/admin/carpool-messages/ride/{{ $reservation->ride_id }}/sender/{{ $reservation->passenger_user_id }}/" class=" tiny">
+                                            {{ __('carpool.get-in-touch-with-passenger') }}
+                                        </a>
+                                    @endif
                                 @endif
-                            @endif
-                        </div>
-                    @endforeach
-                </div> <!-- end grid -->
+                            </div>
+                        @endforeach
+                    </div> <!-- end grid -->
+
+                @endif
             </div>
         @endif
     @endif
