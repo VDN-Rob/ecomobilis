@@ -43,8 +43,10 @@ code {
 	padding-top: 70px;
 }
 .no-bottom-margin {
-    margin-bottom: 0;
-    padding-bottom: 0;
+    margin-bottom: 0 !important;
+}
+.no-bottom-padding {
+    padding-bottom: 0 !important;;
 }
 .extra-padding-bottom,
 .block.extra-padding-bottom{

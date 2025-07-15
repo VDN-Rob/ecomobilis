@@ -739,8 +739,11 @@ code {
 }
 
 .no-bottom-margin {
-  margin-bottom: 0;
-  padding-bottom: 0;
+  margin-bottom: 0 !important;
+}
+
+.no-bottom-padding {
+  padding-bottom: 0 !important;
 }
 
 .extra-padding-bottom,
@@ -3105,6 +3108,10 @@ https://github.com/sschoger/heroicons-ui/tree/master/svg
   color: #1B8C63;
 }
 
+.dark-blue {
+  color: #263d5e;
+}
+
 .bg-green {
   color: #fff;
   background: #1B8C63;
@@ -3116,10 +3123,6 @@ https://github.com/sschoger/heroicons-ui/tree/master/svg
 
 .blue {
   color: #263d5e;
-}
-
-.dark-blue {
-  color: #005993;
 }
 
 .black {

@@ -2,15 +2,15 @@
 @section('content')
 
     <!-- top block with title -->
-    <div class="block">
+    <div class="block no-bottom-margin no-bottom-padding">
         <div class="grid">
             <div class="col-desk-6">
                 <h1 class="no-bottom-margin">{{ $group->title }}</h1>
+                <div class="dark-blue">{{ $group->description }}</div>
                 <br>
-                <strong class="grey no-bottom-margin"><span class="heroicon heroicon-information"></span> {{ $group->description }}</strong><br>
-                <strong  class="grey no-bottom-margin"><span class="heroicon heroicon-location"></span> {{ $group->location->street }}, {{ $group->location->city }}</strong><br>
-                @if($group->rides_are_private == 1) <span class="grey"><span class="heroicon heroicon-lock-closed"></span> {{ __('carpool.rides-are-private') }}</span> @endif
-
+                <!-- <strong class="grey no-bottom-margin"><span class="heroicon heroicon-information"></span> {{ $group->description }}</strong><br> -->
+                <div  class="grey no-bottom-margin"><span class="heroicon heroicon-location"></span> {{ $group->location->street }}, {{ $group->location->city }}</div>
+                @if($group->rides_are_private == 1) <div class="grey"><span class="heroicon heroicon-lock-closed"></span> {{ __('carpool.rides-are-private') }}</div> @endif
             </div>
 
             <div class="col-desk-6 text-right">
@@ -23,7 +23,6 @@
                     @else
                         <a href="/carpool/add?groupid={{ $group->id }}" class="button">{{ __('carpool.add-a-ride') }}</a>
                     @endif
-
                 </div>
             </div>
         </div> <!--  grid -->
