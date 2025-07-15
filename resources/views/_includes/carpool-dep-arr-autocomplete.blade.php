@@ -142,6 +142,7 @@
                         baseUrl+"/api/street/autocomplete/"+query,
                     );
                     const data = await source.json();
+                    console.log(data);
                     // Post Loading placeholder text
                     document
                         .getElementById("autoCompleteDep")
@@ -170,7 +171,7 @@
         resultItem: {
             highlight: true
         },
-        searchEngine: "loose",
+        searchEngine: searchEngineCustom, // Strict, loose or custom search engine
         threshold: 4,
         debounce: 1000, // Milliseconds value
         resultsList: {
@@ -185,6 +186,7 @@
                     list.appendChild(message);
                 }
             },
+            maxResults: 10,
             noResults: true,
         },
         events: {
@@ -250,7 +252,7 @@
         resultItem: {
             highlight: true
         },
-        searchEngine: "loose",
+        searchEngine: searchEngineCustom,
         threshold: 4,
         debounce: 1000, // Milliseconds value
         resultsList: {
@@ -292,5 +294,8 @@
     const autoCompleteJSDep = new autoComplete(configDep);
     const autoCompleteJSArr = new autoComplete(configArr);
 
+    function searchEngineCustom(query, record) {
+        return record;
+    }
 
 </script>

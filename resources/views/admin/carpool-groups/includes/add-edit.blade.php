@@ -21,7 +21,7 @@
 <div class="col-desk-12">
     <div class="tiny light-grey" style="position: absolute; margin-top: -20px;">{{ __('carpool.location') }} </div>
     <div class="field special-placeholder">
-        <input id="autoCompleteLocation" type="search" name="location"  dir="ltr" spellcheck=false autocorrect="off" autocomplete="off" autocapitalize="off"
+        <input id="autoCompleteLocation" type="search" name="location"  dir="ltr" spellcheck=false autocorrect="off" autocomplete="off" autocapitalize="off" required
                @if(isset($group->location))
                value="{{ $group->location->street }}, {{ $group->location->city }}"
                @elseif(isset($searchLocationValue))
@@ -112,7 +112,7 @@
         resultItem: {
             highlight: true
         },
-        searchEngine: "loose",
+        searchEngine: searchEngineCustom,
         threshold: 4,
         debounce: 1000, // Milliseconds value
         resultsList: {
@@ -150,5 +150,10 @@
     };
 
     const autoCompleteJSLocation = new autoComplete(configLocation);
+
+
+    function searchEngineCustom(query, record) {
+        return record;
+    }
 
 </script>

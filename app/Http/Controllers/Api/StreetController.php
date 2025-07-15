@@ -25,6 +25,7 @@ class StreetController extends Controller
 
     public function autocomplete($searchString)
     {
+        // $searchString = preg_replace('/[[:digit:]]/','', $searchString); // remove numbers eg house street 1
         $token = env('LOCATIONIQ_TOKEN');
         $endpointUrl = 'https://us1.locationiq.com/v1/autocomplete?key='.$token.'&q='.$searchString.'&accept-language=fr&countrycodes=BE';
         Log::debug('Autocomplete - '.$endpointUrl);
