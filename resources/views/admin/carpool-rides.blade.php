@@ -5,24 +5,32 @@
     @include('admin._includes.sub-navigation')
 
     <!-- top block with first paragraph -->
-    <div class="block">
+    <div class="block no-bottom-margin no-bottom-padding">
         <div class="grid">
-            <div class="col-desk-12 ">
+            <div class="col-desk-6 ">
                 <h1> {{ __('carpool.my-rides') }}</h1>
             </div>
-            <div class="col-desk-12 ">
-                @if(empty(Auth::user()->car))
-                    <a href="#" class="button disabled" > {{ __('carpool.add-a-ride') }}</a>
-                    &nbsp;&nbsp;
-                    <a href="{{ url('/') }}/admin/user/profile/{{ Auth::user()->id }}/edit/" class="grey tiny">Complete your profile first</a>
-                @else
-                    <a href="/carpool/add" class="button"> {{ __('carpool.add-a-ride') }}</a>
-                @endif
+            <div class="col-desk-6 text-right">
+                <div class="extra-padding-top">
+                    @if(empty(Auth::user()->car))
+                        <a href="#" class="button disabled">{{ __('carpool.add-a-ride') }}</a>
+                        <a href="{{ url('/') }}/admin/user/profile/{{ Auth::user()->id }}/edit/" class="grey tiny">Complete your profile first</a>
+                    @else
+                        <a href="/carpool/add" class="button"> {{ __('carpool.add-a-ride') }}</a>
+                    @endif
+                </div>
+
             </div>
         </div> <!--  grid -->
     </div>
 
     <div class="block">
+        <div class="page-sub-nav tabular-style">
+            <ul>
+                <li class="tab @if(Route::current()->getName() == 'admin.carpoolOverview') active @endif "><a href="{{ route('admin.carpoolOverview') }}">{{ __('carpool.tab-upcoming') }}</a></li>
+                <li class="tab @if(Route::current()->getName() == 'admin.carpoolOverviewFilter') active @endif" data-tab="tab-b"><a href="{{ route('admin.carpoolOverviewFilter', ['filter' => 'past']) }}">{{ __('carpool.tab-old') }}</a></li>
+            </ul>
+        </div>
         @if(count($rides) > 0)
             @foreach($rides as $ride)
                 @include('_includes.carpool-ride-block', ['layout' => 'overview-listing', 'showReservations' => 1, 'showConversations' => 1])

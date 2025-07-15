@@ -20,12 +20,21 @@ use App\Events\CarpoolRequested;
 class CarpoolController extends Controller
 {
 
-    public function overview()
+    // filter = [future|past]
+    public function overview($filter = 'future')
     {
-        $yesterday = Carbon::yesterday();
-        $data['rides'] = CarpoolRide::where('travel_start_datetime', '>', $yesterday)
-                                ->where('user_id', Auth::user()->id)
-                                ->orderBy('travel_start_datetime')->get();
+        if($filter == 'past') {
+            $tomorrow = Carbon::yesterday();
+            $data['rides'] = CarpoolRide::where('travel_start_datetime', '<', $tomorrow)
+                ->where('user_id', Auth::user()->id)
+                ->orderBy('travel_start_datetime', 'desc')->get();
+        } else {
+            $yesterday = Carbon::yesterday();
+            $data['rides'] = CarpoolRide::where('travel_start_datetime', '>', $yesterday)
+                ->where('user_id', Auth::user()->id)
+                ->orderBy('travel_start_datetime')->get();
+        }
+
         return view('admin.carpool-rides', $data);
 
     }

@@ -1658,7 +1658,7 @@ header .block {
 .page-sub-nav.tabular-style ul li.active a {
   background: transparent;
   font-weight: 800;
-  border-bottom: 1px solid #FFF;
+  border-bottom: 1px solid #faf6f2;
 }
 .page-sub-nav.tabular-style ul li.active a:after {
   display: none;

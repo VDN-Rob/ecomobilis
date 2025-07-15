@@ -30,6 +30,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Web', 'as' => 'web.'], functi
 
     // carpool ----------
     Route::get('/carpool/', 'CarpoolController@overview')->name('carpoolOverview');
+
     Route::post('/carpool/matching', 'CarpoolController@matching')->name('carpoolMatching');
 
     Route::group(['middleware' => ['auth']], function () {
@@ -71,6 +72,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'middleware' => ['aut
 
     // carpool basics ----------
     Route::get('/admin/',                   'CarpoolController@overview')->name('carpoolOverview');
+    Route::get('/admin/carpool/{filter}',         'CarpoolController@overview')->name('carpoolOverviewFilter');
+
     Route::get('/admin/carpool-as-passenger','CarpoolController@carpoolOverviewAsPassenger')->name('carpoolOverviewAsPassenger');
 
     Route::get('/admin/carpool-reservation/ride/{rideId}/user/{userId}/', 'CarpoolController@carpoolReservation')->name('carpoolReservation');

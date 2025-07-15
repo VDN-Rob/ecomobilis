@@ -10,6 +10,10 @@ return [
     'my-groups' => 'Mes groupes',
     'my-messages' => 'Mes messages',
 
+    // subtabs
+    'tab-upcoming' => 'Prochaine',
+    'tab-old' => 'Anciens',
+
     // admin tabs mobile
     'mobile-my-rides'  => 'Covoiturage',
     'mobile-my-rides-as-passenger'  => 'Covoiturage passager',
