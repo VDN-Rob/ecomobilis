@@ -94,6 +94,9 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'middleware' => ['aut
     Route::get('/admin/carpool-groups/{id}/edit',         'CarpoolGroupsController@edit')->name('carpoolGroupsEdit');
     Route::put('/admin/carpool-groups/{id}/update',      'CarpoolGroupsController@update')->name('carpoolGroupsUpdate');
 
+    Route::get('/admin/carpool-groups/{id}/delete',      'CarpoolGroupsController@delete')->name('carpoolGroupsDelete');
+    Route::delete('/admin/carpool-groups/{id}/delete',      'CarpoolGroupsController@destroy')->name('carpoolGroupsDestroy');
+
 
 });
 

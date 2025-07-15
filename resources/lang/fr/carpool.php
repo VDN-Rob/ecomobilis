@@ -86,6 +86,7 @@ return [
     'location'                  => 'Place',
     'user-must-be-logged-in'    => 'L\'utilisateur doit être connecté pour voir la page du groupe',
     'public_url'                => 'url publique',
-    'rides-are-private'         => 'Toutes les courses sont privées dans ce groupe'
+    'rides-are-private'         => 'Toutes les courses sont privées dans ce groupe',
+    'rides'                     => 'déplacement(s)'  // number of rides
 
 ];

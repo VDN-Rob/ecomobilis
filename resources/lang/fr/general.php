@@ -2,9 +2,10 @@
 
 return [
 
-    'edit' => 'Editer',
-    'save' => 'Sauvegarder',
-    'add' => 'Ajouter',
+    'edit'      => 'Editer',
+    'save'      => 'Sauvegarder',
+    'add'       => 'Ajouter',
+    'delete'    => 'Supprimer',
 
     // no access page
     'no-access-title' => 'Pas d\'accès',

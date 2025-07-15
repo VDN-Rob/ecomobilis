@@ -102,7 +102,6 @@
 
         if(lat1 && lat2) {
             const R = 6371; // Earth's radius in kilometers
-console.log(lat1);
             const toRadians = (degrees) => degrees * (Math.PI / 180);
 
             const dLat = toRadians(lat2 - lat1);
@@ -116,14 +115,11 @@ console.log(lat1);
             const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
             distance = R * c; // Distance in kilometers
+            priceSuggested  = distance*pricePerKm + (distance*pricePerKm)*0.20;
 
             $('.js-distance-container').show();
             $('.js-distance').html(distance.toFixed(2) +' km');
-            console.log(distance);
-            console.log(pricePerKm)
-            priceSuggested  = pricePerKm + (pricePerKm.distance*0,25);
-           // priceSuggested      = priceSuggestedFull.toFixed(1);
-            $('#price_per_seat').val(priceSuggested);
+            $('#price_per_seat').val(priceSuggested.toFixed(0)+'.00');
         }
 
     }

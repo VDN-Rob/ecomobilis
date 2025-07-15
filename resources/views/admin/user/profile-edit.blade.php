@@ -36,7 +36,7 @@
                 <div class="col-desk-6 ">
                     <div class="field special-placeholder">
                         <label>{{ __('user.gender') }}</label>
-                        <select name="gender" id="gender" required>
+                        <select name="gender" id="gender">
                             <option value="" @if($user->gender !== 'F' && $user->gender !== 'M' && $user->gender !== 'X') selected @endif>-</option>
                             <option value="F" @if($user->gender == 'F') selected @endif>F</option>
                             <option value="M" @if($user->gender == 'M') selected @endif>M</option>

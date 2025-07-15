@@ -96,4 +96,24 @@ class CarpoolGroupsController extends Controller
     }
 
 
+    public function delete($groupId)
+    {
+        $data['group'] = CarpoolGroup::find($groupId);
+        return view('admin.carpool-groups.delete', $data);
+    }
+
+    public function destroy($groupId, Request $request)
+    {
+        // save new item with array
+        Log::debug('Delete Group');
+        Log::debug(json_decode($request));
+
+        CarpoolGroup::find($groupId)->delete();
+
+        return \Redirect::route('admin.carpoolGroupsOverview')->with('message', 'Ce groupe a été supprimé');
+
+    }
+
+
+
 }
