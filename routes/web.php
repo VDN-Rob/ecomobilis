@@ -85,8 +85,12 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'middleware' => ['aut
     Route::post('/admin/carpool-reservation/reservation/{rideReservationId}/confirm-reject-store', 'CarpoolController@carpoolReservationConfirmRejectStore')->name('carpoolReservationConfirmRejectStore');
 
     // user profile + user's car ----------
-    Route::get('/admin/user/profile/{userId}/edit',   'UserController@profileEdit')->name('profileEdit');
-    Route::put('/admin/user/profile/{userId}/update',   'UserController@profileUpdate')->name('profileUpdate');
+    Route::get('/admin/user/profile/edit',   'UserController@profileEdit')->name('profileEdit');
+    Route::put('/admin/user/profile/update',   'UserController@profileUpdate')->name('profileUpdate');
+
+    Route::get('/admin/user/delete/',       'UserController@profileDelete')->name('profileDelete');
+    Route::delete('/admin/user/delete/',    'UserController@profileDestroy')->name('profileDestroy');
+
 
     // groups
     Route::get('/admin/carpool-groups/',            'CarpoolGroupsController@overview')->name('carpoolGroupsOverview');
@@ -100,6 +104,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'middleware' => ['aut
     Route::get('/admin/carpool-groups/{id}/delete',      'CarpoolGroupsController@delete')->name('carpoolGroupsDelete');
     Route::delete('/admin/carpool-groups/{id}/delete',      'CarpoolGroupsController@destroy')->name('carpoolGroupsDestroy');
 
+    Route::get('/admin/carpool-groups/{id}/archive',      'CarpoolGroupsController@archive')->name('carpoolGroupsArchive');
+    Route::get('/admin/carpool-groups/{id}/unarchive',      'CarpoolGroupsController@unarchive')->name('carpoolGroupsUnarchive');
 
 });
 

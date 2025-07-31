@@ -4,6 +4,11 @@
     <!-- top block with title -->
     <div class="block no-bottom-margin no-bottom-padding">
         <div class="grid">
+            <div class="col-desk-12 extra-margin-top">
+                <div class="warning red box">
+                    <span class="heroicon heroicon-archive"></span> {{ __('carpool.group-is-archived') }}</div>
+                </div>
+            </div>
             <div class="col-desk-6">
                 <h1 class="no-bottom-margin">{{ $group->title }}</h1>
                 <div class="dark-blue">{{ $group->description }}</div>
@@ -14,16 +19,20 @@
             </div>
 
             <div class="col-desk-6 text-right">
-                <div class="extra-padding-top">
-                    @if(!isset(Auth::user()->id))
-                        <a href="#" class="button disabled" > {{ __('carpool.add-a-ride') }}</a>
-                    @elseif(empty(Auth::user()->birth_date) || empty(Auth::user()->car))
-                        <a href="#" class="button disabled" > {{ __('carpool.add-a-ride') }}</a>
-                        <a href="{{ url('/') }}/admin/user/profile/{{ Auth::user()->id }}/edit/" class="grey tiny">Complete your profile first</a>
-                    @else
-                        <a href="/carpool/add?groupid={{ $group->id }}" class="button">{{ __('carpool.add-a-ride') }}</a>
-                    @endif
-                </div>
+                @if($group->is_archived !== 1)
+                    <div class="extra-padding-top">
+                        @if(!isset(Auth::user()->id))
+                            <a href="#" class="button disabled" > {{ __('carpool.add-a-ride') }}</a>
+                        @elseif(empty(Auth::user()->birth_date) || empty(Auth::user()->car))
+                            <a href="#" class="button disabled" > {{ __('carpool.add-a-ride') }}</a>
+                            <a href="{{ url('/') }}/admin/user/profile/{{ Auth::user()->id }}/edit/" class="grey tiny">Complete your profile first</a>
+                        @else
+                            <a href="/carpool/add?groupid={{ $group->id }}" class="button">{{ __('carpool.add-a-ride') }}</a>
+                        @endif
+                    </div>
+                @else
+
+                @endif
             </div>
         </div> <!--  grid -->
     </div>

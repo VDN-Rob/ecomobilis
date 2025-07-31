@@ -6,6 +6,9 @@ return [
     'save'      => 'Sauvegarder',
     'add'       => 'Ajouter',
     'delete'    => 'Supprimer',
+    'more'      => 'Plus',
+    'archive'   => 'Archiver',
+    'unarchive' => 'Déarchiver',
 
     // no access page
     'no-access-title' => 'Pas d\'accès',
@@ -14,5 +17,6 @@ return [
     // please complete
     'please-complete-profile' => 'Veuillez compléter votre profil d\'utilisateur pour gagner votre confiance',
     'user-profile-btn' => 'Votre profil'
+
 
 ];

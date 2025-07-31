@@ -14,7 +14,7 @@
                 <div class="extra-padding-top">
                     @if(empty(Auth::user()->car))
                         <a href="#" class="button disabled">{{ __('carpool.add-a-ride') }}</a>
-                        <a href="{{ url('/') }}/admin/user/profile/{{ Auth::user()->id }}/edit/" class="grey tiny">Complete your profile first</a>
+                        <a href="{{ url('/') }}/admin/user/profile/edit/" class="grey tiny">Complete your profile first</a>
                     @else
                         <a href="/carpool/add" class="button"> {{ __('carpool.add-a-ride') }}</a>
                     @endif

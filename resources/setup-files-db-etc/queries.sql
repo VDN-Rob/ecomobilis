@@ -1,4 +1,10 @@
 # ------------------------------------------------------------
+# -- 31 JUL - Groups
+
+ALTER TABLE `carpool_groups` ADD `is_archived` tinyint(1) DEFAULT '0';
+
+
+# ------------------------------------------------------------
 # -- 14 JUL - Groups
 
 ALTER TABLE `carpool_groups` ADD `description` TEXT  NULL  AFTER `title`;

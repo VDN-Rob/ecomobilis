@@ -14,7 +14,7 @@
     </div>
 
     <!-- top block with first paragraph -->
-    {!! Form::model(null, array('method' => 'PUT', 'route' => ['admin.profileUpdate', Auth::user()->id], 'class' => 'ui form', 'files' => false)) !!}
+    {!! Form::model(null, array('method' => 'PUT', 'route' => ['admin.profileUpdate'], 'class' => 'ui form', 'files' => false)) !!}
 
         <div class="block extra-margin-bottom extra-padding-bottom">
             <div class="grid grid-with-row-margin ">
@@ -75,7 +75,10 @@
 
                 <hr>
 
-                @if(!isset($user->car)) <div class="tiny button js-add-car-btn">+ {{ __('carpool.add-car-btn') }}</div>@endif
+                @if(!isset($user->car))
+                    <div class="col-desk-12 text-right"><div class="tiny button js-add-car-btn">+ {{ __('carpool.add-car-btn') }}</div></div>
+
+                @endif
 
                 {{-- ----------------------------------------------------------------------- --}}
                 {{-- --------------------------------- CAR --------------------------------- --}}
@@ -110,8 +113,12 @@
                             <div class="col-desk-6">
                                 <label>{{ __('carpool.price_per_km') }}. <span class="tiny grey">{{ __('carpool.price_per_km_note') }}</span></label>
                                 <div class="field special-placeholder">
-                                    <input type="number" id="price_per_km_per_seat" name="price_per_km_per_seat" step="0.01"
-                                           value="{{ $user?->car?->price_per_km_per_seat }}" lang="nl" style="width:90%"/> <span class="grey">€</span>
+                                    @if(isset($user->car))
+                                        <input type="number" id="price_per_km_per_seat" name="price_per_km_per_seat" step="0.01"
+                                               value="{{ $user?->car?->price_per_km_per_seat }}" lang="nl" style="width:90%"/> <span class="grey">€</span>
+                                    @else
+                                        <input type="number" id="price_per_km_per_seat" name="price_per_km_per_seat" step="0.01" value="0.10" lang="nl" style="width:90%"/> <span class="grey">€</span>
+                                    @endif
                                 </div>
                             </div>
 
@@ -167,8 +174,10 @@
                     </div> <!-- box -->
                 </div> <!-- col-desk-12 -->
 
-
-                <div class="col-desk-12 text-right">
+                <div class="col-desk-6 text-left">
+                    <a href="{{ route('admin.profileDestroy', []) }}" class="tiny">{{ __('user.delete-account') }}</a>
+                </div>
+                <div class="col-desk-6 text-right">
                         <input type="submit" value="{{ __('general.save') }}"  class="button big" style="width: 200px">
                 </div><!-- col-desk-12 -->
 

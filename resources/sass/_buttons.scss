@@ -67,7 +67,19 @@ button,
     color: #fff;
   }
 }
-
+.button.warning {
+    // background: rgb(217, 217, 217);
+    border-color: rgba($red, 1);
+    background: rgba($red, 0.5);
+    color: darken($red, 10%);
+    font-weight: 600;
+    &:hover {
+        border-color: rgba($red, 1);
+        background: rgba($red, 0.8);
+        box-shadow: rgba(0,0,0,0.15) 0px 1px 3px;
+        color: #fff;
+    }
+}
 /* DROPDOWN BUTTON ------------------------------- */
 
 .dropdown {
@@ -101,24 +113,27 @@ button,
     position: absolute;
     left: -10px;
     background: $page-bg-button-hover;
-    border: 1px solid $line-color-light;
+    border: 2px solid $blue;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba($blue,0.2);
     z-index: 1;
     font-size: 12px;
     padding: 2px;
-    border-radius: 5px;
     a {
       text-align: left;
       font-size: 12px;
       padding: 4px 16px;
       text-decoration: none;
+      font-weight: 600;
       display: block;
       cursor: pointer;
-      border-bottom:  1px solid $line-color;
+      color: $blue;
+      border-bottom:  2px solid $blue;
+    }
+    a.disabled {
+       color: lighten($dark-grey, 10%);
     }
     a:hover {
-      border-radius: 5px;
        background: darken($page-bg-button-hover, 4%);
     }
 

@@ -54,7 +54,6 @@ class CarpoolGroupsController extends Controller
             'title'                          => $request->get('title'),
             'description'                    => $request->get('description'),
             'location_street_coordinates_id' => $streetLocationObj->id,
-           // 'does_need_authentication'       => ($request->get('authentication') == 'on') ? 1 : 0,
             'does_need_authentication'       => 1,
             'rides_are_private'              => ($request->get('private') == 'on') ? 1 : 0,
             'token'                          => substr(md5(microtime()),rand(0,26),25),
@@ -80,16 +79,21 @@ class CarpoolGroupsController extends Controller
         Log::debug('Add Group');
         Log::debug(json_decode($request));
 
+        // permissions
+        $group = CarpoolGroup::find($groupId);
+        if(Auth::user()->id !== $group->user_id) {
+            Log::debug('Not allowed - different user id'.Auth::user()->id. ' vs '.$group->user_id);
+            dd('Not allowed');
+        }
         $streetLocationObj = (new CarpoolStreetCoordinate())->getStreet($request->LocationJson);
         $data = [
             'title'                          => $request->get('title'),
-            'description'                          => $request->get('description'),
+            'description'                     => $request->get('description'),
             'location_street_coordinates_id' => $streetLocationObj->id,
-           // 'does_need_authentication'       => ($request->get('authentication') == 'on') ? 1 : 0,
             'does_need_authentication'       => 1,
             'rides_are_private'              => ($request->get('private') == 'on') ? 1 : 0,
         ];
-        CarpoolGroup::find($groupId)->update($data);
+        $group->update($data);
 
         return \Redirect::route('admin.carpoolGroupsOverview')->with('message', 'Votre groupe a été actualisé');
 
@@ -115,5 +119,27 @@ class CarpoolGroupsController extends Controller
     }
 
 
+    public function archive($groupId)
+    {
+        $group = CarpoolGroup::find($groupId);
+        if(Auth::user()->id !== $group->user_id) {
+            Log::debug('Not allowed - different user id'.Auth::user()->id. ' vs '.$group->user_id);
+            dd('Not allowed');
+        }
+        $group->update(['is_archived' => 1]);
+        return \Redirect::route('admin.carpoolGroupsOverview')->with('message', 'Votre groupe a été actualisé');
+    }
+
+    public function unarchive($groupId)
+    {
+        $group = CarpoolGroup::find($groupId);
+        if(Auth::user()->id !== $group->user_id) {
+            Log::debug('Not allowed - different user id'.Auth::user()->id. ' vs '.$group->user_id);
+            dd('Not allowed');
+        }
+        $group->update(['is_archived' => 0]);
+
+        return \Redirect::route('admin.carpoolGroupsOverview')->with('message', 'Votre groupe a été actualisé');
+    }
 
 }

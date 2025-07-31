@@ -11,14 +11,15 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
 
 
-    public function profileEdit($userId)
+    public function profileEdit()
     {
-        $data['user']           = User::find($userId);
+        $data['user']           = Auth::user();
         $data['carTypes']       = CarpoolCarType::all();
         $data['carLuggages']    = CarpoolLuggage::all();
         $data['minDate'] = Carbon::today()->subYears(18)->toDateString();
@@ -26,9 +27,9 @@ class UserController extends Controller
         return view('admin.user.profile-edit', $data);
     }
 
-    public function profileUpdate($userId, Request $request)
+    public function profileUpdate(Request $request)
     {
-        $user = User::find($userId);
+        $user           = Auth::user();
 
         // the data
         $dataCar = [
@@ -67,9 +68,37 @@ class UserController extends Controller
             $user->car->update($dataCar);
         }
 
-        return \Redirect::route('web.profileShow', [$userId])->with('message', 'Les données ont été mises à jour');
+        return \Redirect::route('web.profileShow', [$user->id])->with('message', 'Les données ont été mises à jour');
 
     }
 
+    public function profileDelete()
+    {
+        $data['user']           = Auth::user();
+        return view('admin.user.delete', $data);
+    }
+
+    public function profileDestroy()
+    {
+        $user           = Auth::user();
+
+        // remove data
+        $dataUser = [
+            'firstname'         => '',
+            'lastname'          => 'Profil supprimé',
+            'gender'            => NULL,
+            'bio'               => NULL,
+            'email'             => NULL,
+            'phone_number'      => NULL,
+            'birth_date'        => NULL
+        ];
+        $user->update($dataUser);
+
+        // delete car
+        $user->car->delete();
+
+        Auth::logout();
+        return redirect('/');
+    }
 
 }

@@ -84,68 +84,71 @@
             </div> <!--  grid -->
         </div>
 
-        <div class="box extra-box-shadow">
-            <div class="grid grid-with-row-margin ">
+        @if(isset($user->car))
+            <div class="box extra-box-shadow">
+                <div class="grid grid-with-row-margin ">
 
-                <div class="col-desk-3 ">
-                    <strong>{{ __('carpool.brand') }}</strong>
-                </div>
-                <div class="col-desk-3 ">
-                    {{ $user?->car?->brand }}
-                </div>
+                    <div class="col-desk-3 ">
+                        <strong>{{ __('carpool.brand') }}</strong>
+                    </div>
+                    <div class="col-desk-3 ">
+                        {{ $user?->car?->brand }}
+                    </div>
 
-                <div class="col-desk-3 ">
-                    <strong>{{ __('carpool.car_type') }}</strong>
-                </div>
-                <div class="col-desk-3 ">
-                    {{ $user?->car?->type->type }}
-                </div>
+                    <div class="col-desk-3 ">
+                        <strong>{{ __('carpool.car_type') }}</strong>
+                    </div>
+                    <div class="col-desk-3 ">
+                        {{ $user?->car?->type->type }}
+                    </div>
 
-                <div class="col-desk-3 ">
-                    <strong>{{ __('carpool.description') }}</strong>
-                </div>
-                <div class="col-desk-3 ">
-                    {{ $user?->car?->description }}
-                </div>
+                    <div class="col-desk-3 ">
+                        <strong>{{ __('carpool.description') }}</strong>
+                    </div>
+                    <div class="col-desk-3 ">
+                        {{ $user?->car?->description }}
+                    </div>
 
 
-                <div class="col-desk-3 ">
-                    <strong>{{ __('carpool.luggage') }}</strong>
-                </div>
-                <div class="col-desk-3 ">
-                    {{ $user?->car?->luggage->name }}
-                </div>
+                    <div class="col-desk-3 ">
+                        <strong>{{ __('carpool.luggage') }}</strong>
+                    </div>
+                    <div class="col-desk-3 ">
+                        {{ $user?->car?->luggage->name }}
+                    </div>
 
-                <div class="col-desk-3 ">
-                    <strong>{{ __('carpool.seats_available') }}</strong>
-                </div>
-                <div class="col-desk-3 ">
-                    {{ $user?->car?->default_seats_available }}
-                </div>
+                    <div class="col-desk-3 ">
+                        <strong>{{ __('carpool.seats_available') }}</strong>
+                    </div>
+                    <div class="col-desk-3 ">
+                        {{ $user?->car?->default_seats_available }}
+                    </div>
 
-                <div class="col-desk-3 ">
-                    <strong>{{ __('carpool.is_smoking_allowed') }}</strong>
-                </div>
-                <div class="col-desk-3 ">
-                    @if($user?->car?->is_smoking_allowed == 1) ✓ @else x @endif
-                </div>
+                    <div class="col-desk-3 ">
+                        <strong>{{ __('carpool.is_smoking_allowed') }}</strong>
+                    </div>
+                    <div class="col-desk-3 ">
+                        @if($user?->car?->is_smoking_allowed == 1) ✓ @else x @endif
+                    </div>
 
-                <div class="col-desk-3 ">
-                    <strong>{{ __('carpool.is_isofix_present') }}</strong>
-                </div>
-                <div class="col-desk-3 ">
-                    @if($user?->car?->is_isofix_present == 1) ✓ @else x @endif
-                </div>
+                    <div class="col-desk-3 ">
+                        <strong>{{ __('carpool.is_isofix_present') }}</strong>
+                    </div>
+                    <div class="col-desk-3 ">
+                        @if($user?->car?->is_isofix_present == 1) ✓ @else x @endif
+                    </div>
 
-                <div class="col-desk-3 ">
-                    <strong>{{ __('carpool.price_per_km') }}</strong>
-                </div>
-                <div class="col-desk-3 ">
-                    € {{ $user?->car?->price_per_km_per_seat }}
-                </div>
+                    <div class="col-desk-3 ">
+                        <strong>{{ __('carpool.price_per_km') }}</strong>
+                    </div>
+                    <div class="col-desk-3 ">
+                        € {{ $user?->car?->price_per_km_per_seat }}
+                    </div>
 
+                </div>
             </div>
-        </div>
+        @endif
+
     </div>
 
 @endsection

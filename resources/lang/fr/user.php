@@ -21,5 +21,11 @@ return [
     'login-to-view'     => 'Se connecter pour voir',
     'member-since'      => 'Membre depuis',
     'phone-number'      => 'Phone number',
-    'only-internal-use' => 'Pour usage interne uniquement'
+    'only-internal-use' => 'Pour usage interne uniquement',
+
+    // delete
+    'delete-account'         => 'Supprimer mon compte',
+    'delete-waring'         => 'Vous êtes sur le point de supprimer votre compte. Cette action ne peut pas être annulée.',
+
+
 ];

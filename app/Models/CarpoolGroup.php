@@ -17,7 +17,7 @@ class CarpoolGroup extends Model
         'does_need_authentication',
         'rides_are_private',
         'token',
-        'user_id',
+        'user_id', 'is_archived'
     ];
 
     public function user()

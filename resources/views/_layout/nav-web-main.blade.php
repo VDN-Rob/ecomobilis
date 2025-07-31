@@ -54,7 +54,7 @@
                         <span class="label unread-messages-count" style="top: 2px;">{{ Auth::user()->totalUnreadMessages->count() }}</span>
                     @endif
                 </a>
-                <a href="{{ url('/admin/user/profile/') }}/{{ Auth::user()->id }}/edit">Mon profil</a>
+                <a href="{{ url('/admin/user/profile/') }}/edit">Mon profil</a>
                 <a class="" href="{{ route('logout', App::getLocale()) }}"
                    onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
