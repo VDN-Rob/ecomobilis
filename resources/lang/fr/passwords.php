@@ -19,5 +19,10 @@ return [
     'privacy-checkbox'     => 'Je suis d\'accord avec la <a href="../page/privacy-policy" target="_blank">politique de confidentialité </a>',
     'terms-checkbox'     => 'Je suis d\'accord avec les <a href="../page/terms-of-use" target="_blank">termes d\'utilisation</a>',
 
-    'sent'              => 'Le lien vers le mot de passe est envoyé'
+
+    'reset'    => 'Votre mot de passe a été réinitialisé !',
+    'sent'     => 'Nous vous avons envoyé par courriel le lien de réinitialisation du mot de passe !',
+    'token'    => "Ce jeton de réinitialisation du mot de passe n'est pas valide.",
+    'user'     => "Aucun utilisateur n'a été trouvé avec cette adresse e-mail.",
+
 ];

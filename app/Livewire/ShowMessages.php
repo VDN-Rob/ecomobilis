@@ -10,15 +10,17 @@ use App\Models\Network;
 use Illuminate\Http\Request;
 use Livewire\Component;
 use Auth;
+use Livewire\WithPagination;
 
 class ShowMessages extends Component
 {
+    use WithPagination;
+
     public $currentPartnerUserId;
     public $currentCarRideId;
     public $ride;
     public $conversations;
     public $rideReservationSent;
-    public $conversationsListArr;
     public $newMessage;
 
     public function mount($currentPartnerUserId, $currentCarRideId)
@@ -34,7 +36,14 @@ class ShowMessages extends Component
     public function render()
     {
 
-        return view('livewire.show-messages');
+        $userId = \Illuminate\Support\Facades\Auth::user()->id;
+        $data['conversationsList'] = CarpoolMessage::where('user_id', $userId)
+                                                ->orWhere('conversation_partner_user_id', $userId)
+                                                ->orderBy('is_read', 'asc')
+                                                ->orderBy('created_at', 'desc')->paginate(20);
+        $data['conversationsListArr'] = (new CarpoolMessage())->getConversationsWithRidesArray($data['conversationsList']);
+
+        return view('livewire.show-messages', $data);
     }
 
     /* ----- ADD A MESSAGE ------- */
@@ -79,7 +88,7 @@ class ShowMessages extends Component
 
 
         // sidebar
-        $this->conversationsListArr = (new CarpoolMessage())->getConversationsWithRides(Auth::user()->id);
+        // via data view
 
         // set old ones as read
         (new CarpoolMessage())->setConversationsAsRead($currentPartnerUserId, $currentCarRideId);

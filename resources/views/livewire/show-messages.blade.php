@@ -7,7 +7,10 @@
     <!--- SIDE BAR W/ ALL YOUR RIDES --->
         <div class="col-desk-3">
             @if(count($conversationsListArr) == 0)
-                <div class="box box-with-border list-of-chats extra-box-shadow"><div class="grey extra-margin-top">{{ __('carpool.no-messages') }}</div></div>
+                <div class="box box-with-border list-of-chats extra-box-shadow">
+                    <div class="grey extra-margin-top">{{ __('carpool.no-messages') }}</div>
+                    <div class="bottom tiny"><a href="">Actuel</a> <a href="">Passé</a></div>
+                </div>
             @else
                 <div class="box box-with-border list-of-chats extra-box-shadow">
                     @foreach($conversationsListArr as $mes)
@@ -25,6 +28,7 @@
                             </div>
                         </a>
                     @endforeach
+                        {{ $conversationsList->links() }}
                 </div>
             @endif
         </div>

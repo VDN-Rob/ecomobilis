@@ -35,6 +35,10 @@
             @foreach($rides as $ride)
                 @include('_includes.carpool-ride-block', ['layout' => 'overview-listing', 'showReservations' => 1, 'showConversations' => 1])
             @endforeach
+
+            <!-- Pagination links -->
+            {{ $rides->links() }}
+
         @else
             <div class="grid">
                 <div class="col-desk-12 text-center">

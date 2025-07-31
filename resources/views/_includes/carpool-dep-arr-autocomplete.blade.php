@@ -61,7 +61,11 @@
     @guest
         var pricePerKm = false;
     @else
-        var pricePerKm = {{ Auth::user()->car->price_per_km_per_seat }};
+        @if(isset(Auth::user()->car->price_per_km_per_seat))
+            var pricePerKm = {{ Auth::user()->car->price_per_km_per_seat }};
+        @else
+            var pricePerKm = false;
+        @endif
     @endguest
 
     var DepValues = false;
@@ -93,8 +97,6 @@
 
     function computeDistance()
     {
-        console.log(DepValues);
-        console.log(ArrValues);
         lat1 = DepValues.lat;
         lon1 = DepValues.lon;
         lat2 = ArrValues.lat;

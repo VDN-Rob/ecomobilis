@@ -47,22 +47,16 @@ class CarpoolMessage extends Model
     }
 
 
-    /* listing of all conversations, used in side navigation, returns a clean array */
-    public function getConversationsWithRides($userId) {
-        $lastMonth = Carbon::now()->subMonth(1);
+    /*
+        listing of all conversations, used in side navigation
+        expects a messages object (see getConversationsQuery()) and returns a clean array
+    */
+    public function getConversationsWithRidesArray($messages) {
 
         $userId = Auth::user()->id;
-        $messages = $this->where('user_id', $userId)
-                         ->orWhere('conversation_partner_user_id', $userId)
-                       //  ->groupBy('car_ride_id', 'conversation_partner_user_id', 'user_id')
-                        // ->groupBy('car_ride_id')
-                         ->orderBy('is_read', 'asc')
-                         ->orderBy('created_at', 'desc')->get();
-
         $cleanArray = [];
         $senderArr  = []; // used for a little trick to compile the list
         foreach($messages as $message) {
-
             if($message->conversation_partner_user_id !== $userId) {
                 if(!in_array($message->car_ride_id.'-'.$message->conversation_partner_user_id, $senderArr)) {
                     $arr = [];
@@ -95,6 +89,18 @@ class CarpoolMessage extends Model
         }
 
         return $cleanArray;
+
+    }
+
+    public function getConversationsQuery() {
+
+        $userId = Auth::user()->id;
+        $messages = $this->where('user_id', $userId)
+            ->orWhere('conversation_partner_user_id', $userId)
+            ->orderBy('is_read', 'asc')
+            ->orderBy('created_at', 'desc');
+
+        return $messages;
 
     }
 

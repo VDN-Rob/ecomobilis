@@ -24,15 +24,17 @@ class CarpoolController extends Controller
     public function overview($filter = 'future')
     {
         if($filter == 'past') {
-            $tomorrow = Carbon::yesterday();
+            // oldies
+            $tomorrow = Carbon::tomorrow();
             $data['rides'] = CarpoolRide::where('travel_start_datetime', '<', $tomorrow)
                 ->where('user_id', Auth::user()->id)
-                ->orderBy('travel_start_datetime', 'desc')->get();
+                ->orderBy('travel_start_datetime', 'desc')->paginate(25);
         } else {
+            // future
             $yesterday = Carbon::yesterday();
             $data['rides'] = CarpoolRide::where('travel_start_datetime', '>', $yesterday)
                 ->where('user_id', Auth::user()->id)
-                ->orderBy('travel_start_datetime')->get();
+                ->orderBy('travel_start_datetime', 'desc')->paginate(25);
         }
 
         return view('admin.carpool-rides', $data);

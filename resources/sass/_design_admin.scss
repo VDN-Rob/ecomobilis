@@ -1,5 +1,5 @@
 .list-of-chats {
-   // box-shadow: 6px 12px 0px 0px rgba($line-color-light, 50%);
+    position: relative;
     padding: 10px;
     overflow: scroll;
     scrollbar-color: $blue $light-grey;
@@ -22,6 +22,20 @@
             background-color: rgba($line-color-light, 50%);
         }
     }
+    .pagination {
+        position: absolute;
+        text-align: center;
+        margin: 0 auto;
+        width: 90%;
+        bottom: 10px;
+        a {
+            border:0;
+            cursor: pointer;
+        }
+        .no-link {
+            opacity: 0.5;
+        }
+    }
 }
 
 .chat-scrollable {
@@ -42,4 +56,16 @@
     border: 0;
     height: 18px;
     line-height: 18px;
+}
+
+.pagination {
+    text-align: center;
+    span, a {
+        font-size: 12px;
+        padding: 5px;
+        color: $grey
+    }
+    a {
+        color: $grey;
+    }
 }
