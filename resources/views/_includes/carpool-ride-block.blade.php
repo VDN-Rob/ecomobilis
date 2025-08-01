@@ -75,7 +75,7 @@
                     <div class="container-ride-edit-btns">
                         @guest
                             @if( $ride->seats_available - $ride->reservedamount()->sum('amount') > 0)
-                                <a href="{{ url('/') }}/admin/carpool-reservation/ride/{{ $ride->id }}/user/0" class="button tiny bg-white">{{ __('carpool.make-reservation-btn') }}</a>
+                                <a href="{{ url('/') }}/admin/carpool-reservation/ride/{{ $ride->id }}" class="button tiny bg-white">{{ __('carpool.make-reservation-btn') }}</a>
                             @else
                                 <span class="tiny grey">{{ __('carpool.no-seat-available') }}</span>
                             @endif
@@ -87,7 +87,7 @@
                                 @if(in_array(Auth::user()->id, $ride->reservations->pluck('passenger_user_id')->toArray()))
                                     <span class="tiny">{{ __('carpool.reserved') }}</span>
                                 @elseif( $ride->seats_available - $ride->reservedamount()->sum('amount') > 0)
-                                    <a href="{{ url('/') }}/admin/carpool-reservation/ride/{{ $ride->id }}/user/{{ Auth::user()->id }}" class="button tiny bg-white">{{ __('carpool.make-reservation-btn') }}</a>
+                                    <a href="{{ url('/') }}/admin/carpool-reservation/ride/{{ $ride->id }}" class="button tiny bg-white">{{ __('carpool.make-reservation-btn') }}</a>
                                 @else
                                     <span class="tiny grey">{{ __('carpool.no-seat-available') }}</span>
                                 @endif

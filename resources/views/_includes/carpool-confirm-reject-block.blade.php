@@ -21,7 +21,7 @@
             <div class="box box-with-border box-ride-confirm-reject">
                 <div class="grid">
                     <div class="col-desk-12 text-center">
-                        <a href="{{ url('/') }}/admin/carpool-reservation/ride/{{ $ride->id }}/user/{{ Auth::user()->id }}" class="button tiny bg-white">{{ __('carpool.make-reservation-btn') }}</a>
+                        <a href="{{ url('/') }}/admin/carpool-reservation/ride/{{ $ride->id }}" class="button tiny bg-white">{{ __('carpool.make-reservation-btn') }}</a>
                     </div>
                 </div>
             </div>

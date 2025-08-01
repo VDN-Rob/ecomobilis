@@ -43,6 +43,12 @@ class CarpoolMessagesController extends Controller
     /* the messages from one thread (unique ride / conversation partner) */
     public function thread($carRideId, $conversationPartnerId)
     {
+        // coming from a non logged-in url?
+        if($conversationPartnerId == 0) {
+            $cpRide = CarpoolRide::find($carRideId);
+            $conversationPartnerId = $cpRide->user_id;
+            return \Redirect::route('admin.carpoolMessagesThread', ['rideId' => $carRideId, 'conversationPartnerId' => $conversationPartnerId]);
+        }
         if($carRideId && $conversationPartnerId) {
             $currentConversation = (new CarpoolMessage())->getConversation($conversationPartnerId, $carRideId);
             if(isset($currentConversation[0])) {

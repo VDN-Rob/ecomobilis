@@ -55,14 +55,15 @@ class CarpoolController extends Controller
 
 
     /* ----------------------- RESERVATION etc ------------------------- */
-    public function carpoolReservation($rideId, $userId)
+    public function carpoolReservation($rideId)
     {
         $data['ride'] = CarpoolRide::find($rideId);
         return view('admin.carpool-reservation', $data);
     }
 
-    public function carpoolReservationStore($rideId, $userId, Request $request)
+    public function carpoolReservationStore($rideId, Request $request)
     {
+        $userId = Auth::user()->id;
         event(new CarpoolRequested($rideId, $userId, $request->amount));
         return \Redirect::route('web.carpoolOverview')->with('message', 'Votre demande est en cours de traitement.');
 
