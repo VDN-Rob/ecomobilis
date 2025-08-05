@@ -12,6 +12,7 @@ use App\Models\CarpoolRide;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Support\Facades\Log;
 
 class CarpoolRideController extends Controller
 {
@@ -41,6 +42,10 @@ class CarpoolRideController extends Controller
         $startTime      = $request->date;
         $streetDepObj   = (object) $request->from_street_coordinates;
         $streetArrObj   = (object) $request->to_street_coordinates;
+        Log::debug('Api CarpoolRideController - matching');
+        Log::debug($startTime);
+        Log::debug(json_encode($streetDepObj));
+        Log::debug(json_encode($streetArrObj));
 
         // do the matching search
         $rides = (new CarpoolRide())->getMatchingRides($streetDepObj, $streetArrObj, $startTime);
