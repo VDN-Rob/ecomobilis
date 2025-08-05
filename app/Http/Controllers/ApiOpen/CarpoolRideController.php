@@ -33,6 +33,24 @@ class CarpoolRideController extends Controller
             ->where('travel_start_datetime', '>', $now);
     }
 
+    /**
+     * Display a listing of only the future resources.
+     */
+    public function matching(Request $request)
+    {
+        $startTime      = $request->date;
+        $streetDepObj   = (object) $request->from_street_locationiq_json;
+        $streetArrObj   = (object) $request->to_street_locationiq_json;
+
+        // do the matching search
+        $rides = (new CarpoolRide())->getMatchingRides($streetDepObj, $streetArrObj, $startTime);
+        $ridesIdArr = $rides->pluck('id')->toArray();
+
+        // now as a clean collection
+        return CarpoolRideResource::collection(CarpoolRide::paginate(100))->whereIn('id', $ridesIdArr);
+
+        return $rides;
+    }
 
     /**
      * Store a newly created resource in storage.

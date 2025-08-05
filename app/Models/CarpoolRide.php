@@ -80,6 +80,7 @@ class CarpoolRide extends Model
         // A. close by departures coordinates
         $latDep = $streetDepObj->lat;
         $lngDep = $streetDepObj->lng;
+
         $coordinatesCloseByDep = CarpoolStreetCoordinate::select("carpool_street_coordinates.id"
             ,DB::raw("6371 * acos(cos(radians(" . $latDep . "))
                     * cos(radians(carpool_street_coordinates.lat))

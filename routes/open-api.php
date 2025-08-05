@@ -9,6 +9,8 @@ Route::group(['namespace' => 'App\Http\Controllers\ApiOpen', 'as' => 'open-api.'
 
     // carpool
     Route::get('carpool-rides/future',    'CarpoolRideController@future')->name('future');
+    Route::post('carpool-rides/matching',    'CarpoolRideController@matching')->name('matching');
+
     Route::apiResource('carpool-rides', CarpoolRideController::class);
 
     Route::apiResource('carpool-street-coordinates', CarpoolStreetCoordinateController::class);

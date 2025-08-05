@@ -36,17 +36,22 @@ class CheckApiKey
                     return $next($request);
                 }
 
+                if($request->getPathInfo() == '/open-api/carpool-rides/matching' && $request->getMethod() == 'POST' ) {
+                    // it's fine, as it is a search
+                    return $next($request);
+                }
+
                 if($shortPathCarpoolCarWithoutId == '/open-api/carpool-cars/' && $request->getMethod() == 'PUT' ) {
                     $id = str_replace('/open-api/carpool-cars/', '', $request->getPathInfo());
                     $user = User::where('car_id', $id)->first();
                     if($user) {
                         if((string) $user->id !== (string)  $keyDb->user_id) {
-                            return response()->json(['message' => 'Unauthorized. You can only do a POST, PUT, DELETE for your own user id.  With your X-API-KEY you can only do operations for '.$keyDb->user_id.'. #1'], 401);
+                            return response()->json(['message' => 'Unauthorized. You can only do a POST, PUT, DELETE for your own user id.  With your X-API-KEY you can only do operations for user id '.$keyDb->user_id.'. #1'], 401);
                         } else {
                             return $next($request);
                         }
                     }  else {
-                        return response()->json(['message' => 'Unauthorized. No user  with car_id '.$id.'. Please create it first. #2'], 401);
+                        return response()->json(['message' => 'Unauthorized. No user with car_id '.$id.'. Please create it first. #2'], 401);
                     }
                 }
 
@@ -64,13 +69,13 @@ class CheckApiKey
                     if((string) $id == (string) $keyDb->user_id) {
                         return $next($request);
                     } else {
-                        return response()->json(['message' => 'Unauthorized. You can only do a POST, PUT, DELETE for your own user id.  With your X-API-KEY you can only do operations for '.$keyDb->user_id.'. #3'], 401);
+                        return response()->json(['message' => 'Unauthorized. You can only do a POST, PUT, DELETE for your own user id.  With your X-API-KEY you can only do operations for user id '.$keyDb->user_id.'. #3'], 401);
                     }
                 }
 
                 // c) the default for post/put without user_id or passenger_id
                 Log::debug('---> Unauthorized You can only do a POST, PUT, DELETE for your own user id '.$apiKey);
-                return response()->json(['message' => 'Unauthorized. You can only do a POST, PUT, DELETE for your own user id (user_id or passenger_user_id given in array). With your X-API-KEY you can only do operations for '.$keyDb->user_id.'. #D'], 401);
+                return response()->json(['message' => 'Unauthorized. You can only do a POST, PUT, DELETE for your own user id (user_id or passenger_user_id given in array). With your X-API-KEY you can only do operations for user id '.$keyDb->user_id.'. #D'], 401);
 
             }
         }

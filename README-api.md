@@ -37,6 +37,22 @@
 ### GET open-api/carpool-rides/future
 (special one, only the upcoming rides)
 
+### POST open-api/carpool-rides/match
+special one, search for matching ride
+````
+{
+    "date": "2025-08-01",
+    "from_street_coordinates": {
+        "lat": "51.2258565",
+        "lng": "2.919496"
+    },
+    "to_street_coordinates": {
+        "lat": "50.8478727",
+        "lng": "4.3491631"
+    }
+}
+````
+
 ### POST open-api/carpool-rides
 ````
 {
@@ -72,7 +88,7 @@
 }
 ````
 ### DELETE open-api/carpool-rides/{id}
-Admin level needed
+! Admin level needed
 
 ## 3. Carpool street coordinates
 Please use your own implementation of locationiq (https://locationiq.com/) to populate this with put or post
@@ -186,7 +202,6 @@ Admin level needed
 
 
 ## 6. Bike & car sharing
-
 
 ### GET open-api/sharing-org
 
