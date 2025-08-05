@@ -39,8 +39,8 @@ class CarpoolRideController extends Controller
     public function matching(Request $request)
     {
         $startTime      = $request->date;
-        $streetDepObj   = (object) $request->from_street_locationiq_json;
-        $streetArrObj   = (object) $request->to_street_locationiq_json;
+        $streetDepObj   = (object) $request->from_street_coordinates;
+        $streetArrObj   = (object) $request->to_street_coordinates;
 
         // do the matching search
         $rides = (new CarpoolRide())->getMatchingRides($streetDepObj, $streetArrObj, $startTime);
