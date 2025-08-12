@@ -34,7 +34,7 @@
             </div>
             <div class="col-desk-9">
                 <div class="center-next-to-photo">
-                    <iframe src="https://telraam.net/en/network-embed/brussel" width="100%" height="700px" border="1" frameborder="0" allowfullscreen=""></iframe>
+                    <iframe src="https://telraam.net/en/network-embed/sem" width="100%" height="700px" border="1" frameborder="0" allowfullscreen=""></iframe>
                 </div>
             </div>
 

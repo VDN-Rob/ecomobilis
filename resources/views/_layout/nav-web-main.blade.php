@@ -5,11 +5,11 @@
     <li class=" @if(Route::current()->getName() == 'web.carpooling') active @endif">
         <a href="{{ url('/carpool') }}">{{ __('public-general.nav-carpooling') }}</a>
     </li>
-    <li class=" @if(Route::current()->getName() == 'web.carpooling') active @endif">
-        <a href="{{ url('/en') }}">{{ __('public-general.nav-sharing') }}</a>
+    <li class=" @if(Route::current()->getName() == 'web.sharing') active @endif">
+        <a href="{{ url('/sharing') }}">{{ __('public-general.nav-sharing') }}</a>
     </li>
     <li class=" @if(Route::current()->getName() == 'web.carpooling') active @endif">
-        <a href="{{ url('/en') }}">{{ __('public-general.nav-traffic') }}</a>
+        <a href="{{ url('/trafic') }}">{{ __('public-general.nav-traffic') }}</a>
     </li>
 
 <!-- Authentication Links -->

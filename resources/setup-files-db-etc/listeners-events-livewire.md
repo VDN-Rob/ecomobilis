@@ -25,3 +25,4 @@ New messages are checked with a job
 # livewire
 
 php artisan make:livewire ShowMessages
+php artisan make:livewire ShowSharingOrgs

@@ -28,10 +28,15 @@ Route::group(['namespace' => 'App\Http\Controllers\Web', 'as' => 'web.'], functi
     Route::get('/',         'PagesController@index')->name('index');
     Route::get('/about-us', 'PagesController@aboutUs')->name('aboutUs');
 
+
     // carpool ----------
     Route::get('/carpool/', 'CarpoolController@overview')->name('carpoolOverview');
 
     Route::post('/carpool/matching', 'CarpoolController@matching')->name('carpoolMatching');
+
+    // carpool ----------
+    Route::get('/sharing', 'SharingController@index')->name('sharingOverview');
+
 
     Route::group(['middleware' => ['auth']], function () {
 
