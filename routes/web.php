@@ -34,9 +34,11 @@ Route::group(['namespace' => 'App\Http\Controllers\Web', 'as' => 'web.'], functi
 
     Route::post('/carpool/matching', 'CarpoolController@matching')->name('carpoolMatching');
 
-    // carpool ----------
+    // car and bike sharing ----------
     Route::get('/sharing', 'SharingController@index')->name('sharingOverview');
 
+    //traffic ----------
+    Route::get('/traffic', 'TrafficController@index')->name('trafficOverview');
 
     Route::group(['middleware' => ['auth']], function () {
 
