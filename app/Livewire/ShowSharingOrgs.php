@@ -22,7 +22,7 @@ class ShowSharingOrgs extends Component
             $data['orgs'] = SharingOrg::where('prop_vehicle_car', 1)->get();
         }
         if ($this->typeFilter == 'ecar') {
-            $data['orgs'] = SharingOrg::where('prop_vehicle_cear', 1)->get();
+            $data['orgs'] = SharingOrg::where('prop_vehicle_ecar', 1)->get();
         }
         if ($this->typeFilter == 'bike') {
             $data['orgs'] = SharingOrg::where('prop_vehicle_bike', 1)->get();
