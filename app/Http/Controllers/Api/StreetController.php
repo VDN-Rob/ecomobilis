@@ -27,7 +27,7 @@ class StreetController extends Controller
     {
         // $searchString = preg_replace('/[[:digit:]]/','', $searchString); // remove numbers eg house street 1
         $token = env('LOCATIONIQ_TOKEN');
-        $endpointUrl = 'https://us1.locationiq.com/v1/autocomplete?key='.$token.'&q='.$searchString.'&accept-language=fr&countrycodes=BE';
+        $endpointUrl = 'https://us1.locationiq.com/v1/autocomplete?key='.$token.'&q='.$searchString.'&accept-language=fr&countrycodes=BE&tag=highway';
         Log::debug('Autocomplete - '.$endpointUrl);
 
         try {
@@ -40,6 +40,8 @@ class StreetController extends Controller
                 'debug'  => false
             ]);
             $content = json_decode($apiRequest->getBody()->getContents());
+            $content = (new CarpoolStreetCoordinate())->createCustomDisplayNames($content);
+
             if ($apiRequest->getStatusCode() == 200 || $apiRequest->getStatusCode() == 201) {
                 Log::debug('-> Autocomplete '. $apiRequest->getStatusCode());
                 return response()->json($content);

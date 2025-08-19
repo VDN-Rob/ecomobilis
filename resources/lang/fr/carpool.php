@@ -69,7 +69,7 @@ return [
     'car_type'      => 'Type de voiture',
     'brand'         => 'Marque',
     'description'   => 'Description',
-    'remark'        => 'Remarque',
+    'remark'        => 'Remarque (p.e. Place exacte du rendez-vous)',
     'luggage'       =>'Bagages',
     'seats_available'       => 'Sièges disponibles',
     'is_smoking_allowed'    => 'Est fumeur autorisé',

@@ -38,8 +38,8 @@ class CarpoolStreetCoordinate extends Model
             $name = 'unknown';
 
             if(!empty($arr->place_id)) {
-                if(isset($arr->display_name)) {
-                    $name = $arr->display_name;
+                if(isset($arr->display_name_short)) {
+                    $name = $arr->display_name_short;
                 }
                 if(isset($arr->address->city)) {
                     $city = $arr->address->city;
@@ -79,6 +79,31 @@ class CarpoolStreetCoordinate extends Model
 
         }
 
+    }
+
+    public function createCustomDisplayNames($content)  {
+
+        foreach($content as $entry) {
+
+            $name = '';
+            if(isset($entry->address->name)) {
+                $name = $entry->address->name.', ';
+            } elseif(isset($entry->address->state) && !isset($entry->address->city))  {
+                $name = $entry->address->state.', ';
+            }
+            if(isset($entry->address->city)) {
+                $city = $entry->address->city;
+            } elseif(isset($entry->address->state))  {
+                $city = $entry->address->state;
+            }
+            $postcode = '';
+            if(isset($entry->address->postcode)) {
+                $postcode = ' ('.$entry->address->postcode.')';
+            }
+            $entry->display_name_short = $name . $city . $postcode ;
+        }
+
+        return $content;
     }
 
 }

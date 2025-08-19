@@ -68,7 +68,7 @@
     </div>
 
     <div class="col-desk-6">
-        <div class="tiny light-grey" style="position: absolute; margin-top: -20px;">Remark</div>
+        <div class="tiny light-grey" style="position: absolute; margin-top: -20px;">{{ __('carpool.remark') }} &nbsp;</div>
         <div class="field special-placeholder">
             <input type="text" id="remark" name="remark"
                  @if(isset($ride))

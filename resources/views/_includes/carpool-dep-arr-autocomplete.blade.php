@@ -156,15 +156,15 @@
                     return error;
                 }
             },
-            keys: ["display_name"],
+            keys: ["display_name_short"],
             cache: false,
             filter: (list) => {
                 // Filter duplicates
                 // incase of multiple data keys usage
                 const filteredResults = Array.from(
                     new Set(list.map((value) => value.match))
-                ).map((display_name) => {
-                    return list.find((value) => value.match === display_name);
+                ).map((display_name_short) => {
+                    return list.find((value) => value.match === display_name_short);
                 });
 
                 return filteredResults;
@@ -194,19 +194,12 @@
         events: {
             input: {
                 selection: (event) => {
-                    // selection
-                    place = event.detail.selection.value.display_place;
-                    city = '';
-                    if(typeof event.detail.selection.value.address.city !== "undefined") {
-                        city = event.detail.selection.value.address.city;
-                    } else if(typeof event.detail.selection.value.address.state !== "undefined") {
-                        city = event.detail.selection.value.address.state;
-                    }
-                    const selection = place + ', ' + city;
                     // another hidden field to store the full json
                     DepValues = event.detail.selection.value;
                     document.getElementById('DepJson').value = JSON.stringify(event.detail.selection.value);
-                    autoCompleteJSDep.input.value = selection;
+                    // selection
+                    autoCompleteJSDep.input.value = event.detail.selection.value.display_name_short;
+                    // miles
                     computeDistance();
                 }
             }
@@ -237,15 +230,15 @@
                     return error;
                 }
             },
-            keys: ["display_name"],
+            keys: ["display_name_short"],
             cache: false,
             filter: (list) => {
                 // Filter duplicates
                 // incase of multiple data keys usage
                 const filteredResults = Array.from(
                     new Set(list.map((value) => value.match))
-                ).map((display_name) => {
-                    return list.find((value) => value.match === display_name);
+                ).map((display_name_short) => {
+                    return list.find((value) => value.match === display_name_short);
                 });
 
                 return filteredResults;
@@ -274,19 +267,12 @@
         events: {
             input: {
                 selection: (event) => {
-                    // selection
-                    place = event.detail.selection.value.display_place;
-                    city = '';
-                    if(typeof event.detail.selection.value.address.city !== "undefined") {
-                        city = event.detail.selection.value.address.city;
-                    } else if(typeof event.detail.selection.value.address.state !== "undefined") {
-                        city = event.detail.selection.value.address.state;
-                    }
-                    const selection = place + ', ' + city;
                     // another hidden field to store the full json
                     ArrValues = event.detail.selection.value;
                     document.getElementById('ArrJson').value = JSON.stringify(event.detail.selection.value);
-                    autoCompleteJSArr.input.value = selection;
+                    // selection
+                    autoCompleteJSArr.input.value = event.detail.selection.value.display_name_short;
+                    // distance
                     computeDistance();
                 }
             }
