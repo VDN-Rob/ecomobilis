@@ -22,8 +22,17 @@ class TrafficController extends Controller
         $dateFrom = Carbon::yesterday()->toDateString();
         $dateTo   = Carbon::today()->toDateString(); // 2025-08-12
 
+        // last hour
         $reportArray = $api->getClusterTraffic($dateFrom, $dateTo, '00:00:00', '23:59:59');
-dd($reportArray);
+        $data['lastHour']    = $api->getLastHourWithData($reportArray);
+
+         // yesterday same hour
+        $prevHour = date("H:i:s", strtotime($data['lastHour']->time_local . " -1 hour"));
+        $reportArrayYesterday = $api->getClusterTraffic($dateFrom, $dateFrom, $prevHour, $data['lastHour']->time_local);
+        if(isset($reportArrayYesterday[0])) {
+            $data['yesterdayHour'] = $reportArrayYesterday[0];
+        }
+
         return view('web.traffic.overview', $data);
 
     }

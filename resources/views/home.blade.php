@@ -37,9 +37,7 @@
                     <iframe src="https://telraam.net/en/network-embed/sem" width="100%" height="700px" border="1" frameborder="0" allowfullscreen=""></iframe>
                 </div>
             </div>
-
-            @include('_includes.traffic-volume-modes')
-
+            
         </div> <!-- end grid -->
     </div> <!-- end block -->
 

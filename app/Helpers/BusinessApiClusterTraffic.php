@@ -16,7 +16,7 @@ class BusinessApiClusterTraffic {
 
     public function getClusterTraffic($dateFrom = '', $dateTo = '',$dateFromHour = '00:00:00',  $dateToHour = '23:59:59') {
 
-        $clusterId = 336; // SEM
+        $clusterId = 366; // SEM
         $startDate = $dateFrom.' '.$dateFromHour;
         $endDate   = $dateTo.' '.$dateToHour;
 
@@ -25,12 +25,10 @@ class BusinessApiClusterTraffic {
 
         // api call
         $startDateUtc   = $this->convertTimeZoneToUTC($startDate, $timezone);
-
-        $endDate        = $dateTo.' '.$dateToHour;
         $endDateUtc     = $this->convertTimeZoneToUTC($endDate, $timezone);
 
         if ($clusterId) {
-            $jsonArray = array('id' => $clusterId, "format" => "per-hour", "time_start" => $startDateUtc, "time_end" => $endDateUtc );
+            $jsonArray = ['id' => $clusterId, "format" => "per-hour", "time_start" => $startDateUtc, "time_end" => $endDateUtc];
         } else {
             return false;
         }
@@ -68,6 +66,14 @@ class BusinessApiClusterTraffic {
 
         }
 
+    }
+
+    public function getLastHourWithData($reportArray) {
+
+        $lastIndex = count($reportArray);
+        $lastEntry = $reportArray[$lastIndex-1]; // last hour in de database for the cluster
+
+        return $lastEntry; // 5
     }
 
     // $responseArray is the answer from the business api
