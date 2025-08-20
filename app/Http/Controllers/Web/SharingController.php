@@ -23,6 +23,11 @@ class SharingController extends Controller
         return view('web.sharing.overview', $data);
     }
 
+    public function show($id)
+    {
+        $data['org'] = SharingOrg::find($id);
+        return view('web.sharing.show', $data);
+    }
 
 
 }

@@ -23,7 +23,6 @@
                     <div class="col-desk-4 text-left">
                         <h3>{{ $org->name }}</h3>
                         <div class="short-description">{{ $org->short_description }}</div> <br>
-                        @if($org->website) <div class="website"><a href="{{ $org->website }}" target="_blank">{{ $org->website }}</a></div>    <br>@endif
                         <div class="filters">
                             @if($org->prop_vehicle_car) <span class="tiny label">{{ __('sharing.car') }}</span> @endif
                             @if($org->prop_vehicle_ecar) <span class="tiny label">{{ __('sharing.ecar') }}</span> @endif
@@ -33,7 +32,9 @@
                             @if($org->prop_vehicle_ecargobike) <span class="tiny label">{{ __('sharing.ecargobike') }}</span>@endif
                             @if($org->prop_vehicle_step) <span class="tiny label">{{ __('sharing.step') }}</span>@endif
                         </div>
-
+                        <br>
+                        <a href="{{ url('/') }}/sharing/{{ $org->id }}">{{ __('general.read-more') }}</a>
+                        <br><br>
                     </div>
                 @endforeach
             </div>

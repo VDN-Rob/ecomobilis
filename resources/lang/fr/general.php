@@ -7,6 +7,8 @@ return [
     'add'       => 'Ajouter',
     'delete'    => 'Supprimer',
     'more'      => 'Plus',
+    'read-more' => 'Lire plus',
+
     'archive'   => 'Archiver',
     'unarchive' => 'Déarchiver',
 

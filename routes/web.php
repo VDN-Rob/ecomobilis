@@ -36,6 +36,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Web', 'as' => 'web.'], functi
 
     // car and bike sharing ----------
     Route::get('/sharing', 'SharingController@index')->name('sharingOverview');
+    Route::get('/sharing/{id}', 'SharingController@show')->name('sharingShow');
 
     //traffic ----------
     Route::get('/traffic', 'TrafficController@index')->name('trafficOverview');
