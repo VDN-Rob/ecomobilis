@@ -25,7 +25,7 @@
         </div>
         <div class="col-desk-2 col-mob-4">
             <button class="big button" style="width: 100%;">
-                Search
+                {{ __('carpool.search') }}
             </button>
         </div>
     </div>

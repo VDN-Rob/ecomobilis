@@ -8,7 +8,7 @@
     <div class="block">
         <div class="grid">
             <div class="col-desk-12 ">
-                <h1> {{ __('carpool.group-overview-title') }}</h1>
+                <h1>{{ __('carpool.group-overview-title') }}</h1>
             </div>
             <div class="col-desk-12 ">
                 <a href="{{ url('/') }}/admin/carpool-groups/add" class="button"> {{ __('carpool.add-a-group-btn') }}</a>

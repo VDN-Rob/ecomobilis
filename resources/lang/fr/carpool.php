@@ -24,6 +24,7 @@ return [
     'edit-a-ride' => 'Modifier une trajectoire',
 
     // search
+    'search'          => 'Rechercher',
     'search-subtitle' => 'Covoiturage',
     'search-title' => 'Où voulez-vous aller?',
 
