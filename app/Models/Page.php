@@ -29,7 +29,10 @@ class Page extends Model
         ];
     }
 
-
+    /* ------------------ relationships ------------------ */
+    public function blocks() {
+        return $this->hasMany(PageBlock::class, 'page_id')->orderBy('sort_order', 'asc');
+    }
 
 
 }

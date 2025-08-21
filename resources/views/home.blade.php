@@ -3,14 +3,15 @@
 
     <!-- top block with first paragraph -->
     <div class="block-wide headerpic-container">
-        <div class=" headerpic" style="background-image: url(/images/header/header-image-v2.png);">
+        <div class=" headerpic" style="background-image: url(https://admin.ecomobilis.be/storage/{{ $page->cover_image }});">
             <div class="block">
                 <div class="headerpic-text-block">
                     <div class="grid grid-with-row-margin stackable">
                         <div class="col-desk-5   col-tab-6 col-tab-shift-0   extra-margin-top text-left">
-                            <h1>Consectetur adipiscing elit</h1>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor<br>
-                            incididunt ut labore et dolore magna aliqua.<br>
+                                <h1>{{ $page->title }}</h1>
+                                @if(!empty($page->intro))
+                                    {{ $page->intro }}</h4>
+                                @endif
                         </div>
                     </div> <!-- grid -->
                 </div>
@@ -41,26 +42,10 @@
         </div> <!-- end grid -->
     </div> <!-- end block -->
 
+
     <div class="block">
-        <div class="grid grid-with-row-margin stackable center-vertical-and-horizontal">
-            <div class="col-desk-7">
-                <div class="center-next-to-photo">
-                    <h2>
-                        Lorem ipsum dolor sit amet?
-                    </h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-                        in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <br>
-                    <a href="#">Exercitation ullamco laboris nisi ut aliquip</a></p>
-                </div>
-            </div>
-            <div class="col-desk-5  text-center">
-                <img src="{{ url('/') }}/images/photos/egor-myznik-5fuL1om_sc8-unsplash.jpg" class="size-90 rounded" style="margin-top:10px; margin-left: 15%;">
-            </div>
-        </div>
-    </div>
+            @include('_includes.page_blocks')
+    </div> <!-- end block -->
 
 
 @endsection

@@ -10,7 +10,8 @@ class PagesController extends Controller
 {
     public function index()
     {
-        return view('home');
+        $data['page'] = Page::where('slug', 'homepage')->first();
+        return view('home', $data);
     }
 
     public function page($slug)
@@ -26,7 +27,8 @@ class PagesController extends Controller
 
     public function aboutUs()
     {
-        return view('about-us');
+        $data['page'] = Page::where('slug', 'about-us')->first();
+        return view('about-us', $data);
     }
 
 

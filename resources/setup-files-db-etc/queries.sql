@@ -1,4 +1,19 @@
 # ------------------------------------------------------------
+# -- 21 AUG - Page content
+CREATE TABLE `pages_blocks` (
+        `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+        `page_id` int(10) DEFAULT NULL,
+        `title` varchar(255) DEFAULT NULL,
+        `image_url` varchar(255) DEFAULT NULL,
+        `body` text,
+        `layout` varchar(40) DEFAULT 'left',
+        `sort_order` int(11) DEFAULT '1',
+        `created_at` timestamp NULL DEFAULT NULL,
+        `updated_at` timestamp NULL DEFAULT NULL,
+        PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+# ------------------------------------------------------------
 # -- 31 JUL - Groups
 
 ALTER TABLE `carpool_groups` ADD `is_archived` tinyint(1) DEFAULT '0';
