@@ -4,10 +4,10 @@
             <div class="col-desk-4 col-tab-3 general-info-footer-block">
 
                 <h2 class="footer-accent">Ecomobilis</h2>
-                Address 123, 1000 Brussels - Belgium<br><br>
+                Ecomobilis est un projet de <a href="https://mobilesem.eu" target="_blank">MOBILESEM Asbl</a><br>
+                Rue du Moulin 181 - 5600 PHILIPPEVILLE<br><br>
 
-                <strong>{!!  __('footer.info-mail') !!}</strong>:  <a href="mailto:info@domain.net">info@domain.com</a><br>
-                <strong>{!!  __('footer.support-mail') !!}</strong>:  <a href="mailto:support@domain.net">support@domain.com</a><br>
+                <strong>{!!  __('footer.info-mail') !!}</strong>:  <a href="mailto:ecomobilis.be">info@ecomobilis.be</a><br>
                 <br>
                 {!!  __('footer.what-is-1') !!}<br>
                 <br>
