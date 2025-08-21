@@ -16,6 +16,7 @@ class PagesController extends Controller
     public function page($slug)
     {
         $data['page'] = Page::where('slug', $slug)->first();
+
         if ($data['page']) {
             return view('web.pages.page', $data);
         } else {

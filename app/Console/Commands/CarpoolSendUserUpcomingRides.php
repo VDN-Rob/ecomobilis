@@ -51,13 +51,13 @@ class CarpoolSendUserUpcomingRides extends Command
         $allUsers = User::all();
 
         foreach($allUsers as $user) {
-            $yesterday      = Carbon::yesterday();
-            $twoDaysLater   = Carbon::now()->addDays(2);
+            $yesterday      = Carbon::now()->startOfMonth();
+            $twoDaysLater   = Carbon::now()->addDays(3);
             $rides = CarpoolRide::where('travel_start_datetime', '>', $yesterday)
                                 ->where('travel_start_datetime', '<', $twoDaysLater)
                                 ->where('user_id', $user->id)
                                 ->orderBy('travel_start_datetime')->get();
-            if($rides->count() > 0) {
+            if($rides->count() > 0 && !empty($user->email)) {
                 Log::debug('CarpoolSendUserUpcomingRides '.$user->id.' mail to be send to '.$user->email);
                 Mail::to($user->email)->send(new NotifyCarpoolRidesUpcoming($rides, $user));
             }

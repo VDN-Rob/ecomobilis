@@ -8,8 +8,8 @@
             font-family: Helvetica;
             font-size: 16px;
             line-height: 24px;
-            color: #393939;
-            background-color: #d4d8df;
+            color: #263d5e;
+            background-color: #faf6f2;
             width: 100%;
             height: 100%;
             margin: 0;
@@ -100,6 +100,12 @@
           .msg-img {
               display: none;
           }
+          .col-mob-2 {
+              width: 50%;
+          }
+          .hide-on-mobile-only {
+               display: none;
+          }
         </style>
     </head>
     <body>
@@ -111,8 +117,8 @@
                           <td align="center" valign="top">
                               <table border="0" id="emailHeader">
                                   <tr>
-                                      <td align="center" valign="top">
-                                          <a href="https://smart-mobility.be"><img src="{{asset('/images/common/logo.png')}}" class="logo" width="133" alt="" border="0" /></a>
+                                      <td align="center" valign="top" style="margin-top: 50px;">
+                                          <a href="https://smart-mobility.be"><img src="{{asset('/images/common/logo-black.png')}}" class="logo" width="133" alt="" border="0" /></a>
                                       </td>
                                   </tr>
                               </table>
@@ -131,9 +137,8 @@
                                   </tr>
                                   <tr>
                                       <td style="font-size:12px; line-height: 13px; text-align:center;">
-                                          XXXX
-                                          Street nr
-                                          Address tbc
+                                          Ecomobilis est un projet de <a href="https://mobilesem.eu">MOBILESEM Asbl</a><br>
+                                          Rue du Moulin 181 - 5600 PHILIPPEVILLE
                                       </td>
                                   </tr>
                               </table>

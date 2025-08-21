@@ -27,17 +27,17 @@
         <div class="grid grid-with-row-margin stackable">
             <div class="col-desk-12 text-center">
                 <h2>{{ __('public-homepage.traffic-title') }}</h2>
-                {{ __('public-homepage.traffic-subtitle') }}
+                {!! __('public-homepage.traffic-subtitle')  !!}
             </div>
             <div class="col-desk-3">
-                @include('_includes.traffic-volume-overview')
+                <iframe src="https://telraam.net/fr/network-embed-segment-data/sem" width="100%" height="700px" border="0" frameborder="0"  style="border:0"></iframe>
             </div>
             <div class="col-desk-9">
                 <div class="center-next-to-photo">
-                    <iframe src="https://telraam.net/en/network-embed/sem" width="100%" height="700px" border="1" frameborder="0" allowfullscreen=""></iframe>
+                    <iframe src="https://telraam.net/fr/network-embed/sem" width="100%" height="700px" border="1" frameborder="0" allowfullscreen=""></iframe>
                 </div>
             </div>
-            
+
         </div> <!-- end grid -->
     </div> <!-- end block -->
 

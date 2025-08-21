@@ -21,11 +21,11 @@
                 @endif
             </div>
         @endif
-        <div class="col-desk-2 col-mob-2 col-mob-header-design">
+        <div class="col-desk-2 col-mob-2 col-mob-header-design " @if($layout == 'email-listing') style="width:100%; display: block; font-size: 20px" @endif>
             {{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $ride->travel_start_datetime)->format('d M y') }}<br>
             <div class="tiny">{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $ride->travel_start_datetime)->format('H:i') }}</div>
         </div>
-        <div class="col-desk-0 col-mob-1 show-on-mobile-only col-mob-header-design">
+        <div class="col-desk-0 col-mob-1 show-on-mobile-only col-mob-header-design"  @if($layout == 'email-listing') style="width:100%; display: block; margin-bottom: 10px" @endif>
             <strong>€ {{ $ride->price_per_seat}}</strong>
         </div>
         <div class="col-desk-2 col-mob-2 col-from-to col-from  col-mob-dep-design">
