@@ -50,10 +50,10 @@ class CarpoolMessagesController extends Controller
             return \Redirect::route('admin.carpoolMessagesThread', ['rideId' => $carRideId, 'conversationPartnerId' => $conversationPartnerId]);
         }
         // check you can not send a message to your own car ride
-        if($cpRide->user_id == Auth::user()->id) {
+        /* if($cpRide->user_id == Auth::user()->id) {
             Log::debug('You can not send a message for your own carpool ride. #E1 Ride from '.$cpRide->user_id);
             dd('You can not send a message for your own carpool ride.');
-        }
+        } */
         if($carRideId && $conversationPartnerId) {
             $currentConversation = (new CarpoolMessage())->getConversation($conversationPartnerId, $carRideId);
             if(isset($currentConversation[0])) {
