@@ -1,6 +1,7 @@
 @if(isset($ride))
-<div class="box box-with-border box-ride box-ride-{{ $layout }}">
+<div class="box box-with-border box-ride box-ride-{{ $layout }} @if($ride->is_cancelled) box-ride-is-cancelled @endif">
     <div class="grid">
+        @if($ride->is_cancelled) <div class="col-desk-12 red text-center"><strong>Votre trajet a été annulé!</strong><br><br></div>@endif
         @if($layout !== 'email-listing')
             <div class="col-desk-1 col-mob-1 text-center col-mob-header-design text-center">
                 <div class="driver-info">

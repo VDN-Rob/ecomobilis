@@ -51,6 +51,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Web', 'as' => 'web.'], functi
 
         Route::get('/carpool/{id}', 'CarpoolController@show')->name('carpoolShow');
 
+        Route::post('/carpool-cancel/{id}', 'CarpoolController@cancelRide')->name('carpoolCancel');
+
     });
 
     // users ----------

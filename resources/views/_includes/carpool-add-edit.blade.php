@@ -78,19 +78,22 @@
                 @endif/>
         </div>
     </div>
-
+</div>
+<div class="grid grid-with-row-margin stackable">
     <input type="hidden" id="group_id" name="group_id"
            @if(isset($group_id))
-                value="{{ $group_id }}"
+           value="{{ $group_id }}"
            @elseif(isset($ride))
-                value="{{ $ride->group_id }}"
+           value="{{ $ride->group_id }}"
            @else
-                value=""
-           @endif
+           value=""
+        @endif
     >
-
-    <div class="col-desk-12 col-mob-4 text-center">
+    <div class="col-desk-6 col-mob-4 text-left">
+        @if(isset($ride)) <a href="#" class=" js-open-modal" data-modal="modalCancelRide">{{ __('carpool.ride-cancel-btn') }}</a>  @endif
+    </div>
+    <div class="col-desk-6 col-mob-4 text-right">
         <input class="button big" name="submit" type="submit" @if(isset($ride)) value="{{ __('general.edit') }}"  @else  value="{{ __('general.add') }}" @endif style="width:250px">
     </div>
-
 </div>
+

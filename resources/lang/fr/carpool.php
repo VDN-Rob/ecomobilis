@@ -93,6 +93,14 @@ return [
     'public_url'                => 'url publique',
     'rides-are-private'         => 'Toutes les courses sont privées dans ce groupe',
     'rides'                     => 'déplacement(s)',  // number of rides
-    'group-is-archived'         => 'Le groupe est archivé.'
+    'group-is-archived'         => 'Le groupe est archivé.',
+
+    // cancel ride
+    'ride-cancel-btn'           =>  'Annuler la course',
+    'modal-ride-cancel-title'   =>  'Annuler la course',
+    'modal-ride-cancel-body'    => 'Lorsque vous confirmez, vous annulez la course. Un message automatique sera envoyé aux passagers.',
+    'modal-ride-cancel-btn'      => 'Oh non, ignorez-moi!',
+    'modal-ride-ok-btn'         => 'Oui, veuillez annuler la course'
+
 
 ];

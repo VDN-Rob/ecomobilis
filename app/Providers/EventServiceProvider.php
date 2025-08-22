@@ -6,9 +6,11 @@ use App\Events\CarpoolMessageAdded;
 use App\Events\CarpoolRequested;
 use App\Events\CarpoolReservationAccepted;
 use App\Events\CarpoolReservationRejected;
+use App\Events\CarpoolRideCancelled;
 use App\Listeners\SendCarpoolMessageNotification;
 use App\Listeners\SendCarpoolRequestNotification;
 use App\Listeners\StoreCarpoolRequestInDatabase;
+use App\Listeners\SendCarpoolRideCancelledNotification;
 
 use App\Listeners\SendCarpoolReservationAcceptedNotification;
 use App\Listeners\StoreCarpoolReservationAcceptedInDatabase;
@@ -47,6 +49,11 @@ class EventServiceProvider extends ServiceProvider
             SendCarpoolReservationRejectedNotification::class,
             StoreCarpoolReservationRejectedInDatabase::class,
         ],
+        // rejected
+        CarpoolRideCancelled::class => [
+            SendCarpoolRideCancelledNotification::class,
+        ],
+
 
 
     ];

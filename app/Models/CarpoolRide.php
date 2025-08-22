@@ -13,7 +13,7 @@ class CarpoolRide extends Model
 {
     protected $table = 'carpool_rides';
     protected $fillable = ['travel_start_datetime','from_street_coordinates_id', 'to_street_coordinates_id',
-        'luggage_id',  'seats_available',  'remark',  'price_per_seat',  'user_id', 'group_id', 'is_private'];
+        'luggage_id',  'seats_available',  'remark',  'price_per_seat',  'user_id', 'group_id', 'is_private', 'is_cancelled'];
     public $timestamps = true;
     protected $dates = ['travel_start_datetime'];
 

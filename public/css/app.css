@@ -3268,6 +3268,9 @@ details[open] > summary {
 .box-ride.box-ride-header {
   padding-bottom: 20px;
 }
+.box-ride.box-ride-is-cancelled {
+  background-color: #ffd4d4;
+}
 .box-ride .grid {
   margin-bottom: 0;
 }

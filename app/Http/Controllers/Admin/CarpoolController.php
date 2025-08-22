@@ -28,13 +28,18 @@ class CarpoolController extends Controller
             $tomorrow = Carbon::tomorrow();
             $data['rides'] = CarpoolRide::where('travel_start_datetime', '<', $tomorrow)
                 ->where('user_id', Auth::user()->id)
-                ->orderBy('travel_start_datetime', 'desc')->paginate(25);
+                ->where('is_cancelled', 0)
+                ->orderBy('travel_start_datetime', 'ASC')
+                ->orderBy('is_cancelled', 0)
+                ->paginate(25);
         } else {
             // future
             $yesterday = Carbon::yesterday();
             $data['rides'] = CarpoolRide::where('travel_start_datetime', '>', $yesterday)
                 ->where('user_id', Auth::user()->id)
-                ->orderBy('travel_start_datetime', 'desc')->paginate(25);
+                ->where('is_cancelled', 0)
+                ->orderBy('travel_start_datetime', 'ASC')
+                ->paginate(25);
         }
 
         return view('admin.carpool-rides', $data);
@@ -85,6 +90,7 @@ class CarpoolController extends Controller
         return \Redirect::route('admin.carpoolMessagesThread', [$rideReservation->ride_id, $rideReservation->passenger_user_id])->with('message', 'Votre réponse sera envoyée!');
 
     }
+
 
 
 }

@@ -2,7 +2,8 @@
 
 @if(isset($ride))
     @if($ride)
-        <div style="background: #fff; border-radius: 10px; border: 1px solid rgb(233.65, 233.65, 233.65); padding: 20px; margin: 20px 0;">
+        <div style="@if($ride->is_cancelled == 1) background: #ffd4d4; @else background: #fff; @endif
+         border-radius: 10px; border: 1px solid rgb(233.65, 233.65, 233.65); padding: 20px; margin: 20px 0;">
             <table width="100%" >
                 <tr>
                     <td width="15%">

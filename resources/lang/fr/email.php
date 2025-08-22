@@ -20,6 +20,12 @@ return [
      nisi ut aliquip ex ea commodo consequat',
     'carpool-reject-reservation-btn' => 'Voir plus...',
 
+    // ride cancelled
+    'carpool-ride-cancelled' => 'We are sorry to inform you to ride has been cancelled. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+     nisi ut aliquip ex ea commodo consequat',
+    'carpool-ride-cancelled-btn' => 'Voir plus...',
+
 
 
 ];

@@ -31,6 +31,7 @@ class CarpoolGroup extends Model
 
         return $this->hasMany(CarpoolRide::class, 'group_id')
             ->where('travel_start_datetime', '>', $travelStartDatetime)
+            ->where('is_cancelled', 0)
             ->orderBy('travel_start_datetime', 'asc');
     }
 

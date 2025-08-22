@@ -10,11 +10,17 @@
 
                 <div class="box">
 
-                    <h2 class="title-header">{{ __('auth.reset-your-mail-title) }}</h2>
+                    <h2 class="title-header">{{ __('auth.reset-your-mail-title') }}</h2>
 
                     <form method="POST" action="{{ route('password.update') }}" class="ui form">
                         @csrf
                         <div class="ui ">
+                            
+                            <?php
+                            // as there is a bug in laravel the token is the first segment
+                            $url = strtok($_SERVER['REQUEST_URI'], '?');
+                            $requiredToken = substr(strrchr($url, '/'), 1);
+                            ?>
 
                             <input type="hidden" name="token" value="{{ $requiredToken }}">
 

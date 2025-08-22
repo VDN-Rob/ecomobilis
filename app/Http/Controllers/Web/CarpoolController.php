@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Events\CarpoolRideCancelled;
 use App\Models\CarpoolGroup;
 use App\Models\CarpoolStreetCoordinate;
 use App\Models\CarpoolRide;
@@ -19,7 +20,7 @@ class CarpoolController extends Controller
     public function overview()
     {
         $now = Carbon::now();
-        $data['rides'] = CarpoolRide::orderBy('id','DESC')->where('is_private', 0)->where('travel_start_datetime', '>', $now)->take(50)->get();
+        $data['rides'] = CarpoolRide::orderBy('travel_start_datetime','ASC')->where('is_private', 0)->where('is_cancelled', 0)->where('travel_start_datetime', '>', $now)->take(50)->get();
         return view('web.carpool.overview', $data);
 
     }
@@ -169,5 +170,19 @@ class CarpoolController extends Controller
     }
 
 
+
+    /* ----------------------- CANCEL etc ------------------------- */
+    public function cancelRide($rideId) {
+        Log::debug('cancelRide - Ride Id '.$rideId);
+
+        // mark in db
+        $rideReservation = (new CarpoolRide())::find($rideId)->update(['is_cancelled' => 1]);
+
+        // send message
+        event(new CarpoolRideCancelled($rideId));
+
+        return \Redirect::route('admin.carpoolOverview')->with('message', 'Votre message concernant l\'annulation est envoyé.!');
+
+    }
 
 }
