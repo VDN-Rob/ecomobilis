@@ -1,7 +1,3 @@
-# 0. Internal notes
-## TO DO
-https://saasykit.com/blog/how-to-generate-documentation-for-your-laravel-project
-
 ## CHECK THE WEBSITE, FOR NOW:
 admin / ecoadmin
 git update-index --assume-unchanged public/.htaccess
@@ -73,6 +69,10 @@ There is a special type of message, the 'auto-message' which is basically a mess
 
 ## Carpool matching
 Matching is done based on the stored gps coordinates and looks within 20km radius for both departure and arrival and for your the date / hour given or later
+
+# 4. API
+
+Docs in /public/readme-api.md
 
 # 9. Hosting
 The hosting of http://ecomobilis.be/ is at Combell (combell.com). (S)FTP access can be provided, just email dave@telraam.net

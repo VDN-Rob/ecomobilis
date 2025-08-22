@@ -1,8 +1,3 @@
-# 0. Internal notes
-## TO DO
-- docu paging
-- docu token use
-
 ## 1. Users
 
 ### GET open-api/users

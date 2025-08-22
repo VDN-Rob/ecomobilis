@@ -1,0 +1,191 @@
+<h2 id="1-users">1. Users</h2>
+<h3 id="get-open-api-users">GET open-api/users</h3>
+<h3 id="post-open-api-users">POST open-api/users</h3>
+<pre><code>{
+    <span class="hljs-attr">"firstname"</span>: <span class="hljs-string">"Lionel"</span>,
+    <span class="hljs-attr">"lastname"</span>: <span class="hljs-string">"Messi"</span>,
+    <span class="hljs-attr">"gender"</span>: <span class="hljs-string">"M"</span>,
+    <span class="hljs-attr">"email"</span>: <span class="hljs-string">"lionel@test.com"</span>,
+    <span class="hljs-attr">"car_id"</span>: <span class="hljs-number">123</span>,
+}
+</code></pre><h3 id="get-open-api-users-id-">GET open-api/users/{id}</h3>
+<h3 id="put-open-api-users-id-">PUT open-api/users/{id}}</h3>
+<pre><code>{
+    <span class="hljs-attr">"firstname"</span>: <span class="hljs-string">"Matteo"</span>,
+    <span class="hljs-attr">"lastname"</span>: <span class="hljs-string">"Messi"</span>,
+    <span class="hljs-attr">"gender"</span>: <span class="hljs-string">"M"</span>,
+    <span class="hljs-attr">"email"</span>: <span class="hljs-string">"lionel@test.com"</span>,
+    <span class="hljs-attr">"car_id"</span>: <span class="hljs-number">123</span>,
+}
+</code></pre><h2 id="2-carpool-rides">2. Carpool rides</h2>
+<h3 id="get-open-api-carpool-rides">GET open-api/carpool-rides</h3>
+<h3 id="get-open-api-carpool-rides-future">GET open-api/carpool-rides/future</h3>
+<p>(special one, only the upcoming rides)</p>
+<h3 id="post-open-api-carpool-rides-match">POST open-api/carpool-rides/match</h3>
+<p>special one, search for matching ride</p>
+<pre><code>{
+    <span class="hljs-attr">"date"</span>: <span class="hljs-string">"2025-08-01"</span>,
+    <span class="hljs-attr">"from_street_coordinates"</span>: {
+        <span class="hljs-attr">"lat"</span>: <span class="hljs-string">"51.2258565"</span>,
+        <span class="hljs-attr">"lng"</span>: <span class="hljs-string">"2.919496"</span>
+    },
+    <span class="hljs-attr">"to_street_coordinates"</span>: {
+        <span class="hljs-attr">"lat"</span>: <span class="hljs-string">"50.8478727"</span>,
+        <span class="hljs-attr">"lng"</span>: <span class="hljs-string">"4.3491631"</span>
+    }
+}
+</code></pre><h3 id="post-open-api-carpool-rides">POST open-api/carpool-rides</h3>
+<pre><code>{
+    <span class="hljs-attr">"travel_start_datetime"</span>: <span class="hljs-string">"2026-07-12 12:00:00"</span>,
+    <span class="hljs-attr">"from_street_coordinates_id"</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">"to_street_coordinates_id"</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-attr">"luggage_id"</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-attr">"seats_available"</span>: <span class="hljs-number">3</span>,
+    <span class="hljs-attr">"remark"</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">"price_per_seat"</span>: <span class="hljs-string">"10.00"</span>,
+    <span class="hljs-attr">"user_id"</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">"group_id"</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">"is_private"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"is_cancelled"</span>: <span class="hljs-number">0</span>
+}
+</code></pre><h3 id="get-open-api-carpool-rides-id-">GET open-api/carpool-rides/{id}</h3>
+<h3 id="put-open-api-carpool-rides-id-">PUT open-api/carpool-rides/{id}</h3>
+<pre><code>{
+    <span class="hljs-attr">"travel_start_datetime"</span>: <span class="hljs-string">"2026-07-12 12:00:00"</span>,
+    <span class="hljs-attr">"from_street_coordinates_id"</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">"to_street_coordinates_id"</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-attr">"luggage_id"</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-attr">"seats_available"</span>: <span class="hljs-number">3</span>,
+    <span class="hljs-attr">"remark"</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">"price_per_seat"</span>: <span class="hljs-string">"10.00"</span>,
+    <span class="hljs-attr">"user_id"</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">"group_id"</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">"is_private"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"is_cancelled"</span>: <span class="hljs-number">0</span>
+}
+</code></pre><h3 id="delete-open-api-carpool-rides-id-">DELETE open-api/carpool-rides/{id}</h3>
+<p>! Admin level needed</p>
+<h2 id="3-carpool-street-coordinates">3. Carpool street coordinates</h2>
+<p>Please use your own implementation of locationiq (<a href="https://locationiq.com/">https://locationiq.com/</a>) to populate this with put or post</p>
+<h3 id="get-open-api-carpool-street-coordinates">GET open-api/carpool-street-coordinates</h3>
+<h3 id="post-open-api-carpool-street-coordinates">POST open-api/carpool-street-coordinates</h3>
+<pre><code>{
+    <span class="hljs-attr">"street"</span>: <span class="hljs-string">"Test Street"</span>,
+    <span class="hljs-attr">"zip_code"</span>: <span class="hljs-string">"5630"</span>,
+    <span class="hljs-attr">"city"</span>: <span class="hljs-string">"Test Stad"</span>,
+    <span class="hljs-attr">"country"</span>: <span class="hljs-string">"Belgium"</span>,
+    <span class="hljs-attr">"external_api_id"</span>: <span class="hljs-string">"321359304323"</span>,
+    <span class="hljs-attr">"external_api_source"</span>: <span class="hljs-string">"locationiq"</span>,
+    <span class="hljs-attr">"osm_id"</span>: <span class="hljs-string">"123456689"</span>,
+    <span class="hljs-attr">"osm_way"</span>: <span class="hljs-string">"way"</span>,
+    <span class="hljs-attr">"lat"</span>: <span class="hljs-string">"50.1700"</span>,
+    <span class="hljs-attr">"lng"</span>: <span class="hljs-string">"4.4000"</span>,
+    <span class="hljs-attr">"user_id"</span>: <span class="hljs-number">1</span>
+}
+</code></pre><h3 id="get-open-api-carpool-street-coordinates-id-">GET open-api/carpool-street-coordinates/{id}</h3>
+<h3 id="put-open-api-carpool-street-coordinates-id-">PUT open-api/carpool-street-coordinates/{id}</h3>
+<pre><code>{
+    <span class="hljs-attr">"street"</span>: <span class="hljs-string">"Test Street Update"</span>,
+    <span class="hljs-attr">"zip_code"</span>: <span class="hljs-string">"5630"</span>,
+    <span class="hljs-attr">"city"</span>: <span class="hljs-string">"Test Stad"</span>,
+    <span class="hljs-attr">"country"</span>: <span class="hljs-string">"Belgium"</span>,
+    <span class="hljs-attr">"external_api_id"</span>: <span class="hljs-string">"321359304323"</span>,
+    <span class="hljs-attr">"external_api_source"</span>: <span class="hljs-string">"locationiq"</span>,
+    <span class="hljs-attr">"osm_id"</span>: <span class="hljs-string">"123456689"</span>,
+    <span class="hljs-attr">"osm_way"</span>: <span class="hljs-string">"way"</span>,
+    <span class="hljs-attr">"lat"</span>: <span class="hljs-string">"50.1700"</span>,
+    <span class="hljs-attr">"lng"</span>: <span class="hljs-string">"4.4000"</span>,
+    <span class="hljs-attr">"user_id"</span>: <span class="hljs-number">1</span>
+}
+</code></pre><h3 id="delete-open-api-carpool-street-coordinates-id-">DELETE open-api/carpool-street-coordinates/{id}</h3>
+<p>Admin level needed</p>
+<h2 id="4-carpool-ride-reservation">4. Carpool ride reservation</h2>
+<h3 id="get-open-api-carpool-street-reservations">GET open-api/carpool-street-reservations</h3>
+<h3 id="post-open-api-carpool-street-reservations-">POST open-api/carpool-street-reservations/</h3>
+<pre><code>{
+    <span class="hljs-attr">"ride_id"</span>: <span class="hljs-number">101</span>,
+    <span class="hljs-attr">"passenger_user_id"</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">"amount"</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">"is_accepted"</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">"is_rejected"</span>: <span class="hljs-number">0</span>
+}
+</code></pre><h3 id="get-open-api-carpool-street-reservations-id-">GET open-api/carpool-street-reservations/{id}</h3>
+<h3 id="put-open-api-carpool-street-reservations-id-">PUT open-api/carpool-street-reservations/{id}</h3>
+<pre><code>{
+    <span class="hljs-attr">"ride_id"</span>: <span class="hljs-number">101</span>,
+    <span class="hljs-attr">"passenger_user_id"</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">"amount"</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">"is_accepted"</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">"is_rejected"</span>: <span class="hljs-number">0</span>
+}
+</code></pre><h3 id="delete-open-api-carpool-street-reservations-id-">DELETE open-api/carpool-street-reservations/{id}</h3>
+<p>Admin level needed</p>
+<h2 id="5-carpool-car">5. Carpool car</h2>
+<p>A car is linked to a user through the car_id in the user table</p>
+<h3 id="get-open-api-carpool-cars">GET open-api/carpool-cars</h3>
+<h3 id="post-open-api-carpool-cars">POST open-api/carpool-cars</h3>
+<p>You can add it without having the user being attached it. Don&#39;t forget to link it afterwards.</p>
+<pre><code>{
+    <span class="hljs-attr">"car_type_id"</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">"brand"</span>: <span class="hljs-string">"Renault Kangoo"</span>,
+    <span class="hljs-attr">"description"</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">"default_luggage_id"</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-attr">"is_smoking_allowed"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"is_isofix_present"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"price_per_km_per_seat"</span>: <span class="hljs-string">"1.10"</span>
+}
+</code></pre><h3 id="get-open-api-carpool-cars-id-">GET open-api/carpool-cars/{id}</h3>
+<h3 id="put-open-api-carpool-cars-id-">PUT open-api/carpool-cars/{id}</h3>
+<p>Check on the id if it&#39;s owned by your current user</p>
+<pre><code>{
+    <span class="hljs-attr">"car_type_id"</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">"brand"</span>: <span class="hljs-string">"Renault Kangoo Updated"</span>,
+    <span class="hljs-attr">"description"</span>: <span class="hljs-string">"I have the new version, in red!"</span>,
+    <span class="hljs-attr">"default_luggage_id"</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-attr">"is_smoking_allowed"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"is_isofix_present"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"price_per_km_per_seat"</span>: <span class="hljs-string">"1.10"</span>
+}
+</code></pre><h3 id="delete-open-api-carpool-cars-id-">DELETE open-api/carpool-cars/{id}</h3>
+<p>Admin level needed</p>
+<h2 id="6-bike-car-sharing">6. Bike &amp; car sharing</h2>
+<h3 id="get-open-api-sharing-org">GET open-api/sharing-org</h3>
+<h3 id="post-open-api-sharing-org">POST open-api/sharing-org</h3>
+<p>user_id should be the one from your key</p>
+<pre><code> {
+    <span class="hljs-attr">"id"</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"A-bikes!"</span>,
+    <span class="hljs-attr">"short_description"</span>: <span class="hljs-string">"Sed ut perspiciatis unde omnis iste natus error sit"</span>,
+    <span class="hljs-attr">"body"</span>: <span class="hljs-string">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</span>,
+    <span class="hljs-attr">"prop_vehicle_car"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"prop_vehicle_ecar"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"prop_vehicle_bike"</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">"prop_vehicle_ebike"</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">"prop_vehicle_cargobike"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"prop_vehicle_ecargobike"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"prop_vehicle_step"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"website"</span>: <span class="hljs-string">"https://a-bikes.com"</span>,
+    <span class="hljs-attr">"email"</span>:  <span class="hljs-string">"mail@a-bikes.com"</span>,
+    <span class="hljs-attr">"payment_subscription_info"</span>: <span class="hljs-string">"You can subscribe for 30eur/month"</span>,
+    <span class="hljs-attr">"user_id"</span>: <span class="hljs-number">1</span>
+}
+</code></pre><h3 id="get-open-api-sharing-org-id-">GET open-api/sharing-org/{id}</h3>
+<h3 id="put-open-api-sharing-org-id-">PUT open-api/sharing-org/{id}</h3>
+<pre><code> {
+    <span class="hljs-attr">"id"</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"B-bikes!"</span>,
+    <span class="hljs-attr">"short_description"</span>: <span class="hljs-string">"Sed ut perspiciatis unde omnis iste natus error sit"</span>,
+    <span class="hljs-attr">"body"</span>: <span class="hljs-string">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</span>,
+    <span class="hljs-attr">"prop_vehicle_car"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"prop_vehicle_ecar"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"prop_vehicle_bike"</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">"prop_vehicle_ebike"</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">"prop_vehicle_cargobike"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"prop_vehicle_ecargobike"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"prop_vehicle_step"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"website"</span>: <span class="hljs-string">"https://a-bikes.com"</span>,
+    <span class="hljs-attr">"email"</span>:  <span class="hljs-string">"mail@a-bikes.com"</span>,
+    <span class="hljs-attr">"payment_subscription_info"</span>: <span class="hljs-string">"You can subscribe for 30eur/month"</span>,
+    <span class="hljs-attr">"user_id"</span>: <span class="hljs-number">1</span>
+}
+</code></pre>

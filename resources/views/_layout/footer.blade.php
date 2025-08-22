@@ -61,6 +61,9 @@
                             <li>
                                 <a href="{{ url('/') }}/{{ App::getLocale() }}/terms-of-use" class="">{{ __('public-general.terms-of-use') }}</a>
                             </li>
+                            <li>
+                                <a href="{{ url('/') }}/README-api.html" class="">Documentation de l'API</a>
+                            </li>
                         </ul>
                     </div>
                     <div class="col-desk-8 col-tab-3">
