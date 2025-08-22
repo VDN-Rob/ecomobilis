@@ -1,4 +1,8 @@
 # ------------------------------------------------------------
+# -- 22 AUG - Messages
+ALTER TABLE `carpool_messages` ADD `is_request_cancelled` tinyint(1) DEFAULT '0';
+
+# ------------------------------------------------------------
 # -- 21 AUG - Page content
 CREATE TABLE `pages_blocks` (
         `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -17,6 +21,7 @@ CREATE TABLE `pages_blocks` (
 # -- 31 JUL - Groups
 
 ALTER TABLE `carpool_groups` ADD `is_archived` tinyint(1) DEFAULT '0';
+
 
 
 # ------------------------------------------------------------

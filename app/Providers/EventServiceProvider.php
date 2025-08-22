@@ -12,6 +12,10 @@ use App\Listeners\SendCarpoolRequestNotification;
 use App\Listeners\StoreCarpoolRequestInDatabase;
 use App\Listeners\SendCarpoolRideCancelledNotification;
 
+use App\Events\CarpoolRequestCancelled;
+use App\Listeners\SendCarpoolReservationCancelledNotification;
+use App\Listeners\RemoveCarpoolReservationInDatabase;
+
 use App\Listeners\SendCarpoolReservationAcceptedNotification;
 use App\Listeners\StoreCarpoolReservationAcceptedInDatabase;
 
@@ -39,6 +43,11 @@ class EventServiceProvider extends ServiceProvider
             SendCarpoolRequestNotification::class,
             StoreCarpoolRequestInDatabase::class,
         ],
+        // the passagener cancelled his request
+        CarpoolRequestCancelled::class => [
+            SendCarpoolReservationCancelledNotification::class,
+            RemoveCarpoolReservationInDatabase::class,
+        ],
         // accepted
         CarpoolReservationAccepted::class => [
             SendCarpoolReservationAcceptedNotification::class,
@@ -49,7 +58,8 @@ class EventServiceProvider extends ServiceProvider
             SendCarpoolReservationRejectedNotification::class,
             StoreCarpoolReservationRejectedInDatabase::class,
         ],
-        // rejected
+
+        // cancelled ride
         CarpoolRideCancelled::class => [
             SendCarpoolRideCancelledNotification::class,
         ],

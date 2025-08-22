@@ -50,7 +50,6 @@ Route::group(['namespace' => 'App\Http\Controllers\Web', 'as' => 'web.'], functi
         Route::put('/carpool/{id}/update', 'CarpoolController@update')->name('carpoolUpdate');
 
         Route::get('/carpool/{id}', 'CarpoolController@show')->name('carpoolShow');
-
         Route::post('/carpool-cancel/{id}', 'CarpoolController@cancelRide')->name('carpoolCancel');
 
     });
@@ -93,6 +92,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'middleware' => ['aut
     Route::get('/admin/carpool-messages/ride/{rideId}/sender/{conversationPartnerId}/', 'CarpoolMessagesController@thread')->name('carpoolMessagesThread');
 
     Route::post('/admin/carpool-reservation/reservation/{rideReservationId}/confirm-reject-store', 'CarpoolController@carpoolReservationConfirmRejectStore')->name('carpoolReservationConfirmRejectStore');
+    Route::post('/admin/carpool-reservation/cancel/{rideReservationId}/confirm-reject-store', 'CarpoolController@carpoolReservationCancelStore')->name('carpoolReservationCancelStore');
 
     // user profile + user's car ----------
     Route::get('/admin/user/profile/edit',   'UserController@profileEdit')->name('profileEdit');
@@ -100,7 +100,6 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'middleware' => ['aut
 
     Route::get('/admin/user/delete/',       'UserController@profileDelete')->name('profileDelete');
     Route::delete('/admin/user/delete/',    'UserController@profileDestroy')->name('profileDestroy');
-
 
     // groups
     Route::get('/admin/carpool-groups/',            'CarpoolGroupsController@overview')->name('carpoolGroupsOverview');
@@ -118,4 +117,3 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'middleware' => ['aut
     Route::get('/admin/carpool-groups/{id}/unarchive',      'CarpoolGroupsController@unarchive')->name('carpoolGroupsUnarchive');
 
 });
-

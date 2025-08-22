@@ -15,7 +15,7 @@
                     <form method="POST" action="{{ route('password.update') }}" class="ui form">
                         @csrf
                         <div class="ui ">
-                            
+
                             <?php
                             // as there is a bug in laravel the token is the first segment
                             $url = strtok($_SERVER['REQUEST_URI'], '?');

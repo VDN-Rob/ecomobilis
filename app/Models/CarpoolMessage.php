@@ -14,7 +14,11 @@ class CarpoolMessage extends Model
 
     public $table = 'carpool_messages';
     protected $fillable = ['message', 'user_id','conversation_partner_user_id', 'car_ride_id' ,
-        'is_request_for_reservation', 'is_confirmation_for_reservation', 'is_rejected_for_reservation', 'is_ride_cancelled_for_reservation', 'is_read'];
+        'is_request_for_reservation', 'is_confirmation_for_reservation',
+        'is_rejected_for_reservation',
+        'is_ride_cancelled_for_reservation',
+        'is_request_cancelled',
+        'is_read'];
 
     public function user() {
         return $this->belongsTo(User::class, 'user_id');

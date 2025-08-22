@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\CarpoolRequestCancelled;
 use App\Events\CarpoolReservationAccepted;
 use App\Events\CarpoolReservationRejected;
 use App\Models\CarpoolMessage;
@@ -91,6 +92,19 @@ class CarpoolController extends Controller
 
     }
 
+    /* function after modal launch where request from passager is cancelled / removed */
+    public function carpoolReservationCancelStore($rideReservationId, Request $request)
+    {
+        $userId             = Auth::user()->id;
+        $rideReservation    = (new CarpoolRideReservation())::find($rideReservationId);
+        $ride               = (new CarpoolRide())::find($rideReservation->ride_id);
+
+        Log::debug('carpoolReservationCancelStore - action event | rideReservationId:'.$rideReservationId. ' from Auth User id (passenger) '.$userId);
+        event(new CarpoolRequestCancelled($rideReservationId, $userId));
+
+        return \Redirect::route('admin.carpoolMessagesThread', [$ride->id, $ride->user_id])->with('message', 'Votre annulation a été transmise!');
+
+    }
 
 
 }

@@ -62,6 +62,7 @@ return [
     // messages
     'no-messages' => 'Aucun message pour le moment. Sélectionnez d\'abord un trajet.',
     'auto-message-request-reservation' => 'Réservation de l\'itinéraire demandé',
+    'auto-message-request-cancelled' => 'La réservation a été annulée par le passager.',
     'send-your-first-message' => 'N\'hésitez pas à envoyer votre premier message',
 
     // car details via profile / add ride etc
@@ -100,7 +101,14 @@ return [
     'modal-ride-cancel-title'   =>  'Annuler la course',
     'modal-ride-cancel-body'    => 'Lorsque vous confirmez, vous annulez la course. Un message automatique sera envoyé aux passagers.',
     'modal-ride-cancel-btn'      => 'Oh non, ignorez-moi!',
-    'modal-ride-ok-btn'         => 'Oui, veuillez annuler la course'
+    'modal-ride-ok-btn'         => 'Oui, veuillez annuler la course',
+
+    // cancel as passager
+    'cancel-request-btn'                => 'Annulez votre question',
+    'modal-ride-request-cancel-title'   => 'Annuler la question',
+    'modal-ride-request-cancel-body'    => 'Je ne peux plus faire le trajet. Veuillez annuler la demande.',
+    'modal-ride-request-cancel-btn'     => 'Oh non, ignorez-moi!',
+    'modal-ride-request-ok-btn'         => 'Oui, veuillez annuler ma demande.'
 
 
 ];

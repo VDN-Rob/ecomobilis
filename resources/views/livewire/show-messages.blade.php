@@ -60,6 +60,8 @@
                                         <div class="msg-text">
                                             @if($conversation->message == 'auto-message' && $conversation->is_request_for_reservation == '1')
                                                 {{ __('carpool.auto-message-request-reservation') }}
+                                            @elseif($conversation->message == 'auto-message' && $conversation->is_request_cancelled == '1')
+                                                {{ __('carpool.auto-message-request-cancelled') }}
                                             @else
                                                 {{ $conversation->message }}
                                             @endif
@@ -81,6 +83,8 @@
                                         <div class="msg-text">
                                             @if($conversation->message == 'auto-message' && $conversation->is_request_for_reservation == '1')
                                                 {{ __('carpool.auto-message-request-reservation') }}
+                                            @elseif($conversation->message == 'auto-message' && $conversation->is_request_cancelled == '1')
+                                                {{ __('carpool.auto-message-request-cancelled') }}
                                             @else
                                                 {{ $conversation->message }}
                                             @endif
