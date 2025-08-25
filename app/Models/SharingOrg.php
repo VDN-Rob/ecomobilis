@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
+use App\Models\SharingDecisionNode;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
-use App\Models\CarpoolRideReservation;
 use Auth;
 
 class SharingOrg extends Model
@@ -29,5 +29,9 @@ class SharingOrg extends Model
 
     public $timestamps = true;
 
+    public function decisionNodes()
+    {
+        return $this->belongsToMany(SharingDecisionNode::class, 'sharing_decision_node_organisation');
+    }
 
 }

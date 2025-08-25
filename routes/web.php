@@ -38,6 +38,9 @@ Route::group(['namespace' => 'App\Http\Controllers\Web', 'as' => 'web.'], functi
     Route::get('/sharing', 'SharingController@index')->name('sharingOverview');
     Route::get('/sharing/{id}', 'SharingController@show')->name('sharingShow');
 
+    Route::get('/sharing-questionnaire', 'SharingQuestionnaireController@index')->name('questionnaire.index');
+    Route::post('/sharing-questionnaire/answer', 'SharingQuestionnaireController@answer')->name('questionnaire.answer');
+
     //traffic ----------
     Route::get('/traffic', 'TrafficController@index')->name('trafficOverview');
 
