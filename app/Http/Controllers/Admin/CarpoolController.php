@@ -31,7 +31,6 @@ class CarpoolController extends Controller
                 ->where('user_id', Auth::user()->id)
                 ->where('is_cancelled', 0)
                 ->orderBy('travel_start_datetime', 'ASC')
-                ->orderBy('is_cancelled', 0)
                 ->paginate(25);
         } else {
             // future

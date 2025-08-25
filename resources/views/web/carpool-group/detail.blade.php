@@ -4,11 +4,13 @@
     <!-- top block with title -->
     <div class="block no-bottom-margin no-bottom-padding">
         <div class="grid">
+            @if($group->is_archived == 1)
             <div class="col-desk-12 extra-margin-top">
                 <div class="warning red box">
-                    <span class="heroicon heroicon-archive"></span> {{ __('carpool.group-is-archived') }}</div>
+                    <span class="heroicon heroicon-archive"></span> {{ __('carpool.group-is-archived') }}
                 </div>
             </div>
+            @endif
             <div class="col-desk-6">
                 <h1 class="no-bottom-margin">{{ $group->title }}</h1>
                 <div class="dark-blue">{{ $group->description }}</div>
@@ -19,6 +21,7 @@
             </div>
 
             <div class="col-desk-6 text-right">
+                {{ $group->is_archived }}
                 @if($group->is_archived !== 1)
                     <div class="extra-padding-top">
                         @if(!isset(Auth::user()->id))
