@@ -1,3 +1,10 @@
+## 0. Introduction
+
+For every call the header should contain your X-API-KEY. This key can be requested through info@ecomobilis.be.
+The X-API-KEY belongs to a user, so please create an account on Ecomobilis before you request it.
+
+You can submit entries, but updating can only happen for entries that contain the user_id where the X-API-KEY belongs to.
+
 ## 1. Users
 
 ### GET open-api/users
