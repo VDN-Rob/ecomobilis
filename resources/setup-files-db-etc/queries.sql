@@ -8,9 +8,8 @@ CREATE TABLE `sharing_decision_edges` (
   `child_id` int(10) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `sharing_decision_node_organisation` (
   `sharing_decision_node_id` int(10) NOT NULL,
