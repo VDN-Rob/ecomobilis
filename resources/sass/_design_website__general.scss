@@ -203,7 +203,14 @@ details[open]  > summary {
 
 
 .bot-message { color: #263d5e; background: #fff;  padding: 8px; border-radius: 10px; margin-bottom: 20px; margin-top: 20px; }
-.user-message {background: #263d5e;  color: white; padding: 8px; border-radius: 20px; margin-left:auto; width: auto; }
+.user-message {
+    background: #263d5e;
+    color: white;
+    padding: 8px;
+    border-radius: 20px;
+    margin: auto;
+    width: 90%;
+}
 
 .answer-btn {
     margin-left: 10px;

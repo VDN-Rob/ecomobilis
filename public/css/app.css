@@ -3326,8 +3326,8 @@ details[open] > summary {
   color: white;
   padding: 8px;
   border-radius: 20px;
-  margin-left: auto;
-  width: auto;
+  margin: auto;
+  width: 90%;
 }
 
 .answer-btn {
