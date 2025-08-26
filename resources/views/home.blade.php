@@ -8,10 +8,10 @@
                 <div class="headerpic-text-block">
                     <div class="grid grid-with-row-margin stackable">
                         <div class="col-desk-5   col-tab-6 col-tab-shift-0   extra-margin-top text-left">
-                                <h1>{{ $page->title }}</h1>
-                                @if(!empty($page->intro))
-                                    {{ $page->intro }}</h4>
-                                @endif
+                            <h1>{{ $page->title }}</h1>
+                            @if(!empty($page->intro))
+                                {{ $page->intro }}</h4>
+                            @endif
                         </div>
                     </div> <!-- grid -->
                 </div>

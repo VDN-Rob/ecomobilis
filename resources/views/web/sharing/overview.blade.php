@@ -20,6 +20,22 @@
         </div>
     </div>
 
+    <!-- top block questionnaire / decision tree -->
+    <!--
+    <div class="block">
+        <div class="grid">
+            <div class="col-desk-12 text-center">
+                <h2>{{ __('sharing-decision-tree.title') }}</h2>
+            </div>
+            <div class="col-desk-12 text-center">
+                <div class="box-with-border box extra-box-shadow" style="height: 300px;">
+                    @include('web.sharing._include.questionnaire')
+                </div>
+            </div>
+        </div>
+    </div>
+    -->
+
     <!--  block with live wire component -->
     @livewire('show-sharing-orgs')
 

@@ -3109,10 +3109,12 @@ https://github.com/sschoger/heroicons-ui/tree/master/svg
 .website .container.no-top-margin {
   margin: 0;
 }
-.website .box.box-with-border {
+
+.box.box-with-border {
   border: 1px solid rgb(233.65, 233.65, 233.65);
 }
-.website .box.box-with-border.success {
+
+.box.box-with-border.success {
   border: 1px solid #1B8C63;
   background-color: rgba(27, 140, 99, 0.2);
 }
@@ -3308,6 +3310,41 @@ details[open] > summary {
 .box-ride-confirm-reject {
   position: relative;
   padding-bottom: 0;
+}
+
+.bot-message {
+  color: #263d5e;
+  background: #fff;
+  padding: 8px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.user-message {
+  background: #263d5e;
+  color: white;
+  padding: 8px;
+  border-radius: 20px;
+  margin-left: auto;
+  width: auto;
+}
+
+.answer-btn {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.chat-final {
+  color: #1B8C63;
+}
+
+.final-answer-icon {
+  text-align: center;
+  margin-bottom: 15px;
+}
+.final-answer-icon .heroicon:before {
+  font-size: 45px;
 }
 
 .website {

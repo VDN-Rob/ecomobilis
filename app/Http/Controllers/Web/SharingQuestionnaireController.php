@@ -15,7 +15,7 @@ class SharingQuestionnaireController extends Controller
         // Start at root (assume id=1)
         $root = SharingDecisionNode::find(1);
 
-        return view('web.sharing.questionnaire', [
+        return view('web.sharing.questionnaire-iframe', [
             'firstQuestion' => $root
         ]);
     }

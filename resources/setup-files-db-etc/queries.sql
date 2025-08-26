@@ -1,4 +1,70 @@
 # ------------------------------------------------------------
+# -- SHARING DECISION TREE WITH EXAMPLES
+
+CREATE TABLE `sharing_decision_edges` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `node_id` int(10) NOT NULL,
+  `answer` varchar(100) NOT NULL,
+  `child_id` int(10) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+CREATE TABLE `sharing_decision_node_organisation` (
+  `sharing_decision_node_id` int(10) NOT NULL,
+  `sharing_org_id` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+CREATE TABLE `sharing_decision_nodes` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `question` varchar(255) DEFAULT NULL,
+  `result` varchar(255) DEFAULT NULL,
+  `is_leaf` tinyint(1) DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+/* just some data examples */
+INSERT INTO `sharing_decision_edges` (`id`, `node_id`, `answer`, `child_id`, `created_at`, `updated_at`)
+VALUES
+    (1,1,'car',2,NULL,NULL),
+    (2,1,'bike',3,NULL,NULL),
+    (3,2,'electric',4,NULL,NULL),
+    (4,2,'petrol',5,NULL,NULL),
+    (5,3,'mountain',6,NULL,NULL),
+    (6,3,'road',7,NULL,NULL),
+    (7,1,'airplane',8,'2025-08-25 15:07:09','2025-08-25 15:07:09'),
+    (8,8,'Yes fast!',9,'2025-08-25 15:20:45','2025-08-25 15:20:45'),
+    (9,8,'No, slow is good',10,'2025-08-25 15:21:00','2025-08-25 15:21:00');
+
+
+INSERT INTO `sharing_decision_nodes` (`id`, `question`, `result`, `is_leaf`, `created_at`, `updated_at`)
+VALUES
+    (1,'Do you prefer car or bike?',NULL,0,NULL,NULL),
+    (2,'Do you like electric or petrol cars?',NULL,0,NULL,NULL),
+    (3,'Do you prefer mountain or road bike?',NULL,0,NULL,NULL),
+    (4,NULL,'You should get a Tesla!',1,NULL,NULL),
+    (5,NULL,'You should get a Ford Mustang!',1,NULL,NULL),
+    (6,NULL,'You should try a Trek Mountain Bike!',1,NULL,NULL),
+    (7,NULL,'You should try a Giant Road Bike!',1,NULL,NULL),
+    (8,'Do you want to it to go fast?',NULL,0,'2025-08-25 15:06:30','2025-08-25 15:19:02'),
+    (9,NULL,'Buy an F16',1,'2025-08-25 15:19:27','2025-08-25 15:19:27'),
+    (10,NULL,'Slow boing is fine',1,'2025-08-25 15:20:22','2025-08-25 15:21:26');
+
+
+INSERT INTO `sharing_decision_node_organisation` (`sharing_decision_node_id`, `sharing_org_id`)
+VALUES
+    (4,1),
+    (5,2),
+    (9,5),
+    (10,4);
+
+# ------------------------------------------------------------
 # -- 22 AUG - Messages
 ALTER TABLE `carpool_messages` ADD `is_request_cancelled` tinyint(1) DEFAULT '0';
 
@@ -292,7 +358,7 @@ CREATE TABLE `carpool_street_coordinates` (
 DROP TABLE IF EXISTS `failed_jobs`;
 
 CREATE TABLE `failed_jobs` (
-                               `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+                               `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
                                `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
                                `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
                                `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -328,7 +394,7 @@ CREATE TABLE `faq` (
 DROP TABLE IF EXISTS `jobs`;
 
 CREATE TABLE `jobs` (
-                        `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+                        `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
                         `queue` varchar(191) NOT NULL,
                         `payload` longtext NOT NULL,
                         `attempts` tinyint(3) unsigned NOT NULL,
@@ -411,9 +477,9 @@ CREATE TABLE `password_resets` (
 DROP TABLE IF EXISTS `personal_access_tokens_rm`;
 
 CREATE TABLE `personal_access_tokens_rm` (
-                                             `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+                                             `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
                                              `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-                                             `tokenable_id` bigint(20) unsigned NOT NULL,
+                                             `tokenable_id` int(10) unsigned NOT NULL,
                                              `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
                                              `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
                                              `abilities` text COLLATE utf8mb4_unicode_ci,
@@ -451,7 +517,7 @@ CREATE TABLE `sessions` (
 DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (
-                         `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+                         `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
                          `firstname` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
                          `lastname` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
                          `gender` varchar(2) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
