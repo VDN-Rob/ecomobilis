@@ -21,7 +21,6 @@
     </div>
 
     <!-- top block questionnaire / decision tree -->
-    <!--
     <div class="block">
         <div class="grid">
             <div class="col-desk-12 text-center">
@@ -34,7 +33,6 @@
             </div>
         </div>
     </div>
-    -->
 
     <!--  block with live wire component -->
     @livewire('show-sharing-orgs')
