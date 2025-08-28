@@ -22,7 +22,7 @@
         let chatBox = $('#chat-box');
 
         // Append user answer
-        chatBox.append('<div class="user-message  chat-message"><strong>You:</strong> ' + answer + '</div>');
+        chatBox.append('<div class="user-message  chat-message"><strong>Toi:</strong> ' + answer + '</div>');
 
         // Remove old buttons
         $(this).closest('.answers').remove();
@@ -50,6 +50,8 @@
                             });
                             message += '</ul></div>';
                         }
+                        message += '<div class="try-again tiny grey" style="margin-top: 15px" onclick="location.reload()"><span class="heroicon-refresh heroicon"></span>Réessayer</div>';
+
                         message += '</div>';
 
                         chatBox.append(message);

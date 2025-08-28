@@ -218,6 +218,8 @@ details[open]  > summary {
 }
 .chat-final {
   color: $green;
+  position: relative;
+  top: -20px;
 }
 .final-answer-icon {
     text-align: center;

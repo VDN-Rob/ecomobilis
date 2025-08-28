@@ -10,7 +10,7 @@
 
     <!-- top block with first - paragraph -->
     <div class="block">
-        <div class="grid">
+        <div class="grid stackable">
             <div class="col-desk-12 text-center">
                 <h1>{{ $page->title }}</h1>
             </div>
@@ -22,8 +22,8 @@
         </div>
     </div>
 
-    <div class=" block block-narrow  center">
-        <div class="ui grid centered stackable">
+    <div class="block block-narrow  center">
+        <div class="grid centered stackable">
             <div class="col-desk-10 center-the-column text-center">
                 <div class="blog-image text-center" >
                     @if (isset($page->cover_image))

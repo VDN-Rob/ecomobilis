@@ -4,7 +4,7 @@
 
     <div class="content ">
 
-        <div class="ui grid block grid-with-row-margin">
+        <div class="grid stackable block grid-with-row-margin">
             <div class="col-desk-8 center-the-column">
 
 

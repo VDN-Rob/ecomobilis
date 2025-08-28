@@ -11,7 +11,7 @@
     </div>
 
     <div class="block">
-        <div class="grid grid-with-row-margin">
+        <div class="grid grid-with-row-margin stackable">
             <div class="col-desk-8 center-the-column ">
                 {{ __('carpool.reserve-intro') }}
                 <br><br>

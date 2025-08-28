@@ -3337,6 +3337,8 @@ details[open] > summary {
 
 .chat-final {
   color: #1B8C63;
+  position: relative;
+  top: -20px;
 }
 
 .final-answer-icon {

@@ -15,7 +15,7 @@
     </div>
 
     <div class="block">
-        <div class="grid">
+        <div class="grid stackable">
             <div class="col-desk-8 center-the-column" >
                 <div class="short-description">{!! $org->body !!}</div> <br>
                 @if($org->website) <div class="website"><a href="{{ $org->website }}" target="_blank">{{ $org->website }}</a></div>    <br>@endif
