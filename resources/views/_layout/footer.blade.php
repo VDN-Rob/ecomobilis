@@ -49,9 +49,6 @@
                             <li class=" @if(Route::current()->getName() == 'web.aboutUs') active @endif ">
                                 <a href="{{ url('/') }}/about-us">{{ __('public-general.nav-about-us') }}</a>
                             </li>
-                            <li class=" @if(Route::current()->getName() == 'web.contact-us') active @endif ">
-                                <a href="{{ url('/') }}/contact-us">{{ __('public-general.nav-contact-us') }}</a>
-                            </li>
                         </ul>
                         <br>
                         <ul>

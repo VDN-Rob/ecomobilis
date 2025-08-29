@@ -21,18 +21,17 @@
             @endif
         </div>
     </div>
-
+    @if (isset($page->cover_image))
     <div class="block block-narrow  center">
         <div class="grid centered stackable">
             <div class="col-desk-10 center-the-column text-center">
                 <div class="blog-image text-center" >
-                    @if (isset($page->cover_image))
                         <img src="https://admin.ecomobilis.be/storage/{{ $page->cover_image }}" style="margin:0 auto;">
-                    @endif
                 </div>
             </div>
         </div>
     </div> <!-- end block -->
+    @endif
 
     <div class=" block block-narrow  center">
         <div class="ui grid centered stackable">
@@ -42,15 +41,6 @@
         </div> <!-- end grid -->
     </div> <!-- end block -->
 
-    <div class=" block block-narrow  center">
-        <div class="ui grid centered stackable">
-            <div class="col-desk-10 center-the-column">
-                {!! $page->body !!}
-            </div>
-        </div> <!-- end grid -->
-    </div> <!-- end block -->
-
     @include('_includes.page_blocks')
-
 
 @endsection
