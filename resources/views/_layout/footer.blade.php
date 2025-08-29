@@ -41,26 +41,21 @@
                                 @if(Route::current()->getName() == 'web.blogDetail') active @endif ">
                                 <a href="{{ url('/') }}/blog">Blog</a>
                             </li>
+                            <li class=" @if(Route::current()->getName() == 'web.aboutUs') active @endif ">
+                                <a href="{{ url('/') }}/about-us">{{ __('public-general.nav-about-us') }}</a>
+                            </li>
                             @foreach(App\Models\Page::where('is_live', 1)->where('is_show_in_footer_nav', 1)->get() as $page)
                                 <li class="@if(Request::segment(3) == $page->slug) active @endif ">
                                     <a href="{{ url('/') }}/page/{{ $page->slug }}">{{ $page->title }}</a>
                                 </li>
                             @endforeach
-                            <li class=" @if(Route::current()->getName() == 'web.aboutUs') active @endif ">
-                                <a href="{{ url('/') }}/about-us">{{ __('public-general.nav-about-us') }}</a>
+                            <li>
+                                <a href="{{ url('/') }}/README-api.html" class="">Documentation de l'API</a>
                             </li>
                         </ul>
                         <br>
                         <ul>
-                            <li>
-                                <a href="{{ url('/') }}/{{ App::getLocale() }}/privacy-policy" class="">{{ __('public-general.privacy-policy') }}</a>
-                            </li>
-                            <li>
-                                <a href="{{ url('/') }}/{{ App::getLocale() }}/terms-of-use" class="">{{ __('public-general.terms-of-use') }}</a>
-                            </li>
-                            <li>
-                                <a href="{{ url('/') }}/README-api.html" class="">Documentation de l'API</a>
-                            </li>
+
                         </ul>
                     </div>
                     <div class="col-desk-8 col-tab-3">
