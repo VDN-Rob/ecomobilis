@@ -22,7 +22,7 @@
 
     <!-- top block questionnaire / decision tree -->
     <div class="block">
-        <div class="grid">
+        <div class="grid stackable">
             <div class="col-desk-12 text-center">
                 <h2>{{ __('sharing-decision-tree.title') }}</h2>
             </div>
@@ -36,8 +36,6 @@
 
     <!--  block with live wire component -->
     @livewire('show-sharing-orgs')
-
-
 
 
 

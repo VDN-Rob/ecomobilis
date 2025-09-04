@@ -1,4 +1,9 @@
 # ------------------------------------------------------------
+# -- 4 Sept - Sharing
+ALTER TABLE `sharing_organisations` ADD `slug` varchar(255) DEFAULT NULL;
+
+# ------------------------------------------------------------
+# -- 28 AUG - Messages
 # -- SHARING DECISION TREE WITH EXAMPLES
 
 CREATE TABLE `sharing_decision_edges` (

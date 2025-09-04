@@ -200,7 +200,11 @@ details[open]  > summary {
 
 // sharing questionnaire / decision tree
 // -----------------------------------------
-
+#chat-box {
+    button {
+        margin-bottom: 5px;
+    }
+}
 
 .bot-message { color: #263d5e; background: #fff;  padding: 8px; border-radius: 10px; margin-bottom: 20px; margin-top: 20px; }
 .user-message {

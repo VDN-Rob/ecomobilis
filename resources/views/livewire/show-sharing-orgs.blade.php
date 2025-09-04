@@ -18,7 +18,7 @@
 
     <div class="block">
         @if(count($orgs) > 0)
-            <div class="grid">
+            <div class="grid stackable grid-with-row-margin">
                 @foreach($orgs as $org)
                     <div class="col-desk-4 text-left">
                         <h3>{{ $org->name }}</h3>
@@ -33,7 +33,7 @@
                             @if($org->prop_vehicle_step) <span class="tiny label">{{ __('sharing.step') }}</span>@endif
                         </div>
                         <br>
-                        <a href="{{ url('/') }}/sharing/{{ $org->id }}">{{ __('general.read-more') }}</a>
+                        <a href="{{ url('/') }}/sharing/{{ $org->slug }}">{{ __('general.read-more') }}</a>
                         <br><br>
                     </div>
                 @endforeach

@@ -35,8 +35,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Web', 'as' => 'web.'], functi
     Route::post('/carpool/matching', 'CarpoolController@matching')->name('carpoolMatching');
 
     // car and bike sharing ----------
-    Route::get('/sharing', 'SharingController@index')->name('sharingOverview');
-    Route::get('/sharing/{id}', 'SharingController@show')->name('sharingShow');
+    Route::get('/sharing',      'SharingController@index')->name('sharingOverview');
+    Route::get('/sharing/{slug}', 'SharingController@show')->name('sharingShow');
 
     Route::get('/sharing-questionnaire', 'SharingQuestionnaireController@index')->name('questionnaire.index');
     Route::post('/sharing-questionnaire/answer', 'SharingQuestionnaireController@answer')->name('questionnaire.answer');

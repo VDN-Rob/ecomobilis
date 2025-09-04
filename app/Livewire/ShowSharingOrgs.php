@@ -36,7 +36,7 @@ class ShowSharingOrgs extends Component
         if ($this->typeFilter == 'ecargobike') {
             $data['orgs'] = SharingOrg::where('prop_vehicle_ecargobike', 1)->get();
         }
-        if ($this->typeFilter == 'car') {
+        if ($this->typeFilter == 'step') {
             $data['orgs'] = SharingOrg::where('prop_vehicle_step', 1)->get();
         }
 

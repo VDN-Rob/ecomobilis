@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\SharingDecisionNode;
 use Carbon\Carbon;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
@@ -12,7 +13,7 @@ use Auth;
 class SharingOrg extends Model
 {
     protected $table = 'sharing_organisations';
-    protected $fillable = ['name',  'short_description', 'body',
+    protected $fillable = ['name', 'slug', 'short_description', 'body',
       'prop_vehicle_car',
       'prop_vehicle_ecar',
       'prop_vehicle_bike',
@@ -26,8 +27,17 @@ class SharingOrg extends Model
 
       'payment_subscription_info', 'user_id',
     ];
-
     public $timestamps = true;
+    use Sluggable;
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'name'
+            ]
+        ];
+    }
+
 
     public function decisionNodes()
     {

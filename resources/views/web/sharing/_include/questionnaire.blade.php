@@ -1,7 +1,6 @@
 
 <div class="content">
         <div class="grid">
-
             <div id="chat-box" class="col-desk-12 text-center">
                 <div class="bot-message chat-message">{{ $firstQuestion->question }}</div>
                 <div class="answers  chat-message">
