@@ -30,9 +30,9 @@ class SharingController extends Controller
         return view('web.sharing.overview', $data);
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $data['org'] = SharingOrg::find($id);
+        $data['org'] = SharingOrg::where('slug', $slug)->first();
         return view('web.sharing.show', $data);
     }
 
