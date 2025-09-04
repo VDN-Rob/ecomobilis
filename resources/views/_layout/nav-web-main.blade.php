@@ -68,7 +68,7 @@
     </li>
 
     <li class="show-on-mobile-only"><a href="{{ url('/admin') }}">Le tableau de bord</a></li>
-    <li class="show-on-mobile-only"><a href="{{ url('/admin/user/profile/') }}/{{ Auth::user()->id }}/edit">Mon profil</a></li>
+    <li class="show-on-mobile-only"><a href="{{ url('/admin/user/profile/edit') }}">Mon profil</a></li>
     <li class="show-on-mobile-only"><a class="" href="{{ route('logout', App::getLocale()) }}"
            onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">

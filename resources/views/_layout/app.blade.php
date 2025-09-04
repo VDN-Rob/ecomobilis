@@ -42,7 +42,7 @@
     <!-- 2. custom -->
 
     <!-- css via laravel mix  -->
-    <link href="{{ asset('css/app.css?v=12') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css?v=13') }}" rel="stylesheet">
 
     <!-- Scripts via laravel mix  -->
     <script src="{{ asset('js/main.js?v=7') }}" defer></script>

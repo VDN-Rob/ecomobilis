@@ -10,7 +10,7 @@
         </div>
 
         <div class="box extra-box-shadow">
-            <div class="grid grid-with-row-margin ">
+            <div class="grid stackable grid-with-row-margin ">
 
                 <div class="col-desk-3 ">
                     <strong>{{ __('user.first-name') }}</strong>
@@ -86,7 +86,7 @@
 
         @if(isset($user->car))
             <div class="box extra-box-shadow">
-                <div class="grid grid-with-row-margin ">
+                <div class="grid stackable grid-with-row-margin ">
 
                     <div class="col-desk-3 ">
                         <strong>{{ __('carpool.brand') }}</strong>

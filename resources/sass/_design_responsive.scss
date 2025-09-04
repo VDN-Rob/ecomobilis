@@ -69,7 +69,38 @@
                 display: inline-block;
             }
         }
+        .ride-group {
+            position: relative;
+            width: 100%;
+        }
     }
+    // ------------ the ride detail, eg in messages
+    .grid.grid-ride-block {
+        .col-mob-1.col-mob-header-design {
+            width: 25%;
+        }
+        .col-mob-2.col-mob-header-design,
+        .col-mob-2.col-from-to,
+        .col-mob-2.col-from {
+            width: 50%;
+        }
+        .col-mob-2.col-from-to {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            background: #efefef;
+            border-radius: 5px;
+        }
+        .col-mob-4.details {
+            text-align: left;
+            .reserved-amount, .luggage {
+                width: 49%;
+                display: inline-block;
+                text-align: left;
+            }
+        }
+    }
+
+    // ------------ passenger-list
     .box-ride .passenger-list {
         margin-left: 0;
         .col-desk-2, .col-desk-3 {
@@ -80,17 +111,55 @@
             padding-top: 5px;
             border-top: 1px solid $light-grey;
         }
-
+        // as the grid.stackable writes it over
+        .col-mob-2.passenger-list-name,
+        .col-mob-2.passenger-list-places,
+        .col-mob-2.passenger-list-status {
+            width: 40%;
+            border:0;
+        }
+        .col-mob-2.passenger-list-status {
+            width: 20%;
+            text-align: center;
+            .heroicon {
+                top: 8px;
+            }
+            .status-text {
+                display: none;
+            }
+        }
     }
+
+    // chat list
+    // -----------------------------------------
+    .list-of-chats-container {
+        .toggle-label {
+            display: inline-block; /* show toggle button */
+        }
+
+        .list-of-chats {
+            min-height: 0;
+            height: 0;
+            display: none;
+            transition: height 0.3s ease;
+            overflow: scroll;
+            scrollbar-color: #263d5e #eceeee;
+            scrollbar-width: thin;
+        }
+
+        /* When checkbox is checked → expand */
+        .toggle-checkbox:checked ~ .list-of-chats {
+            display: block;
+            min-height: 350px;
+            height: 350px;
+        }
+    }
+
+
+
 
     // miscellaneous
     // -----------------------------------------
-    .list-of-chats {
-        height: auto;
-        max-height: 350px;
-    }
-
-
     .autocomplete-swap-dep-arr {
         display: none;
     }

@@ -70,12 +70,14 @@
       list-style: none;
       display: inline-flex;
       font-weight: 400;
+      text-align: center;
       li {
         display: inline-block;
         list-style: none;
         margin-right: 10px;
       }
       li a {
+         text-align: center;
          color: $blue;
          position: relative;
          padding: 10px 25px;
@@ -155,28 +157,37 @@
     }
   }
   .page-sub-nav {
-    //border:0;
+      margin-top: 20px;
       ul {
           padding-bottom: 0;
       }
       ul li {
           border:0;
       }
+
      ul li a {
-         display: inline-block;
-         border:0;
+        display: inline-block;
+        border:0;
         padding: 0;
         font-size: 13px;
-        line-height: 12px;
+        line-height: 13px;
         height:auto;
-         max-width: 100px;
-         white-space: nowrap;
-         overflow: hidden !important;
-         text-overflow: ellipsis;
+        max-width: 150px;
+        white-space: nowrap;
+        overflow: hidden !important;
+        text-overflow: ellipsis;
      }
      ul li.active a:after {
-          display: none;
+         display: none;
      }
+      &.tabular-style {
+          padding-bottom: 0;
+          height: 41px;
+      }
+      &.tabular-style ul li a {
+          padding-left: 7px;
+          padding-right: 7px;
+      }
   }
 
   .page-sub-header {
@@ -185,7 +196,6 @@
       display: block;
       width: 50%;
       padding-right: 5px;
-      border:1px dotted red;
       margin-bottom: 15px;
       margin-right: 0;
     }

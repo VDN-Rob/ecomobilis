@@ -17,7 +17,7 @@
     {!! Form::model(null, array('method' => 'PUT', 'route' => ['admin.profileUpdate'], 'class' => 'ui form', 'files' => false)) !!}
 
         <div class="block extra-margin-bottom extra-padding-bottom">
-            <div class="grid grid-with-row-margin ">
+            <div class="grid stackable grid-with-row-margin ">
 
                 <div class="col-desk-6 ">
                     <div class="field special-placeholder">
@@ -86,7 +86,7 @@
 
                 <div class="col-desk-12 js-user-car-block"    @if(!isset($user->car)) style="display:none" @endif>
                     <div class="box box-with-border">
-                        <div class="grid grid-with-row-margin">
+                        <div class="grid stackable grid-with-row-margin">
                             <div class="col-desk-12">
                                 <strong>{{ __('carpool.car') }}</strong>
                             </div>

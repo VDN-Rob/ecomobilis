@@ -1,41 +1,61 @@
-.list-of-chats {
-    position: relative;
-    padding: 10px;
-    overflow: scroll;
-    scrollbar-color: $blue $light-grey;
-    scrollbar-width: thin;
-    height: 450px;
-    .list-of-chat-item {
-        display: block;
-        padding: 5px 5px 5px 10px;
-        border-bottom: 1px solid $line-color-light;
-        border-radius: 0px;
-        text-decoration: none;
-        &.active {
-            border-left: 5px solid $line-color-light;
+.list-of-chats-container {
+    .toggle-checkbox {
+        display: none;
+    }
+    .toggle-label {
+        display: none; /* hidden on desktop */
+        cursor: pointer;
+        font-weight: bold;
+        padding: 8px 12px;
+        background: #263d5e;
+        color: white;
+        border-radius: 6px;
+        margin-bottom: 10px;
+    }
+
+    .list-of-chats {
+        position: relative;
+        padding: 0px;
+        overflow: scroll;
+        scrollbar-color: $blue $light-grey;
+        scrollbar-width: thin;
+        min-height: 450px;
+        height: auto;
+        .list-of-chat-item {
+            display: block;
+            padding: 5px 5px 5px 10px;
+            border-bottom: 1px solid $line-color-light;
+            border-radius: 0px;
+            text-decoration: none;
+            &.active {
+                border-left: 5px solid $line-color-light;
+            }
+            h4 {
+                background-color: transparent;
+            }
+            &:hover {
+                border-radius: 5px;
+                background-color: rgba($line-color-light, 50%);
+            }
         }
-        h4 {
-            background-color: transparent;
-        }
-        &:hover {
-            border-radius: 5px;
-            background-color: rgba($line-color-light, 50%);
+        .pagination {
+            position: absolute;
+            text-align: center;
+            margin: 0 auto;
+            width: 90%;
+            bottom: 10px;
+            a {
+                border:0;
+                cursor: pointer;
+            }
+            .no-link {
+                opacity: 0.5;
+            }
         }
     }
-    .pagination {
-        position: absolute;
-        text-align: center;
-        margin: 0 auto;
-        width: 90%;
-        bottom: 10px;
-        a {
-            border:0;
-            cursor: pointer;
-        }
-        .no-link {
-            opacity: 0.5;
-        }
-    }
+}
+.col-desk-9.list-of-message-ride-block {
+    padding-right: 0;
 }
 
 .chat-scrollable {

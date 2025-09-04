@@ -1602,6 +1602,7 @@ header .block {
   list-style: none;
   display: inline-flex;
   font-weight: 400;
+  text-align: center;
 }
 .page-sub-nav ul li {
   display: inline-block;
@@ -1609,6 +1610,7 @@ header .block {
   margin-right: 10px;
 }
 .page-sub-nav ul li a {
+  text-align: center;
   color: #263d5e;
   position: relative;
   padding: 10px 25px;
@@ -1677,6 +1679,9 @@ header .block {
   .page-header .title {
     margin-left: 60px;
   }
+  .page-sub-nav {
+    margin-top: 20px;
+  }
   .page-sub-nav ul {
     padding-bottom: 0;
   }
@@ -1688,15 +1693,23 @@ header .block {
     border: 0;
     padding: 0;
     font-size: 13px;
-    line-height: 12px;
+    line-height: 13px;
     height: auto;
-    max-width: 100px;
+    max-width: 150px;
     white-space: nowrap;
     overflow: hidden !important;
     text-overflow: ellipsis;
   }
   .page-sub-nav ul li.active a:after {
     display: none;
+  }
+  .page-sub-nav.tabular-style {
+    padding-bottom: 0;
+    height: 41px;
+  }
+  .page-sub-nav.tabular-style ul li a {
+    padding-left: 7px;
+    padding-right: 7px;
   }
   .page-sub-header {
     height: auto;
@@ -1705,7 +1718,6 @@ header .block {
     display: block;
     width: 50%;
     padding-right: 5px;
-    border: 1px dotted red;
     margin-bottom: 15px;
     margin-right: 0;
   }
@@ -2139,6 +2151,9 @@ button.big,
 
 .driver-info a {
   text-decoration: none;
+}
+.driver-info .msg-img {
+  margin: 0 auto;
 }
 .driver-info:hover .msg-img {
   background: #aaa;
@@ -3309,7 +3324,8 @@ details[open] > summary {
 
 .box-ride-confirm-reject {
   position: relative;
-  padding-bottom: 0;
+  padding: 5px;
+  margin-bottom: 25px;
 }
 
 #chat-box button {
@@ -3795,44 +3811,62 @@ details[open] > summary {
   display: block;
 }
 
-.list-of-chats {
+.list-of-chats-container .toggle-checkbox {
+  display: none;
+}
+.list-of-chats-container .toggle-label {
+  display: none; /* hidden on desktop */
+  cursor: pointer;
+  font-weight: bold;
+  padding: 8px 12px;
+  background: #263d5e;
+  color: white;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+.list-of-chats-container .list-of-chats {
   position: relative;
-  padding: 10px;
+  padding: 0px;
   overflow: scroll;
   scrollbar-color: #263d5e #eceeee;
   scrollbar-width: thin;
-  height: 450px;
+  min-height: 450px;
+  height: auto;
 }
-.list-of-chats .list-of-chat-item {
+.list-of-chats-container .list-of-chats .list-of-chat-item {
   display: block;
   padding: 5px 5px 5px 10px;
   border-bottom: 1px solid rgb(233.65, 233.65, 233.65);
   border-radius: 0px;
   text-decoration: none;
 }
-.list-of-chats .list-of-chat-item.active {
+.list-of-chats-container .list-of-chats .list-of-chat-item.active {
   border-left: 5px solid rgb(233.65, 233.65, 233.65);
 }
-.list-of-chats .list-of-chat-item h4 {
+.list-of-chats-container .list-of-chats .list-of-chat-item h4 {
   background-color: transparent;
 }
-.list-of-chats .list-of-chat-item:hover {
+.list-of-chats-container .list-of-chats .list-of-chat-item:hover {
   border-radius: 5px;
   background-color: rgba(233.65, 233.65, 233.65, 0.5);
 }
-.list-of-chats .pagination {
+.list-of-chats-container .list-of-chats .pagination {
   position: absolute;
   text-align: center;
   margin: 0 auto;
   width: 90%;
   bottom: 10px;
 }
-.list-of-chats .pagination a {
+.list-of-chats-container .list-of-chats .pagination a {
   border: 0;
   cursor: pointer;
 }
-.list-of-chats .pagination .no-link {
+.list-of-chats-container .list-of-chats .pagination .no-link {
   opacity: 0.5;
+}
+
+.col-desk-9.list-of-message-ride-block {
+  padding-right: 0;
 }
 
 .chat-scrollable {
@@ -3924,6 +3958,32 @@ details[open] > summary {
     font-size: 12px;
     display: inline-block;
   }
+  .box-ride-overview-listing .ride-group {
+    position: relative;
+    width: 100%;
+  }
+  .grid.grid-ride-block .col-mob-1.col-mob-header-design {
+    width: 25%;
+  }
+  .grid.grid-ride-block .col-mob-2.col-mob-header-design,
+  .grid.grid-ride-block .col-mob-2.col-from-to,
+  .grid.grid-ride-block .col-mob-2.col-from {
+    width: 50%;
+  }
+  .grid.grid-ride-block .col-mob-2.col-from-to {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: #efefef;
+    border-radius: 5px;
+  }
+  .grid.grid-ride-block .col-mob-4.details {
+    text-align: left;
+  }
+  .grid.grid-ride-block .col-mob-4.details .reserved-amount, .grid.grid-ride-block .col-mob-4.details .luggage {
+    width: 49%;
+    display: inline-block;
+    text-align: left;
+  }
   .box-ride .passenger-list {
     margin-left: 0;
   }
@@ -3935,9 +3995,41 @@ details[open] > summary {
     padding-top: 5px;
     border-top: 1px solid #eceeee;
   }
-  .list-of-chats {
-    height: auto;
-    max-height: 350px;
+  .box-ride .passenger-list .col-mob-2.passenger-list-name,
+  .box-ride .passenger-list .col-mob-2.passenger-list-places,
+  .box-ride .passenger-list .col-mob-2.passenger-list-status {
+    width: 40%;
+    border: 0;
+  }
+  .box-ride .passenger-list .col-mob-2.passenger-list-status {
+    width: 20%;
+    text-align: center;
+  }
+  .box-ride .passenger-list .col-mob-2.passenger-list-status .heroicon {
+    top: 8px;
+  }
+  .box-ride .passenger-list .col-mob-2.passenger-list-status .status-text {
+    display: none;
+  }
+  .list-of-chats-container {
+    /* When checkbox is checked → expand */
+  }
+  .list-of-chats-container .toggle-label {
+    display: inline-block; /* show toggle button */
+  }
+  .list-of-chats-container .list-of-chats {
+    min-height: 0;
+    height: 0;
+    display: none;
+    transition: height 0.3s ease;
+    overflow: scroll;
+    scrollbar-color: #263d5e #eceeee;
+    scrollbar-width: thin;
+  }
+  .list-of-chats-container .toggle-checkbox:checked ~ .list-of-chats {
+    display: block;
+    min-height: 350px;
+    height: 350px;
   }
   .autocomplete-swap-dep-arr {
     display: none;

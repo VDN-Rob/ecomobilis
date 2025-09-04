@@ -1,6 +1,6 @@
 @if(isset($ride))
 <div class="box box-with-border box-ride box-ride-{{ $layout }} @if($ride->is_cancelled) box-ride-is-cancelled @endif">
-    <div class="grid">
+    <div class="grid grid-ride-block">
         @if($ride->is_cancelled) <div class="col-desk-12 red text-center"><strong>Votre trajet a été annulé!</strong><br><br></div>@endif
         @if($layout !== 'email-listing')
             <div class="col-desk-1 col-mob-1 text-center col-mob-header-design text-center">
@@ -44,7 +44,7 @@
             <strong>€ {{ $ride->price_per_seat}}</strong>
         </div>
         <div class="@if($layout == 'email-listing') col-desk-3 @else col-desk-2 @endif text-right last-col col-mob-4 details">
-            <div class="tiny">
+            <div class="tiny reserved-amount">
                 @if($ride->reservedamount)
                     @if($ride->seats_available - $ride->reservedamount()->sum('amount') < 1)
                         <span class="red">{{ $ride->seats_available - $ride->reservedamount()->sum('amount') }}</span>
@@ -56,10 +56,9 @@
                 @endif
                     / {{ $ride->seats_available }} {{ __('carpool.places-available') }}
             </div>
-            <div class="tiny"></div>
-            <div class="tiny grey">{{ $ride->luggage->name }}</div>
+            <div class="tiny grey luggage">{{ $ride->luggage->name }}</div>
             @if(!empty($ride->remark))
-                <div class="tiny">{{ $ride->remark }}</div>
+                <div class="tiny remark">{{ $ride->remark }}</div>
             @endif
 
             @if($layout == 'header')
@@ -102,7 +101,7 @@
 
     @if($showReservations == 1)
         @if(count($ride->reservations) > 0)
-            <div class="passenger-list">
+            <div class="passenger-list hide-on-mobile-only">
                 @if($layout == 'email-listing')
                     <table border="0" cellpadding="1" width="80%" style=" margin-left: auto; margin-right: auto;" style="color: rgb(169, 169, 169)">
                         @foreach($ride->reservations as $reservation)
@@ -120,18 +119,18 @@
                         @endforeach
                     </table>
                 @else
-                    <div class="grid">
+                    <div class="grid hide-on-mobile-only">
                         @foreach($ride->reservations as $reservation)
-                            <div class=" col-desk-3 col-mob-2 tiny passenger-list-name">
+                            <div class="col-desk-3 col-mob-2 tiny passenger-list-name">
                                 {{ $reservation->passenger->firstname }} {{ $reservation->passenger->lastname }}
                             </div>
                             <div class="col-desk-3 col-mob-2 tiny passenger-list-places">
                                 {{ $reservation->amount }} {{ __('carpool.places-necessary') }}
                             </div>
-                            <div class="col-desk-2 col-mob-2 tiny">
-                                @if($reservation->is_accepted == 1) <span class="green"><span class="heroicon heroicon-check-circle"></span> {{ __('carpool.is-accepted') }} </span> @endif
-                                @if($reservation->is_rejected == 1) <span class="red"><span class="heroicon heroicon-x-circle"></span> {{ __('carpool.is-rejected') }} </span> @endif
-                                @if($reservation->is_accepted == 0 && $reservation->is_rejected == 0) <span class="heroicon heroicon-archive"></span> {{ __('carpool.is-waiting') }} @endif
+                            <div class="col-desk-3 col-mob-2 tiny passenger-list-status">
+                                @if($reservation->is_accepted == 1) <span class="green"><span class="heroicon heroicon-check-circle"></span> <span class="status-text">{{ __('carpool.is-accepted') }} </span></span> @endif
+                                @if($reservation->is_rejected == 1) <span class="red"><span class="heroicon heroicon-x-circle"></span> <span class="status-text">{{ __('carpool.is-rejected') }} </span></span> @endif
+                                @if($reservation->is_accepted == 0 && $reservation->is_rejected == 0) <span class="heroicon heroicon-archive"></span> <span class="status-text">{{ __('carpool.is-waiting') }} </span> @endif
                             </div>
                             <div class="col-desk-3 col-mob-2  tiny">
                                 @if($showConversations == 1)

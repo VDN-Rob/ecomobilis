@@ -6,7 +6,7 @@ return [
 
     // admin tabs
     'my-rides'  => 'Mon Covoiturage',
-    'my-rides-as-passenger'  => 'Mon Covoiturage en tant que passager',
+    'my-rides-as-passenger'  => 'Covoiturage passager',
     'my-groups' => 'Mes groupes',
     'my-messages' => 'Mes messages',
 

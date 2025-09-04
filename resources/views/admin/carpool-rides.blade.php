@@ -47,7 +47,7 @@
                         @if(empty(Auth::user()->birth_date) || empty(Auth::user()->car))
                             <div class="go-to-profile box" style="margin-top: 25px">
                                 {{ __('general.please-complete-profile') }}<br><br>
-                                <a href="{{ url('/') }}/admin/user/profile/{{ Auth::user()->id }}/edit/" class="button tiny">{{ __('general.user-profile-btn') }}</a>
+                                <a href="{{ url('/') }}/admin/user/profile/edit/" class="button tiny">{{ __('general.user-profile-btn') }}</a>
                             </div>
                         @endif
                     </div>
