@@ -45,7 +45,7 @@
                         if (res.organisations && res.organisations.length > 0) {
                             message += '<div class="bot-message  chat-message"><strong>{{ __('sharing-decision-tree.recommended-options') }}</strong><ul>';
                             res.organisations.forEach(function(org) {
-                                message += '<a href="'+org.website+'" target="_blank">'+org.name+'</a> ';
+                                message += '<a href="https://ecomobilis.be/sharing/'+org.slug+'" target="_blank">'+org.name+'</a> ';
                             });
                             message += '</ul></div>';
                         }

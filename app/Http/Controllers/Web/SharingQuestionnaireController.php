@@ -41,7 +41,8 @@ class SharingQuestionnaireController extends Controller
                 'organisations' => $nextNode->organisations->map(function($org) {
                     return [
                         'name' => $org->name,
-                        'website' => $org->website
+                        'website' => $org->website,
+                        'slug' => $org->slug
                     ];
                 })
             ]);
