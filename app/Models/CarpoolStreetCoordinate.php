@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Log;
 class CarpoolStreetCoordinate extends Model
 {
     protected $table = 'carpool_street_coordinates';
-    protected $fillable = ['street','zip_code', 'city', 'country', 'external_api_id', 'external_api_source', 'osm_id', 'osm_way', 'lat','lng', 'user_id'  ];
+    protected $fillable = ['street','zip_code', 'city', 'country', 'external_api_id', 'external_api_source', 'osm_id', 'osm_way', 'lat','lng', 'user_id', 'manually_validated'  ];
     public $timestamps = true;
 
     // returns the object of the street, already in db or added

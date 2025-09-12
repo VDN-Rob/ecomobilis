@@ -90,6 +90,12 @@
                         </div>
 
                         <br>
+                        <h2 class="footer-accent">Apps</h2>
+                        <div class="apps">
+                            <a href="https://play.google.com/store/apps/details?id=com.davedriesmans.ecomobilis&hl=nl" target="_blank" style="display: inline-block"><img width="110" alt="Get it on Google Play" src="/images/icons/google-play-badge.png"></a>
+                            <a href="https://apps.apple.com/be/app/ecomobilis/id6751275812" target="_blank" style="display: inline-block"><img width="100" src="/images/icons/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" alt="Download on the App Store"></a>
+                        </div>
+
                         <h2 class="footer-accent">{{ __('footer.follow-us') }}</h2>
 
                         <a href="#" class="social">
