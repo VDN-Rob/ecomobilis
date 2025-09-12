@@ -51,6 +51,13 @@ class CarpoolController extends Controller
 
     }
 
+    /* ----- SHOW A RIDE ------- */
+    public function show($id)
+    {
+        $data['ride'] =  CarpoolRide::find($id);
+        return view('web.carpool.show', $data);
+
+    }
     /* ----- ADD A RIDE ------- */
     public function create(Request $request)
     {

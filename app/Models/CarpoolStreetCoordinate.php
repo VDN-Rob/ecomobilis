@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class CarpoolStreetCoordinate extends Model
@@ -19,17 +20,26 @@ class CarpoolStreetCoordinate extends Model
         Log::debug($json);
 
         $extId = false;
+
+        // LOCATION IQ LOCATION
         if(isset($arr->place_id)) {
             $extId = $arr->place_id;
         }
         if(isset($arr->external_api_id)) {
             $extId = $arr->external_api_id ;
         }
-        $entryFound = $this::where('external_api_id', $extId)->first();
+        if($extId) {
+            $entryFound = $this::where('external_api_id', $extId)->first();
+        }
+
+        // MANUALLY ADDED LOCATION
+        if(isset($arr->id)) {
+            $entryFound = $this::find($arr->id);
+        }
 
         if ($entryFound) {
             // return the entry
-            Log::debug('Address exists already');
+            Log::debug('Address exists already -- carpool_street_coordinates ID '. $entryFound->id);
             return $entryFound;
         } else {
             // Docu: city is not always there
@@ -81,29 +91,61 @@ class CarpoolStreetCoordinate extends Model
 
     }
 
+
+    // content can be from location iq or locally
     public function createCustomDisplayNames($content)  {
 
-        foreach($content as $entry) {
+        foreach($content as $key =>  $entry) {
 
             $name = '';
-            if(isset($entry->address->name)) {
-                $name = $entry->address->name.', ';
-            } elseif(isset($entry->address->state) && !isset($entry->address->city))  {
-                $name = $entry->address->state.', ';
+            $city = '';
+
+            if(is_array($entry)) {
+                // locally already
+                $validatedCheck = '';
+                if($entry['manually_validated'] == 1) {
+                    $validatedCheck = '✓';
+                }
+                $content[$key]['display_name_short'] = $entry['street'].', ' . $entry['city'] . ' ('.$entry['zip_code'].') '. $validatedCheck;
+            } else {
+                if(isset($entry->address->name)) {
+                    $name = $entry->address->name.', ';
+                } elseif(isset($entry->address->state) && !isset($entry->address->city))  {
+                    $name = $entry->address->state.', ';
+                }
+                if(isset($entry->address->city)) {
+                    $city = $entry->address->city;
+                } elseif(isset($entry->address->state))  {
+                    $city = $entry->address->state;
+                }
+                $postcode = '';
+                if(isset($entry->address->postcode)) {
+                    $postcode = ' ('.$entry->address->postcode.')';
+                }
+                $entry->display_name_short = $name . $city . $postcode ;
             }
-            if(isset($entry->address->city)) {
-                $city = $entry->address->city;
-            } elseif(isset($entry->address->state))  {
-                $city = $entry->address->state;
-            }
-            $postcode = '';
-            if(isset($entry->address->postcode)) {
-                $postcode = ' ('.$entry->address->postcode.')';
-            }
-            $entry->display_name_short = $name . $city . $postcode ;
+
         }
 
         return $content;
     }
+
+    // searches locally for manyally added names
+    public function findDisplayNames($searchString)  {
+
+        $locations = [];
+        if (strlen($searchString) > 2) {
+            $locations = $this->where(function ($query) use ($searchString)  {
+                            $query->where('street', 'like', '%' . $searchString . '%')
+                                ->orWhere('zip_code', 'like', '%' . $searchString . '%')
+                                ->orWhere('city', 'like', '%' . $searchString . '%')
+                                ->orWhere(DB::raw('CONCAT(street," ",city)'), 'LIKE', '%'.$searchString.'%');
+                        })->orderBy('id', 'asc')->limit(200)->get()->toArray();
+        }
+
+
+        return $locations;
+    }
+
 
 }

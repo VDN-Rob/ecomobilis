@@ -1647,7 +1647,7 @@ header .block {
 .page-sub-nav.tabular-style ul li a {
   position: relative;
   z-index: 101;
-  background: #FFF;
+  background: rgba(255, 255, 255, 0.5);
   padding: 10px 45px;
   text-decoration: none;
   border: 1px solid #e2e2e2;
@@ -1692,7 +1692,7 @@ header .block {
     display: inline-block;
     border: 0;
     padding: 0;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 13px;
     height: auto;
     max-width: 150px;
@@ -3369,6 +3369,42 @@ details[open] > summary {
   font-size: 45px;
 }
 
+/*--------------------
+       LARAVEL NOTIFICATIONS
+---------------------*/
+.notifications {
+  position: fixed;
+  top: 120px;
+  right: 20px;
+  background: rgb(248, 201, 195); /* red for error */
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  z-index: 9998;
+  box-shadow: 0 15px 25px rgba(248, 201, 195, 0.3019607843);
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: slideDownFade 0.5s ease forwards, fadeOut 0.5s ease 2.5s forwards;
+}
+
+/* Slide in */
+@keyframes slideDownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Fade out after delay */
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
 .website {
   /* NAVIGATION */
 }
@@ -3819,10 +3855,11 @@ details[open] > summary {
   cursor: pointer;
   font-weight: bold;
   padding: 8px 12px;
-  background: #263d5e;
-  color: white;
+  border: 2px solid #263d5e;
+  color: #263d5e;
   border-radius: 6px;
   margin-bottom: 10px;
+  width: 100%;
 }
 .list-of-chats-container .list-of-chats {
   position: relative;
@@ -3917,6 +3954,12 @@ details[open] > summary {
   .col-desk-12 {
     padding-right: 0;
   }
+  .size-90 {
+    width: 100%;
+  }
+  .notifications {
+    top: 120px;
+  }
   .block.carpool-search-block.box {
     padding-left: 10px;
     padding-right: 10px;
@@ -3970,11 +4013,18 @@ details[open] > summary {
   .grid.grid-ride-block .col-mob-2.col-from {
     width: 50%;
   }
+  .grid.grid-ride-block .col-mob-2.col-from {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+  .grid.grid-ride-block .col-mob-2.col-to {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
   .grid.grid-ride-block .col-mob-2.col-from-to {
     margin-top: 10px;
     margin-bottom: 10px;
     background: #efefef;
-    border-radius: 5px;
   }
   .grid.grid-ride-block .col-mob-4.details {
     text-align: left;

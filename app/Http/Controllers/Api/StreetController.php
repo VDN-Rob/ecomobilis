@@ -25,9 +25,12 @@ class StreetController extends Controller
 
     public function autocomplete($searchString)
     {
-        // $searchString = preg_replace('/[[:digit:]]/','', $searchString); // remove numbers eg house street 1
+        // manually added location
+        $contentManual = (new CarpoolStreetCoordinate())->findDisplayNames($searchString);
+        $contentManual = (new CarpoolStreetCoordinate())->createCustomDisplayNames($contentManual);
+
+        // locationiq: check their db
         $token = env('LOCATIONIQ_TOKEN');
-       // $endpointUrl = 'https://us1.locationiq.com/v1/autocomplete?key='.$token.'&q='.$searchString.'&accept-language=fr&countrycodes=BE&tag=highway';
         $endpointUrl = 'https://us1.locationiq.com/v1/autocomplete?key='.$token.'&q='.$searchString.'&accept-language=fr&countrycodes=BE';
         Log::debug('Autocomplete - '.$endpointUrl);
 
@@ -40,12 +43,19 @@ class StreetController extends Controller
                 ],
                 'debug'  => false
             ]);
-            $content = json_decode($apiRequest->getBody()->getContents());
-            $content = (new CarpoolStreetCoordinate())->createCustomDisplayNames($content);
+            $contentLocationIq = json_decode($apiRequest->getBody()->getContents());
+            $contentLocationIq = (new CarpoolStreetCoordinate())->createCustomDisplayNames($contentLocationIq);
+
+            // merge with manual locatios?
+            if(!empty($contentManual)){
+                $contentMerged = array_merge($contentManual, $contentLocationIq);
+            } else {
+                $contentMerged = $contentLocationIq;
+            }
 
             if ($apiRequest->getStatusCode() == 200 || $apiRequest->getStatusCode() == 201) {
                 Log::debug('-> Autocomplete '. $apiRequest->getStatusCode());
-                return response()->json($content);
+                return response()->json($contentMerged);
             } else {
                 Log::debug('autocomplete error: '.$apiRequest->getStatusCode());
                 return true;
@@ -53,8 +63,10 @@ class StreetController extends Controller
 
         } catch (RequestException $re) {
 
-            Log::debug('autocomplete error: '.$re);
-            return $re;
+            Log::error('Autocomplete request failed: '.$re->getMessage());
+
+            // Return empty JSON response instead of 500
+            return response()->json($contentManual, 200);
 
         }
 

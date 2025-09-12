@@ -1,3 +1,9 @@
+
+# ------------------------------------------------------------
+# -- 12 Sept - Manually added street coordinates
+ALTER TABLE `carpool_street_coordinates` ADD `manually_validated` TINYINT  NULL  DEFAULT '0'  AFTER `user_id`;
+
+
 # ------------------------------------------------------------
 # -- 4 Sept - Sharing
 ALTER TABLE `sharing_organisations` ADD `slug` varchar(255) DEFAULT NULL;

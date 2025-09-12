@@ -117,7 +117,7 @@
    li a {
       position: relative;
       z-index: 101;
-      background: $box-bg-color;
+      background: rgba($box-bg-color, 0.5);
       padding: 10px 45px;
       text-decoration: none;
       border: 1px solid $line-color;
@@ -169,7 +169,7 @@
         display: inline-block;
         border:0;
         padding: 0;
-        font-size: 13px;
+        font-size: 14px;
         line-height: 13px;
         height:auto;
         max-width: 150px;

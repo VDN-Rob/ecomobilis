@@ -17,7 +17,7 @@
                 <input type="checkbox" id="toggle-chats" class="toggle-checkbox">
 
                 <!-- This acts like a button -->
-                <label for="toggle-chats" class="toggle-label tiny">Afficher tous les messages</label>
+                <label for="toggle-chats" class="toggle-label tiny">Afficher tous les messages &darr;</label>
 
                 @if(count($conversationsListArr) == 0)
                     <div class="box box-with-border list-of-chats extra-box-shadow">

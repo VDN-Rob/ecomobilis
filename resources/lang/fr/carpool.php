@@ -16,7 +16,7 @@ return [
 
     // admin tabs mobile
     'mobile-my-rides'  => 'Covoiturage',
-    'mobile-my-rides-as-passenger'  => 'Covoiturage passager',
+    'mobile-my-rides-as-passenger'  => 'Passager',
     'mobile-my-groups' => 'Groupes',
     'mobile-my-messages' => 'Messages',
 

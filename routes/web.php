@@ -44,18 +44,16 @@ Route::group(['namespace' => 'App\Http\Controllers\Web', 'as' => 'web.'], functi
     //traffic ----------
     Route::get('/traffic', 'TrafficController@index')->name('trafficOverview');
 
+    // carpool rides
     Route::group(['middleware' => ['auth']], function () {
-
         Route::get('/carpool/add', 'CarpoolController@create')->name('carpoolCreate');
         Route::post('/carpool/store', 'CarpoolController@store')->name('carpoolStore');
-
         Route::get('/carpool/{id}/edit', 'CarpoolController@edit')->name('carpoolEdit');
         Route::put('/carpool/{id}/update', 'CarpoolController@update')->name('carpoolUpdate');
-
-        Route::get('/carpool/{id}', 'CarpoolController@show')->name('carpoolShow');
         Route::post('/carpool-cancel/{id}', 'CarpoolController@cancelRide')->name('carpoolCancel');
-
     });
+    Route::get('/carpool/{id}', 'CarpoolController@show')->name('carpoolShow');
+
 
     // users ----------
     Route::get('/user/profile/{userId}',        'UserController@profileShow')->name('profileShow');
@@ -69,7 +67,6 @@ Route::group(['namespace' => 'App\Http\Controllers\Web', 'as' => 'web.'], functi
     // overview ----------
     Route::get('/blog',        'BlogController@overview')->name('overviewBlog');
     Route::get('/blog/{slug}', 'BlogController@article')->name('articleBlog');
-
 
 });
 

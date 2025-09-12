@@ -36,7 +36,7 @@
         <div class="col-desk-1 hide-on-mobile-only col-from-to">
             <div style="position: relative; top: 5px;"> → </div>
         </div>
-        <div class="col-desk-2 col-mob-2 col-from-to col-mob-arr-design">
+        <div class="col-desk-2 col-mob-2 col-from-to col-to col-mob-arr-design">
             <strong>{{ $ride->arrival->city }}</strong><br>
             <div class="tiny">{{ $ride->arrival->street }}</div>
         </div>
@@ -56,7 +56,7 @@
                 @endif
                     / {{ $ride->seats_available }} {{ __('carpool.places-available') }}
             </div>
-            <div class="tiny grey luggage">{{ $ride->luggage->name }}</div>
+            <div class="tiny grey luggage">{{ __('carpool.luggage') }}: {{ $ride->luggage->name }}</div>
             @if(!empty($ride->remark))
                 <div class="tiny remark">{{ $ride->remark }}</div>
             @endif
@@ -95,6 +95,12 @@
                             @endif
                         @endif
                     </div>
+            </div>
+        @endif
+
+        @if(Route::current()->getName() !== 'web.carpoolShow')
+            <div class="col-desk-12 tiny show-on-mobile-only text-right">
+                <a href="{{ url('/') }}/carpool/{{ $ride->id }}">Show details</a>
             </div>
         @endif
     </div>
