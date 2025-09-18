@@ -50,7 +50,7 @@
                                 </li>
                             @endforeach
                             <li>
-                                <a href="{{ url('/') }}/README-api.html" class="">Documentation de l'API</a>
+                                <a href="https://documenter.getpostman.com/view/12029054/2sB3HrnHiF#6039ffb3-d303-4833-b58c-43d088177f13" class="">Documentation de l'API</a>
                             </li>
                         </ul>
                         <br>
