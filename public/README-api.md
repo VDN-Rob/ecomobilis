@@ -1,9 +1,10 @@
 ## 0. Introduction
 
-For every call the header should contain your X-API-KEY. This key can be requested through info@ecomobilis.be.
+- For every call the header should contain your X-API-KEY. This key can be requested through info@ecomobilis.be.
 The X-API-KEY belongs to a user, so please create an account on Ecomobilis before you request it.
 
-You can submit entries, but updating can only happen for entries that contain the user_id where the X-API-KEY belongs to.
+- You can submit entries, but updating can only happen for entries that contain the user_id where the X-API-KEY belongs to.
+- By default, models are JSON:API resource objects using the information from your resource's schema. This means we have a `data`, `links` and `meta` object. The data contains the content, the links and meta object the information regarding the paging. 
 
 ## 1. Users
 
@@ -110,7 +111,8 @@ Please use your own implementation of locationiq (https://locationiq.com/) to po
     "osm_way": "way",
     "lat": "50.1700",
     "lng": "4.4000",
-    "user_id": 1
+    "user_id": 1,
+    "manually_validated": 1
 }
 ````
 
@@ -129,7 +131,8 @@ Please use your own implementation of locationiq (https://locationiq.com/) to po
     "osm_way": "way",
     "lat": "50.1700",
     "lng": "4.4000",
-    "user_id": 1
+    "user_id": 1,
+    "manually_validated": 1
 }
 ````
 ### DELETE open-api/carpool-street-coordinates/{id}
