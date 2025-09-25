@@ -5,7 +5,7 @@
 
                 <h2 class="footer-accent">Ecomobilis</h2>
                 Ecomobilis est un projet de la <a href="https://www.froidchapelle.be/" target="_blank">Commune de Froidchapelle</a><br>
-                Place Albert 1er , 38 - 6440 Froidchapelle<br> en partenariat avec<br>
+                Place Albert 1er , 38 - 6440 Froidchapelle<br> en partenariat avec<br><br>
                 <ul>
                     <li>
                         <a href="https://www.beaumont.be/" target="_blank">Commune de Beaumont</a>
@@ -22,10 +22,17 @@
                     <li>
                         <a href="https://www.viroinval.be/" target="_blank">Commune de Viroinval</a>
                     </li>
+                    <li>
+                        <a href="https://www.mobilesem.be/" target="_blank">MOBILESEM asbl</a>
+                    </li>
+                    <li>
+                        <a href="https://www.parc-national-esem.be/" target="_blank">Parc national de l'Entre-Sambre-et-Meuse</a>
+                    </li>
+                    <li>
+                        <a href="https://www.igretec.com/" target="_blank">IGRETEC</a>
+                    </li>
                 </ul>
                 <br>Avec le soutient de la Wallonie dans le cadre du programme Smart Region de Digital Wallonia<br>
-                <img src="https://admin.ecomobilis.be/storage/soutien_wallonie.png">
-                <img src="https://admin.ecomobilis.be/storage/dw_smartregion.png">
 
                 <strong>{!!  __('footer.info-mail') !!}</strong>:  <a href="mailto:ecomobilis.be">info@ecomobilis.be</a><br>
                 <br>
