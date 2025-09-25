@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Log;
 class CarpoolStreetCoordinate extends Model
 {
     protected $table = 'carpool_street_coordinates';
-    protected $fillable = ['street','zip_code', 'city', 'country', 'external_api_id', 'external_api_source', 'osm_id', 'osm_way', 'lat','lng', 'user_id', 'manually_validated'  ];
+    protected $fillable = ['street','zip_code', 'city', 'country', 'external_api_id', 'external_api_source', 'osm_id', 'osm_way', 'lat','lon', 'user_id', 'manually_validated'  ];
     public $timestamps = true;
 
     // returns the object of the street, already in db or added
@@ -44,8 +44,8 @@ class CarpoolStreetCoordinate extends Model
         } else {
             // Docu: city is not always there
             Log::debug('Address does not exist. To be created...');
-            $city = 'unknown';
-            $name = 'unknown';
+            $city = '';
+            $name = '';
 
             if(!empty($arr->place_id)) {
                 if(isset($arr->display_name_short)) {
@@ -80,7 +80,7 @@ class CarpoolStreetCoordinate extends Model
                     'osm_id'                => $arr->osm_id,
                     'osm_way'               => $arr->osm_type,
                     'lat'                   => $arr->lat,
-                    'lng'                   => $arr->lon,
+                    'lon'                   => $arr->lon,
                 ];
 
                 return $this->create($data);
@@ -117,14 +117,14 @@ class CarpoolStreetCoordinate extends Model
                 }
             } else {
                 if(isset($entry->address->name)) {
-                    $name = $entry->address->name.', ';
+                    $name = $entry->address->name;
                 } elseif(isset($entry->address->state) && !isset($entry->address->city))  {
                     $name = $entry->address->state.', ';
                 }
                 if(isset($entry->address->city)) {
-                    $city = $entry->address->city;
+                    $city = ', '.$entry->address->city;
                 } elseif(isset($entry->address->state))  {
-                    $city = $entry->address->state;
+                    $city = ', '.$entry->address->state;
                 }
                 $postcode = '';
                 if(isset($entry->address->postcode)) {

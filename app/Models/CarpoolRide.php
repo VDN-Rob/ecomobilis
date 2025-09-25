@@ -79,12 +79,12 @@ class CarpoolRide extends Model
 
         // A. close by departures coordinates
         $latDep = $streetDepObj->lat;
-        $lngDep = $streetDepObj->lng;
+        $lonDep = $streetDepObj->lon;
 
         $coordinatesCloseByDep = CarpoolStreetCoordinate::select("carpool_street_coordinates.id"
             ,DB::raw("6371 * acos(cos(radians(" . $latDep . "))
                     * cos(radians(carpool_street_coordinates.lat))
-                    * cos(radians(carpool_street_coordinates.lng) - radians(" . $lngDep . "))
+                    * cos(radians(carpool_street_coordinates.lon) - radians(" . $lonDep . "))
                     + sin(radians(" .$latDep. "))
                     * sin(radians(carpool_street_coordinates.lat))) AS distance"))
             ->whereIn('carpool_street_coordinates.id', $depIds)
@@ -101,13 +101,13 @@ class CarpoolRide extends Model
 
         // B. check if from those close by departure they go to a closeby arrival point
         $arrIds = $this->where('travel_start_datetime', '>', $travelStartDatetime)->get()->pluck('to_street_coordinates_id');
-        $latDep = $streetArrObj->lat;
-        $lngDep = $streetArrObj->lng;
+        $latArr = $streetArrObj->lat;
+        $lonArr = $streetArrObj->lon;
         $coordinatesCloseByArr = CarpoolStreetCoordinate::select("carpool_street_coordinates.id"
-            ,DB::raw("6371 * acos(cos(radians(" . $latDep . "))
+            ,DB::raw("6371 * acos(cos(radians(" . $latArr . "))
                     * cos(radians(carpool_street_coordinates.lat))
-                    * cos(radians(carpool_street_coordinates.lng) - radians(" . $lngDep . "))
-                    + sin(radians(" .$latDep. "))
+                    * cos(radians(carpool_street_coordinates.lon) - radians(" . $lonArr . "))
+                    + sin(radians(" .$latArr. "))
                     * sin(radians(carpool_street_coordinates.lat))) AS distance"))
             ->whereIn('carpool_street_coordinates.id', $arrIds)
             ->orderBy('distance', 'asc')

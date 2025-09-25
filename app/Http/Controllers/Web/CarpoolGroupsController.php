@@ -27,13 +27,13 @@ class CarpoolGroupsController extends Controller
             // departure same --> add arrival
             if($ride->from_street_coordinates_id == $data['group']->location_street_coordinates_id) {
                 $arr['lat'] = $ride->arrival->lat;
-                $arr['lng'] = $ride->arrival->lng;
+                $arr['lon'] = $ride->arrival->lon;
                 $arr['type'] = 'departs-from';
             }
             // arrival same --> add dep
             if($ride->to_street_coordinates_id == $data['group']->location_street_coordinates_id) {
                 $arr['lat'] = $ride->departure->lat;
-                $arr['lng'] = $ride->departure->lng;
+                $arr['lon'] = $ride->departure->lon;
                 $arr['type'] = 'arrives-to';
             }
             $data['markers'][] = $arr;

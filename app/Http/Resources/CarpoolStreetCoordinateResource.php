@@ -25,7 +25,7 @@ class CarpoolStreetCoordinateResource extends JsonResource
             'osm_id'                => $this->osm_id,
             'osm_way'               => $this->osm_way,
             'lat'                   => $this->lat,
-            'lng'                   => $this->lng,
+            'lon'                   => $this->lon,
             'user_id'               => $this->user_id,
             'manually_validated'    => $this->manually_validated,
             'created_at'            => $this->created_at,

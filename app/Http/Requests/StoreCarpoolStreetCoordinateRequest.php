@@ -35,7 +35,7 @@ class StoreCarpoolStreetCoordinateRequest extends FormRequest
             'osm_id'                => ['required'],
             'osm_way'               => ['required'],
             'lat'                   => ['required'],
-            'lng'                   => ['required'],
+            'lon'                   => ['required'],
             'user_id'               => ['required'],
             'manually_validated'    => ['required'],
         ];

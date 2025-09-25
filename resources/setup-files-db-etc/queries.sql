@@ -1,3 +1,6 @@
+# ------------------------------------------------------------
+# -- 25 bugfix
+ALTER TABLE `carpool_street_coordinates` CHANGE `lng` `lon` DECIMAL(10,4)  NULL  DEFAULT NULL;
 
 # ------------------------------------------------------------
 # -- 12 Sept - Manually added street coordinates

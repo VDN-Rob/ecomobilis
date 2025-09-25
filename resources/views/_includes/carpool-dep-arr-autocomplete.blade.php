@@ -14,7 +14,7 @@
         @if($errors->has('DepJson'))
             <div class="error tiny red">{{ __('carpool.error-select-street') }}</div>
         @endif
-        <input id="DepJson" name="DepJson" type="hidden"
+        <input id="DepJson" name="DepJson" type="text"
                @if(isset($ride->departure))
                     value="{{ json_encode(['place_id' => $ride->departure->external_api_id]) }}"
                @elseif(isset($searchDepJson))
@@ -43,7 +43,7 @@
         @if($errors->has('ArrJson'))
             <div class="error tiny red">{{ __('carpool.error-select-street') }}</div>
         @endif
-        <input id="ArrJson" name="ArrJson" type="hidden"
+        <input id="ArrJson" name="ArrJson" type="text"
                @if(isset($ride->arrival))
                     value="{{ json_encode(['place_id' => $ride->arrival->external_api_id]) }}"
                @elseif(isset($searchArrJson))
@@ -105,20 +105,23 @@
         lat2 = ArrValues.lat;
         lon2 = ArrValues.lon;
 
+        console.log('lat:'+ lat1+' / '+lat2);
+        console.log('lon:'+ lon1+' / '+lon2);
         if(lat1 && lat2) {
             const R = 6371; // Earth's radius in kilometers
             const toRadians = (degrees) => degrees * (Math.PI / 180);
 
             const dLat = toRadians(lat2 - lat1);
             const dLon = toRadians(lon2 - lon1);
-
+            console.log('dLat:'+dLat);
+            console.log('dLon:'+dLon);
             const a =
                 Math.sin(dLat / 2) ** 2 +
                 Math.cos(toRadians(lat1)) * Math.cos(toRadians(lat2)) *
                 Math.sin(dLon / 2) ** 2;
-
+            console.log('a:'+a);
             const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
+console.log('c:'+c);
             distance = R * c; // Distance in kilometers
             priceSuggested  = distance*pricePerKm + (distance*pricePerKm)*0.20;
 
