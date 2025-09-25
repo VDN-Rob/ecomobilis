@@ -1,13 +1,32 @@
-## CHECK THE WEBSITE, FOR NOW:
-admin / ecoadmin
-git update-index --assume-unchanged public/.htaccess
-git update-index --no-assume-unchanged public/.htaccess
-
------------------------
 # 1. Tech 
 
 ## Framework
-Laravel 10  https://laravel.com/docs/10.x/deployment#server-requirements
+Laravel 10  
+
+## (Server) Requirements
+- PHP ^8.1
+- Composer
+- Node.js & NPM
+- MySQL/Postgres (or your preferred database)
+- Laravel 10
+- Laravel Livewire ^3.x
+- MySQL v5.7
+More info https://laravel.com/docs/10.x/deployment#server-requirements
+
+## ⚙️ Installation
+1. Clone the repository:
+```bash
+git clone https://github.com/Telraam-Rear-Window-BV/ecomobilis.git
+cd your-project
+```
+2.Install PHP dependencies: composer install
+3.Install front-end dependencies: see below
+4.Copy the environment file and configure:
+```
+cp .env.example .env
+php artisan key:generate
+```
+5. Import database (resources/setup-files-db-etc/full-db-structure-2025-09-25.sql)
 
 ## Frontend (Laravel mix)
 - Where to edit:  uses the files resources/js/main.js and resources/sass/...
@@ -32,12 +51,21 @@ This runs through a cron job on the server (* * * * * php /data/sites/web/ecomob
 - https://github.com/msurguy/Honeypot/tree/master
 - Laravel ER Diagram Generator
 
-
+## Laravel livewire
+This project uses Laravel Livewire  for reactive components.
+Tyical workflow:
+Create components with`php artisan make:livewire ExampleComponent`
+Components live in app/Http/Livewire/ with corresponding Blade views in resources/views/livewire/.
+Use components in Blade templates with:
+<livewire:example-component />
 
 # 2. Database
 MySQL v5.7
 ![alt text](graph.png "database ER diagnram")
 (Generated with https://github.com/beyondcode/laravel-er-diagram-generator)
+
+Updated are atm not done with migrations but clear sql commands. 
+Those can be found in resources/setup-files-db-etc/queries.sql
 
 # 3. Carpool
 
@@ -72,12 +100,32 @@ Matching is done based on the stored gps coordinates and looks within 20km radiu
 
 # 4. API
 
-Docs in /public/readme-api.md
+Docs in /public/readme-api.md or postmen see footer of the application
 
-# 9. Hosting
+
+# 5. Project Structure
+
+Laravel is an advanced MVC framework. The default structure has been followed
+
+
+# 6. Hosting
+
 The hosting of http://ecomobilis.be/ is at Combell (combell.com). (S)FTP access can be provided, just email dave@telraam.net
 
-# 10. Design 
+# 7. Deployment
+
+Ensure .env is configured for production.
+
+Run:
+```
+composer install --optimize-autoloader --no-dev
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+npm run build
+```
+
+# 8. Design 
 
 ## Fonts
 DM Sans as main font (https://fonts.google.com/specimen/DM+Sans)
