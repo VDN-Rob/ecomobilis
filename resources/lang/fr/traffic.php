@@ -3,6 +3,6 @@
 return [
 
     'title' => 'Comment est le trafic sur notre territoire?',
-    'title-average' => 'Trafic typique',
-    'title-average-info' => 'Par rapport et par rapport à hier à la même heure',
+    'title-average' => ' Evolution du trafic',
+    'title-average-info' => 'Trafic typique et comparaison avec trafic typique à hier à la même heure',
 ];

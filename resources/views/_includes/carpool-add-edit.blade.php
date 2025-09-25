@@ -53,7 +53,15 @@
 
     <div class="col-desk-6">
         <div class="tiny light-grey" style="position: absolute; margin-top: -20px;">{{ __('carpool.price') }} &nbsp;&nbsp;
-            <span class="tiny grey js-your-price-per-km">{{ __('carpool.your_price_per_km') }}: {{ Auth::user()?->car?->price_per_km_per_seat }} /km</span>
+            <span class="tiny grey js-your-price-per-km">
+                {{ __('carpool.your_price_per_km') }}:
+                @if(empty(Auth::user()?->car?->price_per_km_per_seat))
+                    {{ Auth::user()?->car?->price_per_km_per_seat }}
+                @else
+                    0.10
+                @endif
+                    /km
+            </span>
             <span class="tiny grey js-distance-container" style="display: none;">| {{ __('carpool.distance_birds_view') }}: <span class="js-distance"></span></span>
             <span class="js-suggested-price"></span>
         </div>

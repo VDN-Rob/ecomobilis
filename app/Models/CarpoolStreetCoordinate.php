@@ -50,17 +50,21 @@ class CarpoolStreetCoordinate extends Model
             if(!empty($arr->place_id)) {
                 if(isset($arr->display_name_short)) {
                     $name = $arr->display_name_short;
+                } else {
+                    if(isset($arr->address->road)) {
+                        $name = $arr->address->road;
+                    } elseif(isset($arr->address->city))  {
+                        $name = $arr->address->city;
+                    } elseif(isset($arr->address->state))  {
+                        $name = $arr->address->name;
+                    }
                 }
                 if(isset($arr->address->city)) {
                     $city = $arr->address->city;
                 } elseif(isset($arr->address->state))  {
                     $city = $arr->address->state;
                 }
-                if(isset($arr->address->road)) {
-                    $name = $arr->address->road;
-                } elseif(isset($arr->address->state))  {
-                    $name = $arr->address->name;
-                }
+
                 $postcode = '';
                 if(isset($arr->address->postcode)) {
                     $postcode = $arr->address->postcode;
@@ -106,7 +110,11 @@ class CarpoolStreetCoordinate extends Model
                 if($entry['manually_validated'] == 1) {
                     $validatedCheck = '✓';
                 }
-                $content[$key]['display_name_short'] = $entry['street'].', ' . $entry['city'] . ' ('.$entry['zip_code'].') '. $validatedCheck;
+                if(!empty($entry['zip_code'])) {
+                    $content[$key]['display_name_short'] = $entry['street'].', ' . $entry['city'] . ' ('.$entry['zip_code'].') '. $validatedCheck;
+                } else {
+                    $content[$key]['display_name_short'] = $entry['street'].', ' . $entry['city'] . ' '. $validatedCheck;
+                }
             } else {
                 if(isset($entry->address->name)) {
                     $name = $entry->address->name.', ';

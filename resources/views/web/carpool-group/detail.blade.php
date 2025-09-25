@@ -28,7 +28,7 @@
                             <a href="#" class="button disabled" > {{ __('carpool.add-a-ride') }}</a>
                         @elseif(empty(Auth::user()->birth_date) || empty(Auth::user()->car))
                             <a href="#" class="button disabled" > {{ __('carpool.add-a-ride') }}</a>
-                            <a href="{{ url('/') }}/admin/user/profile/edit/" class="grey tiny">CComplétez d'abord votre profil</a>
+                            <a href="{{ url('/') }}/admin/user/profile/edit/" class="grey tiny">Complétez d'abord votre profil</a>
                         @else
                             <a href="/carpool/add?groupid={{ $group->id }}" class="button">{{ __('carpool.add-a-ride') }}</a>
                         @endif

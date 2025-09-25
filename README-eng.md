@@ -3,6 +3,29 @@
 ## Framework
 Laravel 10  
 
+### Why Choose Laravel?
+
+1. Elegant Syntax & Structure:
+Laravel offers clean, readable, and expressive code that makes development faster and more enjoyable.
+
+2. Rapid Development:
+Built-in features like authentication, routing, caching, queues, and email handling reduce boilerplate work.
+
+3. Strong Ecosystem:
+Laravel comes with Forge, Vapor, Nova, Sail, Horizon, etc., which extend deployment, serverless apps, admin dashboards, and queue management.
+
+4. Community & Support:
+One of the largest PHP frameworks, with vast documentation, tutorials, and packages. If you hit a problem, chances are someone has already solved it.
+
+5. MVC Architecture:
+Encourages separation of concerns, making applications easier to maintain and scale.
+
+6. Blade Templating Engine:
+Simple yet powerful for building dynamic, reusable UI components.
+
+7. Security Features:
+Built-in CSRF protection, hashed passwords, encryption, and secure authentication flows.
+
 ## (Server) Requirements
 - PHP ^8.1
 - Composer
@@ -10,10 +33,10 @@ Laravel 10
 - MySQL/Postgres (or your preferred database)
 - Laravel 10
 - Laravel Livewire ^3.x
-- MySQL v5.7
+- MySQL v5.7+
 More info https://laravel.com/docs/10.x/deployment#server-requirements
 
-## ⚙️ Installation
+## Installation
 1. Clone the repository:
 ```bash
 git clone https://github.com/Telraam-Rear-Window-BV/ecomobilis.git
@@ -59,25 +82,30 @@ Components live in app/Http/Livewire/ with corresponding Blade views in resource
 Use components in Blade templates with:
 <livewire:example-component />
 
+
 # 2. Database
 
-MySQL v5.7
+Initially we were aiming for a NOSQL database - because there were signs the data-structure needed to be very flexible - however we choose for MySQL. 
+The developed carpooling modules benefit from relationships between the tables. Relational features (foreign keys, joins, ...) enforce data integrity that NoSQL often lacks.
+Almost every hosting provider supports MySQL out of the box and has in general and is a free, open-source, and widely understood..
+
 ![alt text](graph.png "database ER diagnram")
 (Generated with https://github.com/beyondcode/laravel-er-diagram-generator)
 
-Updated are atm not done with migrations but clear sql commands. 
-Those can be found in resources/setup-files-db-etc/queries.sql
+Updates are atm not done with migrations but documented sql commands. 
+Those can be found in resources/setup-files-db-etc/queries.sql. The current base database structure is also documented in resources/setup-files-db-etc/
 
 # 3. Carpool
 
 ## Locations
-To get locations we use the external Locationiq api. This service uses Open Street Maps and can possible options for streets, city based on a search query.
+To get locations we use the external Locationiq api. This service uses Open Street Maps and has options for streets, city based on a search query.
 So it converts a structured or free-form address to geographical coordinates. We screened for fully open and free location services but there are none. LocationIQ seems suited and most clear pricing. 
 It can be used for free for a 5000 requests /day and 2 requests / sec.
 When a location is submitted we store the coordinates in the db table carpool_street_coordinates to be able to reference to that location.
+Locationiq was the based option after review of the available tools.
 
 ## Cities autocomplete
-The UI for the location selection uses the open source vanilla javascript  library https://github.com/TarekRaafat/autoComplete.js.
+The UI for the location selection (the dropdown) uses the open source vanilla javascript  library https://github.com/TarekRaafat/autoComplete.js.
 We store the json in a hidden field below the input field. It's the hidden field we use in the database.
 
 ## Price calculate
@@ -99,14 +127,16 @@ There is a special type of message, the 'auto-message' which is basically a mess
 ## Carpool matching
 Matching is done based on the stored gps coordinates and looks within 20km radius for both departure and arrival and for your the date / hour given or later
 
+
 # 4. API
 
-Docs in /public/readme-api.md or postmen see footer of the application
+The API is open and documented:
+https://documenter.getpostman.com/view/12029054/2sB3HrnHiF#6039ffb3-d303-4833-b58c-43d088177f13
 
 
 # 5. Project Structure
 
-Laravel is an advanced MVC framework. The default structure has been followed
+Laravel is an advanced MVC framework. The default structure has been followed.
 
 
 # 6. Hosting
@@ -126,16 +156,40 @@ php artisan view:cache
 npm run build
 ```
 
+
 # 8. Design 
 
 ## Fonts
-DM Sans as main font (https://fonts.google.com/specimen/DM+Sans)
-Barlow Condensed for narrow headers (https://fonts.google.com/specimen/Barlow+Condensed)
+- DM Sans as main font (https://fonts.google.com/specimen/DM+Sans)
+- Barlow Condensed for narrow headers (https://fonts.google.com/specimen/Barlow+Condensed)
+
+## Color scheme
+Main dark blue: #263d5e
+Accent orange : #F2845C
+Background beige: #faf6f2
 
 
-## 9. GDPR
-- we only use essential cookies and do not track any data
-- the 
+# 9. GDPR
+
+- we only use essential cookies (for authentication) and do not track or collect any additional data
+- we use the privacy friendly plausible.io for visitor tracking. More about Plausible and GDPR can be found here https://plausible.io/data-policy
 - privacy policy https://ecomobilis.be/page/privacy-policy
 - terms and conditions: https://ecomobilis.be/page/terms-of-use
-- 
+- A user can immediately erase his user account without manual intervention. His personal data will be removed instantly.
+
+
+# 10. Admin panel
+
+There is a seperate repository for admin use only. It can be found on: 
+https://github.com/Telraam-Rear-Window-BV/ecomobilis-admin
+
+Why Filament? Laravel Filament is a modern admin panel and toolkit for Laravel that makes building internal dashboards and back-office applications fast and elegant. It provides a clean, intuitive interface with ready-made CRUD functionality, form builders, and tables out of the box, all while staying highly customizable. By running it in a separate repository, we keep our core application clean and modular while still benefiting from Filament’s powerful features for managing data, users, and system configurations efficiently.
+
+
+# 11. Native iOS and Android apps
+Besides the web application there is also a light weight app for iOS and Android: 
+https://github.com/Telraam-Rear-Window-BV/ecomobilis-mobile-app
+
+It has no authentication build in but shows a good introduction to the project.
+We used Expo, a framework for building native mobile applications using React Native. Expo offers a unified workflow for both iOS and Android. 
+By maintaining it in a separate repository, we decouple the mobile app from the Laravel backend, ensuring a clear separation of concerns. This setup allows the Expo app to focus entirely on delivering a smooth, performant mobile experience while consuming APIs from our core services. The result is faster development, easier maintenance, and the flexibility to evolve mobile features independently of the backend.

@@ -70,6 +70,9 @@
 
     var DepValues = false;
     var ArrValues = false;
+    if (isNaN(pricePerKm) || pricePerKm == false ) {
+        pricePerKm = '0.10';
+    }
 
     $('.js-swap-dep-arr').click(function() {
 

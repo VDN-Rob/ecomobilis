@@ -11,7 +11,7 @@ return [
     'my-messages' => 'Mes messages',
 
     // subtabs
-    'tab-upcoming' => 'Prochaine',
+    'tab-upcoming' => 'Prochains',
     'tab-old' => 'Anciens',
 
     // admin tabs mobile
@@ -27,6 +27,9 @@ return [
     'search'          => 'Rechercher',
     'search-subtitle' => 'Covoiturage',
     'search-title' => 'Où voulez-vous aller?',
+
+    // below search, general rides
+    'carpool-without-filter-overview-title' => 'Trajets à venir',
 
     // overview (carpool-block)
     'driver' => 'Chauffeur',

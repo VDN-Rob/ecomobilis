@@ -14,7 +14,7 @@
                     @if(empty(Auth::user()->birth_date) || empty(Auth::user()->car))
                         <a href="#" class="button disabled" > {{ __('carpool.add-a-ride') }}</a>
                         &nbsp;&nbsp;
-                        <a href="{{ url('/') }}/admin/user/profile/{{ Auth::user()->id }}/edit/" class="grey tiny">Complete your profile first</a>
+                        <a href="{{ url('/') }}/admin/user/profile/{{ Auth::user()->id }}/edit/" class="grey tiny">Complétez d'abord votre profil.</a>
                     @else
                         <a href="/carpool/add" class="button">{{ __('carpool.add-a-ride') }}</a>
                     @endif
@@ -29,7 +29,13 @@
     @include('_includes.carpool-search')
 
 
+
     <div class="block">
+        <div class="grid">
+            <div class="col-desk-12 text-center">
+                <h2>{{ __('carpool.carpool-without-filter-overview-title') }}</h2>
+            </div>
+        </div>
         @if(count($rides) > 0)
             @foreach($rides as $ride)
                 @include('_includes.carpool-ride-block', ['layout' => 'overview-listing', 'showReservations' => 0, 'showConversations' => 0])

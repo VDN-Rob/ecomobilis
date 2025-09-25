@@ -37,7 +37,7 @@
 
     <!-- 2. custom -->
     <script defer data-domain="ecomobilis.be" src="https://plausible.io/js/script.js"></script>
-    
+
     <!-- css via laravel mix  -->
     <link href="{{ asset('css/app.css?v=13') }}" rel="stylesheet">
 

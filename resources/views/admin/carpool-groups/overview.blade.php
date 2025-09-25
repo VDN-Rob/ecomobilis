@@ -52,9 +52,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-desk-3">
-
-                </div>
             @endforeach
         </div> <!--  grid -->
     </div>
