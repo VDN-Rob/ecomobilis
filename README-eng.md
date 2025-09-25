@@ -60,6 +60,7 @@ Use components in Blade templates with:
 <livewire:example-component />
 
 # 2. Database
+
 MySQL v5.7
 ![alt text](graph.png "database ER diagnram")
 (Generated with https://github.com/beyondcode/laravel-er-diagram-generator)
@@ -130,3 +131,11 @@ npm run build
 ## Fonts
 DM Sans as main font (https://fonts.google.com/specimen/DM+Sans)
 Barlow Condensed for narrow headers (https://fonts.google.com/specimen/Barlow+Condensed)
+
+
+## 9. GDPR
+- we only use essential cookies and do not track any data
+- the 
+- privacy policy https://ecomobilis.be/page/privacy-policy
+- terms and conditions: https://ecomobilis.be/page/terms-of-use
+- 

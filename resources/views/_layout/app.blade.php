@@ -30,17 +30,14 @@
     <!-- 1. libraries -->
     <!-- autocomplete -->
     <script src="https://unpkg.com/@tarekraafat/autocomplete.js@10.2.9/dist/autoComplete.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.9/dist/css/autoComplete.01.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@tarekraafat/autocomplete.js@10.2.9/dist/css/autoComplete.01.css">
 
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-    <!-- fancybox -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css"/>
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
-
     <!-- 2. custom -->
-
+    <script defer data-domain="ecomobilis.be" src="https://plausible.io/js/script.js"></script>
+    
     <!-- css via laravel mix  -->
     <link href="{{ asset('css/app.css?v=13') }}" rel="stylesheet">
 
