@@ -4,8 +4,28 @@
             <div class="col-desk-4 col-tab-3 general-info-footer-block">
 
                 <h2 class="footer-accent">Ecomobilis</h2>
-                Ecomobilis est un projet de <a href="https://mobilesem.eu" target="_blank">MOBILESEM Asbl</a><br>
-                Rue du Moulin 181 - 5600 PHILIPPEVILLE<br><br>
+                Ecomobilis est un projet de la <a href="https://www.froidchapelle.be/" target="_blank">Commune de Froidchapelle</a><br>
+                Place Albert 1er , 38 - 6440 Froidchapelle<br> en partenariat avec<br>
+                <ul>
+                    <li>
+                        <a href="https://www.beaumont.be/" target="_blank">Commune de Beaumont</a>
+                    </li>
+                    <li>
+                        <a href="https://www.chimayville.be/" target="_blank">Commune de Chimay</a>
+                    </li>
+                    <li>
+                        <a href="https://www.couvin.be/" target="_blank">Commune de Couvin</a>
+                    </li>
+                    <li>
+                        <a href="https://www.philippeville.be/" target="_blank">Commune de Philippeville</a>
+                    </li>
+                    <li>
+                        <a href="https://www.viroinval.be/" target="_blank">Commune de Viroinval</a>
+                    </li>
+                </ul>
+                <br>Avec le soutient de la Wallonie dans le cadre du programme Smart Region de Digital Wallonia<br>
+                <img src="https://admin.ecomobilis.be/storage/soutien_wallonie.png">
+                <img src="https://admin.ecomobilis.be/storage/dw_smartregion.png">
 
                 <strong>{!!  __('footer.info-mail') !!}</strong>:  <a href="mailto:ecomobilis.be">info@ecomobilis.be</a><br>
                 <br>
