@@ -29,13 +29,13 @@
                                 <a href="{{ url('/carpool') }}">{{ __('public-general.nav-carpooling') }}</a>
                             </li>
                             <li class=" @if(Route::current()->getName() == 'web.carpooling') active @endif">
-                                <a href="{{ url('/en') }}">{{ __('public-general.nav-sharing') }}</a>
+                                <a href="{{ url('/sharing') }}">{{ __('public-general.nav-sharing') }}</a>
                             </li>
-                            <li class=" @if(Route::current()->getName() == 'web.carpooling') active @endif">
-                                <a href="{{ url('/en') }}">{{ __('public-general.nav-traffic') }}</a>
+                            <li class=" @if(Route::current()->getName() == 'web.trafficOverview') active @endif">
+                                <a href="{{ url('/traffic') }}">{{ __('public-general.nav-traffic') }}</a>
                             </li>
                             <li>
-                            <a href="#" target="_blank" >{{ __('public-general.nav-faq-support') }}</a>
+                                <a href="{{ url('/faq') }}" target="_blank" >{{ __('public-general.nav-faq-support') }}</a>
                             </li>
                             <li class=" @if(Route::current()->getName() == 'web.blogOverview') active @endif
                                 @if(Route::current()->getName() == 'web.blogDetail') active @endif ">
@@ -59,7 +59,7 @@
                         </ul>
                     </div>
                     <div class="col-desk-8 col-tab-3">
-
+                        <!--
                         <div id="mc_embed_signup">
                             <form
                                 class="ui form grid validate"
@@ -88,14 +88,14 @@
                                 </div>
                             </form>
                         </div>
-
-                        <br>
+                        -->
                         <h2 class="footer-accent">Apps</h2>
                         <div class="apps">
-                            <a href="https://play.google.com/store/apps/details?id=com.davedriesmans.ecomobilis&hl=nl" target="_blank" style="display: inline-block"><img width="110" alt="Get it on Google Play" src="/images/icons/google-play-badge.png"></a>
+                            <a href="https://play.google.com/store/apps/details?id=com.davedriesmans.ecomobilis&hl=fr" target="_blank" style="display: inline-block"><img width="110" alt="Get it on Google Play" src="/images/icons/google-play-badge.png"></a>
                             <a href="https://apps.apple.com/be/app/ecomobilis/id6751275812" target="_blank" style="display: inline-block"><img width="100" src="/images/icons/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" alt="Download on the App Store"></a>
                         </div>
 
+                            <!--
                         <h2 class="footer-accent">{{ __('footer.follow-us') }}</h2>
 
                         <a href="#" class="social">
@@ -117,6 +117,7 @@
             c0-3.4-4-3.1-4,0V18h-3V7h3v1.8c1.4-2.6,7-2.8,7,2.5V18z"/>
                             </svg>
                         </a>
+                        -->
                     </div>
 
                 </div> <!-- end grid grid -->
