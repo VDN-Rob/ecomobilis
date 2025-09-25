@@ -48,6 +48,8 @@ class CarpoolRideController extends Controller
         Log::debug(json_encode($streetArrObj));
 
         // do the matching search
+        $streetDepObj->lon = $streetDepObj->lng; // can't break the api
+        $streetArrObj->lon = $streetArrObj->lng; // can't break the api
         $rides = (new CarpoolRide())->getMatchingRides($streetDepObj, $streetArrObj, $startTime);
         $ridesIdArr = $rides->pluck('id')->toArray();
 

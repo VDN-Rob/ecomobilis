@@ -14,7 +14,7 @@
         @if($errors->has('DepJson'))
             <div class="error tiny red">{{ __('carpool.error-select-street') }}</div>
         @endif
-        <input id="DepJson" name="DepJson" type="text"
+        <input id="DepJson" name="DepJson" type="hidden"
                @if(isset($ride->departure))
                     value="{{ json_encode(['place_id' => $ride->departure->external_api_id]) }}"
                @elseif(isset($searchDepJson))
@@ -43,7 +43,7 @@
         @if($errors->has('ArrJson'))
             <div class="error tiny red">{{ __('carpool.error-select-street') }}</div>
         @endif
-        <input id="ArrJson" name="ArrJson" type="text"
+        <input id="ArrJson" name="ArrJson" type="hidden"
                @if(isset($ride->arrival))
                     value="{{ json_encode(['place_id' => $ride->arrival->external_api_id]) }}"
                @elseif(isset($searchArrJson))

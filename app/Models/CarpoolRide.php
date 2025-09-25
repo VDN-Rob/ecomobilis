@@ -68,7 +68,8 @@ class CarpoolRide extends Model
     }
 
 
-    /* docu https://medium.com/@techsolutionstuff/laravel-11-find-nearest-location-by-latitude-and-longitude-c6ac5c6918dc */
+    /* docu https://medium.com/@techsolutionstuff/laravel-11-find-nearest-location-by-latitude-and-longitude-c6ac5c6918dc
+    */
     public function getMatchingRides($streetDepObj, $streetArrObj, $travelStartDatetime)
     {
         $maxDistance         = 20;

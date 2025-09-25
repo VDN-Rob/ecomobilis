@@ -1,5 +1,5 @@
 # ------------------------------------------------------------
-# -- 25 bugfix
+# -- 26 Sept - bugfix
 ALTER TABLE `carpool_street_coordinates` CHANGE `lng` `lon` DECIMAL(10,4)  NULL  DEFAULT NULL;
 
 # ------------------------------------------------------------
