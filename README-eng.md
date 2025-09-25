@@ -69,7 +69,8 @@ This runs through a cron job on the server (* * * * * php /data/sites/web/ecomob
 
 ## JS packages
 - Autocomplete js package used for street lookup https://github.com/TarekRaafat/autoComplete.js
-
+- Leaflet for the maps, open source package for Open Street map
+- 
 ## Laravel packages
 - https://github.com/msurguy/Honeypot/tree/master
 - Laravel ER Diagram Generator
@@ -187,9 +188,22 @@ Why Filament? Laravel Filament is a modern admin panel and toolkit for Laravel t
 
 
 # 11. Native iOS and Android apps
+
 Besides the web application there is also a light weight app for iOS and Android: 
 https://github.com/Telraam-Rear-Window-BV/ecomobilis-mobile-app
 
 It has no authentication build in but shows a good introduction to the project.
 We used Expo, a framework for building native mobile applications using React Native. Expo offers a unified workflow for both iOS and Android. 
 By maintaining it in a separate repository, we decouple the mobile app from the Laravel backend, ensuring a clear separation of concerns. This setup allows the Expo app to focus entirely on delivering a smooth, performant mobile experience while consuming APIs from our core services. The result is faster development, easier maintenance, and the flexibility to evolve mobile features independently of the backend.
+
+
+# 12. Data
+
+## The list of datasets used:
+- we use Open Street Map maps and location through locationiq 
+
+## The list of datasets generated/opened
+- the interesting datasets are opened up via the api
+
+## The list and exports of data that can be automatically exported to the ODWB portal
+The data is open, and available through the api
