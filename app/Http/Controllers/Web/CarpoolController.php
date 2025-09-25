@@ -64,10 +64,10 @@ class CarpoolController extends Controller
         // for the group params, departure is default from the location and disabled
         if(!empty($request->groupid)) {
             $data['group_id']       = $request->groupid;
-            $data['group']            = CarpoolGroup::find($request->groupid);
-            $data['searchDepValue'] = $data['group'] ->location->street.', '.$data['group'] ->location->city;
-            $data['searchDepJson']  = CarpoolStreetCoordinate::find($data['group'] ->location_street_coordinates_id);
-            $data['departureIsFromGroup'] = 1;
+            $data['group']          = CarpoolGroup::find($request->groupid);
+            $data['searchArrValue'] = $data['group'] ->location->street.', '.$data['group'] ->location->city;
+            $data['searchArrJson']  = CarpoolStreetCoordinate::find($data['group'] ->location_street_coordinates_id);
+            $data['arrivalIsFromGroup'] = 1;
         }
 
         $data['luggages'] = CarpoolLuggage::all();

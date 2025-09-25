@@ -21,7 +21,6 @@
             </div>
 
             <div class="col-desk-6 text-right">
-                {{ $group->is_archived }}
                 @if($group->is_archived !== 1)
                     <div class="extra-padding-top">
                         @if(!isset(Auth::user()->id))
@@ -33,8 +32,6 @@
                             <a href="/carpool/add?groupid={{ $group->id }}" class="button">{{ __('carpool.add-a-ride') }}</a>
                         @endif
                     </div>
-                @else
-
                 @endif
             </div>
         </div> <!--  grid -->
