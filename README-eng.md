@@ -38,7 +38,7 @@ More info https://laravel.com/docs/10.x/deployment#server-requirements
 
 ## Installation
 1. Clone the repository:
-```bash
+```
 git clone https://github.com/Telraam-Rear-Window-BV/ecomobilis.git
 cd your-project
 ```
@@ -81,7 +81,7 @@ Tyical workflow:
 Create components with`php artisan make:livewire ExampleComponent`
 Components live in app/Http/Livewire/ with corresponding Blade views in resources/views/livewire/.
 Use components in Blade templates with:
-<livewire:example-component />
+`<livewire:example-component />`
 
 
 # 2. Database
@@ -90,7 +90,7 @@ Initially we were aiming for a NOSQL database - because there were signs the dat
 The developed carpooling modules benefit from relationships between the tables. Relational features (foreign keys, joins, ...) enforce data integrity that NoSQL often lacks.
 Almost every hosting provider supports MySQL out of the box and has in general and is a free, open-source, and widely understood..
 
-![alt text](graph.png "database ER diagnram")
+![alt text](graph.png "database ER diagram")
 (Generated with https://github.com/beyondcode/laravel-er-diagram-generator)
 
 Updates are atm not done with migrations but documented sql commands. 
