@@ -108,7 +108,7 @@ return [
 
     // cancel as passager
     'cancel-request-btn'                => 'Annulez votre question',
-    'modal-ride-request-cancel-title'   => 'Annuler la question',
+    'modal-ride-request-cancel-title'   => 'Annuler mon trajet',
     'modal-ride-request-cancel-body'    => 'Je ne peux plus faire le trajet. Veuillez annuler la demande.',
     'modal-ride-request-cancel-btn'     => 'Oh non, ignorez-moi!',
     'modal-ride-request-ok-btn'         => 'Oui, veuillez annuler ma demande.'
