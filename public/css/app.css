@@ -3130,8 +3130,8 @@ https://github.com/sschoger/heroicons-ui/tree/master/svg
 }
 
 .box.box-with-border.success {
-  border: 1px solid #1B8C63;
-  background-color: rgba(27, 140, 99, 0.2);
+  border: 2px solid #1B8C63;
+  background-color: rgba(27, 140, 99, 0.75);
 }
 
 /*--------------------
@@ -3380,11 +3380,12 @@ details[open] > summary {
   padding: 12px 20px;
   border-radius: 8px;
   font-size: 14px;
-  z-index: 9998;
+  z-index: 9999;
   box-shadow: 0 15px 25px rgba(248, 201, 195, 0.3019607843);
   opacity: 0;
   transform: translateY(-20px);
   animation: slideDownFade 0.5s ease forwards, fadeOut 0.5s ease 2.5s forwards;
+  max-width: 300px;
 }
 
 /* Slide in */
@@ -3592,7 +3593,7 @@ details[open] > summary {
 .website .main-nav .dropdown .dropdown-content {
   z-index: 9999;
   min-width: 200px;
-  left: -15px;
+  left: -150px;
   top: 40px;
 }
 .website .main-nav .dropdown .dropdown-content a {
@@ -4083,6 +4084,9 @@ details[open] > summary {
   }
   .autocomplete-swap-dep-arr {
     display: none;
+  }
+  .button.big {
+    margin-bottom: 10px;
   }
 }
 /* SOME VERY BASICS */

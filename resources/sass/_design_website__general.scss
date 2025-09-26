@@ -11,8 +11,8 @@
     border: 1px solid $line-color-box;
 }
 .box.box-with-border.success {
-    border: 1px solid $green;
-    background-color: rgba($green, 0.2);
+    border: 2px solid $green;
+    background-color: rgba($green, 0.75);
 }
 
 /*--------------------
@@ -248,12 +248,13 @@ details[open]  > summary {
     padding: 12px 20px;
     border-radius: 8px;
     font-size: 14px;
-    z-index: 9998;
+    z-index: 9999;
     box-shadow: 0 15px 25px rgba(248, 201, 195, 0.3019607843);
     opacity: 0;
     transform: translateY(-20px);
     animation: slideDownFade 0.5s ease forwards,
     fadeOut 0.5s ease 2.5s forwards;
+    max-width: 300px;
 }
 
 /* Slide in */
