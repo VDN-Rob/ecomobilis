@@ -95,7 +95,7 @@ Au départ, nous envisagions une base de données NoSQL — car la structure sem
 Les modules de covoiturage développés bénéficient des relations entre tables. Les fonctionnalités relationnelles (clés étrangères, jointures, …) garantissent l’intégrité des données, ce qui manque souvent dans le NoSQL.
 Presque tous les hébergeurs supportent MySQL par défaut, qui est gratuit, open source et largement maîtrisé.
 
-![alt text](graph.png "database ER diagram")
+![alt text](public/doc/graph.png "database ER diagram")
 (Generated with https://github.com/beyondcode/laravel-er-diagram-generator)
 
 Les mises à jour ne se font pas actuellement via des migrations mais via des commandes SQL documentées.
