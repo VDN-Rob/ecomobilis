@@ -6,15 +6,14 @@ return [
     'save' => 'Sauvegarder',
     'add' => 'Ajouter',
 
-    'info-mail' => 'General enquiries',
-    'support-mail' => 'Sutien',
+    'info-mail' => 'Contact',
+    'support-mail' => 'Support',
     'follow-us' => 'Follow us',
 
-    'what-is-1' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    'what-is-2' => 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
-    ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+    'what-is-1' => '',
+    'what-is-2' => '',
 
-    'subscribe' => 'Souscrire',
-    'subscribe-btn' => 'Souscrire',
+    'subscribe' => "S'abonner",
+    'subscribe-btn' => "S'abonner",
 
 ];
