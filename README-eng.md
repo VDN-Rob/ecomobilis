@@ -134,6 +134,8 @@ Matching is done based on the stored gps coordinates and looks within 20km radiu
 The API is open and documented:
 https://documenter.getpostman.com/view/12029054/2sB3HrnHiF#6039ffb3-d303-4833-b58c-43d088177f13
 
+The Telraam data (traffic data) is also open and documented:
+https://telraam-api.net/
 
 # 5. Project Structure
 
@@ -205,5 +207,8 @@ By maintaining it in a separate repository, we decouple the mobile app from the 
 ## The list of datasets generated/opened
 - the interesting datasets are opened up via the api
 
-## The list and exports of data that can be automatically exported to the ODWB portal
-The data is open, and available through the api
+## ODWB portal
+The data is open and available through the api. The Telraam live data from network will be pushed to ODWB.
+This data contains a GeoJSON entity with the geometry of the segments as a MultiLineString and the main category counts next to the v85 for a given (UTC) hour.
+Using this method you can get all information necessary to make a Telraam map. Details and historical data can be requested with subsequent calls by street or installation/instance id.
+Waiting for approval ODWB at the moment.

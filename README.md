@@ -144,6 +144,9 @@ Le matching est basé sur les coordonnées GPS enregistrées et recherche dans u
 L’API est ouverte et documentée :
 https://documenter.getpostman.com/view/12029054/2sB3HrnHiF#6039ffb3-d303-4833-b58c-43d088177f13
 
+Les données Telraam (données relatives au trafic) sont également ouvertes et documentées:
+https://telraam-api.net/
+
 # 5. Structure du projet
 
 Laravel est un framework MVC avancé. La structure par défaut a été suivie.
@@ -217,6 +220,10 @@ Résultat : un développement plus rapide, une maintenance plus simple et la fle
 ## Liste des jeux de données générés/ouverts :
 - Les jeux de données intéressants sont ouverts via l’API
 
-## Liste et exports des données pouvant être exportées automatiquement vers le portail ODWB :
-Les données sont ouvertes et disponibles via l’API
+## Portail ODWB :
+Les données sont ouvertes et disponibles via l'API. Les données en direct Telraam provenant du réseau seront transmises à l'ODWB.
+Ces données contiennent une entité GeoJSON avec la géométrie des segments sous forme de MultiLineString et le nombre de catégories principales à côté du v85 pour une heure donnée (UTC).
+Cette méthode vous permet d'obtenir toutes les informations nécessaires pour créer une carte Telraam. Les détails et les données historiques peuvent être demandés par appels successifs par rue ou par identifiant d'installation/d'instance.
+En attente d'approbation par l'ODWB pour le moment.
+
 
