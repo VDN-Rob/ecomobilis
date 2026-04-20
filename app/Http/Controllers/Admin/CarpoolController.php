@@ -80,9 +80,10 @@ class CarpoolController extends Controller
         Log::debug('carpoolReservationConfirmRejectStore - action:'.$request->submit);
         if ($request->submit == 'Refuser') {
             event(new CarpoolReservationRejected($rideReservationId));
-        } else if ($request->submit == 'Confirmer') {
+        } else if ($request->submit == 'Accepter') {
             event(new CarpoolReservationAccepted($rideReservationId));
         } else {
+            Log::debug('carpoolReservationConfirmRejectStore - action: '.$request->submit. ' went wrong');
             dd('carpoolReservationConfirmRejectStore - action: '.$request->submit. ' went wrong');
         }
 

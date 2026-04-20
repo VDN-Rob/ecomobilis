@@ -59,11 +59,13 @@ return [
     'reserve-btn'   => 'Faire la demande de réservation',
 
     // accept buttons
-    'confirm-btn' => 'Confirmer',
+    'confirm-btn' => 'Accepter',
     'reject-btn' =>  'Refuser',
 
     // messages
     'no-messages' => 'Aucun message pour le moment. Sélectionnez d\'abord un trajet.',
+    'no-messages-no-history' => 'Aucun message pour le moment.',
+
     'auto-message-request-reservation' => 'Réservation de l\'itinéraire demandé',
     'auto-message-request-cancelled' => 'La réservation a été annulée par le passager.',
     'send-your-first-message' => 'N\'hésitez pas à envoyer votre premier message',

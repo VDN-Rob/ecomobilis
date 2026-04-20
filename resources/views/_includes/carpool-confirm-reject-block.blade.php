@@ -1,6 +1,6 @@
 @if($rideReservationSent)
     <div class="box box-with-border box-ride-confirm-reject extra-box-shadow text-center">
-        @if($rideReservationSent->is_accepted == 0 && $rideReservationSent->rejected == 0 && $rideReservationSent->ride->user_id == Auth::user()->id)
+        @if($rideReservationSent->is_accepted == 0 && $rideReservationSent->is_rejected == 0 && $rideReservationSent->ride->user_id == Auth::user()->id)
                 {!! Form::model(null, array('method' => 'POST', 'route' => ['admin.carpoolReservationConfirmRejectStore', $rideReservationSent->id], 'class' => 'ui form', 'files' => false)) !!}
                     <input class="button big" name="submit" type="submit" value="{{ __('carpool.reject-btn') }}" style="width: 200px; display: inline-block">
                     <input class="button big bg-white" name="submit" type="submit" value="{{ __('carpool.confirm-btn') }}"  style="width: 200px; display: inline-block">

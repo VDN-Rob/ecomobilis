@@ -7,7 +7,7 @@
     <div class="grid stackable">
 
         @if(count($conversationsListArr) == 0 && Request::segment(4) == 0)
-            <div class="nothing-found">{{ __('carpool.no-messages') }}</div>
+            <div class="nothing-found">{{ __('carpool.no-messages-no-history') }}</div>
         @else
         <!--- SIDE BAR W/ ALL YOUR RIDES --->
 
@@ -21,8 +21,10 @@
 
                 @if(count($conversationsListArr) == 0)
                     <div class="box box-with-border list-of-chats extra-box-shadow">
-                        <div class="grey extra-margin-top">{{ __('carpool.no-messages') }}</div>
-                        <div class="bottom tiny"><a href="">Actuel</a> <a href="">Passé</a></div>
+                        <div style="padding: 15px">
+                            <div class="grey extra-margin-top">{{ __('carpool.no-messages-no-history') }}</div>
+                            <div class="bottom tiny"><a href="">Actuel</a> <a href="">Passé</a></div>
+                        </div>
                     </div>
                 @else
                     <div class="box box-with-border extra-box-shadow list-of-chats" id="list-of-chats">

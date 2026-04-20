@@ -14,7 +14,6 @@
                     @if(empty(Auth::user()->birth_date) || empty(Auth::user()->car))
                         <a href="#" class="button disabled" > {{ __('carpool.add-a-ride') }}</a>
                         &nbsp;&nbsp;
-                        <a href="{{ url('/') }}/admin/user/profile/{{ Auth::user()->id }}/edit/" class="grey tiny">Complétez d'abord votre profil.</a>
                     @else
                         <a href="/carpool/add" class="button">{{ __('carpool.add-a-ride') }}</a>
                     @endif
