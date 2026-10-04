@@ -464,13 +464,11 @@ requête -> demande / valide les coordonnées -> création de CarpoolSearchReque
 Le 'CarpoolController' délègue donc la logique de recherche au nouveau système de providers.
 
 Il conservera cependant dans un premier temps les méthodes liées aux fonctionnalités propres au système Ecomobilis :
-
-
-create()
-store()
-edit()
-update()
-cancelRide()
+- create()
+- store()
+- edit()
+- update()
+- cancelRide()
 
 
 Ces fonctionnalités ne seront donc pas supprimées.
@@ -483,24 +481,10 @@ Par exemple, Ecomobilis peut permettre de créer et modifier des trajets, tandis
 
 # Annexe 5 - 'CarpoolProviderManager'
 
-Dans un premier temps, je propose de garder le provider actif dans :
+Dans un premier temps, je propose de garder le provider actif dans config/carpool.php.
 
 
-config/carpool.php
-
-
-Le 'CarpoolProviderManager' pourrait alors simplement lire cette configuration et sélectionner le provider correspondant.
-
-Par exemple :
-
-
-active provider = ecomobilis
-
-
-ou :
-
-
-active provider = blablacar_daily
+Le 'CarpoolProviderManager' pourrait alors simplement lire cette configuration et sélectionner le provider correspondant, cad active provider = ecomobilis ou active provider = blablacar_daily
 
 
 Dans un second temps, nous pourrions ajouter une fonctionnalité permettant à l'administrateur de choisir le provider via 'ecomobilis-admin'.
