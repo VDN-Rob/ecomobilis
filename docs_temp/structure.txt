@@ -1,0 +1,415 @@
+There are two sides of the application. The user side (ecomobilis) and the administrators side (ecomobilis-admin).
+They share the same database.
+The admin side controls the data in the database. -> You need to change the admin application if the new external carpool provider changes what your administrators need to manage in the database.
+The user side is responsible for the 
+
+In the current prospect, the admin is not useful anymore. We can simply do:
+    BlaBlaCar API -> JSON response -> Laravel -> Blade -> HTML
+
+Maybe useful for:
+BlaBlaCar integration: ON/OFF
+BlaBlaCar access token
+Default search radius
+Default time window
+
+/!\ TOKEN STAYS ON SERVER
+
+1. Overall structure (with command "tree")
+
+Ecomobilis
+│
+├── app/              ← PHP application logic
+│
+├── routes/           ← "Which code runs for this URL?"
+│
+├── resources/views/  ← What the user sees (Blade)
+│
+├── resources/js/     ← Browser-side JavaScript
+├── resources/sass/   ← CSS/Sass styling
+│
+├── config/           ← Application configuration
+├── database/         ← Migrations, factories, seeders
+│
+├── public/           ← Publicly accessible files
+├── storage/          ← Logs, generated files, cache, etc.
+│
+├── tests/             ← Automated tests
+│
+├── .env              ← Your local configuration/secrets
+├── composer.json     ← PHP dependencies
+├── package.json       ← JavaScript dependencies
+└── artisan            ← Laravel command-line tool
+
+USER -> routes -> Controller -> (Model -> MySQL)/(Service -> External API -> BlaBlaCar API) -> Blade -> HTML -> USER
+
+2. app/
+
+app/
+├── Console/
+├── Events/
+├── Exceptions/
+├── Helpers/
+├── Http/
+├── Jobs/
+├── Listeners/
+├── Livewire/
+├── Mail/
+├── Models/
+├── Providers/
+└── Services/
+
+"The actual code that makes the app behave as it does"
+
+Details of each file/directory entry:
+
+app/ 
+├── Console 
+│   ├── Commands 
+│   │   └── CarpoolSendUserUpcomingRides.php 
+│   └── Kernel.php 
+├── Events 
+│   ├── CarpoolRequestCancelled.php 
+│   ├── CarpoolRequested.php 
+│   ├── CarpoolReservationAccepted.php 
+│   ├── CarpoolReservationRejected.php 
+│   └── CarpoolRideCancelled.php 
+├── Exceptions 
+│   └── Handler.php 
+├── Helpers 
+│   └── BusinessApiClusterTraffic.php 
+├── Http 
+│   ├── Controllers 
+│   │   ├── Admin 
+│   │   │   ├── CarpoolController.php 
+│   │   │   ├── CarpoolGroupsController.php 
+│   │   │   ├── CarpoolMessagesController.php 
+│   │   │   └── UserController.php 
+│   │   ├── Api 
+│   │   │   └── StreetController.php 
+│   │   ├── ApiOpen 
+│   │   │   ├── CarpoolCarController.php 
+│   │   │   ├── CarpoolRideController.php 
+│   │   │   ├── CarpoolRideReservationController.php 
+│   │   │   ├── CarpoolStreetCoordinateController.php 
+│   │   │   ├── MobileAppController.php 
+│   │   │   ├── SharingOrgController.php 
+│   │   │   └── UserController.php 
+│   │   ├── Auth 
+│   │   │   ├── ConfirmPasswordController.php 
+│   │   │   ├── ForgotPasswordController.php 
+│   │   │   ├── LoginController.php 
+│   │   │   ├── RegisterController.php 
+│   │   │   ├── ResetPasswordController.php 
+│   │   │   └── VerificationController.php 
+│   │   ├── Controller.php 
+│   │   └── Web 
+│   │       ├── BlogController.php 
+│   │       ├── CarpoolController.php 
+│   │       ├── CarpoolGroupsController.php 
+│   │       ├── FaqController.php 
+│   │       ├── PagesController.php 
+│   │       ├── SharingController.php 
+│   │       ├── SharingQuestionnaireController.php 
+│   │       ├── TrafficController.php 
+│   │       └── UserController.php 
+│   ├── Kernel.php 
+│   ├── Middleware 
+│   │   ├── Authenticate.php 
+│   │   ├── CheckApiKey.php 
+│   │   ├── CheckGroupNeedsAuth.php 
+│   │   ├── EncryptCookies.php 
+│   │   ├── PreventRequestsDuringMaintenance.php 
+│   │   ├── RedirectIfAuthenticated.php 
+│   │   ├── TrimStrings.php 
+│   │   ├── TrustHosts.php 
+│   │   ├── TrustProxies.php 
+│   │   ├── ValidateSignature.php 
+│   │   └── VerifyCsrfToken.php 
+│   ├── Requests 
+│   │   ├── StoreCarpoolCarRequest.php 
+│   │   ├── StoreCarpoolRideRequest.php 
+│   │   ├── StoreCarpoolRideReservationRequest.php 
+│   │   ├── StoreCarpoolStreetCoordinateRequest.php 
+│   │   ├── StoreSharingOrgRequest.php 
+│   │   ├── StoreUserRequest.php 
+│   │   ├── UpdateCarpoolCarRequest.php 
+│   │   ├── UpdateCarpoolRideRequest.php 
+│   │   ├── UpdateCarpoolRideReservationRequest.php 
+│   │   ├── UpdateCarpoolStreetCoordinateRequest.php 
+│   │   ├── UpdateSharingOrgRequest.php 
+│   │   └── UpdateUserRequest.php 
+│   └── Resources 
+│       ├── CarpoolCarResource.php 
+│       ├── CarpoolRideReservationResource.php 
+│       ├── CarpoolRideResource.php 
+│       ├── CarpoolStreetCoordinateResource.php 
+│       ├── SharingOrgResource.php 
+│       └── UserResource.php 
+├── Jobs 
+│   └── CarpoolMessageAdded.php 
+├── Listeners 
+│   ├── RemoveCarpoolReservationInDatabase.php 
+│   ├── SendCarpoolRequestNotification.php 
+│   ├── SendCarpoolReservationAcceptedNotification.php 
+│   ├── SendCarpoolReservationCancelledNotification.php 
+│   ├── SendCarpoolReservationRejectedNotification.php 
+│   ├── SendCarpoolRideCancelledNotification.php 
+│   ├── StoreCarpoolRequestInDatabase.php 
+│   ├── StoreCarpoolReservationAcceptedInDatabase.php 
+│   └── StoreCarpoolReservationRejectedInDatabase.php 
+├── Livewire 
+│   ├── ShowMessages.php 
+│   └── ShowSharingOrgs.php 
+├── Mail 
+│   ├── NotifyCarpoolAccepted.php 
+│   ├── NotifyCarpoolCancelled.php 
+│   ├── NotifyCarpoolRejected.php 
+│   ├── NotifyCarpoolRequestCancelled.php 
+│   ├── NotifyCarpoolRequested.php 
+│   ├── NotifyCarpoolRidesUpcoming.php 
+│   └── SendCarpoolMessages.php 
+├── Models 
+│   ├── ApiKey.php 
+│   ├── Blog.php 
+│   ├── CarpoolCar.php 
+│   ├── CarpoolCarType.php 
+│   ├── CarpoolGroup.php 
+│   ├── CarpoolLuggage.php 
+│   ├── CarpoolMessage.php 
+│   ├── CarpoolRide.php 
+│   ├── CarpoolRideReservation.php 
+│   ├── CarpoolStreetCoordinate.php 
+│   ├── Faq.php 
+│   ├── PageBlock.php 
+│   ├── Page.php 
+│   ├── SharingDecisionEdge.php 
+│   ├── SharingDecisionNode.php 
+│   ├── SharingOrg.php 
+│   └── User.php 
+├── Providers 
+│   ├── AppServiceProvider.php 
+│   ├── AuthServiceProvider.php 
+│   ├── BroadcastServiceProvider.php 
+│   ├── EventServiceProvider.php 
+│   └── RouteServiceProvider.php 
+└── Services 
+    └── QuestionnaireService.php 
+
+
+ECOMOBILIS CARPOOL code files can be divided into five elements:
+* The website - Controllers, Blade Views and Requests
+* The API - Controllers and Resources
+* The database - Models
+* The business logic - Events, Listeners and Jobs
+* The Notifications - Mail
+
+
+2.1. app/Models
+
+├── Models 
+│   ├── ApiKey.php 
+│   ├── Blog.php 
+│   ├── CarpoolCar.php 
+│   ├── CarpoolCarType.php 
+│   ├── CarpoolGroup.php 
+│   ├── CarpoolLuggage.php 
+│   ├── CarpoolMessage.php 
+│   ├── CarpoolRide.php 
+│   ├── CarpoolRideReservation.php 
+│   ├── CarpoolStreetCoordinate.php 
+│   ├── Faq.php 
+│   ├── PageBlock.php 
+│   ├── Page.php 
+│   ├── SharingDecisionEdge.php 
+│   ├── SharingDecisionNode.php 
+│   ├── SharingOrg.php 
+│   └── User.php 
+
+vs database entries:
+carpool_cars
+carpool_car_types
+carpool_groups
+carpool_luggages
+carpool_messages
+carpool_rides
+carpool_rides_reservations
+carpool_street_coordinates
+
+=> Existing carpool system is database backed and internally managed
+
+2.2. Http
+2.2.1 Http/Controllers
+2.2.1.1 app/Http/Controllers/Web/
+├── Http 
+│   ├── Controllers 
+│   │   ├── ...
+│   │   └── Web 
+│   │       ├── BlogController.php 
+│   │       ├── CarpoolController.php 
+│   │       ├── CarpoolGroupsController.php 
+│   │       ├── FaqController.php 
+│   │       ├── PagesController.php 
+│   │       ├── SharingController.php 
+│   │       ├── SharingQuestionnaireController.php 
+│   │       ├── TrafficController.php 
+│   │       └── UserController.php 
+
+Browser -> (GET /carpool) -> CarpoolController -> Blade view
+Browser -> (POST /carpool/ride) -> CarpoolController -> CarpoolRide model -> MySQL
+
+2.2.1.2 Http/Controllers/Admin
+├── Http 
+│   ├── Controllers 
+│   │   ├── Admin 
+│   │   │   ├── CarpoolController.php 
+│   │   │   ├── CarpoolGroupsController.php 
+│   │   │   ├── CarpoolMessagesController.php 
+│   │   │   └── UserController.php 
+
+=> Existing admin side know about carpooling.
+    |-> will have to be changed as well
+
+2.2.1.3 Http/Controllers/ApiOpen
+├── Http 
+│   ├── Controllers 
+│   │   ├── ... 
+│   │   ├── ApiOpen 
+│   │   │   ├── CarpoolCarController.php 
+│   │   │   ├── CarpoolRideController.php 
+│   │   │   ├── CarpoolRideReservationController.php 
+│   │   │   ├── CarpoolStreetCoordinateController.php 
+│   │   │   ├── MobileAppController.php 
+│   │   │   ├── SharingOrgController.php 
+│   │   │   └── UserController.php
+
+Mobile app / API client -> Ecomobilis API -> Models -> MySQL
+
+2.2.2. Http/Requests
+├── Http 
+│   ├── ...
+│   ├── Requests 
+│   │   ├── StoreCarpoolCarRequest.php 
+│   │   ├── StoreCarpoolRideRequest.php 
+│   │   ├── StoreCarpoolRideReservationRequest.php 
+│   │   ├── StoreCarpoolStreetCoordinateRequest.php 
+│   │   ├── StoreSharingOrgRequest.php 
+│   │   ├── StoreUserRequest.php 
+│   │   ├── UpdateCarpoolCarRequest.php 
+│   │   ├── UpdateCarpoolRideRequest.php 
+│   │   ├── UpdateCarpoolRideReservationRequest.php 
+│   │   ├── UpdateCarpoolStreetCoordinateRequest.php 
+│   │   ├── UpdateSharingOrgRequest.php 
+│   │   └── UpdateUserRequest.php 
+
+=> Validation for creation and updating of rides
+
+
+2.2.3 Http/Resources
+├── Http 
+│   ├── ...
+│   └── Resources 
+│       ├── CarpoolCarResource.php 
+│       ├── CarpoolRideReservationResource.php 
+│       ├── CarpoolRideResource.php 
+│       ├── CarpoolStreetCoordinateResource.php 
+│       ├── SharingOrgResource.php 
+│       └── UserResource.php 
+
+=> transforming models into JSON
+
+Model -> Resource -> JSON -> Mobile/API client
+
+
+2.2.4 Events
+├── Events 
+│   ├── CarpoolRequestCancelled.php 
+│   ├── CarpoolRequested.php 
+│   ├── CarpoolReservationAccepted.php 
+│   ├── CarpoolReservationRejected.php 
+│   └── CarpoolRideCancelled.php 
+
+Notifiers for something has happened
+
+2.2.5 Listeners
+├── Listeners 
+│   ├── RemoveCarpoolReservationInDatabase.php 
+│   ├── SendCarpoolRequestNotification.php 
+│   ├── SendCarpoolReservationAcceptedNotification.php 
+│   ├── SendCarpoolReservationCancelledNotification.php 
+│   ├── SendCarpoolReservationRejectedNotification.php 
+│   ├── SendCarpoolRideCancelledNotification.php 
+│   ├── StoreCarpoolRequestInDatabase.php 
+│   ├── StoreCarpoolReservationAcceptedInDatabase.php 
+│   └── StoreCarpoolReservationRejectedInDatabase.php 
+
+What has to happen after an event
+
+database side: event -> listener -> database
+notification side: event -> listener -> notification/email
+
+
+2.2.6 Mail
+├── Mail 
+│   ├── NotifyCarpoolAccepted.php 
+│   ├── NotifyCarpoolCancelled.php 
+│   ├── NotifyCarpoolRejected.php 
+│   ├── NotifyCarpoolRequestCancelled.php 
+│   ├── NotifyCarpoolRequested.php 
+│   ├── NotifyCarpoolRidesUpcoming.php 
+│   └── SendCarpoolMessages.php 
+
+carpool request -> event -> listener -> Mail -> user's email
+
+
+2.2.7 Console/Commands
+├── Console 
+│   ├── Commands 
+│   │   └── CarpoolSendUserUpcomingRides.php 
+
+Laravel Scheduler ->  CarpoolSendUserUpcomingRides -> find upcoming rides -> NotifyCarpoolRidesUpcoming -> email users
+
+If BlaBlaCar takes over -> remove
+
+
+2.2.8 Jobs
+├── Jobs 
+│   └── CarpoolMessageAdded.php 
+
+For adding carpool messages asynchronously
+User sends message -> CarpoolMessageAdded -> queue -> background processing
+
+
+2.2.9 Livewire
+├── Livewire 
+│   ├── ShowMessages.php 
+│   └── ShowSharingOrgs.php 
+
+=> current messaging UI uses Livewire? If so, potentially relevant to carpooling
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+is_accepted/is_rejected
+Existing reservation model uses two boolean flags instead of a state field. This is a legacy design choice and has some limitations, but not just refactor until we know whether local reservations remain part of the new architecture.

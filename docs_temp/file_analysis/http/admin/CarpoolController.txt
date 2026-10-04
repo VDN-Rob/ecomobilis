@@ -1,0 +1,107 @@
+Despite the name Admin, this isn't necessarily a system administrator controller.
+
+Because all these routes have the auth middleware, it appears to be the logged-in user's carpool management area.
+
+Web/CarpoolController -> Public-facing carpool functionality
+
+Admin/CarpoolController -> Logged-in user's carpool management
+
+
+overview()
+-> returns an overview of the rides, history or upcoming
+Logged-in user -> /admin/ -> Admin/CarpoolController@overview() -> carpool_rides -> Only rides belonging to current user -> admin.carpool-rides.blade.php
+
+
+carpoolOverviewAsPassenger()
+-> Which rides am I partaking in as a passenger?
+->whereHas('reservations', function ($query) use ($userId) {
+    $query->where('passenger_user_id', $userId);
+}) => Laravel does something like "find rides that have a reservation where passenger_user_id = current user
+
+public function carpoolReservation($rideId)
+{
+    $data['ride'] = CarpoolRide::find($rideId);
+
+    return view('admin.carpool-reservation', $data);
+}
+=> loads just the ride, not the reservations -> probably uses Eloquent to load reservations $ride->reservations
+
+
+public function carpoolReservationStore(
+    $rideId,
+    Request $request
+)
+- gets the current user then uses an event to create a reservation
+=> IT DOES NOT directly create the reservation:
+    Passenger clicks "Request" -> carpoolReservationStore() -> CarpoolRequested event -> ???? listeners -> reservation created? -> notifications?
+    => uses listeners:
+        - StoreCarpoolRequestInDatabase.php
+        - SendCarpoolRequestNotification.php
+
+Passenger -> Request reservation -> Event -> Redirect back to carpool overview -> "Your request is being processed"
+
+
+
+public function carpoolReservationConfirmRejectStore(
+    $rideReservationId,
+    Request $request
+)
+=> driver accepts/rejects, makes a CarpoolReservationAccepted/CarpoolReservationRejected event -> the controller does not update the database itself, uses an event
+
+
+
+return \Redirect::route('admin.carpoolMessagesThread', [$rideReservation->ride_id, $rideReservation->passenger_user_id])->with('message', 'Votre réponse sera envoyée!');
+=>  redirection to messages so reservations and messages are connected
+
+
+public function carpoolReservationCancelStore(
+    $rideReservationId,
+    Request $request
+)
+=> Passenger cancels -> CarpoolRequestCancelled -> Listeners -> Database / notification
+
+
+RESERVATION LIFECYCLE:
+                 CARPOOL RESERVATION
+                         │
+                         ▼
+              Passenger finds ride
+                         │
+                         ▼
+              Requests reservation
+                         │
+                         ▼
+          carpoolReservationStore()
+                         │
+                         ▼
+              CarpoolRequested
+                    EVENT
+                         │
+               ┌─────────┴─────────┐
+               ▼                   ▼
+        Store in database      Notify driver
+               │
+               ▼
+   carpool_rides_reservations
+               │
+               ▼
+         Driver reviews
+               │
+          ┌────┴────┐
+          ▼         ▼
+       Accept     Reject
+          │         │
+          ▼         ▼
+   Reservation   Reservation
+    Accepted      Rejected
+      EVENT          EVENT
+          │           │
+          └─────┬─────┘
+                ▼
+          Notifications
+                │
+                ▼
+             Messages
+
+
+Passenger -> Cancel request -> CarpoolRequestCancelled -> Listeners -> Database + notification

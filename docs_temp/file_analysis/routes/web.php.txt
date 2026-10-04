@@ -1,0 +1,83 @@
+web.php file is a map:
+
+URL -> Controller => Method
+Ex: GET /carpool/ -> CarpoolController@overview() -> show upcoming rides
+
+1. Public:
+Route::group(['namespace' => 'App\Http\Controllers\Web', 'as' => 'web.'], function () {...})
+    => these routes use Controllers form App\Http\Controllers\Web and the route names start with "web"
+
+Route::get('/carpool/', 'CarpoolController@overview')->name('carpoolOverview'); has the name web.carpoolOverview
+
+The "get" ->
+Route::get('/carpool/', 'CarpoolController@overview')->name('carpoolOverview');
+Means: "if the user visits /carpool/, Laravel calls CarpoolController::overview()
+    => gets the next 50 public non cancelled rides
+
+/carpool/matching
+Route::post('/carpool/matching', 'CarpoolController@matching')->name('carpoolMatching');
+     => Actual search endpoint
+    POST request with JSON containing DepJson + ArrJson + travel_start_datetime
+Laravel calls CarpoolController::matching(), which then calls CarpoolRide::getMatchingRides()
+
+Thus path is: 
+User enters:
+  Departure
+  Arrival
+  Date/time -> POST /carpool/matching -> CarpoolController::matching() -> CarpoolStreetCoordinate::getStreet() -> CarpoolRide::getMatchingRides() -> carpool_rides database -> web.carpool.overview
+
+/show
+Route::get('/carpool/{id}', 'CarpoolController@show')->name('carpoolShow');
+    -> show carpool ride with id 
+    -> calls CarpoolController::show(123), CarpoolRide::find(123) and returns resources/views/web/carpool/show.blade.php
+
+/ auth
+Route::group(['middleware' => ['auth']], function () {...})
+    => changes to a ride requires a login
+
+
+2. Admin
+This part requires an authenticated user
+
+Route::get('/admin/', 'CarpoolController@overview')->name('carpoolOverview'); call the admin overview, not the Web CarpoolController
+=> two different classes with the same name
+
+/ RESERVATION SYSTEM
+Route::post(
+    '/admin/carpool-reservation/reservation/{rideReservationId}/confirm-reject-store',
+    'CarpoolController@carpoolReservationConfirmRejectStore'
+); => explicit confirmation/rejection
+Route::post(
+    '/admin/carpool-reservation/cancel/{rideReservationId}/confirm-reject-store',
+    'CarpoolController@carpoolReservationCancelStore'
+);=> reservation cancellation
+
+Driver creates ride -> Passenger finds ride -> Passenger requests reservation -> Driver sees reservation -> Driver accepts/rejects -> Notifications -> Possible cancellation
+
+/ messages
+CarpoolMessage and carpool_messages => own messaging system
+
+/ groups
+rest of the admin is about groups
+
+
+ECOMOBILIS:
+- WEBSITE
+    -> Web/CarpoolController
+        ->Search
+        -> Create
+        -> Edit
+- ADMIN AREA
+    -> Admin/CarpoolController
+        -> Rides
+        -> Reservations
+        -> Messages
+
+TO:
+Ecomobilis DB:
+    - carpool_rides
+    - reservations
+    - messages
+
+=> Ride creatipn, reservation, edit moves to BlaBlaCar
+=> messaging/groups poetentially remains from MobilEsem

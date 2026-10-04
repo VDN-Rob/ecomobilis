@@ -1,0 +1,62 @@
+                        ECOMOBILIS
+                            │
+            ┌──────────────┴──────────────┐
+            │                             │
+        Search UI                    User account
+            │
+            ▼
+    Departure + Arrival
+    + Date / Time
+            │
+            ▼
+    CarpoolController
+            │
+            ▼
+BlaBlaCarDailyService
+            │
+            │ access_token
+            │ coordinates
+            │ departure_epoch
+            │ timedelta
+            ▼
+    BLABLACAR DAILY
+            │
+            ▼
+    Search results
+            │
+            │ id
+            │ pickup
+            │ dropoff
+            │ time
+            │ price
+            │ seats
+            │ walking time
+            │ web_url
+            ▼
+    Ecomobilis result UI
+            │
+            ▼
+        web_url
+            │
+            ▼
+    BLABLACAR DAILY
+    booking/application
+
+
+| BlaBlaCar field                    | Meaning                                        | Ecomobilis UI                                 |
+| ---------------------------------- | ---------------------------------------------- | --------------------------------------------- |
+| `id`                               | Provider's ride ID                             | Internal reference, not necessarily displayed |
+| `duration`                         | Journey duration                               | Useful to display                             |
+| `distance`                         | Journey distance                               | Useful to display                             |
+| `pickup_latitude`                  | Actual pickup latitude                         | Internal / map                                |
+| `pickup_longitude`                 | Actual pickup longitude                        | Internal / map                                |
+| `pickup_datetime`                  | Pickup date/time                               | **Display**                                   |
+| `dropoff_latitude`                 | Actual drop-off latitude                       | Internal / map                                |
+| `dropoff_longitude`                | Actual drop-off longitude                      | Internal / map                                |
+| `web_url`                          | Deep link to BlaBlaCar                         | **Book/view button**                          |
+| `departure_to_pickup_walking_time` | Walk from user's requested departure to pickup | **Display**                                   |
+| `dropoff_to_arrival_walking_time`  | Walk from drop-off to user's requested arrival | **Display**                                   |
+| `journey_polyline`                 | Journey geometry                               | Optional map                                  |
+| `price.amount`                     | Price                                          | **Display**                                   |
+| `price.currency`                   | Currency                                       | **Display**                                   |
+| `available_seats`                  | Seats currently available                      | **Display**                                   |

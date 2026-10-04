@@ -1,0 +1,54 @@
+5 different events, each triggered depending on a specific context:
+| Event                        | Meaning                         | Triggered when                        |
+| ---------------------------- | ------------------------------- | ------------------------------------- |
+| `CarpoolRequested`           | Passenger requests a ride       | Passenger clicks/request submits      |
+| `CarpoolReservationAccepted` | Driver accepts a reservation    | Driver accepts passenger              |
+| `CarpoolReservationRejected` | Driver rejects a reservation    | Driver rejects passenger              |
+| `CarpoolRideCancelled`       | Driver cancels a ride           | Driver cancels their ride             |
+| `CarpoolRequestCancelled`    | Passenger cancels their request | Passenger cancels reservation/request |
+
+
+It does not do anything of work!!! It keeps the necessary info for the Listener, has getters for that specific reason, and then broadcasts so that the listeners can intervene
+
+                     CARPOOL SYSTEM
+
+Passenger requests ride
+          │
+          ▼
+   CarpoolRequested
+          │
+          ├── store reservation
+          └── notify driver
+                     │
+                     ▼
+              Driver responds
+                /         \
+               /           \
+              ▼             ▼
+ Accepted                 Rejected
+    │                         │
+    ▼                         ▼
+CarpoolReservation      CarpoolReservation
+Accepted                Rejected
+    │                         │
+    ├── update DB             ├── update DB
+    └── notify                └── notify
+
+
+Passenger cancels
+       │
+       ▼
+CarpoolRequestCancelled
+       │
+       ├── update DB
+       └── notify
+
+
+Driver cancels entire ride
+       │
+       ▼
+CarpoolRideCancelled
+       │
+       ├── update ride
+       └── notify passengers
+

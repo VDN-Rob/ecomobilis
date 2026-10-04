@@ -1,0 +1,92 @@
+Controller => receive requests from the website and decide what to do next
+
+User clicks "Search" -> Laravel route -> CarpoolController@matching() -> CarpoolRide@getMatchingRides() -> Database -> Blade view -> Results shown to user
+
+| Method         | Purpose                       |
+| -------------- | ----------------------------- |
+| `overview()`   | Show upcoming rides           |
+| `matching()`   | Search for matching rides     |
+| `show()`       | Show one specific ride        |
+| `create()`     | Show form for creating a ride |
+| `store()`      | Actually create the ride      |
+| `edit()`       | Show form for editing a ride  |
+| `update()`     | Actually update the ride      |
+| `cancelRide()` | Cancel a ride                 |
+
+
+2. matching()
+
+$request->validate([
+            'DepJson' => 'required',
+            'ArrJson' => 'required',
+            'travel_start_datetime' => 'required',
+        ]);
+
+=> request needs to have a departure json, arrival json and a travel date and time
+
+DepJson -> CarpoolStreetCoordinate -> departure latitude/longitude
+
+ArrJson -> CarpoolStreetCoordinate -> arrival latitude/longitude
+
+
+We have:
+
+Website -> CarpoolController::matching() -> CarpoolRide::getMatchingRides() -> carpool_rides + carpool_street_coordinates -> Matching rides -> Blade
+
+Will have to change to:
+Website -> CarpoolController::matching() -> BlaBlaCar service -> BlaBlaCar API -> Matching BlaBlaCar rides -> Blade
+
+
+3. show()
+shows one ride
+
+4. create()
+Prepares the form for the ride creation, not the ride itself
+    -> Check whether it is a group ride
+
+5. store()
+ => where the ride is really stored/created
+ $data = [....]
+ => create a new ride owned by this user
+ $ride = new CarpoolRide();
+$ride->create($data);
+=> creates the database record
+
+User fills out form -> CarpoolController::store() -> CarpoolRide -> carpool_rides INSERT
+
+
+if(!empty($request->group_id)) {
+    $group = CarpoolGroup::find($request->group_id);
+
+    if($group) {
+        if($group->rides_are_private) {
+            $data['is_private'] = 1;
+        }
+    }
+}
+=> used to create private rides for a group
+
+
+AFTER CREATING A RIDE:
+for non-group:
+return \Redirect::route('admin.carpoolOverview')
+or 
+for group:
+return \Redirect::route(
+    'web.carpoolGroupsDetail',
+    $group->token
+)
+
+
+5. edit()
+prepare the edit Page
+
+6. update()
+modify the existing ride
+(counterpart of store())
+
+7. cancelRide()
+cancels a ride
+'is_cancelled' => 1
+=> soft cancellation (does not remove element from database)
+

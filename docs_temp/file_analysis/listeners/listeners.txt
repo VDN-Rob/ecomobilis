@@ -1,0 +1,44 @@
+Listens to broadcasts. Depending on broadcast, can trigger multiple listeners. The listeners do the actual work.
+
+
+RIDE REQUEST FLOW
+Passenger submits reservation
+        ↓
+Admin/CarpoolController: carpoolReservationStore()
+        ↓
+CarpoolRequested event
+        ↓
+        ├── StoreCarpoolRequestInDatabase
+        │       ↓
+        │   INSERT into carpool_rides_reservations
+        │
+        └── SendCarpoolRequestNotification
+                ↓
+            Email driver
+                +
+            Create automatic message
+
+DRIVER ACCEPTS:
+CarpoolReservationAccepted
+        │
+        ├── StoreCarpoolReservationAcceptedInDatabase
+        │       ↓
+        │   is_accepted = 1
+        │   is_rejected = 0
+        │
+        └── SendCarpoolReservationAcceptedNotification
+                ↓
+            Email passenger
+
+
+In case the passenger cancels:
+event + two listeners:
+    - RemoveCarpoolReservationInDatabase => actually deletes the reservation row
+    - SendCarpoolReservationCancelledNotification: email driver + create automatic message
+No is_cancelled -> just deletion
+
+In case the driver cancels:
+Driver cancels ride -> carpool_rides.is_cancelled = 1 -> CarpoolRideCancelled -> Find passengers -> Send cancellation email
+
+When passenger requests a ride, also create an internal CarpoolMessage. Same for cancellation. So current system is:
+Rides + Reservations + Users + Messages + Emails + Events/listeners

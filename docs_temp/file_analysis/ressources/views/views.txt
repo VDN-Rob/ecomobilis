@@ -1,0 +1,204 @@
+USER
+│
+▼
+/carpool/ overview.blade.php
+│
+▼
+_includes/carpool-search
+ │
+ │ enters departure
+ │ enters arrival
+ │ selects date/time
+ ▼
+carpool-search.blade.php
+ │
+ │ POST
+ ▼
+/carpool/matching
+ │
+ ▼
+Web/CarpoolController@matching()
+ │
+ ├── DepJson
+ │      ↓
+ │   CarpoolStreetCoordinate::getStreet()
+ │
+ ├── ArrJson
+ │      ↓
+ │   CarpoolStreetCoordinate::getStreet()
+ │
+ └── travel_start_datetime
+ │
+ ▼
+CarpoolRide@getMatchingRides()
+ │
+ ├── find future rides
+ ├── calculate departure distances
+ ├── calculate arrival distances
+ └── filter within 20 km
+ │
+ ▼
+MySQL
+carpool_rides
+ │
+ ▼
+$rides
+ │
+ ▼
+web/carpool/overview.blade.php
+ │
+ ▼
+carpool-ride-block.blade.php
+ │
+ ▼
+USER SEES RESULTS
+
+
+
+GIVES:
+- departure
+- arrival
+- date/time, exactly what BlaBlaCar expects
+
+User
+ │
+ ▼
+Current search form
+ │
+ ├── departure → latitude/longitude
+ ├── arrival   → latitude/longitude
+ └── date/time → Unix timestamp
+ │
+ ▼
+Laravel
+ │
+ ▼
+BlaBlaCar API
+ │
+ ▼
+rides
+ │
+ ▼
+Ecomobilis results page
+
+
+
+!!!! -> Date time in different format from the normal Carbon
+format('Y-m-d h:00') ipv 2026-09-15T14:00
+
+So Carbon\Carbon::tomorrow()->format('Y-m-d h:00') instead of Carbon\Carbon::tomorrow()->format('Y-m-d\TH:00')
+
+
+
+After inspecting auto complete:
+                     USER
+                       │
+                       ▼
+             carpool-search.blade.php
+                       │
+                       ▼
+        carpool-dep-arr-autocomplete
+                       │
+              ┌────────┴────────┐
+              ▼                 ▼
+         Departure           Arrival
+         autocomplete       autocomplete
+              │                 │
+              ▼                 ▼
+           DepJson            ArrJson
+              │                 │
+              └────────┬────────┘
+                       ▼
+             travel_start_datetime
+                       │
+                       ▼
+              POST /carpool/matching
+                       │
+                       ▼
+            CarpoolController
+               @matching()
+                       │
+                       ▼
+             Current Ecomobilis
+              matching algorithm
+                       │
+                       ▼
+                 MySQL rides
+
+
+
+
+
+Ride block provides all the fields needed for a ride -> Strongly couple to the CarpoolRide model
+-> Blade awaits Eloquent responses like:$ride->departure->city
+$ride->arrival->city
+$ride->user->firstname
+$ride->reservations
+so we cant just feed him the BlaBlaCar response,
+
+
+
+
+OLD PUBLISHING FLOW:
+User clicks "Add a ride"
+        │
+        ▼
+GET /carpool/add
+        │
+        ▼
+CarpoolController@create()
+        │
+        ├── loads CarpoolLuggage
+        └── loads optional CarpoolGroup
+        │
+        ▼
+create.blade.php
+        │
+        ▼
+_carpool-add-edit.blade.php
+        │
+        ├── departure
+        ├── arrival
+        ├── date
+        ├── seats
+        ├── luggage
+        ├── price
+        ├── remark
+        └── group
+        │
+        ▼
+POST /carpool/store
+        │
+        ▼
+CarpoolController@store()
+        │
+        ├── finds departure coordinate
+        ├── finds arrival coordinate
+        └── builds $data
+        │
+        ▼
+CarpoolRide::create($data)
+        │
+        ▼
+carpool_rides
+
+
+BlaBlaCar:
+    ECOMOBILIS
+        │
+    Search form
+        │
+        ▼
+BlaBlaCar API search
+        │
+        ▼
+    Search results
+        │
+        ▼
+    Result card
+        │
+        ▼
+    Deep link
+        │
+        ▼
+BLABLACAR DAILY

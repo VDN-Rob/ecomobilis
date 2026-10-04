@@ -1,0 +1,21 @@
+part of the carpool_rides_reservations table
+-> each row is a model instance
+
+Stored information:
+    protected $fillable = [ 'ride_id', 'passenger_user_id', 'amount',  'is_accepted', 'is_rejected'];
+
+ride_id             -> Which ride is being requested
+passenger_user_id	-> Which user wants to join
+amount	            -> Reservation amount
+is_accepted	        -> Whether the reservation was accepted
+is_rejected	        -> Whether it was rejected
+
+
+
+DRIVER -> CarpoolRide -> carpool_rides table -> Passenger -> CarpoolRideReservation -> carpool_rides_reservations
+ -> request, acceptance and rejection are with events:
+    - CarpoolRequested
+    - CarpoolReservationAccepted
+    - CarpoolReservationRejected
+
+=> Is there a need to keep this if BlaBlaCar own the reservation and rides?

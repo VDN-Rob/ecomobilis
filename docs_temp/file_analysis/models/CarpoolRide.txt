@@ -1,0 +1,118 @@
+Analysis Model/CarpoolRide
+
+CONFIGURATION
+1. Use of Carbon
+=> Date and time
+Carbon::parse($travelStartDatetime)->subHours(1); -> take date and time and subtract one hour
+
+2. protected $table = 'carpool_rides';
+
+=> This model uses carpool_rides as table
+
+3. fillable
+protected $fillable = [
+    'travel_start_datetime',
+    'from_street_coordinates_id',
+    'to_street_coordinates_id',
+    'luggage_id',
+    'seats_available',
+    'remark',
+    'price_per_seat',
+    'user_id',
+    'group_id',
+    'is_private',
+    'is_cancelled'
+];
+
+=> list of whitelisted fields that can be assigned to a CarpoolRide.
+
+
+4. Mapping
+travel_start_datetime -> When the ride starts
+from_street_coordinates_id -> Departure location
+to_street_coordinates_id -> Arrival location
+luggage_id -> Luggage information
+seats_available -> Available seats
+remark -> Driver's comment
+price_per_seat -> Price
+user_id -> User/driver associated with ride
+group_id -> Carpool group
+is_private -> Whether ride is private
+is_cancelled -> Whether ride was cancelled
+
+5.  public $timestamps = true;
+ Laravel automatically populates created_at and updated_at
+
+DB RELATIONSHIPS
+6. relationships
+/* ------------------ relationships ------------------ */
+
+=> No "joins" in SQL, but using eloquent to define the relationships.
+
+7. messages
+
+return $this->hasMany(CarpoolMessage::class, 'car_ride_id');
+=> A ride can have many messages
+|-> is a message not something independent?
+
+8. reservationUsers()
+return $this->belongsToMany(User::class, 'carpool_rides_reservations', 'ride_id', 'passenger_user_id');
+
+=> A ride can be associated with many users through the carpool_rides_reservations table.
+
+9. reservedamount()
+public function reservedamount()
+{
+    return $this->belongsToMany(
+        User::class,
+        'carpool_rides_reservations',
+        'ride_id',
+        'passenger_user_id'
+    )->where('is_accepted', 1);
+}
+
+->where('is_accepted', 1);
+=> there is an acceptance mechanism. In events:
+CarpoolReservationAccepted
+CarpoolReservationRejected
+
+10. messagesGrouped
+Group messages by conversation participants -> can leave StoreSharingOrgRequest
+
+APPLICATION LOGIC
+11. getMatchingRides()
+=> Find existing Ecomobilis rides that are geographically and temporally close to the requested trip.
+
+
+$travelStartDatetime = Carbon::parse($travelStartDatetime)->subHours(1);
+=> time epoch in BlaBlaCar
+
+First get all rides fulfilling starting time requirement -> filter on departure coordinates -> filter on arrival coordinates
+Give me rides whose departure is close enough, whose arrival is close enough, and whose departure time is in the future, sorted by departure time.
+
+
+CONCLUSION:
+The current Ecomobilis carpool system owns:
+
+Ride creation -> CarpoolRide
+Ride location -> CarpoolStreetCoordinate
+Driver/user -> User
+Vehicle-related information -> CarpoolCar/CarpoolCarType
+Luggage -> CarpoolLuggage
+Groups -> CarpoolGroup
+Reservations -> CarpoolRideReservation
+Messaging -> CarpoolMessage
+Ride searching -> getMatchingRides()
+Ride cancellation -> is_cancelled
+Private rides -> is_private
+Notifications -> Events + listeners + mail
+
+
+potentially obsolete:
+CarpoolRide
+CarpoolRideReservation
+CarpoolMessage
+CarpoolStreetCoordinate
+CarpoolCar
+CarpoolLuggage
+getMatchingRides()
