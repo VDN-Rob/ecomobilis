@@ -57,7 +57,7 @@
         @if($ride->availableSeats !== null)
             <div>
                 {{ $ride->availableSeats }}
-                {{ __('carpool.available-seats') }}
+                {{ __('carpool.places-available') }}
             </div>
         @endif
     </div>

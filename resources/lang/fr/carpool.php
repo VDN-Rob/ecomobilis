@@ -113,7 +113,15 @@ return [
     'modal-ride-request-cancel-title'   => 'Annuler mon trajet',
     'modal-ride-request-cancel-body'    => 'Je ne peux plus faire le trajet. Veuillez annuler la demande.',
     'modal-ride-request-cancel-btn'     => 'Oh non, ignorez-moi!',
-    'modal-ride-request-ok-btn'         => 'Oui, veuillez annuler ma demande.'
+    'modal-ride-request-ok-btn'         => 'Oui, veuillez annuler ma demande.',
 
+    // Provider specific translations
+    'duration' => 'Durée',
+    'distance' => 'Distance',
+    'departure' => 'Départ',
+    'arrival' => 'Arrivée',
+    'walk-to-pickup' => 'Temps de marche jusqu\'au point de prise en charge',
+    'walk-from-dropoff' => 'Temps de marche depuis le point d\'arrivée',
+    'view-ride' => 'Voir le trajet',
 
 ];
