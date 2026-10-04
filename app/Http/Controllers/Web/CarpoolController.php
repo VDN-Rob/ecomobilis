@@ -13,6 +13,8 @@ use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use App\Services\Carpool\CarpoolProviderManager;
+use App\Services\Carpool\DTO\CarpoolSearchRequest;
 
 class CarpoolController extends Controller
 {
@@ -26,8 +28,10 @@ class CarpoolController extends Controller
     }
 
     /* results */
-    public function matching(Request $request)
-    {
+    public function matching(
+        Request $request,
+        CarpoolProviderManager $providerManager
+    ) {
 
         $request->validate([
             'DepJson' => 'required',
@@ -38,7 +42,21 @@ class CarpoolController extends Controller
         $streetDepObj = (new CarpoolStreetCoordinate())->getStreet($request->DepJson);
         $streetArrObj = (new CarpoolStreetCoordinate())->getStreet($request->ArrJson);
 
-        $data['rides'] = (new CarpoolRide())->getMatchingRides($streetDepObj, $streetArrObj, $request->travel_start_datetime);
+        $searchRequest = new CarpoolSearchRequest(
+            departureLatitude: (float) $streetDepObj->lat,
+            departureLongitude: (float) $streetDepObj->lon,
+            arrivalLatitude: (float) $streetArrObj->lat,
+            arrivalLongitude: (float) $streetArrObj->lon,
+            departureDatetime: Carbon::parse(
+                $request->travel_start_datetime
+            ),
+        );
+        
+        $provider = $providerManager->getProvider();
+        
+        $searchResult = $provider->search($searchRequest);
+        
+        $data['rides'] = $searchResult->rides;
 
         // to refill search field
         $data['searchDepValue'] = $streetDepObj->street.', '.$streetDepObj->city;
