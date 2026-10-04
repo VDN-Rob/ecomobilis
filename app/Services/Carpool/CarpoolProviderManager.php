@@ -24,7 +24,21 @@ class CarpoolProviderManager
         ];
     }
 
-    public function getProvider(string $name): CarpoolProvider {
+    public function getProvider(): CarpoolProvider
+    {
+        $providerName = config('carpool.provider', 'ecomobilis');
+
+        if (!isset($this->providers[$providerName])) {
+            throw new InvalidArgumentException(
+                "Unknown carpool provider: {$providerName}"
+            );
+        }
+
+        return $this->providers[$providerName];
+    }
+
+    public function getProviderByName(string $name): CarpoolProvider
+    {
         if (!isset($this->providers[$name])) {
             throw new InvalidArgumentException(
                 "Unknown carpool provider: {$name}"
@@ -37,7 +51,8 @@ class CarpoolProviderManager
     /**
      * @return array<string, CarpoolProvider>
      */
-    public function getProviders(): array {
+    public function getProviders(): array
+    {
         return $this->providers;
     }
 }

@@ -33,4 +33,11 @@ return [
     'sendgrid' => [
         'api_key' => env('SENDGRID_API_KEY'),
     ],
+    'blablacar_daily' => [
+        'base_url' => env(
+            'BLABLACAR_DAILY_BASE_URL',
+            'https://partners.blablacardaily.com'
+        ),
+        'access_token' => env('BLABLACAR_DAILY_ACCESS_TOKEN'),
+    ],
 ];

@@ -1,0 +1,9 @@
+Rajouter a .env:
+CARPOOL_PROVIDER=ecomobilis
+
+BLABLACAR_DAILY_BASE_URL=https://partners.blablacardaily.com
+BLABLACAR_DAILY_ACCESS_TOKEN=
+
+/!\ ne pas uploader d'access token sur Git!!!
+
+Apres tout changement de .env, utiliser "php artisan config:clear" afin de vider le cache local de Laravel.
