@@ -37,7 +37,11 @@
         </div>
         @if(count($rides) > 0)
             @foreach($rides as $ride)
-                @include('_includes.carpool-result', ['ride' => $ride])
+                @if($ride instanceof \App\Services\Carpool\DTO\CarpoolRideResult)
+                    @include('_includes.carpool-result')
+                @else
+                    @include('_includes.carpool-ride-block', ['layout' => 'overview-listing', 'showReservations' => 0, 'showConversations' => 0])
+                @endif
             @endforeach
         @else
             <div class="grid">

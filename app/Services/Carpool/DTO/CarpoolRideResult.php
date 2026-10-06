@@ -13,15 +13,15 @@ class CarpoolRideResult
         public readonly string $provider,
         public readonly string $providerRideId,
     
-        public readonly ?int $duration = null,
-        public readonly ?int $distance = null,
-    
         public readonly float $pickupLatitude,
         public readonly float $pickupLongitude,
         public readonly DateTimeInterface $pickupDatetime,
     
         public readonly float $dropoffLatitude,
         public readonly float $dropoffLongitude,
+    
+        public readonly ?int $duration = null,
+        public readonly ?int $distance = null,
     
         public readonly ?string $detailsUrl = null,
     

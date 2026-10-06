@@ -8,6 +8,7 @@ use App\Services\Carpool\Contracts\CarpoolProvider;
 use App\Services\Carpool\DTO\CarpoolRideResult;
 use App\Services\Carpool\DTO\CarpoolSearchRequest;
 use App\Services\Carpool\DTO\CarpoolSearchResult;
+use Carbon\Carbon;
 
 class EcomobilisCarpoolProvider implements CarpoolProvider
 {
@@ -42,7 +43,7 @@ class EcomobilisCarpoolProvider implements CarpoolProvider
                 providerRideId: (string) $ride->id,
                 pickupLatitude: (float) $ride->departure->lat,
                 pickupLongitude: (float) $ride->departure->lon,
-                pickupDatetime: $ride->travel_start_datetime,
+                pickupDatetime: Carbon::parse($ride->travel_start_datetime),
                 dropoffLatitude: (float) $ride->arrival->lat,
                 dropoffLongitude: (float) $ride->arrival->lon,
                 detailsUrl: route('web.carpoolShow', ['id' => $ride->id]),
