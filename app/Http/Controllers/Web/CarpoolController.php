@@ -19,11 +19,30 @@ use App\Services\Carpool\DTO\CarpoolSearchRequest;
 class CarpoolController extends Controller
 {
 
-    public function overview()
+    public function overview(CarpoolProviderManager $providerManager)
     {
-        $now = Carbon::now();
-        $data['rides'] = CarpoolRide::orderBy('travel_start_datetime','ASC')->where('is_private', 0)->where('is_cancelled', 0)->where('travel_start_datetime', '>', $now)->take(50)->get();
-        return view('web.carpool.overview', $data);
+        $defaultProvider = config('carpool.provider', 'ecomobilis');
+        $providers = $providerManager->getProviders();
+
+        $selectedProvider = session('carpool.provider', $defaultProvider);
+
+        if (!array_key_exists($selectedProvider, $providers)) {
+            $selectedProvider = $defaultProvider;
+        }
+
+        if ($selectedProvider === 'ecomobilis') {
+            $now = Carbon::now();
+            $rides = CarpoolRide::orderBy('travel_start_datetime','ASC')
+                ->where('is_private', 0)
+                ->where('is_cancelled', 0)
+                ->where('travel_start_datetime', '>', $now)
+                ->take(50)
+                ->get();
+        } else {
+            // provider does not support general ride listings yet
+            $rides = collect();
+        }
+        return view('web.carpool.overview', ['rides' => $rides, 'selectedProvider' => $selectedProvider]);
 
     }
 
