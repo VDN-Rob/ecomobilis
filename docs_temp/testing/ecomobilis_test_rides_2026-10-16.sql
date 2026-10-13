@@ -15,6 +15,8 @@
 -- Safe to re-run: removes only rows created by this script, identified
 -- by the TEST_SEED_2026-10-16: prefix in `remark`.
 
+-- Run mysql -u db_user -p db_name < ecomobilis_test_rides_2026-10-16.sql
+
 START TRANSACTION;
 
 DELETE FROM carpool_rides
