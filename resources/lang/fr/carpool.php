@@ -27,6 +27,7 @@ return [
     'search'          => 'Rechercher',
     'search-subtitle' => 'Covoiturage',
     'search-title' => 'Où voulez-vous aller?',
+    'search-provider' => 'Quel service souhaitez-vous utiliser?',
 
     // below search, general rides
     'carpool-without-filter-overview-title' => 'Trajets à venir',
@@ -47,6 +48,8 @@ return [
     'no-seat-available' => 'Pas de siège disponible',
     'no-rides-found'    => 'Aucun trajet trouvé',
     'reserved'          => 'réservé',
+    
+    'search-results-placeholder' => 'Effectuez une recherche pour afficher les résultats ici.',
 
     // form
     'error-select-street' => 'Please select a street from the list',

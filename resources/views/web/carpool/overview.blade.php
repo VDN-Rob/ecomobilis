@@ -46,7 +46,13 @@
         @else
             <div class="grid">
                 <div class="col-desk-12 text-center">
-                    <div class="nothing-found">{{ __('carpool.no-rides-found') }}</div>
+                    <div class="nothing-found">
+                        @if(($selectedProvider ?? config('carpool.provider', 'ecomobilis')) === 'blablacar_daily')
+                            {{ __('carpool.search-results-placeholder') }}
+                        @else
+                            {{ __('carpool.no-rides-found') }}
+                        @endif
+                    </div>
                 </div>
             </div>
         @endif

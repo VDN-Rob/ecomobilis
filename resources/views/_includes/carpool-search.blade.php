@@ -9,7 +9,7 @@
         </div>
         <div class="col-desk-12" style="margin-bottom: 20px;">
             <div class="field">
-                <label for="carpool_provider">Carpool provider</label>
+                <label for="carpool_provider">{{ __('carpool.search-provider') }}</label>
                 <select id="carpool_provider" name="provider" onchange="saveCarpoolProvider(this.value)">
                     <option value="ecomobilis"
                         @selected(($selectedProvider ?? config('carpool.provider', 'ecomobilis')) === 'ecomobilis')>
