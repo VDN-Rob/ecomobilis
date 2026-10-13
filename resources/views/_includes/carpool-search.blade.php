@@ -10,7 +10,7 @@
         <div class="col-desk-12" style="margin-bottom: 20px;">
             <div class="field">
                 <label for="carpool_provider">Carpool provider</label>
-                <select id="carpool_provider" name="provider">
+                <select id="carpool_provider" name="provider" onchange="saveCarpoolProvider(this.value)">
                     <option value="ecomobilis"
                         @selected(($selectedProvider ?? config('carpool.provider', 'ecomobilis')) === 'ecomobilis')>
                         Ecomobilis
@@ -46,3 +46,23 @@
     </div>
     {!! Form::close() !!}
 </div>
+
+<script>
+    function saveCarpoolProvider(provider) {
+        fetch(@json(route('web.carpoolSelectProvider')), {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': @json(csrf_token()),
+                'Accept': 'application/json',
+            },
+            body: JSON.stringify({ provider: provider }),
+        }).then(function (response) {
+            if (response.ok) {
+                window.location.href = @json(route('web.carpoolOverview'));
+            } else {
+                window.location.reload();
+            }
+        });
+    }
+</script>
