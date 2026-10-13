@@ -104,6 +104,28 @@ class CarpoolController extends Controller
         return view('web.carpool.overview', $data);
 
     }
+    
+    /* ----- CHANGE PROVIDER ------- */    
+    public function selectProvider(
+        Request $request,
+        CarpoolProviderManager $providerManager
+    ) {
+        $availableProviders = array_keys($providerManager->getProviders());
+
+        $validated = $request->validate([
+            'provider' => [
+                'required',
+                Rule::in($availableProviders),
+            ],
+        ]);
+
+        $request->session()->put(
+            'carpool.provider',
+            $validated['provider']
+        );
+
+        return redirect()->route('web.carpoolOverview');
+    }
 
     /* ----- SHOW A RIDE ------- */
     public function show($id)
