@@ -7,6 +7,21 @@
             <h4>{{ __('carpool.search-subtitle') }}</h4>
             <h3>{{ __('carpool.search-title') }}</h3>
         </div>
+        <div class="col-desk-12" style="margin-bottom: 20px;">
+            <div class="field">
+                <label for="carpool_provider">Carpool provider</label>
+                <select id="carpool_provider" name="provider">
+                    <option value="ecomobilis"
+                        @selected(($selectedProvider ?? config('carpool.provider', 'ecomobilis')) === 'ecomobilis')>
+                        Ecomobilis
+                    </option>
+                    <option value="blablacar_daily"
+                        @selected(($selectedProvider ?? config('carpool.provider', 'ecomobilis')) === 'blablacar_daily')>
+                        BlaBlaCar Daily
+                    </option>
+                </select>
+            </div>
+        </div>
         <!--  dep and arrival autocomplete -->
         @include('_includes.carpool-dep-arr-autocomplete', ['layout' => 'search'])
 
