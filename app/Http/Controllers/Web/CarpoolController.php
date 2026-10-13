@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\Rule;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Services\Carpool\CarpoolProviderManager;
@@ -51,12 +52,27 @@ class CarpoolController extends Controller
         Request $request,
         CarpoolProviderManager $providerManager
     ) {
+        $availableProviders = array_keys($providerManager->getProviders());
 
-        $request->validate([
+        $validated = $request->validate([
             'DepJson' => 'required',
             'ArrJson' => 'required',
             'travel_start_datetime' => 'required',
+            'provider' => [
+                'nullable',
+                Rule::in($availableProviders),
+            ],
         ]);
+
+
+        $providerName = $validated['provider'] ?? session('carpool.provider', config('carpool.provider', 'ecomobilis'));
+
+        if (!in_array($providerName, $availableProviders, true)) {
+            $providerName = config('carpool.provider', 'ecomobilis');
+        }
+
+        $request->session()->put('carpool.provider', $providerName);
+
 
         $streetDepObj = (new CarpoolStreetCoordinate())->getStreet($request->DepJson);
         $streetArrObj = (new CarpoolStreetCoordinate())->getStreet($request->ArrJson);
@@ -71,11 +87,12 @@ class CarpoolController extends Controller
             ),
         );
         
-        $provider = $providerManager->getProvider();
+        $provider = $providerManager->getProviderByName($providerName);
         
         $searchResult = $provider->search($searchRequest);
         
         $data['rides'] = $searchResult->rides;
+        $data['selectedProvider'] = $providerName;
 
         // to refill search field
         $data['searchDepValue'] = $streetDepObj->street.', '.$streetDepObj->city;
