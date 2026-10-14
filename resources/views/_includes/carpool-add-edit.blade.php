@@ -21,13 +21,7 @@
         <div class="tiny light-grey" style="position: absolute; margin-top: -20px;">{{ __('carpool.seats_available') }}</div>
         <div class="field special-placeholder">
             <input type="text" id="seats_available" name="seats_available"
-                @if(isset($ride))
-                        value="{{ $ride->seats_available }}"
-                @elseif(isset(Auth::user()->car))
-                        value="{{ Auth::user()->car->default_seats_available }}"
-                @else
-                    value="2"
-                @endif
+                value="{{ old('seats_available', isset($ride) ? $ride->seats_available : (Auth::user()->car->default_seats_available ?? 2)) }}"
             />
         </div>
     </div>
@@ -39,13 +33,14 @@
         <div class="tiny light-grey" style="position: absolute; margin-top: -20px;">{{ __('carpool.luggage') }}</div>
         <select name="luggage_id" class="dropdown" >
             @foreach($luggages as $luggage)
-                <option value="{{ $luggage->id }}"
-                     @if(isset($ride))
-                        @if($ride->luggage_id == $luggage->id) selected @endif
-                    @elseif(isset(Auth::user()->car))
-                        @if(Auth::user()->car->default_luggage_id == $luggage->id) selected @endif
+                <option
+                    value="{{ $luggage->id }}"
+                    @if((string) old('luggage_id', isset($ride) ? $ride->luggage_id : (Auth::user()->car->default_luggage_id ?? '')) === (string) $luggage->id)
+                        selected
                     @endif
-                >{{ $luggage->name }}</option>
+                >
+                    {{ $luggage->name }}
+                </option>
             @endforeach
         </select>
     </div>
@@ -66,11 +61,8 @@
         </div>
         <div class="field special-placeholder">
             <input type="text" id="price_per_seat" name="price_per_seat"
-                @if(isset($ride))
-                    value="{{ $ride->price_per_seat }}"
-                @else
-                   value="10.00"
-                @endif/>
+                value="{{ old('price_per_seat', isset($ride) ? $ride->price_per_seat : '10.00') }}"
+            />
         </div>
     </div>
 
@@ -78,23 +70,14 @@
         <div class="tiny light-grey" style="position: absolute; margin-top: -20px;">{{ __('carpool.remark') }} &nbsp;</div>
         <div class="field special-placeholder">
             <input type="text" id="remark" name="remark"
-                 @if(isset($ride))
-                    value="{{ $ride->remark }}"
-                 @else
-                    value=""
-                @endif/>
+                value="{{ old('remark', isset($ride) ? $ride->remark : '') }}"
+            />
         </div>
     </div>
 </div>
 <div class="grid grid-with-row-margin stackable">
     <input type="hidden" id="group_id" name="group_id"
-           @if(isset($group_id))
-           value="{{ $group_id }}"
-           @elseif(isset($ride))
-           value="{{ $ride->group_id }}"
-           @else
-           value=""
-        @endif
+        value="{{ old('group_id', $group_id ?? ($ride->group_id ?? '')) }}"
     >
     <div class="col-desk-6 col-mob-4 text-left">
         @if(isset($ride)) <a href="#" class=" js-open-modal" data-modal="modalCancelRide">{{ __('carpool.ride-cancel-btn') }}</a>  @endif

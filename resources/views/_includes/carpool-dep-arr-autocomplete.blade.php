@@ -3,26 +3,15 @@
     <div class="field special-placeholder">
         <input id="autoCompleteDep" type="search" name="departure"  dir="ltr" spellcheck=false autocorrect="off" autocomplete="off" autocapitalize="off"
                @isset($departureIsFromGroup) @if($departureIsFromGroup == 1) disabled @endif @endisset
-            @if(isset($ride->departure))
-               value="{{ $ride->departure->street }}, {{ $ride->departure->city }}"
-            @elseif(isset($searchDepValue))
-               value="@isset($departureIsFromGroup) @if($departureIsFromGroup == 1) {{ $group->title }} - @endif @endisset{{ $searchDepValue }}"
-            @else
-               value=""
-            @endif
-            >
+               value="{{ old('departure', isset($ride->departure) ? $ride->departure->street . ', ' . $ride->departure->city : (isset($searchDepValue) ? $searchDepValue : '')) }}"
+
+            />
         @if($errors->has('DepJson'))
             <div class="error tiny red">{{ __('carpool.error-select-street') }}</div>
         @endif
         <input id="DepJson" name="DepJson" type="hidden"
-               @if(isset($ride->departure))
-                    value="{{ json_encode(['place_id' => $ride->departure->external_api_id]) }}"
-               @elseif(isset($searchDepJson))
-                    value="{{ $searchDepJson }}"
-               @else
-                    value=""
-               @endif
-         >
+            value="{{ old('DepJson', isset($ride->departure) ? json_encode(['place_id' => $ride->departure->external_api_id]) : ($searchDepJson ?? '')) }}"
+        >
     </div>
 </div>
 
@@ -32,25 +21,14 @@
     <div class="field special-placeholder">
         <input id="autoCompleteArr" type="search" name="arrival"  dir="ltr" spellcheck=false autocorrect="off" autocomplete="off" autocapitalize="off"
                @isset($arrivalIsFromGroup) @if($arrivalIsFromGroup == 1) disabled @endif @endisset
-               @if(isset($ride->arrival))
-                    value="{{ $ride->arrival->street }}, {{ $ride->arrival->city }}"
-               @elseif(isset($searchArrValue))
-                    value="@isset($arrivalIsFromGroup) @if($arrivalIsFromGroup == 1) {{ $group->title }} - @endif @endisset{{ $searchArrValue }}"
-               @else
-                   value=""
-               @endif
-        >
+               value="{{ old('arrival', isset($ride->arrival) ? $ride->arrival->street . ', ' . $ride->arrival->city : (isset($searchArrValue) ? $searchArrValue : '')) }}"
+        />
         @if($errors->has('ArrJson'))
             <div class="error tiny red">{{ __('carpool.error-select-street') }}</div>
         @endif
         <input id="ArrJson" name="ArrJson" type="hidden"
-               @if(isset($ride->arrival))
-                    value="{{ json_encode(['place_id' => $ride->arrival->external_api_id]) }}"
-               @elseif(isset($searchArrJson))
-                    value="{{ $searchArrJson }}"
-               @else
-                    value=""
-               @endif >
+            value="{{ old('ArrJson', isset($ride->arrival) ? json_encode(['place_id' => $ride->arrival->external_api_id]) : ($searchArrJson ?? '')) }}" 
+        >
     </div>
 </div>
 
