@@ -10,12 +10,11 @@
         <div class="tiny light-grey" style="position: absolute; margin-top: -20px;">{{ __('carpool.date') }}</div>
         <div class="field special-placeholder">
             <input type="datetime-local" id="travel_start_datetime" name="travel_start_datetime"
-                   @if(isset($ride))
-                    value="{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $ride->travel_start_datetime)->format('Y-m-d H:i') }}"
-                   @else
-                    value="{{ Carbon\Carbon::tomorrow()->format('Y-m-d h:00') }}"
-                   @endif
+                   value="{{ old('travel_start_datetime', isset($ride) ? \Carbon\Carbon::parse($ride->travel_start_datetime)->format('Y-m-d\TH:i') : \Carbon\Carbon::tomorrow()->format('Y-m-d\TH:i')) }}"
             />
+             @error('travel_start_datetime')
+                <div class="error tiny red">{{ $message }}</div>
+            @enderror
         </div>
     </div>
     <div class="col-desk-6">
