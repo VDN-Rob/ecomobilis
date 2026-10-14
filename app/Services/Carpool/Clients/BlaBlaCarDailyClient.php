@@ -6,6 +6,7 @@ use App\Services\Carpool\DTO\CarpoolSearchRequest;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use RuntimeException;
+use Illuminate\Support\Facades\Log;
 
 class BlaBlaCarDailyClient
 {
@@ -46,6 +47,16 @@ class BlaBlaCarDailyClient
             );
         }
 
+        Log::debug('BlaBlaCar Daily search parameters', [
+            'departure_latitude' => $request->departureLatitude,
+            'departure_longitude' => $request->departureLongitude,
+            'arrival_latitude' => $request->arrivalLatitude,
+            'arrival_longitude' => $request->arrivalLongitude,
+            'departure_datetime' => $request->departureDatetime->format('Y-m-d H:i:s'),
+            'departure_epoch' => $request->departureDatetime->getTimestamp(),
+            'departure_timedelta' => $request->departureTimeTolerance,
+        ]);
+
         try {
             $response = $this->httpClient->get(self::SEARCH_ENDPOINT, [
                 'query' => [
@@ -57,6 +68,9 @@ class BlaBlaCarDailyClient
                     'departure_epoch' => $request->departureDatetime->getTimestamp(),
                     'departure_timedelta' => $request->departureTimeTolerance,
                 ],
+            ]);
+            Log::debug('BlaBlaCar Daily HTTP response', [
+                'status' => $response->getStatusCode(),
             ]);
         } catch (GuzzleException $exception) {
             throw new RuntimeException(
@@ -76,6 +90,15 @@ class BlaBlaCarDailyClient
                 'BlaBlaCar Daily API returned an invalid response.'
             );
         }
+
+        Log::debug('BlaBlaCar Daily API response structure', [
+            'top_level_keys' => array_keys($data),
+            'is_list' => array_is_list($data),
+            'item_count' => count($data),
+            'first_item_keys' => isset($data[0]) && is_array($data[0])
+                ? array_keys($data[0])
+                : null,
+        ]);
 
         return $data;
     }

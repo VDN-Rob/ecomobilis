@@ -73,16 +73,15 @@ class CarpoolController extends Controller
 
         $request->session()->put('carpool.provider', $providerName);
 
-
-        $streetDepObj = (new CarpoolStreetCoordinate())->getStreet($validated->DepJson);
-        $streetArrObj = (new CarpoolStreetCoordinate())->getStreet($validated->ArrJson);
+        $streetDepObj = (new CarpoolStreetCoordinate())->getStreet($validated['DepJson']);
+        $streetArrObj = (new CarpoolStreetCoordinate())->getStreet($validated['ArrJson']);
 
         $searchRequest = new CarpoolSearchRequest(
             departureLatitude: (float) $streetDepObj->lat,
             departureLongitude: (float) $streetDepObj->lon,
             arrivalLatitude: (float) $streetArrObj->lat,
             arrivalLongitude: (float) $streetArrObj->lon,
-            departureDatetime: Carbon::parse($validated->travel_start_datetime),
+            departureDatetime: Carbon::parse($validated['travel_start_datetime']),
         );
         
         $provider = $providerManager->getProviderByName($providerName);
