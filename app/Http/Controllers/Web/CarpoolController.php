@@ -152,6 +152,8 @@ class CarpoolController extends Controller
     {
         $request->validate([
             'travel_start_datetime' => 'required|date|after:now',
+        ], [
+            'travel_start_datetime.after' => __('carpool.departure-must-be-future'),
         ]);
 
         $streetDepObj = (new CarpoolStreetCoordinate())->getStreet($request->DepJson);
@@ -227,8 +229,10 @@ class CarpoolController extends Controller
     {
         $request->validate([
             'travel_start_datetime' => 'required|date|after:now',
+        ], [
+            'travel_start_datetime.after' => __('carpool.departure-must-be-future'),
         ]);
-        
+
         $streetDepObj = (new CarpoolStreetCoordinate())->getStreet($request->DepJson);
         $streetArrObj = (new CarpoolStreetCoordinate())->getStreet($request->ArrJson);
 

@@ -80,7 +80,7 @@ return [
     'brand'         => 'Marque',
     'description'   => 'Description',
     'remark'        => 'Remarque (p.e. Place exacte du rendez-vous)',
-    'luggage'       =>'Bagages',
+    'luggage'       => 'Bagages',
     'seats_available'       => 'Sièges disponibles',
     'is_smoking_allowed'    => 'Est fumeur autorisé',
     'is_isofix_present'     => 'Isofix présent',
@@ -126,5 +126,8 @@ return [
     'walk-to-pickup' => 'Temps de marche jusqu\'au point de prise en charge',
     'walk-from-dropoff' => 'Temps de marche depuis le point d\'arrivée',
     'view-ride' => 'Voir le trajet',
+
+    // Errors
+    'departure-must-be-future' => 'La date et l\'heure de départ ne peuvent pas être dans le passé.',
 
 ];
