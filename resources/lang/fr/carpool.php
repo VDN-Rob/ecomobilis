@@ -58,7 +58,7 @@ return [
 
     // make a reservation
     'reserve-title' => 'Réserver un trajet',
-    'reserve-intro' => 'Veuillez confirmer que vous souhaitez effectuer une réservation. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
+    'reserve-intro' => 'Veuillez confirmer que vous souhaitez effectuer une réservation. Pour cela, indiquez le nombre de sièges dont vous voudriez faire usage. Le chauffeur sera automatiquement notifié de votre demande.',
     'reserve-btn'   => 'Faire la demande de réservation',
 
     // accept buttons

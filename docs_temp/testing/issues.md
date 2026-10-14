@@ -20,6 +20,9 @@ Resolution: voir branche "issueOldDate"
 
 Il y a encore du latin dans la page de reservation de trajet.
 
+Resolution: voir branche "issueLatin"
+
+-> dans la fiche de traduction, remplacement du proverbe latin par "Veuillez confirmer que vous souhaitez effectuer une réservation. Pour cela, indiquez le nombre de sièges dont vous voudriez faire usage. Le chauffeur sera automatiquement notifié de votre demande."
 
 # Probleme 4: traduction insuffisante
 Une traduction est insuffisante a plusieurs endroits:
