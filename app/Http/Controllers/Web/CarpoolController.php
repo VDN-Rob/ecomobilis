@@ -150,6 +150,10 @@ class CarpoolController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'travel_start_datetime' => 'required|date|after:now',
+        ]);
+
         $streetDepObj = (new CarpoolStreetCoordinate())->getStreet($request->DepJson);
         $streetArrObj = (new CarpoolStreetCoordinate())->getStreet($request->ArrJson);
 
@@ -221,6 +225,10 @@ class CarpoolController extends Controller
 
     public function update($id, Request $request)
     {
+        $request->validate([
+            'travel_start_datetime' => 'required|date|after:now',
+        ]);
+        
         $streetDepObj = (new CarpoolStreetCoordinate())->getStreet($request->DepJson);
         $streetArrObj = (new CarpoolStreetCoordinate())->getStreet($request->ArrJson);
 
