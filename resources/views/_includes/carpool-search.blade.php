@@ -17,7 +17,7 @@
                     </option>
                     <option value="blablacar_daily"
                         @selected(($selectedProvider ?? config('carpool.provider', 'ecomobilis')) === 'blablacar_daily')>
-                        BlaBlaCar Daily
+                        Caro'Ligne
                     </option>
                 </select>
             </div>
