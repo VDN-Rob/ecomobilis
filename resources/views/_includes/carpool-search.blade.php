@@ -5,9 +5,9 @@
 
         <div class="col-desk-12 text-center titles">
             <h4>{{ __('carpool.search-subtitle') }}</h4>
-            <h3>{{ __('carpool.search-title') }}</h3>
+            <h3 style="margin-bottom: 5px">{{ __('carpool.search-title') }}</h3>
         </div>
-        <div class="col-desk-12" style="margin-bottom: 20px;">
+        <div class="col-desk-12" style="margin-bottom: 25px;">
             <div class="field">
                 <label for="carpool_provider">{{ __('carpool.search-provider') }}</label>
                 <select id="carpool_provider" name="provider" onchange="saveCarpoolProvider(this.value)">
